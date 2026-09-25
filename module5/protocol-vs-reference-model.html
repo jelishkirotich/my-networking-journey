@@ -1,0 +1,986 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5 | Protocol Models and Reference Models</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <div class="module-number">MODULE 5</div>
+
+            <h1>Protocol Models and Reference Models</h1>
+
+            <p class="module-intro">
+                Understanding how network protocols are organized, how protocol models
+                differ from reference models, and how TCP/IP and OSI help us understand
+                communication between networked devices.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <!-- INTRODUCTION -->
+        <section class="introduction">
+
+            <h2>Introduction</h2>
+
+            <p>
+                We have already learned that communication between computers does not
+                happen using one single protocol. A message may need several different
+                protocols before it can travel from one device to another.
+            </p>
+
+            <p>
+                For example, when you open a website, protocols such as HTTP or HTTPS,
+                TCP, IP, and Ethernet or Wi-Fi may all be involved in delivering the
+                information.
+            </p>
+
+            <p>
+                This raises an important question:
+            </p>
+
+            <p>
+                <strong>How do we organize all these protocols so that we can understand
+                what each one does?</strong>
+            </p>
+
+            <p>
+                Network engineers use <strong>models</strong> to organize and explain
+                network communication. Two important types are:
+            </p>
+
+            <ul>
+                <li><strong>Protocol models</strong></li>
+                <li><strong>Reference models</strong></li>
+            </ul>
+
+            <p>
+                The two types of models are related, but they are not the same thing.
+            </p>
+
+        </section>
+
+
+        <!-- TOPICS -->
+        <section class="topics">
+
+            <h2>What We Will Learn</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <span class="topic-number">01</span>
+                    <h3>What Is a Model?</h3>
+                    <p>
+                        Why network models are used to simplify complex communication.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">02</span>
+                    <h3>Protocol Model</h3>
+                    <p>
+                        How a protocol model organizes real networking protocols.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">03</span>
+                    <h3>Reference Model</h3>
+                    <p>
+                        How a reference model provides a conceptual framework.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">04</span>
+                    <h3>TCP/IP Model</h3>
+                    <p>
+                        How the four-layer TCP/IP model organizes Internet protocols.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">05</span>
+                    <h3>OSI Reference Model</h3>
+                    <p>
+                        How the seven OSI layers describe network communication.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">06</span>
+                    <h3>Why Multiple Protocols?</h3>
+                    <p>
+                        Why one message needs several protocols to reach its destination.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT IS A MODEL -->
+        <section class="content-section">
+
+            <h2>1. What Is a Network Model?</h2>
+
+            <p>
+                A network model is a way of organizing the different tasks involved in
+                network communication into understandable groups or layers.
+            </p>
+
+            <p>
+                Network communication is actually very complicated. A computer needs
+                to deal with applications, data formatting, reliability, addressing,
+                routing, hardware addresses, cables, wireless signals, and many other
+                things.
+            </p>
+
+            <p>
+                Instead of trying to understand everything at once, we divide the
+                communication process into layers.
+            </p>
+
+            <p>
+                Each layer has a specific responsibility.
+            </p>
+
+            <p>
+                This makes networking easier to design, troubleshoot, learn, and
+                understand.
+            </p>
+
+            <h3>A Simple Example</h3>
+
+            <p>
+                Imagine sending a physical letter.
+            </p>
+
+            <p>
+                Several different things must happen:
+            </p>
+
+            <ol>
+                <li>You write the message.</li>
+                <li>The message is placed inside an envelope.</li>
+                <li>The destination address is written on the envelope.</li>
+                <li>The postal service transports it.</li>
+                <li>The recipient receives the letter.</li>
+                <li>The recipient opens the envelope and reads the message.</li>
+            </ol>
+
+            <p>
+                Computer networking works in a similar way. Different parts of the
+                communication process have different responsibilities.
+            </p>
+
+        </section>
+
+
+        <!-- PROTOCOL MODEL -->
+        <section class="content-section">
+
+            <h2>2. What Is a Protocol Model?</h2>
+
+            <p>
+                A <strong>protocol model</strong> is a model that describes how actual
+                networking protocols work together and how their functions are
+                organized into layers.
+            </p>
+
+            <p>
+                In other words, it is closely connected to real protocols that are
+                actually used to communicate across networks.
+            </p>
+
+            <p>
+                The <strong>TCP/IP model</strong> is commonly used as an example of a
+                protocol model because it is associated with the actual protocols used
+                by the Internet.
+            </p>
+
+            <p>
+                These include protocols such as:
+            </p>
+
+            <ul>
+                <li>HTTP and HTTPS</li>
+                <li>DNS</li>
+                <li>DHCP</li>
+                <li>TCP</li>
+                <li>UDP</li>
+                <li>IP</li>
+                <li>Ethernet</li>
+                <li>Wi-Fi</li>
+            </ul>
+
+            <p>
+                These protocols do different jobs, but they cooperate to allow
+                communication to happen.
+            </p>
+
+        </section>
+
+
+        <!-- TCP IP -->
+        <section class="content-section">
+
+            <h2>3. The TCP/IP Protocol Model</h2>
+
+            <p>
+                The TCP/IP model is commonly represented using four layers.
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <span class="topic-number">04</span>
+                    <h3>Application</h3>
+                    <p>
+                        Provides network services used by applications.
+                        Examples include HTTP, DNS, DHCP and SMTP.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">03</span>
+                    <h3>Transport</h3>
+                    <p>
+                        Provides communication between applications.
+                        Main protocols include TCP and UDP.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">02</span>
+                    <h3>Internet</h3>
+                    <p>
+                        Handles logical addressing and routing using IP.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">01</span>
+                    <h3>Network Access</h3>
+                    <p>
+                        Handles local network delivery and the physical transmission
+                        of data using technologies such as Ethernet and Wi-Fi.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                The important thing to understand is that these layers are not
+                independent.
+            </p>
+
+            <p>
+                They work together.
+            </p>
+
+        </section>
+
+
+        <!-- REFERENCE MODEL -->
+        <section class="content-section">
+
+            <h2>4. What Is a Reference Model?</h2>
+
+            <p>
+                A <strong>reference model</strong> is a conceptual framework used to
+                describe and understand how different functions of network communication
+                should be organized.
+            </p>
+
+            <p>
+                It does not necessarily represent the exact protocols being used on
+                the Internet.
+            </p>
+
+            <p>
+                Instead, it gives us a common way of thinking about networking.
+            </p>
+
+            <p>
+                The best-known example is the <strong>OSI Reference Model</strong>.
+            </p>
+
+            <p>
+                OSI divides network communication into seven layers:
+            </p>
+
+            <ol>
+                <li>Application</li>
+                <li>Presentation</li>
+                <li>Session</li>
+                <li>Transport</li>
+                <li>Network</li>
+                <li>Data Link</li>
+                <li>Physical</li>
+            </ol>
+
+            <p>
+                Each layer describes a different group of networking functions.
+            </p>
+
+        </section>
+
+
+        <!-- WHY OSI -->
+        <section class="content-section">
+
+            <h2>5. Why Was the OSI Model Created?</h2>
+
+            <p>
+                Before standardized networking approaches became widespread, different
+                manufacturers could develop networking systems that worked differently.
+            </p>
+
+            <p>
+                This could make communication between different systems difficult.
+            </p>
+
+            <p>
+                The OSI model provided a common framework for describing network
+                communication.
+            </p>
+
+            <p>
+                This allowed engineers and students to talk about networking functions
+                using the same language.
+            </p>
+
+            <p>
+                For example, if someone says:
+            </p>
+
+            <p>
+                <strong>"This problem is occurring at Layer 2."</strong>
+            </p>
+
+            <p>
+                They are referring to the <strong>Data Link layer</strong> and functions
+                such as MAC addressing, frames, and local network communication.
+            </p>
+
+            <p>
+                If someone says:
+            </p>
+
+            <p>
+                <strong>"This is a Layer 3 problem."</strong>
+            </p>
+
+            <p>
+                They are referring to the <strong>Network layer</strong>, where IP
+                addressing and routing are important.
+            </p>
+
+        </section>
+
+
+        <!-- TCP/IP VS OSI -->
+        <section class="content-section">
+
+            <h2>6. TCP/IP Model vs OSI Reference Model</h2>
+
+            <p>
+                TCP/IP and OSI both use layers, but they were created for different
+                purposes and do not have exactly the same number of layers.
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>TCP/IP</h3>
+                    <p>
+                        Commonly represented using four layers and closely associated
+                        with the protocols used by the Internet.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>OSI</h3>
+                    <p>
+                        Uses seven layers and provides a detailed conceptual framework
+                        for understanding network functions.
+                    </p>
+                </div>
+
+            </div>
+
+            <h3>Layer Mapping</h3>
+
+            <p>
+                The layers can be approximately mapped like this:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>OSI Layers 7, 6 and 5</strong>
+                    → TCP/IP Application Layer
+                </p>
+
+                <p>
+                    <strong>OSI Layer 4</strong>
+                    → TCP/IP Transport Layer
+                </p>
+
+                <p>
+                    <strong>OSI Layer 3</strong>
+                    → TCP/IP Internet Layer
+                </p>
+
+                <p>
+                    <strong>OSI Layers 2 and 1</strong>
+                    → TCP/IP Network Access Layer
+                </p>
+
+            </div>
+
+            <p>
+                Notice something important: TCP/IP combines some functions that OSI
+                separates into different layers.
+            </p>
+
+            <p>
+                For example, OSI has separate Presentation and Session layers, while
+                the TCP/IP model generally places those functions within the
+                Application layer.
+            </p>
+
+        </section>
+
+
+        <!-- MULTIPLE PROTOCOLS -->
+        <section class="content-section">
+
+            <h2>7. Why Does One Message Need Multiple Protocols?</h2>
+
+            <p>
+                This is one of the most important ideas in networking.
+            </p>
+
+            <p>
+                A single protocol cannot perform every job required to successfully
+                deliver information across a network.
+            </p>
+
+            <p>
+                Different protocols solve different problems.
+            </p>
+
+            <h3>Example: Opening a Website</h3>
+
+            <p>
+                Suppose you type a website address into your browser.
+            </p>
+
+            <p>
+                Several protocols may become involved.
+            </p>
+
+            <ol>
+
+                <li>
+                    <strong>DNS</strong> can translate the website name into an IP
+                    address.
+                </li>
+
+                <li>
+                    <strong>HTTP or HTTPS</strong> defines how the web request and
+                    response are communicated.
+                </li>
+
+                <li>
+                    <strong>TCP</strong> can provide reliable transport for the
+                    application data when TCP is used.
+                </li>
+
+                <li>
+                    <strong>IP</strong> provides logical addressing and allows routers
+                    to forward packets toward the destination.
+                </li>
+
+                <li>
+                    <strong>Ethernet or Wi-Fi</strong> can carry the data across the
+                    local network.
+                </li>
+            </ol>
+
+            <p>
+                Each protocol has its own responsibility.
+            </p>
+
+            <p>
+                They cooperate rather than competing with each other.
+            </p>
+
+        </section>
+
+
+        <!-- DIFFERENT JOBS -->
+        <section class="content-section">
+
+            <h2>8. Think of the Protocols as Different Jobs</h2>
+
+            <p>
+                A useful way to understand this is to imagine several people working
+                together to deliver a package.
+            </p>
+
+            <p>
+                One person may write the contents.
+                Another may package it.
+                Another may put the destination address on it.
+                Another may transport it.
+                Another may deliver it to the correct building.
+            </p>
+
+            <p>
+                No single person has to perform every task.
+            </p>
+
+            <p>
+                Networking protocols work in a similar way.
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>HTTP</h3>
+                    <p>
+                        Defines how web information is requested and transferred.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>TCP</h3>
+                    <p>
+                        Provides reliable, ordered transport when an application uses
+                        TCP.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>IP</h3>
+                    <p>
+                        Provides logical addressing and routing between networks.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Ethernet</h3>
+                    <p>
+                        Provides communication across a wired local network.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Wi-Fi</h3>
+                    <p>
+                        Provides wireless local network communication.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ENCAPSULATION -->
+        <section class="content-section">
+
+            <h2>9. How the Protocols Work Together: Encapsulation</h2>
+
+            <p>
+                When data is sent, each layer can add information needed for its
+                particular job.
+            </p>
+
+            <p>
+                This process is called <strong>encapsulation</strong>.
+            </p>
+
+            <p>
+                A simplified example looks like this:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    Application data
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    TCP adds transport information
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    IP adds logical addressing information
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    Ethernet or Wi-Fi adds local delivery information
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    Data is transmitted as signals/bits
+                </p>
+
+            </div>
+
+            <p>
+                This is why we can have different pieces of information associated
+                with the same communication.
+            </p>
+
+            <p>
+                TCP is concerned with transport.
+                IP is concerned with logical addressing and routing.
+                Ethernet or Wi-Fi is concerned with local network delivery.
+            </p>
+
+            <p>
+                They are solving different problems for the same communication.
+            </p>
+
+        </section>
+
+
+        <!-- DECAPSULATION -->
+        <section class="content-section">
+
+            <h2>10. What Happens at the Receiving Device?</h2>
+
+            <p>
+                The receiving device performs the opposite process.
+            </p>
+
+            <p>
+                This is called <strong>decapsulation</strong>.
+            </p>
+
+            <p>
+                The receiving device processes the information layer by layer.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    Signals/bits
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    Ethernet or Wi-Fi information is processed
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    IP information is processed
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    TCP or UDP information is processed
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    Application receives the data
+                </p>
+
+            </div>
+
+            <p>
+                The destination device can therefore understand the original
+                application data.
+            </p>
+
+        </section>
+
+
+        <!-- PROTOCOL SUITE -->
+        <section class="content-section">
+
+            <h2>11. What Is a Protocol Suite?</h2>
+
+            <p>
+                A <strong>protocol suite</strong> is a collection of related protocols
+                that work together to provide network communication.
+            </p>
+
+            <p>
+                TCP/IP is not just TCP.
+            </p>
+
+            <p>
+                This is an important distinction.
+            </p>
+
+            <p>
+                <strong>TCP</strong> is one transport protocol.
+            </p>
+
+            <p>
+                <strong>IP</strong> is a network-layer protocol.
+            </p>
+
+            <p>
+                <strong>TCP/IP</strong> refers to the broader collection of protocols
+                and technologies associated with the Internet protocol architecture.
+            </p>
+
+            <p>
+                Other protocols in this family include HTTP, DNS, DHCP, UDP and many
+                others.
+            </p>
+
+        </section>
+
+
+        <!-- STANDARDS -->
+        <section class="content-section">
+
+            <h2>12. Protocols and Standards</h2>
+
+            <p>
+                Protocols need agreed rules so that devices made by different
+                manufacturers can communicate.
+            </p>
+
+            <p>
+                These rules can specify things such as:
+            </p>
+
+            <ul>
+                <li>How messages are formatted</li>
+                <li>How large messages can be</li>
+                <li>How devices identify each other</li>
+                <li>How data is transmitted</li>
+                <li>How errors are handled</li>
+                <li>How communication begins and ends</li>
+                <li>How devices know when data has arrived</li>
+            </ul>
+
+            <p>
+                Standards help different networking devices and software follow
+                compatible rules.
+            </p>
+
+            <p>
+                This is one reason you can connect a phone from one manufacturer to a
+                Wi-Fi router from another manufacturer and communicate successfully.
+            </p>
+
+        </section>
+
+
+        <!-- TROUBLESHOOTING -->
+        <section class="content-section">
+
+            <h2>13. Why Models Are Useful for Troubleshooting</h2>
+
+            <p>
+                Network models are also useful when diagnosing problems.
+            </p>
+
+            <p>
+                Instead of treating a network problem as one huge problem, we can
+                examine the different layers.
+            </p>
+
+            <h3>Example</h3>
+
+            <p>
+                Imagine a computer cannot access a website.
+            </p>
+
+            <p>
+                We can ask different questions:
+            </p>
+
+            <ul>
+                <li>
+                    Is the physical cable connected?
+                </li>
+
+                <li>
+                    Is the network interface working?
+                </li>
+
+                <li>
+                    Does the device have a valid IP address?
+                </li>
+
+                <li>
+                    Can it reach the gateway?
+                </li>
+
+                <li>
+                    Is DNS working?
+                </li>
+
+                <li>
+                    Is the transport connection working?
+                </li>
+
+                <li>
+                    Is the web service available?
+                </li>
+            </ul>
+
+            <p>
+                These questions correspond to different networking functions and
+                layers.
+            </p>
+
+            <p>
+                This makes troubleshooting more organized.
+            </p>
+
+        </section>
+
+
+        <!-- BIG PICTURE -->
+        <section class="content-section">
+
+            <h2>14. The Big Picture</h2>
+
+            <p>
+                At this point, you should understand the relationship between
+                protocols, protocol models, and reference models.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Protocol</strong>
+                    = A set of rules used for a particular type of communication.
+                </p>
+
+                <p>
+                    <strong>Protocol suite</strong>
+                    = A collection of protocols that work together.
+                </p>
+
+                <p>
+                    <strong>Protocol model</strong>
+                    = A way of organizing and describing how real protocols work
+                    together.
+                </p>
+
+                <p>
+                    <strong>Reference model</strong>
+                    = A conceptual framework used to describe networking functions.
+                </p>
+
+                <p>
+                    <strong>TCP/IP</strong>
+                    = The protocol architecture associated with the Internet and
+                    commonly represented using four layers.
+                </p>
+
+                <p>
+                    <strong>OSI</strong>
+                    = A seven-layer reference model used to understand and describe
+                    network communication.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="module-summary">
+
+            <h2>Module Summary</h2>
+
+            <p>
+                Network communication is too complex to understand as one single
+                process, so networking functions are organized into layers.
+            </p>
+
+            <p>
+                A protocol model is closely connected to the organization of actual
+                networking protocols, while a reference model provides a conceptual
+                framework for understanding those functions.
+            </p>
+
+            <p>
+                The TCP/IP model is commonly represented using four layers, while the
+                OSI reference model contains seven layers.
+            </p>
+
+            <p>
+                The two models can be mapped to each other, but they are not identical.
+            </p>
+
+            <p>
+                Most importantly, a single message requires multiple protocols because
+                different protocols perform different jobs. HTTP may handle web
+                communication, TCP may provide reliable transport, IP handles logical
+                addressing and routing, and Ethernet or Wi-Fi can provide local network
+                delivery.
+            </p>
+
+            <p>
+                Understanding this relationship is essential before moving deeper into
+                how actual network communication takes place.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```

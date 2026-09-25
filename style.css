@@ -1,0 +1,524 @@
+/* =====================================================
+   NETWORK NOTES — SHARED STYLESHEET
+   Used by every page: homepage, module hubs, topic pages
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1f2937;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   SITE HEADER
+   Used on every page. The <p> under the title changes
+   the page from "site header" to "module header" simply
+   by what text is placed inside it.
+===================================================== */
+
+header {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.05rem;
+    color: #94a3b8;
+}
+
+
+/* =====================================================
+   NAVIGATION
+   One nav style for the whole site.
+===================================================== */
+
+nav {
+    background: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+    background: #1e293b;
+    color: white;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 20px 70px;
+}
+
+
+/* =====================================================
+   SECTION HEADINGS
+===================================================== */
+
+section h2 {
+    color: #0f172a;
+    font-size: 1.8rem;
+    margin-bottom: 18px;
+}
+
+section p {
+    margin-bottom: 14px;
+    color: #334155;
+}
+
+
+/* =====================================================
+   MODULE CARDS
+   Used on the homepage to list each module.
+===================================================== */
+
+.module-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.module-card h3 {
+    color: #0f172a;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.module-card h4 {
+    color: #334155;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.module-card p {
+    margin-bottom: 10px;
+}
+
+.module-card a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #0f172a;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.module-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   TOPIC CARDS
+   Used on module hub pages to list each topic.
+===================================================== */
+
+.topics-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.topic-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: 0.2s;
+}
+
+.topic-card:hover {
+    border-color: #334155;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.topic-card .topic-number {
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.topic-card h3 {
+    color: #0f172a;
+    font-size: 1.1rem;
+    margin: 6px 0 8px;
+}
+
+.topic-card p {
+    color: #64748b;
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+
+/* =====================================================
+   TOPICS IN THIS PAGE
+   Jump-link card at the top of a topic page.
+===================================================== */
+
+.topics-card {
+    max-width: 1100px;
+    margin: 30px auto 10px;
+    background: white;
+    padding: 26px 34px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.topics-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    color: #0f172a;
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.topics-grid ul {
+    margin: 0;
+    padding-left: 24px;
+}
+
+.topics-grid li {
+    margin-bottom: 12px;
+}
+
+.topics-grid a {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-size: 0.98rem;
+}
+
+.topics-grid a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   TOPIC SECTIONS
+   The main content blocks on a topic page.
+===================================================== */
+
+.topic-section {
+    background: white;
+    padding: 36px;
+    margin-bottom: 26px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    scroll-margin-top: 90px;
+}
+
+.topic-section h2 {
+    color: #0f172a;
+    font-size: 1.55rem;
+    margin-bottom: 16px;
+}
+
+.topic-section h3 {
+    color: #1e3a8a;
+    font-size: 1.15rem;
+    margin-top: 22px;
+    margin-bottom: 8px;
+}
+
+.topic-section p {
+    margin-bottom: 14px;
+}
+
+.topic-section ul,
+.topic-section ol {
+    margin: 12px 0 16px 24px;
+}
+
+.topic-section li {
+    margin-bottom: 6px;
+}
+
+
+/* =====================================================
+   CONTENT BOXES
+===================================================== */
+
+.concept-box {
+    background: #eef2ff;
+    border-left: 4px solid #172554;
+    padding: 18px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.important-box {
+    background: #f8fafc;
+    border-left: 4px solid #334155;
+    padding: 18px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+
+/* =====================================================
+   DIAGRAMS
+===================================================== */
+
+.diagram {
+    background: #f8fafc;
+    padding: 22px;
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+}
+
+
+/* =====================================================
+   SCREENSHOTS
+===================================================== */
+
+.screenshot {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.screenshot img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.screenshot p {
+    margin-top: 8px;
+    color: #4b5563;
+    font-size: 0.85rem;
+}
+
+
+/* =====================================================
+   PACKET TRACER EXERCISE STEPS
+===================================================== */
+
+.exercise-step {
+    background: #f8fafc;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.exercise-step h3 {
+    margin-top: 0;
+}
+
+
+/* =====================================================
+   REAL DEVICE / REAL CABLE CARDS
+===================================================== */
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin: 24px 0;
+}
+
+.device-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.device-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    background: white;
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.device-card-content {
+    padding: 18px;
+}
+
+.device-card h3 {
+    margin-top: 0;
+    color: #172554;
+    font-size: 1.05rem;
+}
+
+.device-label {
+    display: inline-block;
+    background: #172554;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   COMPARISON TABLE
+===================================================== */
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    text-align: left;
+}
+
+.comparison-table th {
+    background: #172554;
+    color: white;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   SOURCE NOTE
+===================================================== */
+
+.source-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   BOTTOM NAVIGATION BUTTONS
+===================================================== */
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.navigation-buttons a {
+    text-decoration: none;
+    background: #172554;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+.navigation-buttons a:hover {
+    background: #1e3a8a;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 22px;
+    font-size: 0.9rem;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 45px 20px;
+    }
+
+    header h1 {
+        font-size: 1.7rem;
+    }
+
+    nav {
+        gap: 4px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+
+    .topics-list,
+    .topics-grid,
+    .device-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-section {
+        padding: 24px;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+}

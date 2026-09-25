@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Device Connections | Module 2 | My Networking Journey</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">
+                My Networking Journey
+            </a>
+
+            <p class="module-label">Module 2 | Device Connections</p>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- INTRODUCTION -->
+        <section class="intro">
+
+            <h1>Device Connections</h1>
+
+            <p>
+                In the previous topic, I learned how network components can
+                connect to form a network. Now I want to look more closely at
+                the actual connections between individual devices.
+            </p>
+
+            <p>
+                This includes network ports, Ethernet cables, RJ-45
+                connectors, copper and fiber connections, Wi-Fi, and how
+                different devices physically or wirelessly connect to each
+                other.
+            </p>
+
+        </section>
+
+
+        <!-- NIC TO PORT -->
+        <section>
+
+            <h2>1. How Does a Device Connect to a Network?</h2>
+
+            <p>
+                For a device to communicate on a wired network, it needs a
+                network interface and a physical connection to another network
+                device.
+            </p>
+
+            <p>
+                A typical wired connection looks like this:
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    <strong>Computer NIC</strong>
+                    →
+                    <strong>Ethernet Cable</strong>
+                    →
+                    <strong>Switch Port</strong>
+                </p>
+
+            </div>
+
+            <p>
+                The NIC provides the network interface on the computer. The
+                Ethernet cable carries the signals, and the switch port
+                provides the connection on the switch.
+            </p>
+
+            <p>
+                This is one of the basic physical connections I will later
+                recreate in Cisco Packet Tracer.
+            </p>
+
+        </section>
+
+
+        <!-- NETWORK PORTS -->
+        <section>
+
+            <h2>2. Network Ports</h2>
+
+            <p>
+                A physical network port is the socket on a device where a
+                network cable can be connected.
+            </p>
+
+            <p>
+                For example, a desktop computer may have an Ethernet port on
+                its network interface, while a switch may have many Ethernet
+                ports.
+            </p>
+
+            <p>
+                Switches commonly have multiple ports because they are
+                designed to connect many devices at the same time.
+            </p>
+
+            <div class="note">
+
+                <strong>Important:</strong>
+
+                <p>
+                    A physical network port is not the same thing as a
+                    logical port such as TCP port 80 or TCP port 443.
+                    Physical ports are where cables connect. Logical ports
+                    are used by network services and applications.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ETHERNET -->
+        <section>
+
+            <h2>3. Ethernet</h2>
+
+            <p>
+                Ethernet is one of the main technologies used for wired
+                local area networks.
+            </p>
+
+            <p>
+                Ethernet allows devices to exchange data over a physical
+                network connection.
+            </p>
+
+            <p>
+                A common Ethernet connection is:
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    Computer
+                    →
+                    Ethernet Cable
+                    →
+                    Switch
+                </p>
+
+            </div>
+
+            <p>
+                Ethernet can use different physical media, including copper
+                twisted-pair cables and fiber-optic cables.
+            </p>
+
+        </section>
+
+
+        <!-- RJ45 -->
+        <section>
+
+            <h2>4. RJ-45 and Ethernet Connectors</h2>
+
+            <p>
+                The connector commonly seen on Ethernet cables using
+                twisted-pair copper is often called an RJ-45 connector.
+            </p>
+
+            <p>
+                It is the small plastic connector that clicks into an
+                Ethernet port.
+            </p>
+
+            <div class="definition">
+
+                <strong>Think of it like this:</strong>
+
+                <p>
+                    The <strong>Ethernet port</strong> is the socket.
+                    The <strong>RJ-45 connector</strong> is the plug.
+                </p>
+
+            </div>
+
+            <p>
+                When the connector is inserted correctly, a small locking tab
+                helps keep the cable securely in the port.
+            </p>
+
+            <p>
+                You will encounter these connectors frequently when working
+                with physical Ethernet networks.
+            </p>
+
+        </section>
+
+
+        <!-- TWISTED PAIR -->
+        <section>
+
+            <h2>5. Twisted-Pair Ethernet Cable</h2>
+
+            <p>
+                Twisted-pair Ethernet cable contains pairs of copper wires
+                twisted together.
+            </p>
+
+            <p>
+                The twisting helps reduce interference between the wires and
+                allows the cable to carry network signals effectively.
+            </p>
+
+            <p>
+                Common categories include:
+            </p>
+
+            <ul>
+                <li>Cat5e</li>
+                <li>Cat6</li>
+                <li>Cat6a</li>
+            </ul>
+
+            <p>
+                Different cable categories support different performance
+                characteristics and maximum distances depending on the
+                Ethernet standard being used.
+            </p>
+
+            <div class="note">
+
+                <strong>For now:</strong>
+
+                <p>
+                    The most important thing to remember is that twisted-pair
+                    Ethernet is one of the most common physical media used to
+                    connect devices to switches and other network equipment.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- STRAIGHT THROUGH -->
+        <section>
+
+            <h2>6. Straight-Through Ethernet Cable</h2>
+
+            <p>
+                Traditionally, Ethernet cable types were often discussed as
+                straight-through and crossover cables.
+            </p>
+
+            <p>
+                A straight-through cable has the same wiring standard on both
+                ends.
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    <strong>Example:</strong>
+                </p>
+
+                <p>
+                    T568A → T568A
+                </p>
+
+                <p>
+                    or
+                </p>
+
+                <p>
+                    T568B → T568B
+                </p>
+
+            </div>
+
+            <p>
+                Straight-through cables were traditionally used for
+                connecting different types of devices, such as:
+            </p>
+
+            <ul>
+                <li>Computer → Switch</li>
+                <li>Computer → Hub</li>
+                <li>Router → Switch</li>
+            </ul>
+
+            <p>
+                Modern Ethernet equipment often supports
+                <strong>auto-MDI/MDIX</strong>, which can automatically
+                detect and adjust for different cable wiring. Because of
+                this, the old rule of always needing a particular cable type
+                is less important with modern equipment.
+            </p>
+
+        </section>
+
+
+        <!-- CROSSOVER -->
+        <section>
+
+            <h2>7. Crossover Ethernet Cable</h2>
+
+            <p>
+                A crossover cable has different wiring arrangements at its
+                two ends.
+            </p>
+
+            <p>
+                Traditionally, crossover cables were used when connecting
+                similar types of devices, such as:
+            </p>
+
+            <ul>
+                <li>Computer → Computer</li>
+                <li>Switch → Switch</li>
+                <li>Router → Router</li>
+            </ul>
+
+            <p>
+                The purpose was to cross the transmit and receive pairs so
+                that the two devices could communicate correctly.
+            </p>
+
+            <div class="note">
+
+                <strong>Modern equipment:</strong>
+
+                <p>
+                    Many modern Ethernet interfaces support auto-MDI/MDIX,
+                    meaning they can automatically detect the required
+                    transmit and receive arrangement.
+                </p>
+
+            </div>
+
+            <p>
+                Even though the distinction is less important in modern
+                physical networks, understanding crossover cables is useful
+                when learning networking fundamentals and working with
+                Packet Tracer.
+            </p>
+
+        </section>
+
+
+        <!-- T568A T568B -->
+        <section>
+
+            <h2>8. T568A and T568B</h2>
+
+            <p>
+                T568A and T568B are two wiring standards that define the order
+                of the individual wires inside an Ethernet connector.
+            </p>
+
+            <p>
+                The eight wires are arranged into four twisted pairs.
+            </p>
+
+            <div class="definition">
+
+                <strong>Important idea:</strong>
+
+                <p>
+                    T568A and T568B do not describe different types of
+                    Ethernet technology. They describe different wire
+                    arrangements used when terminating twisted-pair cable.
+                </p>
+
+            </div>
+
+            <p>
+                If the same standard is used on both ends, the cable is
+                straight-through.
+            </p>
+
+            <p>
+                If one end uses T568A and the other uses T568B, the cable is
+                a crossover cable.
+            </p>
+
+        </section>
+
+
+        <!-- COPPER VS FIBER -->
+        <section>
+
+            <h2>9. Copper vs Fiber</h2>
+
+            <p>
+                Not every wired network connection uses copper Ethernet
+                cable. Fiber-optic cable is another important networking
+                medium.
+            </p>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Copper</th>
+                        <th>Fiber</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Signal</td>
+                        <td>Electrical</td>
+                        <td>Light</td>
+                    </tr>
+
+                    <tr>
+                        <td>Common use</td>
+                        <td>Local device connections</td>
+                        <td>High-speed and longer-distance connections</td>
+                    </tr>
+
+                    <tr>
+                        <td>Resistance to electromagnetic interference</td>
+                        <td>More susceptible</td>
+                        <td>Highly resistant</td>
+                    </tr>
+
+                    <tr>
+                        <td>Physical medium</td>
+                        <td>Copper wires</td>
+                        <td>Optical fiber</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                Both technologies can be used to create high-speed network
+                connections. The appropriate choice depends on the
+                requirements of the network.
+            </p>
+
+        </section>
+
+
+        <!-- FIBER CONNECTION -->
+        <section>
+
+            <h2>10. Fiber-Optic Connections</h2>
+
+            <p>
+                Fiber-optic cables carry information using light through
+                extremely thin strands of glass or plastic.
+            </p>
+
+            <p>
+                Fiber is especially useful when a network needs to transmit
+                data over longer distances or at high speeds.
+            </p>
+
+            <p>
+                Fiber connections are commonly encountered in:
+            </p>
+
+            <ul>
+                <li>Data centers</li>
+                <li>Telecommunications networks</li>
+                <li>ISP infrastructure</li>
+                <li>Building-to-building connections</li>
+                <li>High-speed network backbones</li>
+            </ul>
+
+            <div class="note">
+
+                <strong>Remember:</strong>
+
+                <p>
+                    Fiber is not simply a "faster Ethernet cable." Ethernet
+                    is a networking technology, while fiber is a physical
+                    medium that can carry network signals.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WIFI -->
+        <section>
+
+            <h2>11. Wi-Fi Connections</h2>
+
+            <p>
+                Wi-Fi allows devices to communicate over a wireless radio
+                connection.
+            </p>
+
+            <p>
+                Instead of plugging an Ethernet cable directly into a laptop,
+                the laptop can connect to a wireless access point.
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    Laptop
+                    →
+                    Wi-Fi
+                    →
+                    Access Point
+                </p>
+
+            </div>
+
+            <p>
+                The access point can then connect to the wired network using
+                Ethernet.
+            </p>
+
+            <p>
+                This creates a mixed network where the connection is wireless
+                between the client and access point but wired between the
+                access point and the rest of the infrastructure.
+            </p>
+
+        </section>
+
+
+        <!-- SSID -->
+        <section>
+
+            <h2>12. SSID</h2>
+
+            <p>
+                When connecting to Wi-Fi, you normally choose a wireless
+                network name from the available networks.
+            </p>
+
+            <p>
+                This name is called the <strong>SSID</strong>, which stands
+                for Service Set Identifier.
+            </p>
+
+            <p>
+                For example, a school might have a Wi-Fi network called:
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    <strong>Kirinyaga University Wi-Fi</strong>
+                </p>
+
+            </div>
+
+            <p>
+                A device uses the wireless network information and security
+                credentials to establish a connection with the wireless
+                network.
+            </p>
+
+            <div class="note">
+
+                <strong>Do not confuse SSID with a password.</strong>
+
+                <p>
+                    The SSID identifies the wireless network. The password is
+                    used to authenticate a user or device when security is
+                    enabled.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LINK LIGHTS -->
+        <section>
+
+            <h2>13. Link and Activity Lights</h2>
+
+            <p>
+                Physical network equipment often has small LEDs near its
+                ports.
+            </p>
+
+            <p>
+                These lights can provide useful information about the state
+                of a connection.
+            </p>
+
+            <p>
+                Depending on the device, the lights may indicate things such
+                as:
+            </p>
+
+            <ul>
+                <li>Whether a physical link has been established</li>
+                <li>Whether data is being transmitted</li>
+                <li>The negotiated connection speed</li>
+                <li>Whether the port is active</li>
+            </ul>
+
+            <div class="note">
+
+                <strong>Troubleshooting example:</strong>
+
+                <p>
+                    If a computer is connected to a switch but there is no
+                    link light, I would start by checking the cable,
+                    connectors, ports and network interface.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT HAPPENS WHEN CABLE CONNECTED -->
+        <section>
+
+            <h2>14. What Happens When I Plug in an Ethernet Cable?</h2>
+
+            <p>
+                Plugging in an Ethernet cable is more than simply creating a
+                physical connection.
+            </p>
+
+            <p>
+                At a simplified level:
+            </p>
+
+            <ol>
+
+                <li>
+                    The cable physically connects the two interfaces.
+                </li>
+
+                <li>
+                    The interfaces detect that a physical connection exists.
+                </li>
+
+                <li>
+                    The devices negotiate characteristics such as link
+                    speed and duplex settings.
+                </li>
+
+                <li>
+                    A link may become active, which can be shown by a link
+                    light.
+                </li>
+
+                <li>
+                    Higher-level network communication can then take place
+                    once the devices are appropriately configured.
+                </li>
+
+            </ol>
+
+            <div class="definition">
+
+                <strong>Important:</strong>
+
+                <p>
+                    A physical link does not automatically mean that the
+                    device has Internet access.
+                </p>
+
+            </div>
+
+            <p>
+                A cable can be connected correctly while the device still
+                has an IP addressing, configuration, routing or other
+                networking problem.
+            </p>
+
+        </section>
+
+
+        <!-- PHYSICAL VS LOGICAL -->
+        <section>
+
+            <h2>15. Physical Connection vs Network Configuration</h2>
+
+            <p>
+                This is an important distinction to understand before moving
+                further into networking.
+            </p>
+
+            <h3>Physical Connection</h3>
+
+            <p>
+                The physical connection is concerned with things such as:
+            </p>
+
+            <ul>
+                <li>Cables</li>
+                <li>Ports</li>
+                <li>Connectors</li>
+                <li>NICs</li>
+                <li>Wireless radio connections</li>
+                <li>Link status</li>
+            </ul>
+
+            <h3>Logical Configuration</h3>
+
+            <p>
+                Logical networking is concerned with things such as:
+            </p>
+
+            <ul>
+                <li>IP addresses</li>
+                <li>Subnet masks</li>
+                <li>Default gateways</li>
+                <li>DNS settings</li>
+                <li>VLANs</li>
+                <li>Routing</li>
+            </ul>
+
+            <div class="note">
+
+                <strong>Example:</strong>
+
+                <p>
+                    A computer can have a perfectly good Ethernet cable and
+                    an active link but still fail to communicate because its
+                    IP configuration is incorrect.
+                </p>
+
+            </div>
+
+            <p>
+                We will build on this distinction as we move into later
+                networking topics.
+            </p>
+
+        </section>
+
+
+        <!-- CONNECTION EXAMPLES -->
+        <section>
+
+            <h2>16. Common Device Connections</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Devices</th>
+                        <th>Possible Connection</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Computer → Switch</td>
+                        <td>Ethernet</td>
+                    </tr>
+
+                    <tr>
+                        <td>Server → Switch</td>
+                        <td>Ethernet or fiber</td>
+                    </tr>
+
+                    <tr>
+                        <td>Access Point → Switch</td>
+                        <td>Ethernet</td>
+                    </tr>
+
+                    <tr>
+                        <td>Switch → Router</td>
+                        <td>Ethernet or fiber</td>
+                    </tr>
+
+                    <tr>
+                        <td>Switch → Switch</td>
+                        <td>Ethernet or fiber</td>
+                    </tr>
+
+                    <tr>
+                        <td>Laptop → Access Point</td>
+                        <td>Wi-Fi</td>
+                    </tr>
+
+                    <tr>
+                        <td>Smartphone → Access Point</td>
+                        <td>Wi-Fi</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- BIG PICTURE -->
+        <section>
+
+            <h2>17. Putting the Connections Together</h2>
+
+            <p>
+                Now I can look at a simple network and identify the different
+                types of connections involved.
+            </p>
+
+            <div class="definition">
+
+                <p>
+                    <strong>Laptop</strong>
+                    →
+                    <strong>Wi-Fi</strong>
+                    →
+                    <strong>Access Point</strong>
+                    →
+                    <strong>Ethernet</strong>
+                    →
+                    <strong>Switch</strong>
+                    →
+                    <strong>Ethernet</strong>
+                    →
+                    <strong>Router</strong>
+                    →
+                    <strong>Internet</strong>
+                </p>
+
+            </div>
+
+            <p>
+                There are several different things happening here:
+            </p>
+
+            <ol>
+
+                <li>
+                    The laptop uses its wireless NIC to communicate over
+                    Wi-Fi.
+                </li>
+
+                <li>
+                    The access point receives the wireless communication.
+                </li>
+
+                <li>
+                    The access point is physically connected to the switch
+                    using Ethernet.
+                </li>
+
+                <li>
+                    The switch forwards traffic toward the router.
+                </li>
+
+                <li>
+                    The router connects the local network to another
+                    network.
+                </li>
+
+            </ol>
+
+            <p>
+                This is the kind of network path I will eventually build and
+                test in Packet Tracer.
+            </p>
+
+        </section>
+
+
+        <!-- WHAT TO REMEMBER -->
+        <section>
+
+            <h2>18. What to Remember</h2>
+
+            <ul>
+
+                <li>
+                    A device needs a network interface to communicate on a
+                    network.
+                </li>
+
+                <li>
+                    Physical network ports provide places to connect cables.
+                </li>
+
+                <li>
+                    Ethernet is widely used for wired local networks.
+                </li>
+
+                <li>
+                    RJ-45 is the common name used for the connector found on
+                    many twisted-pair Ethernet cables.
+                </li>
+
+                <li>
+                    Copper and fiber are two important wired transmission
+                    media.
+                </li>
+
+                <li>
+                    Wi-Fi provides wireless connectivity.
+                </li>
+
+                <li>
+                    T568A and T568B define different wire arrangements for
+                    twisted-pair Ethernet cabling.
+                </li>
+
+                <li>
+                    Straight-through and crossover describe different
+                    wiring arrangements.
+                </li>
+
+                <li>
+                    Modern devices often support auto-MDI/MDIX, reducing the
+                    need to manually choose between cable types.
+                </li>
+
+                <li>
+                    A physical link does not automatically mean that the
+                    network is correctly configured.
+                </li>
+
+                <li>
+                    Physical connections and logical network configuration
+                    are related but different concepts.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- GO DEEPER -->
+        <section>
+
+            <h2>19. Go Deeper</h2>
+
+            <p>
+                These resources can help me understand Ethernet, network
+                infrastructure and networking fundamentals in more detail.
+            </p>
+
+            <h3>Cisco Networking Basics</h3>
+
+            <p>
+                Cisco's networking basics material provides a useful
+                introduction to switches, routers, access points and network
+                infrastructure.
+            </p>
+
+            <p>
+                <a
+                    href="https://www.cisco.com/site/us/en/learn/topics/small-business/networking-basics.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Cisco Networking Basics
+                </a>
+            </p>
+
+            <h3>Professor Messer - CompTIA Network+</h3>
+
+            <p>
+                Professor Messer's free N10-009 Network+ course goes deeper
+                into networking devices, Ethernet, transmission media,
+                wireless networking, IP addressing and other networking
+                fundamentals.
+            </p>
+
+            <p>
+                <a
+                    href="https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Professor Messer N10-009 Free Training Course
+                </a>
+            </p>
+
+            <h3>Professor Messer Network+ Resources</h3>
+
+            <p>
+                Additional free Network+ study resources are available here.
+            </p>
+
+            <p>
+                <a
+                    href="https://www.professormesser.com/netplus-resources/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Professor Messer Network+ Resources
+                </a>
+            </p>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <section>
+
+            <h2>Next Topic</h2>
+
+            <p>
+                I now understand how individual devices physically and
+                wirelessly connect. Next, I will look at how clients and
+                servers communicate and how services are provided across a
+                network.
+            </p>
+
+            <div class="page-navigation">
+
+                <a href="network-connections.html">
+                    Previous: Network Connections
+                </a>
+
+                <a href="clients-servers.html">
+                    Next: Clients and Servers
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="container">
+            <p>My Networking Journey | Module 2</p>
+        </div>
+
+    </footer>
+
+</body>
+</html>

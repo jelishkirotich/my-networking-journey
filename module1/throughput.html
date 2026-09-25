@@ -1,0 +1,1832 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Throughput</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================
+           MODULE HEADER
+        ===================================== */
+
+        .module-header {
+            background: #1e293b;
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .module-header .module-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .module-header h1 {
+            font-size: 23px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .module-header p {
+            display: none;
+        }
+
+
+        /* =====================================
+           MAIN WEBSITE NAVIGATION
+        ===================================== */
+
+        .main-navigation {
+            background: #0f172a;
+
+            min-height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 42px;
+
+            padding: 20px 25px;
+
+            flex-wrap: wrap;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-navigation a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .main-navigation a:hover {
+            color: #93c5fd;
+        }
+
+        .main-navigation a.active {
+            color: white;
+        }
+
+
+        /* =====================================
+           TOPICS IN THIS PAGE
+        ===================================== */
+
+        .topics-card {
+            max-width: 1500px;
+
+            margin: 30px auto 40px;
+
+            background: white;
+
+            padding: 30px 40px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .topics-card h2 {
+            font-size: 30px;
+
+            margin-bottom: 25px;
+
+            color: #111827;
+        }
+
+        .topics-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+        }
+
+        .topics-grid ul {
+            margin: 0;
+
+            padding-left: 30px;
+        }
+
+        .topics-grid li {
+            margin-bottom: 15px;
+
+            padding-left: 5px;
+        }
+
+        .topics-grid a {
+            color: #1d4ed8;
+
+            text-decoration: none;
+
+            font-size: 18px;
+        }
+
+        .topics-grid a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           MAIN CONTENT
+        ===================================== */
+
+        .content {
+            max-width: 1100px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+        .topic-section {
+            background: white;
+
+            padding: 40px;
+
+            margin-bottom: 30px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06);
+
+            scroll-margin-top: 100px;
+        }
+
+        .topic-section h2 {
+            color: #172554;
+
+            margin-bottom: 20px;
+
+            font-size: 28px;
+        }
+
+        .topic-section h3 {
+            color: #1e3a8a;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            font-size: 21px;
+        }
+
+        .topic-section p {
+            margin-bottom: 15px;
+        }
+
+        .topic-section ul,
+        .topic-section ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        .topic-section li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================
+           CONCEPT BOX
+        ===================================== */
+
+        .concept-box {
+            background: #eef2ff;
+
+            border-left: 5px solid #172554;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           IMPORTANT BOX
+        ===================================== */
+
+        .important-box {
+            background: #f8fafc;
+
+            border-left: 5px solid #334155;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           CODE BOX
+        ===================================== */
+
+        .code-box {
+            background: #111827;
+
+            color: #f9fafb;
+
+            padding: 20px;
+
+            border-radius: 7px;
+
+            margin: 20px 0;
+
+            font-family: Consolas, monospace;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           DIAGRAM
+        ===================================== */
+
+        .diagram {
+            background: #f8fafc;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            text-align: center;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 16px;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           COMPARISON TABLE
+        ===================================== */
+
+        .comparison-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #d1d5db;
+
+            padding: 14px;
+
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #172554;
+
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =====================================
+           CALCULATION BOX
+        ===================================== */
+
+        .calculation-box {
+            background: #f8fafc;
+
+            border: 1px solid #d1d5db;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           QUICK CHECK
+        ===================================== */
+
+        .question-box {
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+
+            padding: 25px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+        }
+
+        .question-box h3 {
+            margin-top: 0;
+        }
+
+
+        /* =====================================
+           SOURCE NOTE
+        ===================================== */
+
+        .source-note {
+            font-size: 13px;
+
+            color: #64748b;
+
+            margin-top: 10px;
+        }
+
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .navigation-buttons {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+
+            background: #172554;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 6px;
+        }
+
+        .navigation-buttons a:hover {
+            background: #1e3a8a;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 800px) {
+
+            .module-header {
+                padding: 45px 20px;
+            }
+
+            .module-header .module-number {
+                font-size: 38px;
+            }
+
+            .main-navigation {
+                gap: 20px;
+            }
+
+            .main-navigation a {
+                font-size: 15px;
+            }
+
+            .topics-card {
+                margin: 20px;
+
+                padding: 25px;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .topic-section {
+                padding: 25px;
+            }
+
+            .topic-section h2 {
+                font-size: 24px;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         MODULE HEADER
+    =========================================== -->
+
+    <header class="module-header">
+
+        <div class="module-number">
+            Module 1
+        </div>
+
+        <h1>
+            Throughput
+        </h1>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         MAIN NAVIGATION
+    =========================================== -->
+
+    <nav class="main-navigation">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="../module1.html">
+            Module 1
+        </a>
+
+        <a href="communication.html">
+            Communication
+        </a>
+
+        <a href="types-of-networks.html">
+            Types of Networks
+        </a>
+
+        <a href="data-transmission.html">
+            Data Transmission
+        </a>
+
+        <a href="bandwidth.html">
+            Bandwidth
+        </a>
+
+        <a href="throughput.html" class="active">
+            Throughput
+        </a>
+
+    </nav>
+
+
+
+    <!-- ==========================================
+         TOPICS IN THIS PAGE
+    =========================================== -->
+
+    <section class="topics-card">
+
+        <h2>
+            Topics in This Page
+        </h2>
+
+
+        <div class="topics-grid">
+
+
+            <!-- LEFT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#introduction">
+                        Introduction to Throughput
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#measurement">
+                        Measuring Throughput
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#data-rate">
+                        Throughput and Data Rate
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#factors">
+                        Factors Affecting Throughput
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#example">
+                        Real-World Example
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- RIGHT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#performance">
+                        Throughput and Network Performance
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#bandwidth">
+                        Throughput vs Bandwidth
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#improving">
+                        Improving Throughput
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#quick-check">
+                        Quick Check
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#summary">
+                        Summary
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MODULE CONTENT
+    =========================================== -->
+
+    <main class="content">
+
+
+
+        <!-- ======================================
+             SECTION 1
+        ======================================= -->
+
+        <section class="topic-section" id="introduction">
+
+            <h2>
+                1. Introduction to Throughput
+            </h2>
+
+            <p>
+                Throughput is the actual amount of data that is successfully
+                transferred from one point to another over a network during a
+                given period of time.
+            </p>
+
+            <p>
+                In simple terms, throughput tells us how much data a network
+                is actually delivering. It is therefore an important way of
+                understanding the real performance of a network connection.
+            </p>
+
+            <p>
+                For example, an Internet connection may be advertised as
+                capable of 100 Mbps, but a device may actually receive data
+                at only 75 Mbps during a particular download. The 75 Mbps is
+                an example of the connection's actual throughput at that
+                moment.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Simple definition:
+                </strong>
+
+                <p>
+                    Throughput is the actual rate at which data is successfully
+                    transferred across a network.
+                </p>
+
+            </div>
+
+
+            <h3>
+                Why is Throughput Important?
+            </h3>
+
+            <p>
+                Throughput helps us understand how a network performs under
+                real operating conditions.
+            </p>
+
+            <p>
+                Two networks may have the same advertised connection speed but
+                provide different actual performance because of congestion,
+                interference, hardware limitations, or other network
+                conditions.
+            </p>
+
+            <p>
+                Measuring throughput therefore gives us a better picture of
+                what users are actually experiencing.
+            </p>
+
+
+            <h3>
+                A Simple Example
+            </h3>
+
+            <div class="diagram">
+
+                Network Connection
+                <br>
+                100 Mbps maximum capacity
+                <br><br>
+                ↓
+                <br><br>
+                Actual data transfer
+                <br>
+                72 Mbps
+                <br><br>
+                ↓
+                <br><br>
+                Throughput = 72 Mbps
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 2
+        ======================================= -->
+
+        <section class="topic-section" id="measurement">
+
+            <h2>
+                2. Measuring Throughput
+            </h2>
+
+            <p>
+                Throughput is normally measured in bits per second (bps).
+                Larger networks and modern Internet connections commonly use
+                larger units such as Kbps, Mbps, and Gbps.
+            </p>
+
+
+            <h3>
+                Common Units
+            </h3>
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Unit
+                    </th>
+
+                    <th>
+                        Meaning
+                    </th>
+
+                    <th>
+                        Approximate Value
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        bps
+                    </td>
+
+                    <td>
+                        bits per second
+                    </td>
+
+                    <td>
+                        1 bit/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Kbps
+                    </td>
+
+                    <td>
+                        kilobits per second
+                    </td>
+
+                    <td>
+                        1,000 bits/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Mbps
+                    </td>
+
+                    <td>
+                        megabits per second
+                    </td>
+
+                    <td>
+                        1,000,000 bits/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Gbps
+                    </td>
+
+                    <td>
+                        gigabits per second
+                    </td>
+
+                    <td>
+                        1,000,000,000 bits/s
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <h3>
+                Bits vs Bytes
+            </h3>
+
+            <p>
+                Networking speeds are normally expressed in bits per second,
+                while file sizes are commonly displayed in bytes.
+            </p>
+
+            <p>
+                A byte contains 8 bits.
+            </p>
+
+
+            <div class="calculation-box">
+
+                1 Byte = 8 bits
+
+                <br><br>
+
+                100 Mbps ÷ 8 ≈ 12.5 MB/s
+
+            </div>
+
+
+            <p>
+                Therefore, a theoretical 100 Mbps connection corresponds to
+                approximately 12.5 megabytes per second (MB/s) before
+                accounting for protocol overhead and other real-world
+                limitations.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                <p>
+                    Do not confuse Mbps with MB/s. The capital "B" represents
+                    bytes, while the lowercase "b" represents bits.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 3
+        ======================================= -->
+
+        <section class="topic-section" id="data-rate">
+
+            <h2>
+                3. Throughput and Data Rate
+            </h2>
+
+            <p>
+                Throughput and data rate are closely related terms, but they
+                should not always be treated as exactly the same thing.
+            </p>
+
+            <h3>
+                Data Rate
+            </h3>
+
+            <p>
+                Data rate generally describes the rate at which bits are
+                transmitted or the rate a connection is designed to support.
+                For example, an Ethernet link may have a data rate of
+                1 Gbps.
+            </p>
+
+
+            <h3>
+                Throughput
+            </h3>
+
+            <p>
+                Throughput describes the amount of data that is successfully
+                transferred during actual communication.
+            </p>
+
+            <p>
+                A link may have a data rate of 1 Gbps while the actual
+                application throughput is lower because of network conditions
+                and protocol overhead.
+            </p>
+
+
+            <div class="diagram">
+
+                Link Data Rate
+                <br>
+                1 Gbps
+                <br><br>
+                ↓
+                <br><br>
+                Network conditions + Protocol overhead
+                <br><br>
+                ↓
+                <br><br>
+                Actual Throughput
+                <br>
+                850 Mbps
+
+            </div>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Remember:
+                </strong>
+
+                <p>
+                    The available or configured data rate describes what a
+                    connection can support, while throughput describes what is
+                    actually being successfully delivered.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 4
+        ======================================= -->
+
+        <section class="topic-section" id="factors">
+
+            <h2>
+                4. Factors Affecting Throughput
+            </h2>
+
+            <p>
+                Throughput can change depending on the condition of the
+                network and the equipment being used.
+            </p>
+
+
+            <h3>
+                1. Network Congestion
+            </h3>
+
+            <p>
+                Congestion occurs when many devices attempt to send large
+                amounts of data through the network at the same time.
+            </p>
+
+            <p>
+                When network resources become heavily used, the amount of data
+                that can be successfully delivered to an individual device
+                may decrease.
+            </p>
+
+
+            <h3>
+                2. Network Hardware
+            </h3>
+
+            <p>
+                Network interfaces, switches, routers, wireless access points,
+                and other equipment can affect the maximum performance of a
+                connection.
+            </p>
+
+            <p>
+                If one device or link is slower than the others, it can become
+                a bottleneck.
+            </p>
+
+
+            <h3>
+                3. Wireless Interference
+            </h3>
+
+            <p>
+                Wireless networks can experience interference from other
+                wireless devices, physical obstacles, distance, and competing
+                networks.
+            </p>
+
+            <p>
+                These conditions can reduce the amount of data that can be
+                successfully transferred.
+            </p>
+
+
+            <h3>
+                4. Distance
+            </h3>
+
+            <p>
+                The distance between communicating devices can affect network
+                performance, particularly in wireless networks and certain
+                physical transmission media.
+            </p>
+
+
+            <h3>
+                5. Protocol Overhead
+            </h3>
+
+            <p>
+                Network communication requires headers, control information,
+                acknowledgements, and other protocol mechanisms.
+            </p>
+
+            <p>
+                This information is necessary for communication, but it means
+                that not every transmitted bit represents application data.
+            </p>
+
+
+            <h3>
+                6. Network Errors and Retransmissions
+            </h3>
+
+            <p>
+                If data is lost or corrupted, some protocols may require data
+                to be transmitted again.
+            </p>
+
+            <p>
+                Retransmissions consume network capacity and can reduce
+                effective throughput.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Main idea:
+                </strong>
+
+                <p>
+                    Throughput is affected by everything that influences how
+                    efficiently data can travel through the network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 5
+        ======================================= -->
+
+        <section class="topic-section" id="example">
+
+            <h2>
+                5. Real-World Throughput Example
+            </h2>
+
+            <p>
+                Consider a student using a 100 Mbps Internet connection to
+                download a large file.
+            </p>
+
+            <p>
+                The connection has a maximum advertised rate of 100 Mbps, but
+                the actual download may not reach exactly 100 Mbps.
+            </p>
+
+
+            <h3>
+                Possible Situation
+            </h3>
+
+
+            <div class="calculation-box">
+
+                Advertised connection:
+                100 Mbps
+
+                <br><br>
+
+                Network congestion:
+                Moderate
+
+                <br><br>
+
+                Wireless interference:
+                Present
+
+                <br><br>
+
+                Actual download throughput:
+                68 Mbps
+
+            </div>
+
+
+            <p>
+                In this situation, the connection has a 100 Mbps advertised
+                rate, but the actual throughput is 68 Mbps.
+            </p>
+
+            <p>
+                This does not necessarily mean that the Internet Service
+                Provider is failing to provide the advertised connection.
+                Actual performance can depend on many factors between the
+                user's device and the destination server.
+            </p>
+
+
+            <h3>
+                Download Example
+            </h3>
+
+            <p>
+                Suppose a file is 800 megabytes (MB) and the actual throughput
+                is 80 Mbps.
+            </p>
+
+            <p>
+                Because throughput is measured in bits while the file size is
+                measured in bytes, we first convert the file size into bits.
+            </p>
+
+
+            <div class="calculation-box">
+
+                800 MB × 8
+                <br>
+                = 6,400 megabits
+
+                <br><br>
+
+                Transfer time
+                <br>
+                = 6,400 Mb ÷ 80 Mbps
+                <br>
+                = 80 seconds
+
+            </div>
+
+
+            <p>
+                Under these simplified conditions, the transfer would take
+                approximately 80 seconds. Real downloads can take longer or
+                vary because throughput can change during the transfer.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 6
+        ======================================= -->
+
+        <section class="topic-section" id="performance">
+
+            <h2>
+                6. Throughput and Network Performance
+            </h2>
+
+            <p>
+                Throughput is one of several measurements that can be used to
+                understand network performance.
+            </p>
+
+            <p>
+                A network with higher throughput can generally transfer more
+                data in the same amount of time, assuming other conditions
+                remain comparable.
+            </p>
+
+
+            <h3>
+                Throughput in Different Activities
+            </h3>
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Activity
+                    </th>
+
+                    <th>
+                        Why Throughput Matters
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Downloading files
+                    </td>
+
+                    <td>
+                        Higher throughput can reduce download time.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Streaming video
+                    </td>
+
+                    <td>
+                        Sufficient throughput helps maintain the required
+                        video quality.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Cloud applications
+                    </td>
+
+                    <td>
+                        Higher throughput can improve the transfer of data
+                        between the user and cloud services.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Large file backups
+                    </td>
+
+                    <td>
+                        Higher throughput can reduce the time required to
+                        transfer large amounts of data.
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <h3>
+                Throughput Is Not the Only Measurement
+            </h3>
+
+            <p>
+                A network can have high throughput while still having other
+                performance problems.
+            </p>
+
+            <p>
+                For example, latency measures the time it takes for data to
+                travel between endpoints, while packet loss describes data
+                packets that fail to reach their destination.
+            </p>
+
+            <p>
+                Therefore, network performance should be evaluated using
+                multiple factors rather than throughput alone.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 7
+        ======================================= -->
+
+        <section class="topic-section" id="bandwidth">
+
+            <h2>
+                7. Throughput vs Bandwidth
+            </h2>
+
+            <p>
+                Bandwidth and throughput are closely related, but they describe
+                different things.
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Bandwidth
+                    </th>
+
+                    <th>
+                        Throughput
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Describes the maximum capacity or available data rate
+                        of a connection.
+                    </td>
+
+                    <td>
+                        Describes the actual amount of data successfully
+                        transferred.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Often expressed in Mbps or Gbps.
+                    </td>
+
+                    <td>
+                        Also commonly expressed in Mbps or Gbps.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Represents what the connection can potentially carry.
+                    </td>
+
+                    <td>
+                        Represents what is actually achieved.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Can be thought of as network capacity.
+                    </td>
+
+                    <td>
+                        Can be thought of as actual network performance.
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <h3>
+                A Simple Analogy
+            </h3>
+
+            <p>
+                Imagine a highway with several lanes.
+            </p>
+
+            <div class="diagram">
+
+                Highway Capacity
+                <br>
+                = Bandwidth
+                <br><br>
+                ↓
+                <br><br>
+                Actual Vehicles Moving
+                <br>
+                = Throughput
+
+            </div>
+
+
+            <p>
+                A highway may have enough lanes to carry many vehicles, but
+                traffic congestion, accidents, or other problems may prevent
+                vehicles from moving at the maximum possible rate.
+            </p>
+
+            <p>
+                Similarly, a network may have high bandwidth while actual
+                throughput is lower.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    The key distinction:
+                </strong>
+
+                <p>
+                    <strong>Bandwidth is capacity.</strong>
+                    <br>
+                    <strong>Throughput is actual successful delivery.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 8
+        ======================================= -->
+
+        <section class="topic-section" id="improving">
+
+            <h2>
+                8. Improving Throughput
+            </h2>
+
+            <p>
+                If a network is experiencing low throughput, network
+                administrators can investigate the cause and improve the
+                network where possible.
+            </p>
+
+
+            <h3>
+                Possible Improvements
+            </h3>
+
+            <ul>
+
+                <li>
+                    Upgrade slow network hardware.
+                </li>
+
+                <li>
+                    Increase the capacity of important network links.
+                </li>
+
+                <li>
+                    Reduce unnecessary network traffic.
+                </li>
+
+                <li>
+                    Improve wireless coverage and reduce interference.
+                </li>
+
+                <li>
+                    Replace damaged or unsuitable cables.
+                </li>
+
+                <li>
+                    Identify and remove network bottlenecks.
+                </li>
+
+                <li>
+                    Configure the network appropriately for the expected
+                    workload.
+                </li>
+
+            </ul>
+
+
+            <h3>
+                Finding a Bottleneck
+            </h3>
+
+            <p>
+                A bottleneck is a part of a network that limits the performance
+                of the entire communication path.
+            </p>
+
+
+            <div class="diagram">
+
+                Computer
+                <br>
+                ↓
+                <br>
+                1 Gbps Link
+                <br>
+                ↓
+                <br>
+                Switch
+                <br>
+                ↓
+                <br>
+                100 Mbps Link
+                <br>
+                ↓
+                <br>
+                Router
+                <br>
+                ↓
+                <br>
+                Internet
+
+                <br><br>
+
+                100 Mbps link = Possible bottleneck
+
+            </div>
+
+
+            <p>
+                In this simplified example, the 100 Mbps link may limit the
+                amount of data that can travel through the path even though
+                another part of the network supports 1 Gbps.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Remember:
+                </strong>
+
+                <p>
+                    Improving throughput often requires identifying the part
+                    of the network that is limiting actual data transfer.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 9
+        ======================================= -->
+
+        <section class="topic-section" id="quick-check">
+
+            <h2>
+                9. Quick Check
+            </h2>
+
+            <p>
+                Test your understanding before moving to the next submodule.
+            </p>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 1
+                </h3>
+
+                <p>
+                    What does throughput measure?
+                </p>
+
+                <ol>
+
+                    <li>
+                        The physical length of a network cable
+                    </li>
+
+                    <li>
+                        The actual amount of data successfully transferred
+                    </li>
+
+                    <li>
+                        The number of computers connected to a switch
+                    </li>
+
+                    <li>
+                        The IP address of a device
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 2
+                </h3>
+
+                <p>
+                    A network connection has a bandwidth of 100 Mbps, but
+                    actual data is being transferred at 70 Mbps. What is the
+                    approximate throughput?
+                </p>
+
+                <ol>
+
+                    <li>
+                        30 Mbps
+                    </li>
+
+                    <li>
+                        70 Mbps
+                    </li>
+
+                    <li>
+                        100 Mbps
+                    </li>
+
+                    <li>
+                        170 Mbps
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 3
+                </h3>
+
+                <p>
+                    Which of the following can reduce throughput?
+                </p>
+
+                <ol>
+
+                    <li>
+                        Network congestion
+                    </li>
+
+                    <li>
+                        Wireless interference
+                    </li>
+
+                    <li>
+                        Packet loss and retransmissions
+                    </li>
+
+                    <li>
+                        All of the above
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 4
+                </h3>
+
+                <p>
+                    What is the main difference between bandwidth and
+                    throughput?
+                </p>
+
+                <p>
+                    <strong>
+                        Answer:
+                    </strong>
+                    Bandwidth describes the capacity or potential data rate of
+                    a connection, while throughput describes the actual amount
+                    of data successfully transferred.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 10
+        ======================================= -->
+
+        <section class="topic-section" id="summary">
+
+            <h2>
+                10. Throughput Summary
+            </h2>
+
+            <p>
+                Throughput is the actual rate at which data is successfully
+                transferred across a network.
+            </p>
+
+            <p>
+                It is normally measured in bits per second, with common units
+                including Kbps, Mbps, and Gbps.
+            </p>
+
+            <p>
+                Throughput can be lower than the maximum capacity or data rate
+                of a connection because of congestion, hardware limitations,
+                wireless interference, distance, protocol overhead, packet
+                loss, and other network conditions.
+            </p>
+
+            <p>
+                Throughput is important because it helps us understand the
+                actual performance experienced when transferring data across
+                a network.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    What you should remember:
+                </strong>
+
+                <ul>
+
+                    <li>
+                        Throughput is the actual successful data transfer rate.
+                    </li>
+
+                    <li>
+                        Throughput is commonly measured in Mbps or Gbps.
+                    </li>
+
+                    <li>
+                        Throughput can change depending on network conditions.
+                    </li>
+
+                    <li>
+                        Network congestion can reduce throughput.
+                    </li>
+
+                    <li>
+                        Protocol overhead means not every transmitted bit is
+                        application data.
+                    </li>
+
+                    <li>
+                        A bottleneck can limit throughput.
+                    </li>
+
+                    <li>
+                        Bandwidth represents capacity, while throughput
+                        represents actual successful transfer.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <h3>
+                The Big Picture
+            </h3>
+
+            <p>
+                When studying computer networks, it is important to distinguish
+                between what a network is capable of carrying and what it
+                actually carries.
+            </p>
+
+            <p>
+                A connection may have high bandwidth, but real-world
+                throughput can be lower. Understanding this difference helps
+                network administrators identify performance problems and
+                design networks that can handle the required amount of traffic.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             BOTTOM NAVIGATION
+        =========================================== -->
+
+        <div class="navigation-buttons">
+
+            <a href="data-transmission.html">
+                ← Data Transmission
+            </a>
+
+            <a href="bandwidth.html">
+                Bandwidth →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
+```

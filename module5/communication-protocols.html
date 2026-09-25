@@ -1,0 +1,281 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Protocols | Module 5</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 5</p>
+            <h1>Communication Protocols</h1>
+            <p class="module-intro">
+                Understanding the rules that allow network devices to communicate,
+                exchange information, and successfully understand the messages they receive.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+            <h2>What Is a Communication Protocol?</h2>
+
+            <p>
+                A communication protocol is a set of rules that devices follow when
+                communicating with each other. These rules determine how information
+                is formatted, transmitted, received, and interpreted.
+            </p>
+
+            <p>
+                Just as people need a common language and agreed rules to communicate,
+                computers and network devices also need agreed rules. A device cannot
+                simply send information in any format and expect another device to
+                understand it.
+            </p>
+
+            <p>
+                Network protocols provide a common way for devices from different
+                manufacturers, operating systems, and locations to communicate.
+                Without protocols, reliable communication across a network would not
+                be possible.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Communication Between People and Devices</h2>
+
+            <p>
+                We can understand network protocols by first thinking about how people
+                communicate. Imagine that you want to send a message to another person.
+                Several decisions have to be made before the communication can succeed.
+            </p>
+
+            <p>
+                You need to know who is sending the message, who is receiving it,
+                what method will be used, what language or format will be understood,
+                how the message will be delivered, and whether the receiver needs to
+                confirm that the message was received.
+            </p>
+
+            <p>
+                Network communication follows a similar idea, but computers use
+                precisely defined technical rules instead of human communication habits.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Elements of Communication</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Sender and Receiver</h4>
+                    <p>
+                        Every communication process needs a source that sends the
+                        information and a destination that receives it.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Communication Method</h4>
+                    <p>
+                        Devices must agree on how communication will take place.
+                        The method could involve wired communication, wireless
+                        communication, or another defined method.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Communication Channel</h4>
+                    <p>
+                        Information needs a path between the sender and receiver.
+                        The channel may be a cable, fiber-optic connection,
+                        radio signal, or another transmission medium.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Timing and Speed</h4>
+                    <p>
+                        Devices need rules that determine when information is sent,
+                        how quickly it can be transmitted, and how the receiver
+                        should handle the incoming information.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>05</h3>
+                    <h4>Acknowledgement</h4>
+                    <p>
+                        Some communication protocols require the receiver to confirm
+                        that information was successfully received.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>06</h3>
+                    <h4>Message Format</h4>
+                    <p>
+                        Devices must agree on how information is structured so that
+                        the receiving device knows how to interpret the message.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Message Size</h2>
+
+            <p>
+                Network devices must also follow rules about the size of messages
+                that can be transmitted. Large amounts of information may need to
+                be divided into smaller pieces before they are sent across a network.
+            </p>
+
+            <p>
+                Breaking information into smaller units makes it possible for
+                networks to transmit data efficiently. Different protocols define
+                different limits and methods for handling these pieces of information.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Encoding</h2>
+
+            <p>
+                Encoding is the process of representing information in a form that
+                can be transmitted across a communication system.
+            </p>
+
+            <p>
+                Computers work with binary information, represented using bits.
+                Depending on the communication technology, these bits can be
+                represented using electrical signals, light pulses, or radio waves.
+            </p>
+
+            <p>
+                The sender and receiver must understand the same encoding rules.
+                Otherwise, the receiver may receive signals but interpret the
+                information incorrectly.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Encapsulation</h2>
+
+            <p>
+                Before data is transmitted across a network, protocols can add
+                control information to the original data. This process is called
+                encapsulation.
+            </p>
+
+            <p>
+                For example, when an application creates data, transport protocols
+                can add transport information, network protocols can add addressing
+                information, and network access technologies can add information
+                needed for local delivery.
+            </p>
+
+            <p>
+                The result is that the original application data becomes part of
+                larger units of information as it moves through the networking layers.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Why All Hosts Need Common Protocols</h2>
+
+            <p>
+                A network can contain many different devices. These devices may be
+                made by different manufacturers and may use different operating
+                systems. They still need to communicate with one another.
+            </p>
+
+            <p>
+                For communication to succeed, the devices must support compatible
+                protocols. If one device follows a completely different set of
+                communication rules, the other device may not know how to interpret
+                the information it receives.
+            </p>
+
+            <p>
+                Common protocols therefore provide a shared framework that allows
+                different devices and networks to communicate.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Protocols Work Together</h2>
+
+            <p>
+                Network communication normally involves multiple protocols rather
+                than a single protocol performing every task.
+            </p>
+
+            <p>
+                For example, when a user accesses a website, HTTP can be used for
+                communication between the web application and the web server.
+                TCP can provide transport services, IP can provide logical addressing
+                and routing, while Ethernet or Wi-Fi can provide communication across
+                the local network.
+            </p>
+
+            <p>
+                Each protocol has a specific responsibility. Together, these protocols
+                form a system that allows information to travel from the sender to
+                the intended receiver.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Key Idea</h2>
+
+            <p>
+                A communication protocol is not simply a piece of software or a
+                single device. It is a defined set of rules that allows communicating
+                systems to understand how information should be exchanged.
+            </p>
+
+            <p>
+                Protocols define important aspects of communication such as message
+                format, size, timing, encoding, delivery, acknowledgement, and how
+                information is prepared for transmission.
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```

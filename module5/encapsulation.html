@@ -1,0 +1,1073 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5 | Encapsulation and Decapsulation</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+
+            <div class="module-number">MODULE 5</div>
+
+            <h1>Encapsulation and Decapsulation</h1>
+
+            <p class="module-intro">
+                Understanding how data is prepared, wrapped with control information,
+                transmitted across a network, and processed by the receiving device.
+            </p>
+
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <!-- INTRODUCTION -->
+        <section class="introduction">
+
+            <h2>Introduction</h2>
+
+            <p>
+                When one computer sends information to another computer, the original
+                data does not simply travel across the network exactly as it was
+                created.
+            </p>
+
+            <p>
+                The data passes through different networking layers. Each layer has
+                a particular responsibility and may add information that is needed
+                for communication.
+            </p>
+
+            <p>
+                This process is called <strong>encapsulation</strong>.
+            </p>
+
+            <p>
+                When the receiving device processes the information and removes the
+                information added by the different layers, the reverse process is
+                called <strong>decapsulation</strong>.
+            </p>
+
+            <p>
+                Understanding these two processes helps us understand what actually
+                happens to a message as it travels through a network.
+            </p>
+
+        </section>
+
+
+        <!-- TOPICS -->
+        <section class="topics">
+
+            <h2>What We Will Learn</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <span class="topic-number">01</span>
+                    <h3>What Is Encapsulation?</h3>
+                    <p>
+                        How data moves down the networking layers before transmission.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">02</span>
+                    <h3>Data Units</h3>
+                    <p>
+                        Data, segments, packets, frames, and bits.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">03</span>
+                    <h3>Headers and Trailers</h3>
+                    <p>
+                        Why protocols add control information to data.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">04</span>
+                    <h3>Encapsulation Process</h3>
+                    <p>
+                        What happens as information moves down the layers.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">05</span>
+                    <h3>Decapsulation</h3>
+                    <p>
+                        What happens when the information reaches the destination.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <span class="topic-number">06</span>
+                    <h3>Complete Example</h3>
+                    <p>
+                        Following a web request from one computer to another.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT IS ENCAPSULATION -->
+        <section class="content-section">
+
+            <h2>1. What Is Encapsulation?</h2>
+
+            <p>
+                <strong>Encapsulation</strong> is the process of adding control
+                information to data as it moves through the networking layers.
+            </p>
+
+            <p>
+                Each layer receives information from the layer above it and adds
+                information required for its own job.
+            </p>
+
+            <p>
+                Think about sending a physical letter.
+            </p>
+
+            <p>
+                You first write your message. Then you place it inside an envelope.
+                You write the destination address on the envelope. The postal system
+                then uses that information to deliver the letter.
+            </p>
+
+            <p>
+                Computer networking works in a similar way.
+            </p>
+
+            <p>
+                The original application data is gradually wrapped with additional
+                networking information.
+            </p>
+
+            <p>
+                The important idea is:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Data is passed down through the layers, and each layer
+                    adds information needed for communication.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHY ENCAPSULATION -->
+        <section class="content-section">
+
+            <h2>2. Why Is Encapsulation Necessary?</h2>
+
+            <p>
+                Different layers have different responsibilities.
+            </p>
+
+            <p>
+                For example, an application does not need to know how an Ethernet
+                frame is physically transmitted over a cable.
+            </p>
+
+            <p>
+                Similarly, a network interface does not need to understand what the
+                web page inside the data means.
+            </p>
+
+            <p>
+                Each layer focuses on its own job.
+            </p>
+
+            <p>
+                Information added by one layer allows that layer's corresponding
+                process at the destination to understand what to do with the data.
+            </p>
+
+            <p>
+                For example:
+            </p>
+
+            <ul>
+
+                <li>
+                    TCP adds transport information such as source and destination
+                    ports and sequence information.
+                </li>
+
+                <li>
+                    IP adds logical addressing information.
+                </li>
+
+                <li>
+                    Ethernet adds information needed for local network delivery.
+                </li>
+
+                <li>
+                    The Physical layer converts the resulting information into
+                    signals that can travel through the transmission medium.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- DATA UNITS -->
+        <section class="content-section">
+
+            <h2>3. Data Units at Different Layers</h2>
+
+            <p>
+                As data moves through the networking layers, the resulting units are
+                commonly given different names.
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>Data</h3>
+
+                    <p>
+                        At the upper layers, the information is generally referred to
+                        as data or a message.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Segment</h3>
+
+                    <p>
+                        When TCP is used at the Transport layer, the data is commonly
+                        called a segment.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Packet</h3>
+
+                    <p>
+                        At the Network layer, the unit is commonly called a packet.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Frame</h3>
+
+                    <p>
+                        At the Data Link layer, the unit is commonly called a frame.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Bits</h3>
+
+                    <p>
+                        At the Physical layer, the information is transmitted as
+                        bits represented by physical signals.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                Therefore, a simplified way of remembering the process is:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Data → Segment → Packet → Frame → Bits</strong>
+                </p>
+
+            </div>
+
+            <p>
+                This naming is a useful way of identifying what stage of communication
+                we are talking about.
+            </p>
+
+        </section>
+
+
+        <!-- HEADERS -->
+        <section class="content-section">
+
+            <h2>4. What Are Headers?</h2>
+
+            <p>
+                A <strong>header</strong> is control information added to the beginning
+                of data by a protocol.
+            </p>
+
+            <p>
+                The header contains information that the receiving device or another
+                networking device may need.
+            </p>
+
+            <p>
+                Different protocols add different types of information.
+            </p>
+
+            <h3>Example: TCP Header</h3>
+
+            <p>
+                A TCP header can contain information such as:
+            </p>
+
+            <ul>
+                <li>Source port</li>
+                <li>Destination port</li>
+                <li>Sequence number</li>
+                <li>Acknowledgement information</li>
+                <li>Control flags</li>
+                <li>Window information</li>
+            </ul>
+
+            <p>
+                This information helps TCP perform its transport responsibilities.
+            </p>
+
+
+            <h3>Example: IP Header</h3>
+
+            <p>
+                An IP header contains information associated with network-layer
+                delivery.
+            </p>
+
+            <p>
+                Important information includes the source and destination IP
+                addresses.
+            </p>
+
+            <p>
+                Routers use the destination IP address when making forwarding
+                decisions.
+            </p>
+
+        </section>
+
+
+        <!-- TRAILERS -->
+        <section class="content-section">
+
+            <h2>5. What Are Trailers?</h2>
+
+            <p>
+                Some protocols also add information to the end of the data.
+                This is called a <strong>trailer</strong>.
+            </p>
+
+            <p>
+                Ethernet frames, for example, can contain a trailer used for error
+                detection.
+            </p>
+
+            <p>
+                The trailer helps the receiving device determine whether the frame
+                was corrupted during transmission.
+            </p>
+
+            <p>
+                Therefore, encapsulation does not always mean simply adding
+                information to the beginning.
+            </p>
+
+            <p>
+                Depending on the protocol, information may be added as a header,
+                a trailer, or both.
+            </p>
+
+        </section>
+
+
+        <!-- ENCAPSULATION STEP BY STEP -->
+        <section class="content-section">
+
+            <h2>6. Encapsulation Step by Step</h2>
+
+            <p>
+                Let's follow a simple example where a computer sends information
+                to a web server.
+            </p>
+
+            <h3>Step 1: Application Data</h3>
+
+            <p>
+                The process begins with the application.
+            </p>
+
+            <p>
+                For example, you may enter a website address into a browser and the
+                browser creates a request for the web server.
+            </p>
+
+            <p>
+                At this point, we can simply think of the information as
+                <strong>application data</strong>.
+            </p>
+
+
+            <h3>Step 2: Transport Layer</h3>
+
+            <p>
+                The data moves to the Transport layer.
+            </p>
+
+            <p>
+                If TCP is being used, TCP adds its own header.
+            </p>
+
+            <p>
+                The result is commonly called a <strong>TCP segment</strong>.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    TCP Header + Application Data
+                </p>
+
+                <p>
+                    = TCP Segment
+                </p>
+
+            </div>
+
+
+            <h3>Step 3: Network Layer</h3>
+
+            <p>
+                The segment is passed to the Network layer.
+            </p>
+
+            <p>
+                IP adds an IP header containing information such as the source and
+                destination IP addresses.
+            </p>
+
+            <p>
+                The result is commonly called an <strong>IP packet</strong>.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    IP Header + TCP Segment
+                </p>
+
+                <p>
+                    = IP Packet
+                </p>
+
+            </div>
+
+
+            <h3>Step 4: Data Link Layer</h3>
+
+            <p>
+                The packet is passed to the Data Link layer.
+            </p>
+
+            <p>
+                A technology such as Ethernet or Wi-Fi adds the information required
+                for local network delivery.
+            </p>
+
+            <p>
+                The result is called a <strong>frame</strong>.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    Ethernet/Wi-Fi Header + IP Packet + Frame Trailer
+                </p>
+
+                <p>
+                    = Frame
+                </p>
+
+            </div>
+
+
+            <h3>Step 5: Physical Layer</h3>
+
+            <p>
+                Finally, the frame is converted into signals that can travel through
+                the physical medium.
+            </p>
+
+            <p>
+                Depending on the technology, this could involve electrical signals,
+                light pulses, or radio waves.
+            </p>
+
+            <p>
+                At this stage, we commonly refer to the information as
+                <strong>bits</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- VISUAL FLOW -->
+        <section class="content-section">
+
+            <h2>7. The Complete Encapsulation Flow</h2>
+
+            <p>
+                The complete process can be simplified as follows:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Application</strong>
+                </p>
+
+                <p>
+                    Application Data
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    <strong>Transport</strong>
+                </p>
+
+                <p>
+                    TCP Header + Data
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    <strong>Network</strong>
+                </p>
+
+                <p>
+                    IP Header + TCP Segment
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    <strong>Data Link</strong>
+                </p>
+
+                <p>
+                    Frame Header + IP Packet + Frame Trailer
+                </p>
+
+                <p>
+                    ↓
+                </p>
+
+                <p>
+                    <strong>Physical</strong>
+                </p>
+
+                <p>
+                    Bits / Signals
+                </p>
+
+            </div>
+
+            <p>
+                Remember that this is a simplified representation. Actual protocol
+                details can be more complex, and not every application uses TCP.
+            </p>
+
+        </section>
+
+
+        <!-- DECAPSULATION -->
+        <section class="content-section">
+
+            <h2>8. What Is Decapsulation?</h2>
+
+            <p>
+                <strong>Decapsulation</strong> is the reverse of encapsulation.
+            </p>
+
+            <p>
+                It occurs as the receiving device processes the incoming information
+                and removes or processes the headers and trailers associated with
+                the different layers.
+            </p>
+
+            <p>
+                The information moves upward through the layers until the original
+                application data is delivered to the appropriate application.
+            </p>
+
+            <p>
+                The simplified process is:
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Bits → Frame → Packet → Segment → Data</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DECAPSULATION STEP BY STEP -->
+        <section class="content-section">
+
+            <h2>9. Decapsulation Step by Step</h2>
+
+            <h3>Step 1: Physical Layer</h3>
+
+            <p>
+                The receiving device first receives physical signals through the
+                network medium.
+            </p>
+
+            <p>
+                The signals are interpreted as bits.
+            </p>
+
+
+            <h3>Step 2: Data Link Layer</h3>
+
+            <p>
+                The Data Link layer processes the incoming frame.
+            </p>
+
+            <p>
+                It examines information such as the local destination MAC address
+                and performs the appropriate frame processing.
+            </p>
+
+            <p>
+                The Data Link information is then processed so that the IP packet
+                inside can be passed upward.
+            </p>
+
+
+            <h3>Step 3: Network Layer</h3>
+
+            <p>
+                The Network layer processes the IP packet.
+            </p>
+
+            <p>
+                The destination IP address identifies the logical destination of
+                the communication.
+            </p>
+
+            <p>
+                The IP information is processed and the transport-layer information
+                is passed upward.
+            </p>
+
+
+            <h3>Step 4: Transport Layer</h3>
+
+            <p>
+                If TCP is being used, TCP processes the segment.
+            </p>
+
+            <p>
+                TCP can use information such as port numbers, sequence numbers,
+                acknowledgements, and other control information to provide the
+                transport service required by the application.
+            </p>
+
+            <p>
+                Once processed, the application data is passed upward.
+            </p>
+
+
+            <h3>Step 5: Application</h3>
+
+            <p>
+                The application finally receives the information.
+            </p>
+
+            <p>
+                For example, a web browser may receive information that it can use
+                to display a web page.
+            </p>
+
+        </section>
+
+
+        <!-- ENCAPSULATION VS DECAPSULATION -->
+        <section class="content-section">
+
+            <h2>10. Encapsulation vs Decapsulation</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+
+                    <h3>Encapsulation</h3>
+
+                    <p>
+                        Happens as data moves down the layers on the sending device.
+                    </p>
+
+                    <p>
+                        Information is added by the different protocols and layers.
+                    </p>
+
+                    <p>
+                        Direction:
+                    </p>
+
+                    <p>
+                        <strong>Application → Physical</strong>
+                    </p>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>Decapsulation</h3>
+
+                    <p>
+                        Happens as the receiving device processes the incoming
+                        information.
+                    </p>
+
+                    <p>
+                        The information added for the communication is processed
+                        and removed as appropriate.
+                    </p>
+
+                    <p>
+                        Direction:
+                    </p>
+
+                    <p>
+                        <strong>Physical → Application</strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SAME LAYERS COMMUNICATE -->
+        <section class="content-section">
+
+            <h2>11. A Very Important Idea: Peer-to-Peer Communication</h2>
+
+            <p>
+                When we say that TCP works at the Transport layer, we can imagine
+                that TCP on the sending device communicates with TCP on the receiving
+                device.
+            </p>
+
+            <p>
+                Similarly, IP on the sending device and IP on the receiving device
+                follow the rules of the IP protocol.
+            </p>
+
+            <p>
+                However, the actual data does not physically jump from the Transport
+                layer of one computer directly to the Transport layer of another
+                computer.
+            </p>
+
+            <p>
+                Instead, the information moves down through the sender's layers,
+                travels across the network, and then moves up through the receiver's
+                layers.
+            </p>
+
+            <p>
+                The idea of peer-to-peer communication means that corresponding
+                layers follow the rules defined by the same protocol.
+            </p>
+
+        </section>
+
+
+        <!-- ROUTER -->
+        <section class="content-section">
+
+            <h2>12. What Happens When a Router Receives the Packet?</h2>
+
+            <p>
+                An important question is whether every device removes every layer
+                of encapsulation.
+            </p>
+
+            <p>
+                No.
+            </p>
+
+            <p>
+                Different network devices operate at different layers.
+            </p>
+
+            <p>
+                A router primarily makes forwarding decisions using Network-layer
+                information such as IP addresses.
+            </p>
+
+            <p>
+                When a router receives an Ethernet frame, it processes the frame,
+                examines the IP packet inside, makes a routing decision, and then
+                creates a new Data Link frame for the next network segment.
+            </p>
+
+            <p>
+                This means the Layer 2 frame can change as the packet travels from
+                one network to another.
+            </p>
+
+            <p>
+                The IP packet, however, is designed to travel across multiple
+                networks toward its destination, although some IP header fields can
+                change along the way.
+            </p>
+
+        </section>
+
+
+        <!-- EXAMPLE -->
+        <section class="content-section">
+
+            <h2>13. Complete Example: Opening a Website</h2>
+
+            <p>
+                Let's put everything together.
+            </p>
+
+            <p>
+                Imagine your laptop is connected to a Wi-Fi router and you open a
+                website.
+            </p>
+
+            <h3>At Your Laptop</h3>
+
+            <ol>
+
+                <li>
+                    The browser creates application data.
+                </li>
+
+                <li>
+                    The Transport layer processes the communication using TCP when
+                    TCP is being used.
+                </li>
+
+                <li>
+                    IP adds logical addressing information.
+                </li>
+
+                <li>
+                    Wi-Fi creates a wireless frame for local delivery.
+                </li>
+
+                <li>
+                    The Physical layer transmits the information using radio signals.
+                </li>
+
+            </ol>
+
+            <h3>At the Router</h3>
+
+            <ol>
+
+                <li>
+                    The router receives the wireless frame.
+                </li>
+
+                <li>
+                    It processes the Data Link information.
+                </li>
+
+                <li>
+                    It examines the IP packet.
+                </li>
+
+                <li>
+                    It determines where the packet should go next.
+                </li>
+
+                <li>
+                    It sends the packet using the appropriate outgoing network
+                    technology.
+                </li>
+
+            </ol>
+
+            <h3>At the Web Server</h3>
+
+            <ol>
+
+                <li>
+                    The server receives the transmitted information.
+                </li>
+
+                <li>
+                    The information is processed upward through the networking
+                    layers.
+                </li>
+
+                <li>
+                    Transport-layer information is processed.
+                </li>
+
+                <li>
+                    The application receives the original request.
+                </li>
+
+                <li>
+                    The web server processes the request and sends a response.
+                </li>
+
+            </ol>
+
+        </section>
+
+
+        <!-- KEY DIFFERENCE -->
+        <section class="content-section">
+
+            <h2>14. The Most Important Thing to Remember</h2>
+
+            <p>
+                Encapsulation is not simply "adding random information to data."
+            </p>
+
+            <p>
+                Each layer adds information for a specific networking purpose.
+            </p>
+
+            <div class="topic-card">
+
+                <p>
+                    <strong>Application data</strong>
+                    is created by an application.
+                </p>
+
+                <p>
+                    <strong>TCP</strong>
+                    can add transport information.
+                </p>
+
+                <p>
+                    <strong>IP</strong>
+                    adds logical addressing information.
+                </p>
+
+                <p>
+                    <strong>Ethernet or Wi-Fi</strong>
+                    adds local delivery information.
+                </p>
+
+                <p>
+                    <strong>Physical networking</strong>
+                    converts the information into signals.
+                </p>
+
+            </div>
+
+            <p>
+                At the destination, the receiving device processes this information
+                in the opposite direction until the original application data can
+                be used.
+            </p>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="module-summary">
+
+            <h2>Module Summary</h2>
+
+            <p>
+                Encapsulation is the process in which data moves down through the
+                networking layers and receives additional control information from
+                different protocols.
+            </p>
+
+            <p>
+                A simplified sequence is:
+            </p>
+
+            <p>
+                <strong>
+                    Data → Segment → Packet → Frame → Bits
+                </strong>
+            </p>
+
+            <p>
+                The Transport layer can add information such as TCP or UDP details.
+                The Network layer can add IP addressing information. The Data Link
+                layer can add local delivery information, and the Physical layer
+                transmits the resulting information as signals.
+            </p>
+
+            <p>
+                Decapsulation is the reverse process:
+            </p>
+
+            <p>
+                <strong>
+                    Bits → Frame → Packet → Segment → Data
+                </strong>
+            </p>
+
+            <p>
+                Understanding encapsulation and decapsulation makes it much easier
+                to understand what happens to data as it travels through a network.
+            </p>
+
+            <p>
+                It also explains why several protocols can work together to deliver
+                one message. Each protocol contributes a different part of the
+                communication process.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```

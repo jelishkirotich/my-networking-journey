@@ -1,0 +1,2737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Data Transmission</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .module-header {
+            background: #1f2937;
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .module-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .module-header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #d1d5db;
+        }
+
+        .navigation {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #111827;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .navigation a:hover {
+            background: #374151;
+        }
+
+        .topic-list {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic-list h2 {
+            margin-top: 0;
+        }
+
+        .topic-list ul {
+            columns: 2;
+            padding-left: 25px;
+        }
+
+        .topic-list li {
+            margin-bottom: 8px;
+        }
+
+        .topic-list a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .topic-list a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        .topic-section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .topic-section h2 {
+            color: #1f2937;
+            margin-top: 0;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .topic-section h3 {
+            color: #374151;
+            margin-top: 25px;
+        }
+
+        .concept-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .important-box {
+            background: #fff7ed;
+            border-left: 5px solid #ea580c;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .code-box {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+        }
+
+        .diagram {
+            margin: 25px 0;
+            padding: 25px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .diagram-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
+        .transmission-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .flow-box {
+            padding: 18px 22px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            min-width: 130px;
+            font-weight: bold;
+        }
+
+        .flow-arrow {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4b5563;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #1f2937;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .media-card {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .media-card .media-visual {
+            height: 150px;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .media-card .media-content {
+            padding: 18px;
+        }
+
+        .media-card h3 {
+            margin-top: 0;
+        }
+
+        .cable-visual {
+            width: 90%;
+            height: 20px;
+            background: #374151;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .cable-visual::after {
+            content: "";
+            position: absolute;
+            width: 45%;
+            height: 5px;
+            background: #9ca3af;
+            top: 7px;
+            left: 10%;
+            border-radius: 5px;
+        }
+
+        .fiber-visual {
+            width: 90%;
+            height: 16px;
+            background: #111827;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .fiber-visual::after {
+            content: "";
+            position: absolute;
+            width: 75%;
+            height: 3px;
+            background: white;
+            top: 6px;
+            left: 12%;
+            border-radius: 5px;
+        }
+
+        .wireless-visual {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #6b7280;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .wireless-visual::before,
+        .wireless-visual::after {
+            content: "";
+            position: absolute;
+            border: 3px solid #9ca3af;
+            border-radius: 50%;
+        }
+
+        .wireless-visual::before {
+            width: 130px;
+            height: 130px;
+            left: -20px;
+            top: -20px;
+        }
+
+        .wireless-visual::after {
+            width: 160px;
+            height: 160px;
+            left: -35px;
+            top: -35px;
+        }
+
+        .signal-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .signal-box {
+            width: 300px;
+            height: 180px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fff;
+        }
+
+        .signal-box h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .wave {
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid #d1d5db;
+            border-bottom: 1px solid #d1d5db;
+            margin-top: 15px;
+        }
+
+        .analog-wave {
+            position: absolute;
+            width: 500px;
+            height: 70px;
+            top: 15px;
+            left: -20px;
+            border-bottom: 4px solid #374151;
+            border-radius: 50%;
+            transform: rotate(0deg);
+        }
+
+        .digital-wave {
+            position: absolute;
+            width: 260px;
+            height: 50px;
+            top: 25px;
+            left: 20px;
+            border-top: 5px solid #374151;
+            border-right: 5px solid #374151;
+            border-bottom: 5px solid #374151;
+        }
+
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .device-card {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f9fafb;
+        }
+
+        .device-card h3 {
+            margin-top: 0;
+        }
+
+        .device-label {
+            display: inline-block;
+            background: #1f2937;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .example-box {
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box h3 {
+            margin-top: 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .quiz-option:hover {
+            background: #f3f4f6;
+        }
+
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .quiz-button {
+            background: #1f2937;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .quiz-button:hover {
+            background: #374151;
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .source-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 15px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+            background: #1f2937;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+        }
+
+        .navigation-buttons a:hover {
+            background: #374151;
+        }
+
+        footer {
+            text-align: center;
+            background: #111827;
+            color: #d1d5db;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+
+            .media-grid,
+            .device-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .module-header h1 {
+                font-size: 2rem;
+            }
+
+            .topic-list ul {
+                columns: 1;
+            }
+
+            .media-grid,
+            .device-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-section {
+                padding: 20px;
+            }
+
+            .transmission-flow {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Module Header -->
+
+    <header class="module-header">
+
+        <h1>Module 1</h1>
+
+        <p>Data Transmission</p>
+
+    </header>
+
+
+    <!-- Navigation -->
+
+    <nav class="navigation">
+
+        <a href="../index.html">Home</a>
+
+        <a href="index.html">Module 1</a>
+
+        <a href="communication.html">Communication</a>
+
+        <a href="types-of-networks.html">Types of Networks</a>
+
+        <a href="data-transmission.html">Data Transmission</a>
+
+        <a href="bandwidth.html">Bandwidth</a>
+
+        <a href="throughput.html">Throughput</a>
+
+    </nav>
+
+
+    <!-- Topic List -->
+
+    <section class="topic-list">
+
+        <h2>Topics in This Page</h2>
+
+        <ul>
+
+            <li><a href="#introduction">Introduction to Data Transmission</a></li>
+
+            <li><a href="#components">Components of Data Transmission</a></li>
+
+            <li><a href="#data-signals">Data and Signals</a></li>
+
+            <li><a href="#analog-digital">Analog and Digital Signals</a></li>
+
+            <li><a href="#serial-parallel">Serial and Parallel Transmission</a></li>
+
+            <li><a href="#synchronous">Synchronous and Asynchronous Transmission</a></li>
+
+            <li><a href="#transmission-modes">Transmission Modes</a></li>
+
+            <li><a href="#wired-media">Wired Transmission Media</a></li>
+
+            <li><a href="#wireless-media">Wireless Transmission Media</a></li>
+
+            <li><a href="#factors">Factors Affecting Data Transmission</a></li>
+
+            <li><a href="#real-world">Data Transmission in the Real World</a></li>
+
+            <li><a href="#knowledge-check">Knowledge Check</a></li>
+
+            <li><a href="#summary">Module Summary</a></li>
+
+        </ul>
+
+    </section>
+
+
+    <main class="content">
+
+
+        <!-- Introduction -->
+
+        <section class="topic-section" id="introduction">
+
+            <h2>1. Introduction to Data Transmission</h2>
+
+            <p>
+
+                Data transmission is the process of transferring data from one device or location
+
+                to another through a communication medium.
+
+            </p>
+
+            <p>
+
+                In computer networks, information such as text, images, audio, video and files
+
+                must be converted into signals that can travel through a physical or wireless medium.
+
+            </p>
+
+            <div class="concept-box">
+
+                <strong>Key idea:</strong>
+
+                Data transmission describes how information moves from a sender to a receiver
+
+                across a network.
+
+            </div>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Basic Data Transmission Process
+
+                </div>
+
+                <div class="transmission-flow">
+
+                    <div class="flow-box">
+
+                        Sender
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Data
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Transmission Medium
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Receiver
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                For example, when a laptop sends a file to a server, the file is represented as
+
+                digital data. The network interface converts the data into signals that can travel
+
+                through Ethernet cable, fiber optic cable or a wireless connection.
+
+            </p>
+
+        </section>
+
+
+        <!-- Components -->
+
+        <section class="topic-section" id="components">
+
+            <h2>2. Components of Data Transmission</h2>
+
+            <p>
+
+                A basic communication system contains several components that work together
+
+                to move information from one point to another.
+
+            </p>
+
+
+            <div class="device-grid">
+
+                <div class="device-card">
+
+                    <span class="device-label">01</span>
+
+                    <h3>Sender</h3>
+
+                    <p>
+
+                        The sender is the device that generates and sends the data.
+
+                        Examples include computers, smartphones, servers and network devices.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">02</span>
+
+                    <h3>Message</h3>
+
+                    <p>
+
+                        The message is the actual information being transmitted.
+
+                        It may be text, an image, audio, video or another type of data.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">03</span>
+
+                    <h3>Transmission Medium</h3>
+
+                    <p>
+
+                        The medium provides the path through which the signal travels.
+
+                        It can be wired or wireless.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">04</span>
+
+                    <h3>Receiver</h3>
+
+                    <p>
+
+                        The receiver is the device that receives the transmitted information.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">05</span>
+
+                    <h3>Protocol</h3>
+
+                    <p>
+
+                        Protocols provide rules that devices use to communicate and interpret
+
+                        transmitted information.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">06</span>
+
+                    <h3>Signal</h3>
+
+                    <p>
+
+                        A signal is the physical representation used to carry information
+
+                        through the transmission medium.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="important-box">
+
+                <strong>Remember:</strong>
+
+                Data is the information being communicated. A signal is the physical form
+
+                used to carry that information across a medium.
+
+            </div>
+
+        </section>
+
+
+        <!-- Data and Signals -->
+
+        <section class="topic-section" id="data-signals">
+
+            <h2>3. Data and Signals</h2>
+
+            <p>
+
+                Computers work with digital information represented as bits.
+
+                A bit has one of two possible values: 0 or 1.
+
+            </p>
+
+            <p>
+
+                However, a bit cannot simply travel through a cable or through the air by itself.
+
+                The information must be represented by a signal.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    From Data to Signal
+
+                </div>
+
+                <div class="transmission-flow">
+
+                    <div class="flow-box">
+
+                        Digital Data
+
+                        <br>
+
+                        10110101
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Signal
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Transmission Medium
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                Depending on the transmission technology, signals can be represented using
+
+                electrical changes, light pulses or electromagnetic waves.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h3>Example: Ethernet</h3>
+
+                <p>
+
+                    When a computer sends data through an Ethernet cable, the network interface
+
+                    converts the digital information into electrical signals that travel through
+
+                    the cable.
+
+                </p>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>Example: Fiber Optic</h3>
+
+                <p>
+
+                    Fiber optic communication uses pulses of light to carry information through
+
+                    optical fiber.
+
+                </p>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>Example: Wi-Fi</h3>
+
+                <p>
+
+                    Wi-Fi uses radio waves to transmit information between wireless devices
+
+                    and access points.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Analog and Digital -->
+
+        <section class="topic-section" id="analog-digital">
+
+            <h2>4. Analog and Digital Signals</h2>
+
+            <p>
+
+                Signals can generally be described as analog or digital.
+
+            </p>
+
+
+            <div class="signal-container">
+
+                <div class="signal-box">
+
+                    <h3>Analog Signal</h3>
+
+                    <p>
+
+                        An analog signal changes continuously over time.
+
+                    </p>
+
+                    <div class="wave">
+
+                        <div class="analog-wave"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="signal-box">
+
+                    <h3>Digital Signal</h3>
+
+                    <p>
+
+                        A digital signal uses discrete levels to represent information.
+
+                    </p>
+
+                    <div class="wave">
+
+                        <div class="digital-wave"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Analog</th>
+
+                    <th>Digital</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Nature</td>
+
+                    <td>Continuous</td>
+
+                    <td>Discrete levels</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Representation</td>
+
+                    <td>Continuously varying signal</td>
+
+                    <td>Discrete values representing data</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Typical networking context</td>
+
+                    <td>Used in some communication systems</td>
+
+                    <td>Dominant in modern computer networking</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Example</td>
+
+                    <td>Traditional voice signal</td>
+
+                    <td>Computer data</td>
+
+                </tr>
+
+            </table>
+
+
+            <div class="concept-box">
+
+                <strong>Important distinction:</strong>
+
+                Digital data and digital signals are related but are not exactly the same thing.
+
+                Digital data is information represented using values such as 0 and 1.
+
+                A digital signal is a physical signal used to represent that information during transmission.
+
+            </div>
+
+        </section>
+
+
+        <!-- Serial and Parallel -->
+
+        <section class="topic-section" id="serial-parallel">
+
+            <h2>5. Serial and Parallel Transmission</h2>
+
+            <p>
+
+                Data can be transmitted serially or in parallel depending on how the bits
+
+                are sent across the communication path.
+
+            </p>
+
+
+            <h3>Serial Transmission</h3>
+
+            <p>
+
+                In serial transmission, bits are sent one after another over a communication channel.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Serial Transmission
+
+                </div>
+
+                <div class="code-box">
+
+                    1 → 0 → 1 → 1 → 0 → 0 → 1 → 0
+
+                </div>
+
+                <p>
+
+                    The bits travel sequentially.
+
+                </p>
+
+            </div>
+
+
+            <h3>Parallel Transmission</h3>
+
+            <p>
+
+                In parallel transmission, multiple bits are transmitted at the same time
+
+                using multiple communication paths.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Parallel Transmission
+
+                </div>
+
+                <div class="code-box">
+
+                    Bit 1: 1
+
+                    <br>
+
+                    Bit 2: 0
+
+                    <br>
+
+                    Bit 3: 1
+
+                    <br>
+
+                    Bit 4: 1
+
+                </div>
+
+                <p>
+
+                    Multiple bits can travel simultaneously using separate paths.
+
+                </p>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Serial</th>
+
+                    <th>Parallel</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Bit transmission</td>
+
+                    <td>One after another</td>
+
+                    <td>Multiple bits at the same time</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Number of paths</td>
+
+                    <td>Usually fewer communication paths</td>
+
+                    <td>Multiple paths</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Distance</td>
+
+                    <td>Well suited to many modern communication links</td>
+
+                    <td>Often more suitable for shorter connections</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Modern networking</td>
+
+                    <td>Widely used</td>
+
+                    <td>Less common for long-distance network communication</td>
+
+                </tr>
+
+            </table>
+
+
+            <div class="important-box">
+
+                <strong>Key point:</strong>
+
+                Modern high-speed networking commonly uses serial communication because
+
+                it can provide high data rates while avoiding some timing and synchronization
+
+                problems associated with sending many bits simultaneously.
+
+            </div>
+
+        </section>
+
+
+        <!-- Synchronous and Asynchronous -->
+
+        <section class="topic-section" id="synchronous">
+
+            <h2>6. Synchronous and Asynchronous Transmission</h2>
+
+            <h3>Synchronous Transmission</h3>
+
+            <p>
+
+                Synchronous transmission sends data using coordinated timing between the
+
+                communicating systems. Data is commonly organized into larger blocks or frames.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Synchronous Communication
+
+                </div>
+
+                <div class="code-box">
+
+                    Timing → | Data Block | Data Block | Data Block |
+
+                </div>
+
+            </div>
+
+
+            <h3>Asynchronous Transmission</h3>
+
+            <p>
+
+                Asynchronous transmission does not require a shared clock signal between
+
+                the sender and receiver. Instead, the communication system can use mechanisms
+
+                such as start and stop bits to identify individual characters or bytes.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Asynchronous Communication
+
+                </div>
+
+                <div class="code-box">
+
+                    Start | Data | Stop
+
+                    <br>
+
+                    Start | Data | Stop
+
+                    <br>
+
+                    Start | Data | Stop
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Synchronous</th>
+
+                    <th>Asynchronous</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Timing</td>
+
+                    <td>Coordinated timing</td>
+
+                    <td>Uses local timing and framing mechanisms</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Data organization</td>
+
+                    <td>Often transmitted in blocks or frames</td>
+
+                    <td>Often transmitted character by character or byte by byte</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Overhead</td>
+
+                    <td>Can be efficient for continuous data streams</td>
+
+                    <td>Start and stop information adds overhead</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Transmission Modes -->
+
+        <section class="topic-section" id="transmission-modes">
+
+            <h2>7. Transmission Modes</h2>
+
+            <p>
+
+                Transmission modes describe the direction in which data can flow between
+
+                communicating devices.
+
+            </p>
+
+
+            <div class="device-grid">
+
+                <div class="device-card">
+
+                    <span class="device-label">Simplex</span>
+
+                    <h3>One-Way Communication</h3>
+
+                    <p>
+
+                        Data travels in only one direction.
+
+                    </p>
+
+                    <div class="code-box">
+
+                        Sender → Receiver
+
+                    </div>
+
+                    <p>
+
+                        Example: a traditional broadcast system.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">Half-Duplex</span>
+
+                    <h3>Two-Way, One Direction at a Time</h3>
+
+                    <p>
+
+                        Both devices can transmit, but not at the same time.
+
+                    </p>
+
+                    <div class="code-box">
+
+                        A → B
+
+                        <br>
+
+                        B → A
+
+                    </div>
+
+                    <p>
+
+                        Example: traditional walkie-talkie communication.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <span class="device-label">Full-Duplex</span>
+
+                    <h3>Two-Way Simultaneous</h3>
+
+                    <p>
+
+                        Both devices can send and receive data at the same time.
+
+                    </p>
+
+                    <div class="code-box">
+
+                        A ↔ B
+
+                    </div>
+
+                    <p>
+
+                        Example: a telephone conversation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="important-box">
+
+                <strong>Networking example:</strong>
+
+                Modern switched Ethernet links commonly operate in full-duplex mode,
+
+                allowing devices to transmit and receive simultaneously.
+
+            </div>
+
+        </section>
+
+
+        <!-- Wired Media -->
+
+        <section class="topic-section" id="wired-media">
+
+            <h2>8. Wired Transmission Media</h2>
+
+            <p>
+
+                Wired transmission uses a physical cable or conductor to carry signals
+
+                between devices.
+
+            </p>
+
+
+            <div class="media-grid">
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="cable-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Twisted-Pair Cable</h3>
+
+                        <p>
+
+                            Twisted-pair cables contain pairs of copper wires twisted together
+
+                            to reduce interference.
+
+                        </p>
+
+                        <p>
+
+                            Ethernet networks commonly use twisted-pair cables such as
+
+                            Cat5e, Cat6 and Cat6a.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="cable-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Coaxial Cable</h3>
+
+                        <p>
+
+                            Coaxial cable contains a central conductor surrounded by insulation
+
+                            and shielding.
+
+                        </p>
+
+                        <p>
+
+                            It is used in applications such as cable television and some
+
+                            broadband communication systems.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="fiber-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Fiber Optic Cable</h3>
+
+                        <p>
+
+                            Fiber optic cable transmits information using light through
+
+                            optical fiber.
+
+                        </p>
+
+                        <p>
+
+                            Fiber supports high bandwidth and long-distance communication
+
+                            with low signal loss compared with many copper links.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Medium</th>
+
+                    <th>Main Signal</th>
+
+                    <th>Common Uses</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Twisted Pair</td>
+
+                    <td>Electrical</td>
+
+                    <td>Ethernet LANs</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Coaxial</td>
+
+                    <td>Electrical</td>
+
+                    <td>Cable television and broadband systems</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Fiber Optic</td>
+
+                    <td>Light</td>
+
+                    <td>Backbones, data centers and long-distance links</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Wireless Media -->
+
+        <section class="topic-section" id="wireless-media">
+
+            <h2>9. Wireless Transmission Media</h2>
+
+            <p>
+
+                Wireless transmission allows devices to communicate without a physical
+
+                cable between the communicating endpoints.
+
+            </p>
+
+
+            <div class="media-grid">
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="wireless-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Radio Waves</h3>
+
+                        <p>
+
+                            Radio waves are widely used for wireless communication.
+
+                            Wi-Fi and Bluetooth are common examples.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="wireless-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Microwave</h3>
+
+                        <p>
+
+                            Microwave communication can be used for point-to-point links
+
+                            and other telecommunications systems.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="media-card">
+
+                    <div class="media-visual">
+
+                        <div class="wireless-visual"></div>
+
+                    </div>
+
+                    <div class="media-content">
+
+                        <h3>Infrared</h3>
+
+                        <p>
+
+                            Infrared uses electromagnetic radiation at wavelengths longer
+
+                            than visible light. It can be used for short-range communication.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-box">
+
+                <strong>Wireless does not mean signal-free.</strong>
+
+                Wireless networks still use physical electromagnetic signals.
+
+                The difference is that the communication path does not require a physical cable
+
+                connecting the devices.
+
+            </div>
+
+        </section>
+
+
+        <!-- Factors -->
+
+        <section class="topic-section" id="factors">
+
+            <h2>10. Factors Affecting Data Transmission</h2>
+
+            <p>
+
+                The quality and performance of data transmission can be affected by several factors.
+
+            </p>
+
+
+            <div class="device-grid">
+
+                <div class="device-card">
+
+                    <h3>Distance</h3>
+
+                    <p>
+
+                        Longer distances can cause signal attenuation and may require additional
+
+                        network equipment or suitable transmission technology.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <h3>Interference</h3>
+
+                    <p>
+
+                        Electrical or electromagnetic interference can affect signal quality,
+
+                        especially on some copper and wireless links.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <h3>Noise</h3>
+
+                    <p>
+
+                        Unwanted signals can interfere with the intended communication
+
+                        and cause transmission errors.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <h3>Bandwidth</h3>
+
+                    <p>
+
+                        The capacity of a communication link influences how much data can
+
+                        potentially be transmitted within a given period.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <h3>Medium Quality</h3>
+
+                    <p>
+
+                        The quality and characteristics of cables, connectors and wireless
+
+                        environments affect communication performance.
+
+                    </p>
+
+                </div>
+
+
+                <div class="device-card">
+
+                    <h3>Network Congestion</h3>
+
+                    <p>
+
+                        Heavy traffic can reduce the effective rate at which data is successfully
+
+                        delivered.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="important-box">
+
+                <strong>Important:</strong>
+
+                A network link may have a high theoretical capacity but still deliver less
+
+                data in practice because of interference, congestion, protocol overhead,
+
+                equipment limitations and other conditions.
+
+            </div>
+
+        </section>
+
+
+        <!-- Real World -->
+
+        <section class="topic-section" id="real-world">
+
+            <h2>11. Data Transmission in the Real World</h2>
+
+            <p>
+
+                Data transmission happens continuously in everyday network activities.
+
+                The following examples show how the concepts connect together.
+
+            </p>
+
+
+            <div class="example-box">
+
+                <h3>Example 1: Sending a WhatsApp Message</h3>
+
+                <p>
+
+                    A smartphone creates digital data when a message is typed.
+
+                    The device processes the data and sends it through a wireless connection.
+
+                    The wireless signal reaches an access point or mobile network infrastructure,
+
+                    after which the data can travel through wired and wireless networks until
+
+                    it reaches the destination.
+
+                </p>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>Example 2: Watching a Video</h3>
+
+                <p>
+
+                    When streaming a video, data is transmitted from a remote server toward
+
+                    the user's device. The data may travel through fiber optic links,
+
+                    routers, switches, wireless access points and other network infrastructure
+
+                    before reaching the screen.
+
+                </p>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>Example 3: Accessing a Website</h3>
+
+                <p>
+
+                    When a user enters a website address, the computer sends requests across
+
+                    the network. Servers process the requests and send data back to the user's
+
+                    device. The returned information is then interpreted by the browser.
+
+                </p>
+
+            </div>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    A Simplified Internet Transmission Path
+
+                </div>
+
+                <div class="transmission-flow">
+
+                    <div class="flow-box">
+
+                        User Device
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Access Network
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Router
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Internet
+
+                    </div>
+
+                    <div class="flow-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="flow-box">
+
+                        Server
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-box">
+
+                <strong>Think about it:</strong>
+
+                The path between two devices does not necessarily use only one transmission
+
+                medium. A single communication session can involve Wi-Fi, copper Ethernet,
+
+                fiber optic links and wireless telecommunications at different points.
+
+            </div>
+
+        </section>
+
+
+        <!-- Knowledge Check -->
+
+        <section class="topic-section" id="knowledge-check">
+
+            <h2>12. Knowledge Check</h2>
+
+            <p>
+
+                Test your understanding of Data Transmission.
+
+            </p>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 1</h3>
+
+                <p>
+
+                    What is data transmission?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="a">
+
+                    The process of storing files on a computer
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="b">
+
+                    The process of transferring data from one point to another
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="c">
+
+                    The process of deleting network data
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="d">
+
+                    The process of installing an operating system
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 2</h3>
+
+                <p>
+
+                    Which component provides the path through which a signal travels?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="a">
+
+                    Receiver
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="b">
+
+                    Protocol
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="c">
+
+                    Transmission medium
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="d">
+
+                    Application
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 3</h3>
+
+                <p>
+
+                    Which transmission method sends bits one after another?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="a">
+
+                    Parallel transmission
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="b">
+
+                    Serial transmission
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="c">
+
+                    Simplex transmission
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="d">
+
+                    Wireless transmission
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 4</h3>
+
+                <p>
+
+                    Which transmission mode allows communication in both directions
+
+                    at the same time?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="a">
+
+                    Simplex
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="b">
+
+                    Half-duplex
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="c">
+
+                    Full-duplex
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="d">
+
+                    Asynchronous
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 5</h3>
+
+                <p>
+
+                    Which medium uses pulses of light to transmit information?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="a">
+
+                    Twisted pair
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="b">
+
+                    Coaxial cable
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="c">
+
+                    Fiber optic cable
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="d">
+
+                    Copper wire
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 6</h3>
+
+                <p>
+
+                    Which type of signal changes continuously?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="a">
+
+                    Analog signal
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="b">
+
+                    Digital signal
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="c">
+
+                    Binary file
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="d">
+
+                    Packet
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 7</h3>
+
+                <p>
+
+                    Which of the following can negatively affect data transmission?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="a">
+
+                    Interference
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="b">
+
+                    Noise
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="c">
+
+                    Network congestion
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="d">
+
+                    All of the above
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 8</h3>
+
+                <p>
+
+                    Which wireless technology uses radio waves for communication?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="a">
+
+                    Wi-Fi
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="b">
+
+                    Fiber optic
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="c">
+
+                    Coaxial cable
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="d">
+
+                    Twisted pair
+
+                </label>
+
+            </div>
+
+
+            <button class="quiz-button" onclick="checkQuiz()">
+
+                Check My Answers
+
+            </button>
+
+
+            <div id="quizResult" class="quiz-result"></div>
+
+        </section>
+
+
+        <!-- Summary -->
+
+        <section class="topic-section" id="summary">
+
+            <h2>13. Module Summary</h2>
+
+            <p>
+
+                Data transmission is the process of moving information from a sender
+
+                to a receiver through a communication medium.
+
+            </p>
+
+
+            <div class="success-box">
+
+                <strong>Key points to remember:</strong>
+
+                <ul>
+
+                    <li>
+
+                        Data transmission moves information between devices.
+
+                    </li>
+
+                    <li>
+
+                        Data is represented by signals when it travels through a network.
+
+                    </li>
+
+                    <li>
+
+                        Signals can be analog or digital.
+
+                    </li>
+
+                    <li>
+
+                        Serial transmission sends bits sequentially.
+
+                    </li>
+
+                    <li>
+
+                        Parallel transmission sends multiple bits simultaneously using multiple paths.
+
+                    </li>
+
+                    <li>
+
+                        Synchronous transmission uses coordinated timing.
+
+                    </li>
+
+                    <li>
+
+                        Asynchronous transmission uses framing mechanisms such as start and stop bits.
+
+                    </li>
+
+                    <li>
+
+                        Simplex allows one-way communication.
+
+                    </li>
+
+                    <li>
+
+                        Half-duplex allows communication in both directions, but not simultaneously.
+
+                    </li>
+
+                    <li>
+
+                        Full-duplex allows communication in both directions simultaneously.
+
+                    </li>
+
+                    <li>
+
+                        Wired media include twisted pair, coaxial and fiber optic cable.
+
+                    </li>
+
+                    <li>
+
+                        Wireless communication can use radio waves, microwaves and infrared.
+
+                    </li>
+
+                    <li>
+
+                        Distance, interference, noise, bandwidth, medium quality and congestion
+
+                        can affect transmission.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <h3>What Comes Next?</h3>
+
+            <p>
+
+                The next topic is <strong>Bandwidth</strong>.
+
+                Bandwidth helps us understand the capacity of a communication link and
+
+                how much data it can potentially carry over a period of time.
+
+            </p>
+
+
+            <div class="navigation-buttons">
+
+                <a href="types-of-networks.html">
+
+                    Previous: Types of Networks
+
+                </a>
+
+                <a href="bandwidth.html">
+
+                    Next: Bandwidth
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            My Networking Journey © 2026
+
+        </p>
+
+        <p>
+
+            Module 1 | Data Transmission
+
+        </p>
+
+    </footer>
+
+
+    <!-- Quiz JavaScript -->
+
+    <script>
+
+        function checkQuiz() {
+
+            const answers = {
+
+                q1: "b",
+
+                q2: "c",
+
+                q3: "b",
+
+                q4: "c",
+
+                q5: "c",
+
+                q6: "a",
+
+                q7: "d",
+
+                q8: "a"
+
+            };
+
+
+            let score = 0;
+
+            let answered = 0;
+
+            const total = Object.keys(answers).length;
+
+
+            for (const question in answers) {
+
+                const selected = document.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+
+                if (selected) {
+
+                    answered++;
+
+                    if (selected.value === answers[question]) {
+
+                        score++;
+
+                    }
+
+                }
+
+            }
+
+
+            const result = document.getElementById("quizResult");
+
+
+            result.style.display = "block";
+
+
+            if (answered < total) {
+
+                result.innerHTML =
+                    "You answered " +
+                    answered +
+                    " out of " +
+                    total +
+                    " questions. Please answer all questions before checking your final score.";
+
+                result.style.background = "#fff7ed";
+
+                result.style.border = "1px solid #fed7aa";
+
+                return;
+
+            }
+
+
+            const percentage = Math.round((score / total) * 100);
+
+
+            if (percentage >= 80) {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Excellent work. You have a strong understanding of data transmission.";
+
+                result.style.background = "#f0fdf4";
+
+                result.style.border = "1px solid #bbf7d0";
+
+            } else if (percentage >= 60) {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Good work. Review the sections you found difficult and try again.";
+
+                result.style.background = "#eff6ff";
+
+                result.style.border = "1px solid #bfdbfe";
+
+            } else {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Review the module and try the knowledge check again.";
+
+                result.style.background = "#fff7ed";
+
+                result.style.border = "1px solid #fed7aa";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

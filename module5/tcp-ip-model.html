@@ -1,0 +1,537 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCP/IP Model | Module 5</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 5</p>
+            <h1>TCP/IP Model</h1>
+            <p class="module-intro">
+                Understanding the four-layer TCP/IP model, the responsibilities
+                of each layer, and how protocols work together to move data
+                between applications and network devices.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+            <h2>What Is the TCP/IP Model?</h2>
+
+            <p>
+                The TCP/IP model is a layered model used to describe how
+                communication takes place across networks. It organizes
+                networking functions into four layers, with each layer
+                performing a particular group of tasks.
+            </p>
+
+            <p>
+                The model is closely associated with the TCP/IP protocol suite,
+                which forms the foundation of communication on the Internet.
+                TCP/IP is not one single protocol. It is a collection of
+                protocols that work together to provide network communication.
+            </p>
+
+            <p>
+                The four layers of the commonly used TCP/IP model are the
+                Application layer, Transport layer, Internet layer, and
+                Network Access layer.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>The Four TCP/IP Layers</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Application</h4>
+                    <p>
+                        Provides network services directly to applications and
+                        includes protocols such as HTTP, DNS, DHCP, SMTP, and FTP.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Transport</h4>
+                    <p>
+                        Provides communication between applications on different
+                        devices. Important protocols include TCP and UDP.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Internet</h4>
+                    <p>
+                        Provides logical addressing and routing between networks.
+                        IP is the central protocol at this layer.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Network Access</h4>
+                    <p>
+                        Handles communication across the local network and the
+                        physical transmission medium using technologies such as
+                        Ethernet and Wi-Fi.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Why Does the Model Use Layers?</h2>
+
+            <p>
+                Networking is a complicated process. A single communication may
+                involve applications, transport mechanisms, IP addressing,
+                routing, Ethernet, Wi-Fi, and physical transmission.
+            </p>
+
+            <p>
+                Dividing these responsibilities into layers makes networking
+                easier to understand, design, implement, and troubleshoot.
+                Each layer focuses on a particular part of the communication
+                process while cooperating with the layers above and below it.
+            </p>
+
+            <p>
+                A change at one layer does not necessarily require the entire
+                networking system to be redesigned. For example, a device can
+                communicate using Wi-Fi instead of Ethernet while higher-level
+                protocols such as IP and TCP can continue to perform their
+                normal functions.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 1: Application</h2>
+
+            <p>
+                The Application layer is the top layer of the TCP/IP model.
+                It provides network services that applications use to communicate.
+            </p>
+
+            <p>
+                This does not mean that the Application layer is simply the
+                application itself. Instead, it contains the protocols that
+                applications use when they need network communication.
+            </p>
+
+            <p>
+                For example, when a web browser communicates with a web server,
+                HTTP or HTTPS can be used as the application-level protocol.
+            </p>
+
+            <p>
+                Other examples include DNS for resolving domain names, DHCP
+                for obtaining network configuration information, SMTP for
+                sending email, and FTP for transferring files.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Examples of Application Layer Protocols</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>HTTP</h3>
+                    <h4>Web Communication</h4>
+                    <p>
+                        HTTP defines communication between web clients and
+                        web servers.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>DNS</h3>
+                    <h4>Name Resolution</h4>
+                    <p>
+                        DNS allows domain names such as example.com to be
+                        translated into IP addresses used for network communication.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>DHCP</h3>
+                    <h4>Network Configuration</h4>
+                    <p>
+                        DHCP can automatically provide devices with network
+                        configuration such as IP addresses and other parameters.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>SMTP</h3>
+                    <h4>Email</h4>
+                    <p>
+                        SMTP is used for sending email between mail systems.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 2: Transport</h2>
+
+            <p>
+                The Transport layer provides communication between applications
+                running on different devices. It is concerned with how application
+                data is transported from one endpoint to another.
+            </p>
+
+            <p>
+                Two major transport protocols are TCP and UDP. They provide
+                different communication services and are selected according to
+                the requirements of the application.
+            </p>
+
+            <p>
+                The Transport layer can also use port numbers to identify the
+                particular application or service that should receive the data.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>TCP and UDP</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>TCP</h3>
+                    <h4>Transmission Control Protocol</h4>
+                    <p>
+                        TCP provides connection-oriented communication and
+                        mechanisms for reliable, ordered delivery of data,
+                        including acknowledgements, sequencing, retransmission,
+                        and flow control.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>UDP</h3>
+                    <h4>User Datagram Protocol</h4>
+                    <p>
+                        UDP provides a simpler connectionless transport service
+                        without TCP's reliability mechanisms. It can be useful
+                        when low overhead or timely delivery is more important
+                        than retransmission and ordered delivery.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Port Numbers</h2>
+
+            <p>
+                IP addresses help identify network endpoints, but a device can
+                run many network applications at the same time. Port numbers
+                help identify the particular application or service involved
+                in transport communication.
+            </p>
+
+            <p>
+                For example, a web browser may communicate with a web server
+                while other applications on the same computer are communicating
+                with completely different services.
+            </p>
+
+            <p>
+                The combination of an IP address and a port helps identify a
+                particular communication endpoint.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 3: Internet</h2>
+
+            <p>
+                The Internet layer is responsible for logical addressing and
+                moving packets between interconnected networks.
+            </p>
+
+            <p>
+                The main protocol at this layer is IP, including IPv4 and IPv6.
+                IP provides addressing information that allows packets to be
+                delivered toward their destinations.
+            </p>
+
+            <p>
+                Routers operate primarily at this layer because they examine
+                Layer 3 information when making forwarding decisions.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Important Internet Layer Protocols</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>IP</h3>
+                    <h4>Internet Protocol</h4>
+                    <p>
+                        Provides logical addressing and enables packets to be
+                        routed between different networks.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>IPv4</h3>
+                    <h4>Internet Protocol Version 4</h4>
+                    <p>
+                        Uses 32-bit IP addresses and remains widely used in
+                        networks around the world.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>IPv6</h3>
+                    <h4>Internet Protocol Version 6</h4>
+                    <p>
+                        Uses 128-bit addresses and was designed to provide a
+                        much larger address space than IPv4.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>ICMP</h3>
+                    <h4>Control and Diagnostic Messages</h4>
+                    <p>
+                        ICMP is used by network devices to send control,
+                        diagnostic, and error-related messages.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 4: Network Access</h2>
+
+            <p>
+                The Network Access layer is responsible for communication
+                across the local network and interaction with the physical
+                network medium.
+            </p>
+
+            <p>
+                It includes functions associated with framing, local addressing,
+                media access, and the transmission of data across a particular
+                network technology.
+            </p>
+
+            <p>
+                Ethernet and Wi-Fi are examples of technologies associated
+                with this layer of the four-layer TCP/IP model.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Examples of Network Access Technologies</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>Ethernet</h3>
+                    <h4>Wired Networking</h4>
+                    <p>
+                        Ethernet defines technologies for communication across
+                        wired local area networks and is standardized by IEEE 802.3.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Wi-Fi</h3>
+                    <h4>Wireless Networking</h4>
+                    <p>
+                        Wi-Fi provides wireless local area networking based on
+                        the IEEE 802.11 family of standards.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Frames</h3>
+                    <h4>Local Delivery</h4>
+                    <p>
+                        Data is organized into frames for transmission across
+                        technologies such as Ethernet and Wi-Fi.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Physical Medium</h3>
+                    <h4>Transmission</h4>
+                    <p>
+                        The actual medium can carry signals using copper,
+                        fiber-optic, or wireless technologies.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>How the Layers Work Together</h2>
+
+            <p>
+                The layers should not be thought of as four completely separate
+                systems. They cooperate to move application data from one
+                device to another.
+            </p>
+
+            <p>
+                Imagine that you open a website. The browser creates application
+                data. The Application layer uses an appropriate protocol such
+                as HTTP or HTTPS.
+            </p>
+
+            <p>
+                The Transport layer can then use TCP to provide transport
+                services. IP operates at the Internet layer to provide logical
+                addressing and routing. Finally, Ethernet or Wi-Fi can be used
+                to move the data across the local network.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Following a Web Request</h2>
+
+            <p>
+                Consider the simplified path of a web request:
+            </p>
+
+            <p>
+                <strong>Application:</strong> HTTP or HTTPS handles communication
+                between the browser and web server.
+            </p>
+
+            <p>
+                <strong>Transport:</strong> TCP may provide reliable transport
+                between the communicating endpoints.
+            </p>
+
+            <p>
+                <strong>Internet:</strong> IP provides logical addressing and
+                allows packets to travel between networks.
+            </p>
+
+            <p>
+                <strong>Network Access:</strong> Ethernet or Wi-Fi can carry
+                the data across the local network.
+            </p>
+
+            <p>
+                These layers cooperate rather than competing with one another.
+                Each layer provides services to the layer above it and uses
+                services provided by the layer below it.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>What Happens When Data Is Sent?</h2>
+
+            <p>
+                As application data moves down the networking stack, each layer
+                can add information needed to perform its function. This process
+                is called encapsulation.
+            </p>
+
+            <p>
+                In a simplified example, application data can be passed to TCP,
+                which creates a transport segment. IP then uses that information
+                to create an IP packet, and the network access technology places
+                the packet into a frame for local transmission.
+            </p>
+
+            <p>
+                The receiving device processes the information in the opposite
+                direction. It removes and processes the information associated
+                with each layer until the original application data is delivered
+                to the correct application.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>TCP/IP Model Summary</h2>
+
+            <p>
+                The TCP/IP model organizes network communication into four
+                broad layers. The Application layer provides network services
+                to applications, the Transport layer provides application-to-
+                application communication, the Internet layer provides logical
+                addressing and routing, and the Network Access layer handles
+                local network communication and access to the physical medium.
+            </p>
+
+            <p>
+                Understanding these responsibilities helps us understand why
+                protocols such as HTTP, TCP, IP, Ethernet, and Wi-Fi can all
+                participate in the same communication while performing
+                completely different jobs.
+            </p>
+
+            <p>
+                The next step is to compare this four-layer protocol model with
+                the seven-layer OSI reference model.
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```

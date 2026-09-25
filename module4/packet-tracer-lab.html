@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Tracer Home Network Lab | My Networking Journey</title>
+
+```
+<link rel="stylesheet" href="../style.css">
+```
+
+</head>
+
+<body>
+
+```
+<header>
+    <h1>Module 4: Home Networking and Wireless Configuration</h1>
+    <p>Packet Tracer Home Network Lab</p>
+</header>
+
+<main>
+
+    <section>
+        <h2>1. Introduction</h2>
+
+        <p>
+            After learning about home networks, routers, Ethernet, wireless
+            networks, SSIDs, wireless security, DHCP, and different ways
+            devices connect to a network, I wanted to put these concepts
+            into practice.
+        </p>
+
+        <p>
+            In this lab, I created a simple home network using Cisco Packet
+            Tracer. The network contains a wireless router, a PC connected
+            using an Ethernet cable, and a laptop connected wirelessly.
+        </p>
+
+        <p>
+            The purpose of this exercise was not just to make the devices
+            connect. I wanted to understand what each part of the network
+            was doing and how the wired and wireless devices could belong
+            to the same local network.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>2. What I Wanted to Build</h2>
+
+        <p>
+            The final network was designed to represent a small home
+            network.
+        </p>
+
+        <pre>
+                Wireless connection
+                   ~~~~~~~~~~~
+                  /
+             [ Laptop ]
+                  |
+                  |
+          [ Wireless Router ]
+                  |
+                  |
+             Ethernet cable
+                  |
+                [ PC ]
+        </pre>
+
+        <p>
+            The PC represents a device that is connected to the home router
+            using a physical Ethernet cable.
+        </p>
+
+        <p>
+            The laptop represents a device that connects to the same home
+            network using Wi-Fi.
+        </p>
+
+        <p>
+            The wireless router is the central device connecting both types
+            of devices.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-home-topology.png"
+                 alt="Completed Packet Tracer home network topology">
+
+            <p>
+                Figure 1: My completed home network topology in Packet Tracer.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>3. Devices Used</h2>
+
+        <p>
+            I used three main devices for this exercise.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Wireless Router</td>
+                    <td>
+                        Provides the home network, wireless connection,
+                        DHCP services, and connectivity for the devices.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>PC</td>
+                    <td>
+                        Represents a wired device connected using Ethernet.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Laptop</td>
+                    <td>
+                        Represents a wireless device connected through Wi-Fi.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
+        <h2>4. Building the Topology</h2>
+
+        <h3>Step 1: Add the Wireless Router</h3>
+
+        <p>
+            I opened Cisco Packet Tracer and started with an empty
+            workspace.
+        </p>
+
+        <p>
+            From the device selection area, I selected the wireless/home
+            networking devices and placed a <strong>Wireless Router</strong>
+            in the workspace.
+        </p>
+
+        <p>
+            I used a wireless router instead of a Cisco 2901 router because
+            this exercise is focused on a typical home network and its
+            wireless configuration.
+        </p>
+
+
+        <h3>Step 2: Add the PC</h3>
+
+        <p>
+            I opened the <strong>End Devices</strong> section, selected a
+            PC, and placed it near the wireless router.
+        </p>
+
+
+        <h3>Step 3: Add the Laptop</h3>
+
+        <p>
+            I selected a Laptop from the <strong>End Devices</strong>
+            section and placed it near the router.
+        </p>
+
+        <p>
+            At this point, the three devices were present in the workspace,
+            but they were not fully connected yet.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>5. Connecting the PC Using Ethernet</h2>
+
+        <p>
+            The first connection I made was between the PC and the wireless
+            router.
+        </p>
+
+        <h3>Step 1: Select the cable</h3>
+
+        <ol>
+            <li>
+                I clicked the <strong>Connections</strong> icon in Packet
+                Tracer.
+            </li>
+
+            <li>
+                I selected <strong>Copper Straight-Through</strong>.
+            </li>
+        </ol>
+
+        <h3>Step 2: Connect the PC</h3>
+
+        <ol>
+            <li>
+                I clicked the PC.
+            </li>
+
+            <li>
+                I selected its <strong>FastEthernet0</strong> interface.
+            </li>
+
+            <li>
+                I clicked the wireless router.
+            </li>
+
+            <li>
+                I selected one of the router's Ethernet/LAN ports.
+            </li>
+        </ol>
+
+        <p>
+            I did not use the router's Internet/WAN port for this
+            connection. The PC is part of the local home network, so it
+            connects to one of the router's LAN ports.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-home-topology.png"
+                 alt="PC connected to wireless router in Packet Tracer">
+
+            <p>
+                Figure 2: The PC is connected to the wireless router using
+                an Ethernet connection.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>6. Configuring the PC for DHCP</h2>
+
+        <p>
+            After connecting the PC to the router, I configured the PC to
+            obtain its network information automatically.
+        </p>
+
+        <h3>What is DHCP?</h3>
+
+        <p>
+            DHCP stands for <strong>Dynamic Host Configuration Protocol</strong>.
+            It allows a device to receive network configuration
+            automatically from a DHCP server.
+        </p>
+
+        <p>
+            Instead of manually typing an IP address, subnet mask, default
+            gateway, and other information, the device asks the DHCP server
+            for the information it needs.
+        </p>
+
+        <h3>How I configured it</h3>
+
+        <ol>
+            <li>I opened the PC.</li>
+
+            <li>I selected the <strong>Desktop</strong> tab.</li>
+
+            <li>I opened <strong>IP Configuration</strong>.</li>
+
+            <li>I selected <strong>DHCP</strong>.</li>
+        </ol>
+
+        <p>
+            The router then provided the PC with its network configuration.
+        </p>
+
+        <p>
+            This demonstrated an important idea: the PC did not need me to
+            manually assign its IP address.
+        </p>
+
+        <p>
+            The actual IP address given to the PC depends on the network
+            configuration in Packet Tracer, so the address on my PC may not
+            be the same as the address on another person's PC.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>7. Configuring the Wireless Router</h2>
+
+        <p>
+            The next part of the lab was configuring the wireless side of
+            the router.
+        </p>
+
+        <p>
+            I opened the wireless router and used its graphical
+            configuration interface. Cisco's Packet Tracer examples also
+            use the router's GUI for configuring the wireless network. 
+        </p>
+
+        <h3>Opening the Router GUI</h3>
+
+        <ol>
+            <li>I clicked the Wireless Router.</li>
+
+            <li>
+                I opened the router's configuration window.
+            </li>
+
+            <li>
+                I selected the <strong>GUI</strong> tab.
+            </li>
+
+            <li>
+                I opened the <strong>Wireless</strong> settings.
+            </li>
+        </ol>
+
+        <p>
+            The GUI allowed me to configure the wireless network without
+            entering router commands through a command-line interface.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>8. Configuring the SSID</h2>
+
+        <h3>What is an SSID?</h3>
+
+        <p>
+            SSID stands for <strong>Service Set Identifier</strong>.
+            In simple terms, it is the name used to identify a wireless
+            network.
+        </p>
+
+        <p>
+            When a phone or laptop searches for nearby Wi-Fi networks, the
+            names it displays are SSIDs.
+        </p>
+
+        <p>
+            For this lab, I changed the wireless network name to:
+        </p>
+
+        <pre>
+```
+
+HomeNetwork </pre>
+
+```
+        <h3>Why did I change it?</h3>
+
+        <p>
+            The router may initially have a default wireless network name.
+            Changing the SSID makes it easier to identify my own network.
+        </p>
+
+        <p>
+            Later, when I searched for wireless networks on the laptop,
+            <strong>HomeNetwork</strong> appeared as the network I wanted
+            to join.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-wireless-config.png"
+                 alt="Wireless configuration showing the HomeNetwork SSID">
+
+            <p>
+                Figure 3: Wireless configuration for the HomeNetwork SSID.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>9. Understanding the Other Wireless Settings</h2>
+
+        <p>
+            While configuring the router, I also came across several other
+            wireless settings.
+        </p>
+
+        <h3>Network Mode</h3>
+
+        <p>
+            The network mode determines which wireless standards the router
+            can support. A mixed mode can allow compatible devices using
+            different wireless standards to connect.
+        </p>
+
+        <h3>Channel</h3>
+
+        <p>
+            A wireless channel is part of the radio spectrum used for
+            wireless communication. Wireless networks use channels so that
+            devices can communicate over the selected radio frequency.
+        </p>
+
+        <h3>SSID Broadcast</h3>
+
+        <p>
+            When SSID broadcast is enabled, the wireless network name can
+            appear in the list of available networks on nearby devices.
+        </p>
+
+        <p>
+            Hiding the SSID should not be treated as strong wireless
+            security. Actual wireless security should use proper
+            authentication and encryption.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>10. Configuring Wireless Security</h2>
+
+        <p>
+            Creating a wireless network is not enough. We also need to
+            protect it so that unauthorized devices cannot simply join the
+            network.
+        </p>
+
+        <p>
+            I opened the router's <strong>Wireless Security</strong>
+            settings and configured:
+        </p>
+
+        <ul>
+            <li>Security Mode: WPA2 Personal</li>
+            <li>Encryption: AES</li>
+            <li>Wireless password: configured for the lab</li>
+        </ul>
+
+        <p>
+            For the practical exercise, the password I used was:
+        </p>
+
+        <pre>
+```
+
+HomeWifi2026 </pre>
+
+```
+        <p>
+            This password is only being used for the Packet Tracer exercise.
+            A real home network should use a strong, unique password that
+            is not publicly displayed.
+        </p>
+
+        <p>
+            Cisco's Packet Tracer wireless-security exercises also use
+            WPA2 Personal with AES and a passphrase when configuring a
+            wireless router.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-wireless-security.png"
+                 alt="Wireless security configuration in Packet Tracer">
+
+            <p>
+                Figure 4: Wireless security settings configured on the
+                router.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>11. Connecting the Laptop to Wi-Fi</h2>
+
+        <p>
+            The PC was connected using an Ethernet cable. The laptop,
+            however, needed to connect wirelessly.
+        </p>
+
+        <h3>Step 1: Open PC Wireless</h3>
+
+        <ol>
+            <li>I opened the Laptop.</li>
+
+            <li>I selected the <strong>Desktop</strong> tab.</li>
+
+            <li>I opened <strong>PC Wireless</strong>.</li>
+        </ol>
+
+        <h3>Step 2: Search for the network</h3>
+
+        <ol>
+            <li>I opened the <strong>Connect</strong> section.</li>
+
+            <li>
+                I searched for available wireless networks.
+            </li>
+
+            <li>
+                I found <strong>HomeNetwork</strong>.
+            </li>
+        </ol>
+
+        <h3>Step 3: Connect</h3>
+
+        <ol>
+            <li>I selected HomeNetwork.</li>
+
+            <li>I clicked <strong>Connect</strong>.</li>
+
+            <li>
+                I entered the wireless password configured on the router.
+            </li>
+
+            <li>
+                I completed the connection.
+            </li>
+        </ol>
+
+        <p>
+            The laptop was then associated with the wireless router.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-wireless-client.png"
+                 alt="Laptop connected to HomeNetwork using Wi-Fi">
+
+            <p>
+                Figure 5: Laptop connected to the HomeNetwork wireless
+                network.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>12. Configuring the Laptop for DHCP</h2>
+
+        <p>
+            After connecting the laptop to Wi-Fi, I also configured it to
+            receive its IP configuration automatically.
+        </p>
+
+        <ol>
+            <li>I opened the Laptop.</li>
+
+            <li>I selected the <strong>Desktop</strong> tab.</li>
+
+            <li>I opened <strong>IP Configuration</strong>.</li>
+
+            <li>I selected <strong>DHCP</strong>.</li>
+        </ol>
+
+        <p>
+            The router then provided the laptop with its network
+            configuration.
+        </p>
+
+        <p>
+            This is important because the laptop and PC are using different
+            physical connection methods but can still belong to the same
+            local network.
+        </p>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-dhcp-config.png"
+                 alt="Laptop receiving an IP address through DHCP">
+
+            <p>
+                Figure 6: Laptop IP configuration using DHCP.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>13. Wired and Wireless Devices on the Same Network</h2>
+
+        <p>
+            At this point, something important had happened.
+        </p>
+
+        <p>
+            The PC was connected to the router using a physical Ethernet
+            cable, while the laptop was connected through Wi-Fi.
+        </p>
+
+        <p>
+            Even though their physical connections were different, both
+            devices were connected through the same wireless router and
+            were part of the same home LAN.
+        </p>
+
+        <pre>
+                [ Wireless Router ]
+                   /           \
+                  /             \
+             Ethernet          Wi-Fi
+                /                 \
+              PC                 Laptop
+        </pre>
+
+        <p>
+            This is one of the important ideas I wanted to understand from
+            this lab: a LAN does not have to consist only of wired devices
+            or only of wireless devices. A home router can provide both
+            types of access.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>14. Checking the IP Configuration</h2>
+
+        <p>
+            I checked the IP configuration of the connected devices to
+            confirm that they had received network information.
+        </p>
+
+        <p>
+            The information provided through DHCP included things such as:
+        </p>
+
+        <ul>
+            <li>IP address</li>
+            <li>Subnet mask</li>
+            <li>Default gateway</li>
+            <li>DNS information</li>
+        </ul>
+
+        <p>
+            The exact IP addresses are not the important part of this
+            exercise. What matters is understanding that the router can
+            automatically provide the information devices need to
+            communicate on the local network.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>15. Testing the Network</h2>
+
+        <p>
+            After configuring both devices, I tested the network to make
+            sure communication was working.
+        </p>
+
+        <p>
+            I used <strong>ping</strong> to verify connectivity between the
+            devices.
+        </p>
+
+        <p>
+            I am not including a separate ping screenshot here because
+            ping was already explained and demonstrated in Module 1.
+            In this lab, ping was simply used as a final verification that
+            the configuration worked.
+        </p>
+
+        <p>
+            The successful tests confirmed that:
+        </p>
+
+        <ul>
+            <li>The PC could communicate with the router.</li>
+            <li>The laptop had joined the wireless network.</li>
+            <li>The devices had received IP configuration.</li>
+            <li>The wired and wireless devices could communicate through the router.</li>
+        </ul>
+    </section>
+
+
+    <section>
+        <h2>16. What Each Part of the Lab Demonstrated</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Part</th>
+                    <th>What I learned</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Wireless Router</td>
+                    <td>
+                        Acts as the central device connecting devices in
+                        the home network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ethernet Cable</td>
+                    <td>
+                        Provides a wired connection between the PC and
+                        router.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Wi-Fi</td>
+                    <td>
+                        Allows the laptop to connect without a physical
+                        Ethernet cable.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>SSID</td>
+                    <td>
+                        Identifies the wireless network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>WPA2 Personal</td>
+                    <td>
+                        Provides wireless authentication and security.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>DHCP</td>
+                    <td>
+                        Automatically provides IP configuration to devices.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ping</td>
+                    <td>
+                        Provides a basic connectivity test.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
+        <h2>17. Troubleshooting During the Lab</h2>
+
+        <p>
+            Networking does not always work immediately, so troubleshooting
+            is an important part of the practical exercise.
+        </p>
+
+        <h3>If the PC does not receive an IP address</h3>
+
+        <ul>
+            <li>Check the Ethernet cable.</li>
+            <li>Check that the cable is connected to a LAN port.</li>
+            <li>Check that the PC is set to DHCP.</li>
+            <li>Check that DHCP is enabled on the router.</li>
+        </ul>
+
+
+        <h3>If the laptop cannot find HomeNetwork</h3>
+
+        <ul>
+            <li>Check that the router's wireless network is enabled.</li>
+            <li>Check the SSID spelling.</li>
+            <li>Check that SSID broadcast is enabled.</li>
+            <li>Refresh the wireless network list.</li>
+        </ul>
+
+
+        <h3>If the laptop sees HomeNetwork but cannot connect</h3>
+
+        <ul>
+            <li>Check the wireless password.</li>
+            <li>Check the security mode.</li>
+            <li>Make sure the laptop is connecting to the correct SSID.</li>
+        </ul>
+
+
+        <h3>If the devices cannot communicate</h3>
+
+        <ul>
+            <li>Check their IP addresses.</li>
+            <li>Check the subnet mask.</li>
+            <li>Check the default gateway.</li>
+            <li>Check the wired connection.</li>
+            <li>Check the wireless connection.</li>
+            <li>Use ping to identify where communication is failing.</li>
+        </ul>
+    </section>
+
+
+    <section>
+        <h2>18. What I Understand Now</h2>
+
+        <p>
+            Before doing this lab, a home network could seem like a simple
+            situation where devices just connect to Wi-Fi. The practical
+            exercise helped me see what is actually happening behind that
+            connection.
+        </p>
+
+        <p>
+            The wireless router provides the central point of the network.
+            A wired device can connect through Ethernet, while another
+            device can connect through Wi-Fi.
+        </p>
+
+        <p>
+            The SSID gives the wireless network its name. Wireless security
+            controls access to the network. DHCP gives devices the IP
+            configuration they need, and the router allows the connected
+            devices to communicate within the local network.
+        </p>
+
+        <p>
+            This helped connect the theory from the earlier pages of
+            Module 4 with an actual working network.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>19. Final Result</h2>
+
+        <p>
+            I successfully created a small home network in Packet Tracer
+            containing both wired and wireless devices.
+        </p>
+
+        <p>
+            The final setup consisted of:
+        </p>
+
+        <ul>
+            <li>One wireless router</li>
+            <li>One wired PC</li>
+            <li>One wireless laptop</li>
+            <li>One Ethernet connection</li>
+            <li>One configured wireless network</li>
+            <li>Wireless security</li>
+            <li>DHCP addressing</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="images/packet-tracer-home-topology.png"
+                 alt="Final home network topology in Packet Tracer">
+
+            <p>
+                Figure 7: Final working home network created in Packet
+                Tracer.
+            </p>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>20. Module 4 Practical Summary</h2>
+
+        <p>
+            This practical exercise brought together the main ideas covered
+            throughout Module 4.
+        </p>
+
+        <p>
+            I started by creating a simple home topology. I then connected
+            a PC to the router using Ethernet, configured DHCP, configured
+            the wireless network, secured the wireless network, connected
+            a laptop through Wi-Fi, and verified that the devices could
+            communicate.
+        </p>
+
+        <p>
+            The most important thing I learned from this exercise is that
+            networking concepts become easier to understand when I can see
+            how they work together.
+        </p>
+
+        <p>
+            A home network is not just about connecting to Wi-Fi. It
+            involves devices, physical and wireless media, addressing,
+            routing, DHCP, wireless configuration, security, and
+            troubleshooting all working together.
+        </p>
+    </section>
+
+
+    <section class="page-navigation">
+        <a href="wireless-router-configuration.html">
+            Previous: Wireless Router Configuration
+        </a>
+
+        <a href="module4.html">
+            Back to Module 4
+        </a>
+    </section>
+
+</main>
+```
+
+</body>
+</html>

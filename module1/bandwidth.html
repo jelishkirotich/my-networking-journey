@@ -1,0 +1,1786 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Bandwidth</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================
+           MODULE HEADER
+        ===================================== */
+
+        .module-header {
+            background: #1e293b;
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .module-header .module-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .module-header h1 {
+            font-size: 23px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .module-header p {
+            display: none;
+        }
+
+
+        /* =====================================
+           MAIN WEBSITE NAVIGATION
+        ===================================== */
+
+        .main-navigation {
+            background: #0f172a;
+
+            min-height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 42px;
+
+            padding: 20px 25px;
+
+            flex-wrap: wrap;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-navigation a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .main-navigation a:hover {
+            color: #93c5fd;
+        }
+
+        .main-navigation a.active {
+            color: white;
+        }
+
+
+        /* =====================================
+           TOPICS IN THIS PAGE
+        ===================================== */
+
+        .topics-card {
+            max-width: 1500px;
+
+            margin: 30px auto 40px;
+
+            background: white;
+
+            padding: 30px 40px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .topics-card h2 {
+            font-size: 30px;
+
+            margin-bottom: 25px;
+
+            color: #111827;
+        }
+
+        .topics-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+        }
+
+        .topics-grid ul {
+            margin: 0;
+
+            padding-left: 30px;
+        }
+
+        .topics-grid li {
+            margin-bottom: 15px;
+
+            padding-left: 5px;
+        }
+
+        .topics-grid a {
+            color: #1d4ed8;
+
+            text-decoration: none;
+
+            font-size: 18px;
+        }
+
+        .topics-grid a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           MAIN CONTENT
+        ===================================== */
+
+        .content {
+            max-width: 1100px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+        .topic-section {
+            background: white;
+
+            padding: 40px;
+
+            margin-bottom: 30px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06);
+
+            scroll-margin-top: 100px;
+        }
+
+        .topic-section h2 {
+            color: #172554;
+
+            margin-bottom: 20px;
+
+            font-size: 28px;
+        }
+
+        .topic-section h3 {
+            color: #1e3a8a;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            font-size: 21px;
+        }
+
+        .topic-section p {
+            margin-bottom: 15px;
+        }
+
+        .topic-section ul,
+        .topic-section ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        .topic-section li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================
+           CONCEPT BOX
+        ===================================== */
+
+        .concept-box {
+            background: #eef2ff;
+
+            border-left: 5px solid #172554;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           IMPORTANT BOX
+        ===================================== */
+
+        .important-box {
+            background: #f8fafc;
+
+            border-left: 5px solid #334155;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           CODE / CALCULATION BOX
+        ===================================== */
+
+        .code-box {
+            background: #111827;
+
+            color: #f9fafb;
+
+            padding: 20px;
+
+            border-radius: 7px;
+
+            margin: 20px 0;
+
+            font-family: Consolas, monospace;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           DIAGRAM
+        ===================================== */
+
+        .diagram {
+            background: #f8fafc;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            text-align: center;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 16px;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           COMPARISON TABLE
+        ===================================== */
+
+        .comparison-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #d1d5db;
+
+            padding: 14px;
+
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #172554;
+
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =====================================
+           QUICK CHECK
+        ===================================== */
+
+        .question-box {
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+
+            padding: 25px;
+
+            margin: 20px 0;
+
+            border-radius: 8px;
+        }
+
+        .question-box h3 {
+            margin-top: 0;
+        }
+
+
+        /* =====================================
+           SOURCE NOTE
+        ===================================== */
+
+        .source-note {
+            font-size: 13px;
+
+            color: #64748b;
+
+            margin-top: 10px;
+        }
+
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .navigation-buttons {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+
+            background: #172554;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 6px;
+        }
+
+        .navigation-buttons a:hover {
+            background: #1e3a8a;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 800px) {
+
+            .module-header {
+                padding: 45px 20px;
+            }
+
+            .module-header .module-number {
+                font-size: 38px;
+            }
+
+            .main-navigation {
+                gap: 20px;
+            }
+
+            .main-navigation a {
+                font-size: 15px;
+            }
+
+            .topics-card {
+                margin: 20px;
+
+                padding: 25px;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .topic-section {
+                padding: 25px;
+            }
+
+            .topic-section h2 {
+                font-size: 24px;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         MODULE HEADER
+    =========================================== -->
+
+    <header class="module-header">
+
+        <div class="module-number">
+            Module 1
+        </div>
+
+        <h1>
+            Bandwidth
+        </h1>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         MAIN NAVIGATION
+    =========================================== -->
+
+    <nav class="main-navigation">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="../module1.html">
+            Module 1
+        </a>
+
+        <a href="communication.html">
+            Communication
+        </a>
+
+        <a href="types-of-networks.html">
+            Types of Networks
+        </a>
+
+        <a href="data-transmission.html">
+            Data Transmission
+        </a>
+
+        <a href="bandwidth.html" class="active">
+            Bandwidth
+        </a>
+
+        <a href="throughput.html">
+            Throughput
+        </a>
+
+    </nav>
+
+
+
+    <!-- ==========================================
+         TOPICS IN THIS PAGE
+    =========================================== -->
+
+    <section class="topics-card">
+
+        <h2>
+            Topics in This Page
+        </h2>
+
+
+        <div class="topics-grid">
+
+
+            <!-- LEFT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#introduction">
+                        Introduction to Bandwidth
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#meaning">
+                        What Bandwidth Means
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#measurement">
+                        Measuring Bandwidth
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#types">
+                        Types of Network Bandwidth
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#examples">
+                        Real-World Examples
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- RIGHT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#capacity">
+                        Bandwidth as Network Capacity
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#shared">
+                        Shared Bandwidth
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#bandwidth-throughput">
+                        Bandwidth vs Throughput
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#importance">
+                        Why Bandwidth Matters
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#summary">
+                        Summary & Quick Check
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MODULE CONTENT
+    =========================================== -->
+
+    <main class="content">
+
+
+
+        <!-- ======================================
+             SECTION 1
+        ======================================= -->
+
+        <section class="topic-section" id="introduction">
+
+            <h2>
+                1. Introduction to Bandwidth
+            </h2>
+
+            <p>
+                Bandwidth is the amount of data that a network connection can
+                potentially carry over a given period of time.
+            </p>
+
+            <p>
+                In computer networking, bandwidth is commonly expressed as a
+                number of bits per second. For example, a network connection
+                may have a bandwidth of 100 Mbps or 1 Gbps.
+            </p>
+
+            <p>
+                Bandwidth is an important concept because it helps describe the
+                capacity of a network connection.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Simple definition:
+                </strong>
+
+                <p>
+                    Bandwidth is the capacity of a network connection to carry
+                    data over time.
+                </p>
+
+            </div>
+
+
+            <h3>
+                A Simple Analogy
+            </h3>
+
+            <p>
+                Imagine a road connecting two towns.
+            </p>
+
+            <p>
+                A narrow road can carry fewer vehicles at the same time, while
+                a wider road with more lanes can carry more vehicles.
+            </p>
+
+            <div class="diagram">
+
+                Narrow Road
+                <br>
+                🚗 → 🚗 → 🚗
+                <br><br>
+
+                Wider Road
+                <br>
+                🚗 → 🚗 → 🚗
+                <br>
+                🚙 → 🚙 → 🚙
+                <br>
+                🚕 → 🚕 → 🚕
+
+            </div>
+
+            <p>
+                In this analogy, the number of lanes represents bandwidth.
+                More lanes provide greater capacity for vehicles.
+            </p>
+
+            <p>
+                Similarly, greater network bandwidth provides a connection
+                with greater capacity to carry data.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 2
+        ======================================= -->
+
+        <section class="topic-section" id="meaning">
+
+            <h2>
+                2. What Bandwidth Means
+            </h2>
+
+            <p>
+                When a network connection is described as having a particular
+                bandwidth, the value indicates the amount of data the link is
+                designed or rated to carry per second under the relevant
+                conditions.
+            </p>
+
+            <p>
+                For example, if an Ethernet connection is rated at 1 Gbps, the
+                link has a nominal capacity of 1 gigabit per second.
+            </p>
+
+
+            <h3>
+                Example
+            </h3>
+
+            <div class="code-box">
+
+                Network Link:
+                1 Gbps
+
+                <br><br>
+
+                Meaning:
+                The link has a nominal capacity of
+                1,000,000,000 bits per second.
+
+            </div>
+
+
+            <p>
+                This does not mean that an application will always receive
+                exactly 1 Gbps of useful data. Real network performance can be
+                affected by many factors.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                <p>
+                    Bandwidth describes capacity. It should not automatically
+                    be interpreted as the amount of application data that is
+                    actually being delivered.
+                </p>
+
+            </div>
+
+
+            <h3>
+                Bandwidth and Network Capacity
+            </h3>
+
+            <p>
+                A connection with greater bandwidth can potentially carry more
+                data during the same period of time than a connection with
+                lower bandwidth, assuming comparable conditions.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 3
+        ======================================= -->
+
+        <section class="topic-section" id="measurement">
+
+            <h2>
+                3. Measuring Bandwidth
+            </h2>
+
+            <p>
+                Bandwidth is commonly measured in bits per second (bps).
+                Because modern networks can carry very large amounts of data,
+                larger units are normally used.
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Unit
+                    </th>
+
+                    <th>
+                        Full Name
+                    </th>
+
+                    <th>
+                        Value
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        bps
+                    </td>
+
+                    <td>
+                        bits per second
+                    </td>
+
+                    <td>
+                        1 bit/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Kbps
+                    </td>
+
+                    <td>
+                        kilobits per second
+                    </td>
+
+                    <td>
+                        1,000 bits/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Mbps
+                    </td>
+
+                    <td>
+                        megabits per second
+                    </td>
+
+                    <td>
+                        1,000,000 bits/s
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Gbps
+                    </td>
+
+                    <td>
+                        gigabits per second
+                    </td>
+
+                    <td>
+                        1,000,000,000 bits/s
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <h3>
+                Bits and Bytes
+            </h3>
+
+            <p>
+                Networking bandwidth is normally expressed in bits per
+                second, while file sizes are commonly expressed in bytes.
+            </p>
+
+            <div class="code-box">
+
+                1 Byte = 8 bits
+
+                <br><br>
+
+                100 Mbps ÷ 8
+                <br>
+                ≈ 12.5 MB/s
+
+            </div>
+
+            <p>
+                Therefore, a 100 Mbps connection has a theoretical bit rate
+                equivalent to approximately 12.5 megabytes per second before
+                accounting for protocol overhead and other factors.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Watch the capital letters:
+                </strong>
+
+                <p>
+                    Mbps = megabits per second
+                    <br>
+                    MB/s = megabytes per second
+                </p>
+
+                <p>
+                    A lowercase <strong>b</strong> means bits, while an
+                    uppercase <strong>B</strong> means bytes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 4
+        ======================================= -->
+
+        <section class="topic-section" id="types">
+
+            <h2>
+                4. Types of Network Bandwidth
+            </h2>
+
+            <p>
+                Bandwidth can be discussed in different networking contexts.
+                The type of connection and communication technology can
+                influence the bandwidth available to devices.
+            </p>
+
+
+            <h3>
+                Wired Bandwidth
+            </h3>
+
+            <p>
+                Wired networks use physical transmission media such as
+                Ethernet cables and fiber-optic cables.
+            </p>
+
+            <p>
+                Different cable types and network technologies support
+                different data rates.
+            </p>
+
+
+            <h3>
+                Wireless Bandwidth
+            </h3>
+
+            <p>
+                Wireless networks use radio signals to transmit data.
+                Wireless technologies can provide high data rates, but actual
+                performance can vary depending on signal conditions,
+                interference, distance, and other factors.
+            </p>
+
+
+            <h3>
+                Internet Connection Bandwidth
+            </h3>
+
+            <p>
+                Internet Service Providers commonly advertise Internet
+                connections using bandwidth values such as 20 Mbps, 50 Mbps,
+                100 Mbps, 500 Mbps, or 1 Gbps.
+            </p>
+
+            <p>
+                These values describe the service's advertised or provisioned
+                connection rate, while actual throughput can vary.
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Connection
+                    </th>
+
+                    <th>
+                        Example Bandwidth
+                    </th>
+
+                    <th>
+                        Typical Use
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Ethernet
+                    </td>
+
+                    <td>
+                        100 Mbps
+                    </td>
+
+                    <td>
+                        Local network connectivity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Gigabit Ethernet
+                    </td>
+
+                    <td>
+                        1 Gbps
+                    </td>
+
+                    <td>
+                        High-speed local networks
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Wi-Fi
+                    </td>
+
+                    <td>
+                        Varies by standard and conditions
+                    </td>
+
+                    <td>
+                        Wireless device connectivity
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Fiber Internet
+                    </td>
+
+                    <td>
+                        Can reach very high data rates
+                    </td>
+
+                    <td>
+                        High-speed Internet access
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 5
+        ======================================= -->
+
+        <section class="topic-section" id="examples">
+
+            <h2>
+                5. Real-World Bandwidth Examples
+            </h2>
+
+            <p>
+                Bandwidth can be easier to understand when we connect the
+                concept to situations we encounter every day.
+            </p>
+
+
+            <h3>
+                Example 1: Home Internet
+            </h3>
+
+            <p>
+                Imagine a home has an Internet connection with an advertised
+                bandwidth of 100 Mbps.
+            </p>
+
+            <p>
+                The connection has the capacity to support data transfer at a
+                nominal rate of up to 100 megabits per second, subject to the
+                conditions and limitations of the service and network.
+            </p>
+
+
+            <h3>
+                Example 2: University Network
+            </h3>
+
+            <p>
+                A university may have a high-capacity Internet connection that
+                serves hundreds or thousands of students and staff.
+            </p>
+
+            <p>
+                A larger amount of bandwidth allows the network to support
+                many simultaneous users and applications, although how that
+                capacity is shared and managed is also important.
+            </p>
+
+
+            <h3>
+                Example 3: Data Center
+            </h3>
+
+            <p>
+                Data centers can use high-speed network connections to allow
+                servers to exchange very large amounts of data.
+            </p>
+
+            <p>
+                High bandwidth is particularly useful when large files,
+                databases, backups, or application traffic need to be moved
+                between systems.
+            </p>
+
+
+            <div class="diagram">
+
+                Home Network
+                <br>
+                100 Mbps Internet Link
+                <br><br>
+
+                University Network
+                <br>
+                High-Capacity Internet Link
+                <br><br>
+
+                Data Center
+                <br>
+                High-Speed Server Links
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 6
+        ======================================= -->
+
+        <section class="topic-section" id="capacity">
+
+            <h2>
+                6. Bandwidth as Network Capacity
+            </h2>
+
+            <p>
+                One of the best ways to understand bandwidth is to think of it
+                as the capacity available on a communication path.
+            </p>
+
+            <p>
+                If a connection has greater bandwidth, it can potentially
+                carry more bits per second than a connection with lower
+                bandwidth.
+            </p>
+
+
+            <h3>
+                Comparing Two Links
+            </h3>
+
+
+            <div class="diagram">
+
+                Link A
+                <br>
+                100 Mbps
+                <br><br>
+
+                Link B
+                <br>
+                1 Gbps
+                <br><br>
+
+                1 Gbps = 1,000 Mbps
+
+            </div>
+
+
+            <p>
+                A 1 Gbps link has a nominal capacity ten times greater than a
+                100 Mbps link.
+            </p>
+
+            <p>
+                This means the 1 Gbps link can potentially carry ten times as
+                many bits per second, assuming the links are being compared
+                under appropriate and equivalent conditions.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Think of bandwidth as capacity:
+                </strong>
+
+                <p>
+                    A larger pipe can carry more water at once. Similarly, a
+                    higher-bandwidth network connection can carry more bits per
+                    second.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 7
+        ======================================= -->
+
+        <section class="topic-section" id="shared">
+
+            <h2>
+                7. Shared Bandwidth
+            </h2>
+
+            <p>
+                In many networks, available bandwidth is shared among multiple
+                users or devices.
+            </p>
+
+            <p>
+                For example, several devices in a home may use the same
+                Internet connection at the same time.
+            </p>
+
+
+            <div class="diagram">
+
+                Internet Connection
+                <br>
+                100 Mbps
+                <br>
+                ↓
+                <br>
+                Router
+                <br>
+                ↓
+                ├── Laptop
+                <br>
+                ├── Smartphone
+                <br>
+                ├── Smart TV
+                <br>
+                └── Tablet
+
+            </div>
+
+
+            <p>
+                If several devices are actively transferring large amounts of
+                data, they are competing for the available network capacity.
+            </p>
+
+            <p>
+                The exact amount available to each device depends on network
+                configuration, traffic patterns, protocols, and traffic
+                management.
+            </p>
+
+
+            <h3>
+                Why This Matters
+            </h3>
+
+            <p>
+                A 100 Mbps connection serving one active device is different
+                from the same connection being heavily used by many devices
+                simultaneously.
+            </p>
+
+            <p>
+                This is one reason why a user may experience different
+                performance at different times of the day.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                <p>
+                    Total network bandwidth is not automatically the same as
+                    the amount of bandwidth available to every individual
+                    device at every moment.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 8
+        ======================================= -->
+
+        <section class="topic-section" id="bandwidth-throughput">
+
+            <h2>
+                8. Bandwidth vs Throughput
+            </h2>
+
+            <p>
+                Bandwidth and throughput are two related networking concepts
+                that are often confused.
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Bandwidth
+                    </th>
+
+                    <th>
+                        Throughput
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Describes network capacity or the nominal maximum
+                        data rate of a connection.
+                    </td>
+
+                    <td>
+                        Describes the actual rate at which data is
+                        successfully transferred.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Represents potential capacity.
+                    </td>
+
+                    <td>
+                        Represents actual achieved performance.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Can be specified by a network technology or service
+                        plan.
+                    </td>
+
+                    <td>
+                        Can change depending on current network conditions.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Example: 100 Mbps connection.
+                    </td>
+
+                    <td>
+                        Example: 72 Mbps actual transfer rate.
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+            <h3>
+                The Highway Analogy
+            </h3>
+
+            <div class="diagram">
+
+                Number of Highway Lanes
+                <br>
+                =
+                <br>
+                BANDWIDTH
+                <br><br>
+
+                Vehicles Actually Moving
+                <br>
+                =
+                <br>
+                THROUGHPUT
+
+            </div>
+
+
+            <p>
+                A highway can have many lanes but still experience traffic
+                congestion. Similarly, a network can have high bandwidth while
+                actual throughput is lower.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    The easiest way to remember:
+                </strong>
+
+                <p>
+                    <strong>Bandwidth = How much the connection can carry.</strong>
+                </p>
+
+                <p>
+                    <strong>Throughput = How much is actually being carried.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 9
+        ======================================= -->
+
+        <section class="topic-section" id="importance">
+
+            <h2>
+                9. Why Bandwidth Matters
+            </h2>
+
+            <p>
+                Network bandwidth is important because applications and users
+                require different amounts of network capacity.
+            </p>
+
+
+            <h3>
+                Video Streaming
+            </h3>
+
+            <p>
+                Video streaming requires a continuous flow of data. Higher
+                bandwidth can allow a network to support higher-quality video
+                and more simultaneous streams, provided other requirements are
+                also satisfied.
+            </p>
+
+
+            <h3>
+                Large File Transfers
+            </h3>
+
+            <p>
+                High-bandwidth connections are useful when transferring large
+                files, software packages, backups, and other large datasets.
+            </p>
+
+
+            <h3>
+                Many Users
+            </h3>
+
+            <p>
+                Networks serving many users generally require more total
+                capacity than networks serving only a small number of users.
+            </p>
+
+
+            <h3>
+                Cloud Services
+            </h3>
+
+            <p>
+                Organizations increasingly depend on cloud applications and
+                online storage. Adequate network capacity helps support the
+                exchange of information between users and cloud services.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Network planning:
+                </strong>
+
+                <p>
+                    Network administrators consider expected users, devices,
+                    applications, traffic patterns, and future growth when
+                    determining how much bandwidth a network needs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 10
+        ======================================= -->
+
+        <section class="topic-section" id="summary">
+
+            <h2>
+                10. Bandwidth Summary & Quick Check
+            </h2>
+
+
+            <h3>
+                Summary
+            </h3>
+
+            <p>
+                Bandwidth describes the capacity or nominal data rate of a
+                network connection.
+            </p>
+
+            <p>
+                It is normally measured in bits per second, with common units
+                including Kbps, Mbps, and Gbps.
+            </p>
+
+            <p>
+                Different network technologies and physical media can support
+                different bandwidths.
+            </p>
+
+            <p>
+                Bandwidth may be shared among multiple users and devices, so
+                the total capacity of a network is not automatically available
+                to every device at the same time.
+            </p>
+
+            <p>
+                Most importantly, bandwidth should not be confused with
+                throughput. Bandwidth represents capacity, while throughput
+                represents actual successful data transfer.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    What you should remember:
+                </strong>
+
+                <ul>
+
+                    <li>
+                        Bandwidth represents network capacity.
+                    </li>
+
+                    <li>
+                        Bandwidth is commonly measured in bps, Kbps, Mbps, and
+                        Gbps.
+                    </li>
+
+                    <li>
+                        A higher bandwidth connection can potentially carry
+                        more data per second.
+                    </li>
+
+                    <li>
+                        Bandwidth can be shared among multiple devices.
+                    </li>
+
+                    <li>
+                        Mbps and MB/s are different units.
+                    </li>
+
+                    <li>
+                        Bandwidth does not guarantee a specific actual
+                        throughput.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <h3>
+                Quick Check
+            </h3>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 1
+                </h3>
+
+                <p>
+                    What does bandwidth describe?
+                </p>
+
+                <ol>
+
+                    <li>
+                        The physical location of a computer
+                    </li>
+
+                    <li>
+                        The capacity or nominal data rate of a network
+                        connection
+                    </li>
+
+                    <li>
+                        The MAC address of a device
+                    </li>
+
+                    <li>
+                        The number of network protocols installed
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 2
+                </h3>
+
+                <p>
+                    Which unit is commonly used to express network bandwidth?
+                </p>
+
+                <ol>
+
+                    <li>
+                        Mbps
+                    </li>
+
+                    <li>
+                        Kilograms
+                    </li>
+
+                    <li>
+                        Meters
+                    </li>
+
+                    <li>
+                        Volts
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 3
+                </h3>
+
+                <p>
+                    A network connection has a bandwidth of 1 Gbps. What does
+                    this tell us?
+                </p>
+
+                <p>
+                    <strong>
+                        Answer:
+                    </strong>
+                    The connection has a nominal capacity of 1 gigabit per
+                    second, subject to the technology and operating conditions
+                    of the connection.
+                </p>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h3>
+                    Question 4
+                </h3>
+
+                <p>
+                    What is the difference between bandwidth and throughput?
+                </p>
+
+                <p>
+                    <strong>
+                        Answer:
+                    </strong>
+                    Bandwidth describes the capacity or nominal data rate of a
+                    connection, while throughput describes the actual rate at
+                    which data is successfully transferred.
+                </p>
+
+            </div>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Final idea:
+                </strong>
+
+                <p>
+                    Think of bandwidth as the size of the road and throughput
+                    as the traffic actually moving along that road.
+                </p>
+
+                <p>
+                    A larger road provides greater capacity, but traffic
+                    conditions determine how much traffic actually moves.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             BOTTOM NAVIGATION
+        =========================================== -->
+
+        <div class="navigation-buttons">
+
+            <a href="data-transmission.html">
+                ← Data Transmission
+            </a>
+
+            <a href="throughput.html">
+                Throughput →
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>
+```

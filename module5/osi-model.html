@@ -1,0 +1,949 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Reference Model | Module 5</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 5</p>
+            <h1>OSI Reference Model</h1>
+            <p class="module-intro">
+                Understanding the seven layers of the OSI reference model and how
+                each layer contributes to network communication.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+            <h2>What Is the OSI Model?</h2>
+
+            <p>
+                OSI stands for Open Systems Interconnection. The OSI model is a
+                seven-layer reference model used to help us understand how network
+                communication is organized.
+            </p>
+
+            <p>
+                Network communication involves many different functions. Data
+                must be created, formatted, transported, addressed, delivered
+                across local networks, and transmitted through a physical medium.
+                Trying to understand all of these processes as one large process
+                would be difficult.
+            </p>
+
+            <p>
+                The OSI model divides these networking functions into seven
+                layers. Each layer has a specific responsibility and works with
+                the layers above and below it.
+            </p>
+
+            <p>
+                The seven layers, from the top down, are:
+            </p>
+
+            <p>
+                <strong>
+                    Application → Presentation → Session → Transport →
+                    Network → Data Link → Physical
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>The Seven OSI Layers</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>7</h3>
+                    <h4>Application</h4>
+                    <p>
+                        Provides network services used by applications and
+                        application-level protocols.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>6</h3>
+                    <h4>Presentation</h4>
+                    <p>
+                        Deals with data representation, formatting, encryption,
+                        decryption, compression, and decompression.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>5</h3>
+                    <h4>Session</h4>
+                    <p>
+                        Establishes, manages, synchronizes, and terminates
+                        communication sessions.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>4</h3>
+                    <h4>Transport</h4>
+                    <p>
+                        Provides end-to-end communication between applications,
+                        including segmentation, reliability, and flow control.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>3</h3>
+                    <h4>Network</h4>
+                    <p>
+                        Provides logical addressing and routing between different
+                        networks.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>2</h3>
+                    <h4>Data Link</h4>
+                    <p>
+                        Provides local network delivery using frames, MAC
+                        addresses, and link-layer technologies.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>1</h3>
+                    <h4>Physical</h4>
+                    <p>
+                        Transmits bits as physical signals through copper,
+                        fiber-optic, or wireless media.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 7: Application</h2>
+
+            <p>
+                The Application layer is Layer 7 and is the highest layer of
+                the OSI model. It provides network services that applications
+                use when they need to communicate across a network.
+            </p>
+
+            <p>
+                An important point is that the Application layer is not simply
+                the application itself. Instead, it represents the network
+                services and application-level protocols that applications use.
+            </p>
+
+            <p>
+                Examples of application-level protocols and services include
+                HTTP, HTTPS, DNS, SMTP, FTP, and DHCP.
+            </p>
+
+            <p>
+                For example, when you open a website, your browser communicates
+                with a web server using an application-level protocol such as
+                HTTP or HTTPS.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Examples at the Application Layer</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>HTTP</h3>
+                    <h4>Web Communication</h4>
+                    <p>
+                        Defines communication used by web clients and web servers
+                        to request and transfer web resources.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>DNS</h3>
+                    <h4>Name Resolution</h4>
+                    <p>
+                        Helps translate domain names into IP addresses that
+                        systems can use for network communication.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>DHCP</h3>
+                    <h4>Network Configuration</h4>
+                    <p>
+                        Can automatically provide devices with network configuration
+                        information such as IP addresses.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>SMTP</h3>
+                    <h4>Email Communication</h4>
+                    <p>
+                        Used for sending email between mail systems.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 6: Presentation</h2>
+
+            <p>
+                The Presentation layer is Layer 6. It is concerned with how
+                information is represented so that communicating systems can
+                interpret the data correctly.
+            </p>
+
+            <p>
+                The layer can be associated with functions such as data
+                formatting, character encoding, encryption, decryption,
+                compression, and decompression.
+            </p>
+
+            <p>
+                Think of this layer as dealing with the way information is
+                represented rather than with the network route that the
+                information takes.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Presentation Layer Functions</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Data Formatting</h4>
+                    <p>
+                        Organizes information into a representation that the
+                        receiving system can interpret.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Encoding</h4>
+                    <p>
+                        Represents information using an agreed encoding scheme
+                        so that it can be interpreted correctly.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Encryption</h4>
+                    <p>
+                        Information can be transformed into a protected form
+                        that requires appropriate decryption to be understood.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Compression</h4>
+                    <p>
+                        Data can be compressed to reduce the amount of information
+                        that needs to be transmitted or stored.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 5: Session</h2>
+
+            <p>
+                The Session layer is Layer 5. It is concerned with establishing,
+                managing, synchronizing, and terminating communication sessions
+                between applications.
+            </p>
+
+            <p>
+                A session can be thought of as an organized period of communication
+                between two systems or applications.
+            </p>
+
+            <p>
+                Conceptually, a session can follow a process such as:
+            </p>
+
+            <p>
+                <strong>
+                    Session starts → communication takes place → session ends
+                </strong>
+            </p>
+
+            <p>
+                The Session layer can also provide mechanisms for synchronization
+                and coordination during communication.
+            </p>
+
+            <p>
+                In modern TCP/IP networking, these responsibilities are often
+                handled by applications and protocols rather than by a separate
+                Session layer.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 4: Transport</h2>
+
+            <p>
+                The Transport layer is Layer 4 and is one of the most important
+                layers when studying network communication.
+            </p>
+
+            <p>
+                It provides communication between applications running on
+                different devices. It can be responsible for segmentation,
+                reassembly, reliability, flow control, error recovery, and
+                identifying applications using port numbers.
+            </p>
+
+            <p>
+                Two important transport protocols are TCP and UDP.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>TCP and UDP</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>TCP</h3>
+                    <h4>Transmission Control Protocol</h4>
+                    <p>
+                        Provides connection-oriented communication and mechanisms
+                        for reliable and ordered delivery, including sequencing,
+                        acknowledgements, retransmission, and flow control.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>UDP</h3>
+                    <h4>User Datagram Protocol</h4>
+                    <p>
+                        Provides a simpler connectionless transport service
+                        without TCP's reliability and ordering mechanisms.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>TCP Reliability</h2>
+
+            <p>
+                TCP is designed to provide reliable, ordered delivery of data
+                between communicating applications.
+            </p>
+
+            <p>
+                TCP uses mechanisms such as sequence numbers and acknowledgements
+                to keep track of transmitted data. If data needs to be retransmitted,
+                TCP can send it again.
+            </p>
+
+            <p>
+                TCP also provides flow control so that a sender does not overwhelm
+                a receiver with more data than it can handle.
+            </p>
+
+            <p>
+                Conceptually, communication can look like this:
+            </p>
+
+            <p>
+                <strong>
+                    Data sent → Receiver acknowledges → Missing data detected →
+                    Data retransmitted
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Port Numbers</h2>
+
+            <p>
+                A computer can run many network applications at the same time.
+                An IP address identifies a network endpoint, but another mechanism
+                is needed to identify the particular application or service involved
+                in a communication.
+            </p>
+
+            <p>
+                Transport protocols use port numbers for this purpose.
+            </p>
+
+            <p>
+                A useful simplified way to think about this is:
+            </p>
+
+            <p>
+                <strong>
+                    IP address = Which network endpoint?
+                    <br>
+                    Port number = Which application or service?
+                </strong>
+            </p>
+
+            <p>
+                The actual identification of a communication endpoint can involve
+                an IP address together with a transport protocol and port number.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 3: Network</h2>
+
+            <p>
+                The Network layer is Layer 3. Its major responsibilities include
+                logical addressing and routing packets between different networks.
+            </p>
+
+            <p>
+                The Internet Protocol, or IP, is the major protocol associated
+                with this layer. IP includes IPv4 and IPv6.
+            </p>
+
+            <p>
+                Unlike local delivery, which happens within a particular network,
+                the Network layer allows packets to travel between interconnected
+                networks.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>IP and Routing</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>IP</h3>
+                    <h4>Logical Addressing</h4>
+                    <p>
+                        IP provides logical addressing information used to identify
+                        network endpoints and support communication between networks.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>IPv4</h3>
+                    <h4>32-Bit Addresses</h4>
+                    <p>
+                        IPv4 uses 32-bit addresses and remains widely deployed
+                        in networks around the world.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>IPv6</h3>
+                    <h4>128-Bit Addresses</h4>
+                    <p>
+                        IPv6 uses 128-bit addresses and provides a much larger
+                        address space than IPv4.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Routing</h3>
+                    <h4>Moving Between Networks</h4>
+                    <p>
+                        Routers use network-layer information to make forwarding
+                        decisions and move packets toward their destinations.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Packets</h2>
+
+            <p>
+                At the Network layer, the data is commonly referred to as a
+                packet.
+            </p>
+
+            <p>
+                When a transport-layer segment is passed to IP, IP adds its
+                own information, including source and destination addressing
+                information, creating an IP packet.
+            </p>
+
+            <p>
+                Conceptually:
+            </p>
+
+            <p>
+                <strong>
+                    Application data → TCP segment → IP packet
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 2: Data Link</h2>
+
+            <p>
+                The Data Link layer is Layer 2. It is concerned primarily with
+                communication across a local network link.
+            </p>
+
+            <p>
+                This layer deals with technologies such as Ethernet and Wi-Fi
+                and includes functions involving frames, local addressing,
+                media access, and error detection mechanisms provided by
+                particular link technologies.
+            </p>
+
+            <p>
+                This layer connects directly to concepts studied in earlier
+                modules, including MAC addresses, switches, Ethernet, and
+                wireless networking.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>MAC Addresses and Frames</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>MAC</h3>
+                    <h4>Local Addressing</h4>
+                    <p>
+                        Ethernet and other link technologies use MAC addressing
+                        for local network communication.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Frames</h3>
+                    <h4>Data Link Unit</h4>
+                    <p>
+                        At the Data Link layer, network-layer packets can be
+                        carried inside frames for transmission across a local link.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Switch</h3>
+                    <h4>Local Forwarding</h4>
+                    <p>
+                        Ethernet switches use MAC address information to make
+                        forwarding decisions within a local network.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>Ethernet</h3>
+                    <h4>Wired LAN Technology</h4>
+                    <p>
+                        Ethernet provides technologies for communication across
+                        wired local area networks.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Layer 1: Physical</h2>
+
+            <p>
+                The Physical layer is Layer 1 and is the lowest layer of the
+                OSI model. It is concerned with the actual transmission of
+                bits across a physical medium.
+            </p>
+
+            <p>
+                The physical medium can include copper cables, fiber-optic
+                cables, or wireless radio signals.
+            </p>
+
+            <p>
+                At this level, digital information is represented as physical
+                signals that can travel through the selected medium.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Physical Transmission</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Copper</h4>
+                    <p>
+                        Electrical signals can be used to represent and transmit
+                        digital information through copper cables.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Fiber Optic</h4>
+                    <p>
+                        Fiber-optic communication uses light to transmit
+                        information through optical fiber.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Wireless</h4>
+                    <p>
+                        Wireless technologies use radio signals to transmit
+                        information without a physical cable between devices.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Bits</h4>
+                    <p>
+                        Digital information is ultimately represented as
+                        sequences of bits that are transmitted as physical signals.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>How the Seven Layers Work Together</h2>
+
+            <p>
+                The seven layers should not be thought of as completely separate
+                systems. They work together to move information from an application
+                on the sending device to an application on the receiving device.
+            </p>
+
+            <p>
+                Each layer has its own responsibilities and provides services
+                to the layer above it. The information moves down the layers
+                on the sender and up the layers on the receiver.
+            </p>
+
+            <p>
+                A simplified view is:
+            </p>
+
+            <p>
+                <strong>
+                    Application → Presentation → Session → Transport →
+                    Network → Data Link → Physical
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Following Data Through the OSI Model</h2>
+
+            <p>
+                Imagine that a device is sending information to another device.
+                The application first creates the data that needs to be communicated.
+            </p>
+
+            <p>
+                At the Presentation layer, the information may be formatted,
+                encoded, compressed, or encrypted depending on the protocols
+                being used.
+            </p>
+
+            <p>
+                The Session layer can manage the communication session. The
+                Transport layer then handles end-to-end transport and can divide
+                the information into smaller units.
+            </p>
+
+            <p>
+                The Network layer adds logical addressing information and allows
+                packets to be routed toward the destination.
+            </p>
+
+            <p>
+                The Data Link layer prepares the packet for local transmission
+                using a technology such as Ethernet or Wi-Fi.
+            </p>
+
+            <p>
+                Finally, the Physical layer transmits the resulting information
+                as physical signals.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Data Units at Different Layers</h2>
+
+            <p>
+                As information moves through the lower layers, different terms
+                are commonly used to describe the resulting units of data.
+            </p>
+
+            <p>
+                <strong>
+                    Application data
+                    <br>
+                    ↓
+                    <br>
+                    Transport segment
+                    <br>
+                    ↓
+                    <br>
+                    Network packet
+                    <br>
+                    ↓
+                    <br>
+                    Data Link frame
+                    <br>
+                    ↓
+                    <br>
+                    Physical bits
+                </strong>
+            </p>
+
+            <p>
+                These names help network engineers identify which stage of
+                communication they are discussing.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Encapsulation</h2>
+
+            <p>
+                When data moves down the networking layers, each layer can add
+                information needed to perform its function. This process is
+                called encapsulation.
+            </p>
+
+            <p>
+                For example, transport information can be added to application
+                data. Network-layer information can then be added, followed by
+                Data Link information needed for local transmission.
+            </p>
+
+            <p>
+                A simplified representation is:
+            </p>
+
+            <p>
+                <strong>
+                    Data → Segment → Packet → Frame → Bits
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Decapsulation</h2>
+
+            <p>
+                When the information reaches the receiving device, the process
+                happens in the opposite direction.
+            </p>
+
+            <p>
+                The receiving device processes the physical signals, interprets
+                the Data Link frame, processes the Network-layer packet, handles
+                the Transport-layer information, and eventually delivers the
+                application data to the appropriate application.
+            </p>
+
+            <p>
+                This reverse process is called decapsulation.
+            </p>
+
+            <p>
+                Conceptually:
+            </p>
+
+            <p>
+                <strong>
+                    Bits → Frame → Packet → Segment → Application Data
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>OSI and the TCP/IP Model</h2>
+
+            <p>
+                The OSI model has seven layers, while the commonly used
+                four-layer TCP/IP model has four layers.
+            </p>
+
+            <p>
+                The models organize networking functions differently. The
+                OSI model separates Application, Presentation, and Session
+                functions into three layers, while the TCP/IP model generally
+                combines these functions into its Application layer.
+            </p>
+
+            <p>
+                Similarly, the OSI Data Link and Physical layers are generally
+                represented together as the Network Access layer in the
+                four-layer TCP/IP model.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>OSI to TCP/IP Mapping</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>OSI 7–5</h3>
+                    <h4>Application, Presentation, Session</h4>
+                    <p>
+                        These three OSI layers are broadly represented by the
+                        Application layer in the four-layer TCP/IP model.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>OSI 4</h3>
+                    <h4>Transport</h4>
+                    <p>
+                        The OSI Transport layer corresponds broadly to the
+                        Transport layer in TCP/IP.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>OSI 3</h3>
+                    <h4>Network</h4>
+                    <p>
+                        The OSI Network layer corresponds broadly to the
+                        Internet layer in TCP/IP.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>OSI 2–1</h3>
+                    <h4>Data Link and Physical</h4>
+                    <p>
+                        These two OSI layers are broadly represented by the
+                        Network Access layer in the four-layer TCP/IP model.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Key Idea</h2>
+
+            <p>
+                The OSI model is a framework for understanding network
+                communication by dividing the process into seven layers.
+                Each layer has a particular responsibility, from providing
+                application services at Layer 7 to transmitting physical
+                signals at Layer 1.
+            </p>
+
+            <p>
+                The most important thing is not simply memorizing the seven
+                names. You should understand how the layers cooperate to move
+                data from one application to another.
+            </p>
+
+            <p>
+                The OSI model also provides a useful way to understand
+                networking technologies you have already studied. HTTP and
+                other application protocols relate to the upper layers,
+                TCP and UDP operate at the Transport layer, IP operates at
+                the Network layer, Ethernet and MAC addressing relate to the
+                Data Link layer, and physical media operate at the Physical
+                layer.
+            </p>
+
+            <p>
+                The next step is to understand why the OSI model and TCP/IP
+                model are organized differently and what is meant by a
+                protocol model versus a reference model.
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```

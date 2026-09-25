@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Putting Everything Together | My Networking Journey</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">
+                My Networking Journey
+            </a>
+
+            <p class="module-label">Module 2</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section>
+            <h1 class="lesson-title">Putting Everything Together</h1>
+
+            <p>
+                So far, I have learned about the different components,
+                connections and roles that make up a computer network. Now it
+                is time to bring these ideas together and look at how they
+                work as one complete network.
+            </p>
+
+            <p>
+                This section connects the concepts from the previous topics
+                before moving into the practical Packet Tracer lab.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>A Simple Network</h2>
+
+            <p>
+                A basic network can contain several different devices, each
+                performing a different role.
+            </p>
+
+            <div class="definition">
+                <strong>
+                    Laptop → Access Point → Switch → Router → ISP →
+                    Internet → Server
+                </strong>
+            </div>
+
+            <p>
+                This is not the only possible network design, but it gives us
+                a simple way to understand how the different components we
+                have studied can work together.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 1: The End Device</h2>
+
+            <p>
+                Everything begins with an end device such as a laptop,
+                desktop computer, smartphone or printer.
+            </p>
+
+            <p>
+                The device needs a network interface, such as an Ethernet
+                interface or Wi-Fi adapter, so that it can communicate with
+                the network.
+            </p>
+
+            <p>
+                For example, I might use my laptop to open a website.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 2: Connecting to the Network</h2>
+
+            <p>
+                The laptop needs a physical or wireless connection to reach
+                the local network.
+            </p>
+
+            <p>
+                With Wi-Fi, the laptop communicates wirelessly with an access
+                point.
+            </p>
+
+            <p>
+                With Ethernet, the laptop can connect directly to a switch or
+                another appropriate network device using an Ethernet cable.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 3: The Access Point</h2>
+
+            <p>
+                When a wireless device connects to an access point, the access
+                point provides the wireless connection between the device and
+                the network.
+            </p>
+
+            <p>
+                In many networks, the access point is connected to a switch
+                using Ethernet.
+            </p>
+
+            <p>
+                This allows wireless devices to communicate with other devices
+                on the network.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 4: The Switch</h2>
+
+            <p>
+                The switch connects devices within the local network.
+            </p>
+
+            <p>
+                It can connect computers, servers, printers, access points and
+                other network devices.
+            </p>
+
+            <p>
+                When traffic arrives at the switch, the switch uses MAC
+                addresses to determine where Ethernet frames should be
+                forwarded.
+            </p>
+
+            <div class="note">
+                <strong>Remember:</strong>
+                A switch mainly connects devices within the same local
+                network.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Step 5: The Router</h2>
+
+            <p>
+                If the destination is outside the local network, the traffic
+                needs to reach a router.
+            </p>
+
+            <p>
+                The router connects different networks and uses IP addressing
+                to determine where traffic should go.
+            </p>
+
+            <p>
+                In a home or school network, the router can also provide other
+                functions such as DHCP, NAT, firewall protection and sometimes
+                Wi-Fi.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 6: The ISP</h2>
+
+            <p>
+                The router's connection to the Internet usually goes through
+                an Internet Service Provider.
+            </p>
+
+            <p>
+                The ISP provides connectivity between the local network and
+                the wider Internet.
+            </p>
+
+            <p>
+                Different ISPs can use different technologies to provide this
+                connection, such as fiber or mobile networks.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 7: The Internet</h2>
+
+            <p>
+                Once traffic leaves the local network and enters the ISP's
+                network, it can travel through many interconnected networks
+                before reaching its destination.
+            </p>
+
+            <p>
+                Routers along the path forward packets toward their
+                destination.
+            </p>
+
+            <p>
+                The Internet is therefore not one single device or network.
+                It is made up of many interconnected networks.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Step 8: The Server</h2>
+
+            <p>
+                Eventually, the request can reach a server providing the
+                service I requested.
+            </p>
+
+            <p>
+                For example, when I open a website, my browser communicates
+                with a web server.
+            </p>
+
+            <p>
+                The server processes the request and sends information back
+                toward my device.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Following the Request and Response</h2>
+
+            <p>
+                We can now follow a simple website request from beginning to
+                end.
+            </p>
+
+            <ol>
+                <li>
+                    I open a website on my laptop.
+                </li>
+
+                <li>
+                    My laptop connects to the local network using Wi-Fi or
+                    Ethernet.
+                </li>
+
+                <li>
+                    The traffic reaches the access point or switch.
+                </li>
+
+                <li>
+                    The switch forwards the traffic toward the router.
+                </li>
+
+                <li>
+                    The router forwards traffic outside the local network.
+                </li>
+
+                <li>
+                    The ISP provides access to the wider Internet.
+                </li>
+
+                <li>
+                    Routers forward the traffic toward the destination
+                    network.
+                </li>
+
+                <li>
+                    The destination server receives the request.
+                </li>
+
+                <li>
+                    The server sends a response back through the network.
+                </li>
+
+                <li>
+                    The response eventually reaches my laptop.
+                </li>
+            </ol>
+        </section>
+
+
+        <section>
+            <h2>Where the Different Concepts Fit</h2>
+
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Role in the Network</th>
+                </tr>
+
+                <tr>
+                    <td>NIC</td>
+                    <td>Provides a network interface for a device.</td>
+                </tr>
+
+                <tr>
+                    <td>Ethernet</td>
+                    <td>Provides wired network communication.</td>
+                </tr>
+
+                <tr>
+                    <td>Wi-Fi</td>
+                    <td>Provides wireless network communication.</td>
+                </tr>
+
+                <tr>
+                    <td>Access Point</td>
+                    <td>Connects wireless devices to the network.</td>
+                </tr>
+
+                <tr>
+                    <td>Switch</td>
+                    <td>Connects devices within a local network.</td>
+                </tr>
+
+                <tr>
+                    <td>Router</td>
+                    <td>Connects different networks and forwards IP traffic.</td>
+                </tr>
+
+                <tr>
+                    <td>ISP</td>
+                    <td>Provides access to the Internet.</td>
+                </tr>
+
+                <tr>
+                    <td>DNS</td>
+                    <td>Helps translate domain names into IP addresses.</td>
+                </tr>
+
+                <tr>
+                    <td>Server</td>
+                    <td>Provides services or resources to clients.</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section>
+            <h2>One Device Can Have Multiple Roles</h2>
+
+            <p>
+                In real networks, the devices and functions are not always
+                separated into individual physical devices.
+            </p>
+
+            <p>
+                For example, a home Internet device may contain a router,
+                switch, wireless access point, firewall and DHCP server in one
+                box.
+            </p>
+
+            <p>
+                This is why the network in a home may look much simpler than
+                the networks used by large organizations.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>The Complete Picture</h2>
+
+            <p>
+                The most important thing is not memorizing a single network
+                diagram. It is understanding what each component does and how
+                the components depend on one another.
+            </p>
+
+            <div class="definition">
+                <strong>
+                    End Device
+                    → Connection
+                    → Access Point / Switch
+                    → Router
+                    → ISP
+                    → Internet
+                    → Destination Server
+                </strong>
+            </div>
+
+            <p>
+                If something goes wrong, I can use this understanding to think
+                about where the problem might be. Is the device connected? Is
+                the local network working? Can the device reach the gateway?
+                Is the router connected to the ISP? Is DNS working? Can the
+                destination be reached?
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What I Am Ready to Practise</h2>
+
+            <p>
+                I now have the basic knowledge needed to build a simple
+                network and test how the different components communicate.
+            </p>
+
+            <p>
+                In the next section, I will use Cisco Packet Tracer to build
+                and test a network practically.
+            </p>
+
+            <p>
+                The Packet Tracer activity will allow me to move from
+                understanding network concepts to actually configuring and
+                testing them.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What to Remember</h2>
+
+            <ul>
+                <li>End devices need a network interface to communicate.</li>
+                <li>Devices can connect using Ethernet or Wi-Fi.</li>
+                <li>Access points provide wireless connectivity.</li>
+                <li>Switches connect devices within a local network.</li>
+                <li>Routers connect different networks.</li>
+                <li>ISPs provide access to the wider Internet.</li>
+                <li>Servers provide services and resources to clients.</li>
+                <li>Different network functions can sometimes be combined into one device.</li>
+                <li>Understanding the path of traffic helps with network troubleshooting.</li>
+            </ul>
+        </section>
+
+
+        <div class="page-navigation">
+            <a href="internet-connectivity.html">
+                Previous: Internet Connectivity
+            </a>
+
+            <a href="packet-tracer-lab.html">
+                Next: Packet Tracer Lab
+            </a>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p>My Networking Journey | Module 2</p>
+        </div>
+    </footer>
+
+</body>
+</html>

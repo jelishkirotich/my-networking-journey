@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Clients and Servers | Module 2 | My Networking Journey</title>
+
+<link rel="stylesheet" href="styles.css">
+```
+
+</head>
+
+<body>
+
+```
+<header class="site-header">
+    <div class="container">
+        <a href="../index.html" class="site-title">
+            My Networking Journey
+        </a>
+
+        <p class="module-label">Module 2 | Clients and Servers</p>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- INTRODUCTION -->
+    <section class="intro">
+
+        <h1>Clients and Servers</h1>
+
+        <p>
+            So far, I have learned about network components and how
+            devices connect to each other. Now I want to understand what
+            actually happens when devices use a network service.
+        </p>
+
+        <p>
+            This is where the idea of clients and servers becomes
+            important. A client requests a service, while a server
+            provides that service.
+        </p>
+
+    </section>
+
+
+    <!-- WHAT IS A CLIENT -->
+    <section>
+
+        <h2>1. What Is a Client?</h2>
+
+        <p>
+            A client is a device or application that requests a service
+            or resource from another system.
+        </p>
+
+        <p>
+            The client is often the device that the user is directly
+            interacting with.
+        </p>
+
+        <p>Examples of clients include:</p>
+
+        <ul>
+            <li>Laptop</li>
+            <li>Desktop computer</li>
+            <li>Smartphone</li>
+            <li>Tablet</li>
+            <li>Web browser</li>
+            <li>Email application</li>
+            <li>Mobile application</li>
+        </ul>
+
+        <div class="definition">
+
+            <strong>Simple definition:</strong>
+
+            <p>
+                A client is a device or application that asks another
+                system for a service or resource.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHAT IS A SERVER -->
+    <section>
+
+        <h2>2. What Is a Server?</h2>
+
+        <p>
+            A server is a system that provides a service or resource to
+            other devices or applications.
+        </p>
+
+        <p>
+            A server can be a physical computer, a virtual machine, or
+            software running on a computer.
+        </p>
+
+        <p>
+            Examples include:
+        </p>
+
+        <ul>
+            <li>Web server</li>
+            <li>File server</li>
+            <li>Database server</li>
+            <li>DNS server</li>
+            <li>DHCP server</li>
+            <li>Email server</li>
+            <li>Application server</li>
+        </ul>
+
+        <div class="definition">
+
+            <strong>Simple definition:</strong>
+
+            <p>
+                A server provides services or resources that clients can
+                request and use.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLIENT SERVER MODEL -->
+    <section>
+
+        <h2>3. The Client-Server Model</h2>
+
+        <p>
+            The client-server model describes a communication pattern in
+            which a client requests something and a server responds to
+            that request.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                <strong>Client</strong>
+                →
+                <strong>Request</strong>
+                →
+                <strong>Server</strong>
+            </p>
+
+            <p>
+                <strong>Server</strong>
+                →
+                <strong>Response</strong>
+                →
+                <strong>Client</strong>
+            </p>
+
+        </div>
+
+        <p>
+            This does not mean that the client and server must be two
+            completely different types of computers. The terms describe
+            the roles being performed during communication.
+        </p>
+
+        <p>
+            For example, when I use a web browser to open a website, my
+            computer is acting as a client and the web server is providing
+            the requested website.
+        </p>
+
+    </section>
+
+
+    <!-- WEB EXAMPLE -->
+    <section>
+
+        <h2>4. Example: Opening a Website</h2>
+
+        <p>
+            One of the easiest ways to understand client-server
+            communication is to think about what happens when I open a
+            website.
+        </p>
+
+        <p>
+            Suppose I enter a website address into my browser.
+        </p>
+
+        <ol>
+
+            <li>
+                I enter the website address into the browser.
+            </li>
+
+            <li>
+                The client device prepares a request for the required
+                resource.
+            </li>
+
+            <li>
+                The request travels through the network.
+            </li>
+
+            <li>
+                The request eventually reaches the appropriate server.
+            </li>
+
+            <li>
+                The server processes the request.
+            </li>
+
+            <li>
+                The server sends a response back.
+            </li>
+
+            <li>
+                The browser receives the response and displays the
+                website.
+            </li>
+
+        </ol>
+
+        <div class="definition">
+
+            <p>
+                <strong>Browser</strong>
+                →
+                <strong>Network</strong>
+                →
+                <strong>Web Server</strong>
+            </p>
+
+            <p>
+                <strong>Web Server</strong>
+                →
+                <strong>Network</strong>
+                →
+                <strong>Browser</strong>
+            </p>
+
+        </div>
+
+        <p>
+            This is a simplified explanation. Many additional processes
+            can happen during an actual web request, including DNS
+            resolution, routing, transport connections and encryption.
+        </p>
+
+    </section>
+
+
+    <!-- DNS -->
+    <section>
+
+        <h2>5. DNS Server</h2>
+
+        <p>
+            DNS stands for <strong>Domain Name System</strong>.
+        </p>
+
+        <p>
+            DNS helps translate human-readable domain names into IP
+            addresses that network devices can use to locate services.
+        </p>
+
+        <p>
+            For example, instead of having to remember the IP address of
+            a website, I can use its domain name.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                <strong>Domain name</strong>
+                →
+                <strong>DNS</strong>
+                →
+                <strong>IP address</strong>
+            </p>
+
+        </div>
+
+        <p>
+            DNS is therefore one of the important services that can be
+            used before a client communicates with a server.
+        </p>
+
+        <div class="note">
+
+            <strong>Important:</strong>
+
+            <p>
+                DNS does not normally deliver the website itself. Its
+                main job is helping find the IP address associated with a
+                domain name.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DHCP -->
+    <section>
+
+        <h2>6. DHCP Server</h2>
+
+        <p>
+            DHCP stands for <strong>Dynamic Host Configuration
+            Protocol</strong>.
+        </p>
+
+        <p>
+            DHCP can automatically provide network configuration
+            information to devices when they join a network.
+        </p>
+
+        <p>
+            This can include information such as:
+        </p>
+
+        <ul>
+            <li>IP address</li>
+            <li>Subnet mask</li>
+            <li>Default gateway</li>
+            <li>DNS server information</li>
+        </ul>
+
+        <div class="definition">
+
+            <p>
+                Instead of manually configuring every computer, a DHCP
+                server can provide network settings automatically.
+            </p>
+
+        </div>
+
+        <p>
+            This is especially useful on networks with many devices.
+        </p>
+
+    </section>
+
+
+    <!-- FILE SERVER -->
+    <section>
+
+        <h2>7. File Server</h2>
+
+        <p>
+            A file server provides centralized access to files and
+            folders over a network.
+        </p>
+
+        <p>
+            For example, an organization might store shared documents on
+            a file server so that authorized employees can access them
+            from their computers.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Computer A
+                →
+                <strong>File Server</strong>
+                ←
+                Computer B
+            </p>
+
+        </div>
+
+        <p>
+            Instead of keeping every shared file on every computer, the
+            organization can keep shared resources in a centralized
+            location.
+        </p>
+
+    </section>
+
+
+    <!-- DATABASE SERVER -->
+    <section>
+
+        <h2>8. Database Server</h2>
+
+        <p>
+            A database server provides access to a database and handles
+            requests from applications or clients that need to store or
+            retrieve data.
+        </p>
+
+        <p>
+            For example, a university application might use a database
+            server to store:
+        </p>
+
+        <ul>
+            <li>Student information</li>
+            <li>Course information</li>
+            <li>Registration records</li>
+            <li>Examination information</li>
+            <li>Financial records</li>
+        </ul>
+
+        <p>
+            A user normally does not communicate directly with the
+            database server through a normal web browser. Instead, a
+            client application or application server may communicate with
+            the database.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                <strong>User</strong>
+                →
+                <strong>Application</strong>
+                →
+                <strong>Database Server</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WEB SERVER -->
+    <section>
+
+        <h2>9. Web Server</h2>
+
+        <p>
+            A web server provides web content and responds to requests
+            from web clients such as browsers.
+        </p>
+
+        <p>
+            When I visit a website, my browser can send a request to a
+            web server.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Browser
+                →
+                Request
+                →
+                Web Server
+            </p>
+
+            <p>
+                Web Server
+                →
+                Web Content
+                →
+                Browser
+            </p>
+
+        </div>
+
+        <p>
+            The web server may provide HTML, CSS, JavaScript, images,
+            files or other resources required by the website.
+        </p>
+
+    </section>
+
+
+    <!-- CLIENT SERVER OVER NETWORK -->
+    <section>
+
+        <h2>10. How Clients and Servers Connect</h2>
+
+        <p>
+            A client and server still need a network connection before
+            they can communicate.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Client Computer
+                →
+                Switch
+                →
+                Router
+                →
+                Network
+                →
+                Server
+            </p>
+
+        </div>
+
+        <p>
+            Depending on where the server is located, the path may be
+            much shorter or much longer.
+        </p>
+
+        <p>
+            A server could be located:
+        </p>
+
+        <ul>
+            <li>On the same local network</li>
+            <li>In another building</li>
+            <li>In another city</li>
+            <li>In a data center</li>
+            <li>In a cloud environment</li>
+        </ul>
+
+        <p>
+            Regardless of the location, the basic idea remains:
+            the client needs to reach the server through the network.
+        </p>
+
+    </section>
+
+
+    <!-- LOCAL SERVER -->
+    <section>
+
+        <h2>11. Client and Server on the Same Network</h2>
+
+        <p>
+            A client and server do not necessarily need to be on
+            completely different networks.
+        </p>
+
+        <p>
+            For example, a school could have computers and a file server
+            connected to the same local network.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Computer 1
+                ─┐
+            </p>
+
+            <p>
+                Computer 2
+                ─┼→ <strong>Switch</strong> → <strong>File Server</strong>
+            </p>
+
+            <p>
+                Computer 3
+                ─┘
+            </p>
+
+        </div>
+
+        <p>
+            The switch provides connectivity between the devices on the
+            local network.
+        </p>
+
+    </section>
+
+
+    <!-- INTERNET SERVER -->
+    <section>
+
+        <h2>12. Client and Server Across the Internet</h2>
+
+        <p>
+            The client and server can also be separated by many networks.
+        </p>
+
+        <p>
+            For example, when I access a website hosted in another
+            country, the request may travel through multiple routers and
+            networks before reaching the server.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                My Laptop
+                →
+                Access Point
+                →
+                Switch
+                →
+                Router
+                →
+                Internet
+                →
+                Web Server
+            </p>
+
+        </div>
+
+        <p>
+            The server then sends the response back through the network
+            toward my device.
+        </p>
+
+        <p>
+            This connects the ideas from the previous topics: devices,
+            connections, switches, routers and servers all work together.
+        </p>
+
+    </section>
+
+
+    <!-- REQUEST RESPONSE -->
+    <section>
+
+        <h2>13. Request and Response</h2>
+
+        <p>
+            The basic client-server interaction can be understood using
+            two important words: <strong>request</strong> and
+            <strong>response</strong>.
+        </p>
+
+        <h3>Request</h3>
+
+        <p>
+            The client asks the server to perform an action or provide
+            information.
+        </p>
+
+        <h3>Response</h3>
+
+        <p>
+            The server processes the request and sends information or a
+            result back to the client.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Client → Request → Server
+            </p>
+
+            <p>
+                Server → Response → Client
+            </p>
+
+        </div>
+
+        <p>
+            This simple pattern appears in many network applications.
+        </p>
+
+    </section>
+
+
+    <!-- MULTIPLE CLIENTS -->
+    <section>
+
+        <h2>14. One Server Can Serve Many Clients</h2>
+
+        <p>
+            A server can communicate with multiple clients.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                Client 1 ─┐
+            </p>
+
+            <p>
+                Client 2 ─┼→ <strong>Server</strong>
+            </p>
+
+            <p>
+                Client 3 ─┤
+            </p>
+
+            <p>
+                Client 4 ─┘
+            </p>
+
+        </div>
+
+        <p>
+            For example, thousands or even millions of users can access
+            services provided by large-scale servers and server
+            infrastructures.
+        </p>
+
+        <p>
+            In larger environments, the workload can be distributed
+            across multiple servers instead of relying on one physical
+            computer.
+        </p>
+
+    </section>
+
+
+    <!-- CLIENT SERVER VS P2P -->
+    <section>
+
+        <h2>15. Client-Server vs Peer-to-Peer</h2>
+
+        <p>
+            Not every network uses a dedicated central server.
+        </p>
+
+        <p>
+            Another approach is called <strong>peer-to-peer</strong>, or
+            P2P.
+        </p>
+
+        <p>
+            In a peer-to-peer network, devices can share resources
+            directly with one another rather than relying on a dedicated
+            central server.
+        </p>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Client-Server</th>
+                    <th>Peer-to-Peer</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Main structure</td>
+                    <td>Centralized services</td>
+                    <td>Devices can share directly</td>
+                </tr>
+
+                <tr>
+                    <td>Dedicated server</td>
+                    <td>Usually present</td>
+                    <td>Not required</td>
+                </tr>
+
+                <tr>
+                    <td>Management</td>
+                    <td>More centralized</td>
+                    <td>More distributed</td>
+                </tr>
+
+                <tr>
+                    <td>Typical use</td>
+                    <td>Organizations and larger networks</td>
+                    <td>Small or simple networks</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p>
+            Cisco describes client/server LANs as networks where clients
+            connect to a central server, while peer-to-peer LANs allow
+            devices to share resources more directly.
+        </p>
+
+    </section>
+
+
+    <!-- ROLES CAN CHANGE -->
+    <section>
+
+        <h2>16. A Device Can Have Different Roles</h2>
+
+        <p>
+            The words "client" and "server" describe roles in a
+            communication, not necessarily permanent identities.
+        </p>
+
+        <p>
+            A computer can act as a client when it requests a file from
+            another computer.
+        </p>
+
+        <p>
+            The same computer could provide a service to another device
+            and therefore act as a server in that particular
+            communication.
+        </p>
+
+        <div class="note">
+
+            <strong>Important:</strong>
+
+            <p>
+                Client and server describe what a device or application
+                is doing in a particular communication.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVER DOES NOT MEAN HARDWARE ONLY -->
+    <section>
+
+        <h2>17. Server Does Not Always Mean a Special Computer</h2>
+
+        <p>
+            When people hear the word "server", they often imagine a
+            large computer sitting in a data center.
+        </p>
+
+        <p>
+            A server can certainly be a dedicated physical machine, but
+            the term can also refer to software providing a service.
+        </p>
+
+        <p>
+            For example, web server software can run on a physical server,
+            virtual machine or cloud infrastructure.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                <strong>Server</strong> can refer to the system providing
+                the service or to the software performing the server role,
+                depending on the context.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PUTTING IT TOGETHER -->
+    <section>
+
+        <h2>18. Putting It All Together</h2>
+
+        <p>
+            Now I can combine the ideas from the first three topics of
+            Module 2.
+        </p>
+
+        <div class="definition">
+
+            <p>
+                <strong>Laptop</strong>
+                →
+                Wi-Fi
+                →
+                <strong>Access Point</strong>
+                →
+                Ethernet
+                →
+                <strong>Switch</strong>
+                →
+                <strong>Router</strong>
+                →
+                Internet
+                →
+                <strong>Web Server</strong>
+            </p>
+
+        </div>
+
+        <p>
+            Each component has a different role:
+        </p>
+
+        <ol>
+
+            <li>
+                The laptop is the client.
+            </li>
+
+            <li>
+                Its wireless NIC provides network connectivity.
+            </li>
+
+            <li>
+                The access point provides wireless access.
+            </li>
+
+            <li>
+                The switch provides local network connectivity.
+            </li>
+
+            <li>
+                The router connects the local network to other networks.
+            </li>
+
+            <li>
+                The Internet provides connectivity across many networks.
+            </li>
+
+            <li>
+                The web server provides the requested web service.
+            </li>
+
+        </ol>
+
+        <p>
+            This is the point where the different networking concepts
+            begin to connect together.
+        </p>
+
+    </section>
+
+
+    <!-- WHAT TO REMEMBER -->
+    <section>
+
+        <h2>19. What to Remember</h2>
+
+        <ul>
+
+            <li>
+                A <strong>client</strong> requests a service or resource.
+            </li>
+
+            <li>
+                A <strong>server</strong> provides a service or resource.
+            </li>
+
+            <li>
+                Client-server communication commonly follows a
+                request-and-response pattern.
+            </li>
+
+            <li>
+                Web browsers and web servers are a common example of the
+                client-server model.
+            </li>
+
+            <li>
+                DNS helps clients find the IP address associated with
+                domain names.
+            </li>
+
+            <li>
+                DHCP can automatically provide network configuration
+                information to clients.
+            </li>
+
+            <li>
+                Servers can provide many different services, including
+                web, file, database, DNS and email services.
+            </li>
+
+            <li>
+                A client and server can be on the same local network or
+                separated by many networks.
+            </li>
+
+            <li>
+                A server can communicate with many clients.
+            </li>
+
+            <li>
+                Client and server describe roles in communication rather
+                than necessarily describing permanent device types.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- GO DEEPER -->
+    <section>
+
+        <h2>20. Go Deeper</h2>
+
+        <p>
+            These resources can help me understand client-server
+            communication and network architecture in more detail.
+        </p>
+
+        <h3>Cisco: Local Area Networks</h3>
+
+        <p>
+            Cisco explains client/server and peer-to-peer LANs and how
+            clients connect to servers to access services and resources.
+        </p>
+
+        <p>
+            <a
+                href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-lan-local-area-network.html"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Cisco: What Is a LAN?
+            </a>
+        </p>
+
+        <h3>Cisco: Network Architecture</h3>
+
+        <p>
+            Cisco's network architecture material explains how network
+            devices and services are structured to provide connectivity
+            to client devices.
+        </p>
+
+        <p>
+            <a
+                href="https://www.cisco.com/site/us/en/learn/topics/networking/what-is-network-architecture.html"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Cisco: What Is Network Architecture?
+            </a>
+        </p>
+
+        <h3>Professor Messer - CompTIA Network+</h3>
+
+        <p>
+            Professor Messer's free N10-009 Network+ course provides
+            deeper networking knowledge that builds on these concepts.
+        </p>
+
+        <p>
+            <a
+                href="https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Professor Messer N10-009 Free Training Course
+            </a>
+        </p>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+    <section>
+
+        <h2>Next Topic</h2>
+
+        <p>
+            I now understand how clients request services and how servers
+            provide them. The next step is to understand how a local
+            network actually reaches the Internet.
+        </p>
+
+        <div class="page-navigation">
+
+            <a href="device-connections.html">
+                Previous: Device Connections
+            </a>
+
+            <a href="internet-connectivity.html">
+                Next: Internet Connectivity
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container">
+        <p>My Networking Journey | Module 2</p>
+    </div>
+</footer>
+```
+
+</body>
+</html>
+```
+
+### Where we are now
+
+Your Module 2 learning path is now:
+
+**01. Network Components**
+You learned *what the devices are*.
+
+**02. Network Connections**
+You learned *how the components connect to form a network*.
+
+**03. Device Connections**
+You went deeper into *Ethernet, ports, cables, fiber, Wi-Fi and physical connections*.
+
+**04. Clients and Servers**
+You now learn *what those connected devices actually do when they communicate*.
+
+The next page, **`internet-connectivity.html`**, is where these pieces get even more interesting: we'll follow the path from **your laptop → Wi-Fi → access point → switch → router → ISP → Internet → remote server**, and introduce the roles of **IP address, default gateway, ISP, modem/ONT and DNS** without going too deep into routing yet.

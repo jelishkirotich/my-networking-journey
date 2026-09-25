@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internet Connectivity | My Networking Journey</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">
+                My Networking Journey
+            </a>
+
+            <p class="module-label">Module 2</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section>
+            <h1 class="lesson-title">Internet Connectivity</h1>
+
+            <p>
+                In the previous topics, we looked at network components,
+                connections, devices, clients and servers. Now we can look at
+                how a local network connects to the Internet.
+            </p>
+
+            <p>
+                When I open a website on my laptop, my laptop does not connect
+                directly to the web server. The request passes through several
+                devices and networks before reaching its destination.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What Is the Internet?</h2>
+
+            <p>
+                The Internet is a global network made up of many interconnected
+                networks. These networks belong to homes, schools, businesses,
+                organizations, Internet Service Providers and other networks
+                around the world.
+            </p>
+
+            <p>
+                My local network is only one small network. To communicate with
+                devices outside that network, it needs a connection to another
+                network and eventually to the wider Internet.
+            </p>
+
+            <div class="definition">
+                <strong>Simple idea:</strong>
+                The Internet is a network of networks that allows devices and
+                networks around the world to communicate.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Local Network vs Internet</h2>
+
+            <p>
+                A local network, or LAN, connects devices within a limited
+                location such as a home, school, office or laboratory.
+            </p>
+
+            <p>
+                The Internet connects many different networks together.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Local Network</th>
+                    <th>Internet</th>
+                </tr>
+
+                <tr>
+                    <td>Usually covers a limited area</td>
+                    <td>Connects networks across the world</td>
+                </tr>
+
+                <tr>
+                    <td>Devices may connect through a switch or Wi-Fi</td>
+                    <td>Many networks and routers are involved</td>
+                </tr>
+
+                <tr>
+                    <td>Usually controlled by one organization or person</td>
+                    <td>Made up of many independently operated networks</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section>
+            <h2>How Does My Network Reach the Internet?</h2>
+
+            <p>
+                A typical connection can look like this:
+            </p>
+
+            <div class="definition">
+                <strong>
+                    Laptop → Wi-Fi → Access Point → Switch → Router →
+                    ISP → Internet → Web Server
+                </strong>
+            </div>
+
+            <p>
+                Not every network will have exactly these devices. For example,
+                a home network may combine several functions into one device.
+                However, the basic idea remains the same: the local network
+                needs a device that can forward traffic toward other networks.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>The Router's Role</h2>
+
+            <p>
+                The router connects different networks and decides where
+                network traffic should be forwarded.
+            </p>
+
+            <p>
+                In a home or school network, the router is commonly the device
+                that connects the local network to the Internet through an ISP.
+            </p>
+
+            <p>
+                For example, when my laptop wants to communicate with a server
+                on another network, it sends the traffic toward its router.
+                The router then forwards the traffic toward the destination.
+            </p>
+
+            <div class="note">
+                <strong>Remember:</strong>
+                A switch mainly connects devices within a network, while a
+                router connects different networks.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>What Is an ISP?</h2>
+
+            <p>
+                ISP stands for <strong>Internet Service Provider</strong>.
+            </p>
+
+            <p>
+                An ISP provides the connection that allows a home, school,
+                business or other organization to access the Internet.
+            </p>
+
+            <p>
+                Examples of ISPs in Kenya include companies such as Safaricom,
+                Airtel and various fiber Internet providers.
+            </p>
+
+            <p>
+                The connection between the customer's network and the ISP can
+                use different technologies, including fiber, mobile networks,
+                cable or other broadband technologies.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Modem and ONT</h2>
+
+            <p>
+                Depending on the type of Internet connection, additional
+                equipment may be used between the customer's network and the
+                ISP.
+            </p>
+
+            <h3>Modem</h3>
+
+            <p>
+                A modem is a device used with certain types of Internet
+                connections to communicate with the ISP's network over the
+                provider's transmission medium.
+            </p>
+
+            <h3>ONT</h3>
+
+            <p>
+                ONT stands for <strong>Optical Network Terminal</strong>. It is
+                commonly used with fiber Internet connections and provides the
+                connection between the fiber network and the customer's
+                Ethernet network.
+            </p>
+
+            <p>
+                Modern Internet equipment can combine several functions into
+                one device. A single home gateway may contain routing,
+                switching, Wi-Fi, firewall and DHCP functions, and depending
+                on the connection, modem or other access equipment may also be
+                integrated.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What Is a Default Gateway?</h2>
+
+            <p>
+                A default gateway is the device that a host uses when it needs
+                to communicate with a destination outside its local network.
+            </p>
+
+            <p>
+                In many home and school networks, the default gateway is the
+                local router.
+            </p>
+
+            <p>
+                For example, suppose my laptop has an IP address of
+                <strong>192.168.1.10</strong> and the router has an address of
+                <strong>192.168.1.1</strong>.
+            </p>
+
+            <p>
+                If the laptop needs to communicate with another device on its
+                local network, it may communicate directly with that device.
+                If the destination is outside the local network, the laptop
+                sends the traffic to its default gateway.
+            </p>
+
+            <div class="definition">
+                <strong>Simple way to remember:</strong>
+                The default gateway is the way out of my local network.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Private and Public IP Addresses</h2>
+
+            <p>
+                Devices on a local network commonly use private IP addresses.
+                These addresses are used inside local networks and are not
+                directly routable across the public Internet.
+            </p>
+
+            <p>
+                Some commonly used private IPv4 ranges are:
+            </p>
+
+            <ul>
+                <li>10.0.0.0 to 10.255.255.255</li>
+                <li>172.16.0.0 to 172.31.255.255</li>
+                <li>192.168.0.0 to 192.168.255.255</li>
+            </ul>
+
+            <p>
+                A public IP address is used for communication across the
+                Internet. Your ISP or another network provider may assign a
+                public address to the connection.
+            </p>
+
+            <p>
+                This is one reason the IP address shown on your laptop may be
+                different from the public IP address associated with your
+                Internet connection.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What Is NAT?</h2>
+
+            <p>
+                NAT stands for <strong>Network Address Translation</strong>.
+            </p>
+
+            <p>
+                NAT allows private IP addresses used inside a local network to
+                communicate with destinations on the Internet by translating
+                network addresses at the boundary of the local network.
+            </p>
+
+            <p>
+                This means that many devices inside a home or school network
+                can share a public Internet connection.
+            </p>
+
+            <div class="definition">
+                <strong>Example:</strong>
+                Several devices may have private addresses such as
+                192.168.1.10, 192.168.1.11 and 192.168.1.12, while they share
+                one public Internet connection through the router.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>DNS and Internet Connectivity</h2>
+
+            <p>
+                We previously learned that DNS translates domain names into IP
+                addresses.
+            </p>
+
+            <p>
+                When I type:
+            </p>
+
+            <pre><code>www.example.com</code></pre>
+
+            <p>
+                my device needs to find the IP address associated with that
+                domain before it can communicate with the server.
+            </p>
+
+            <p>
+                This means DNS is an important part of accessing websites, but
+                DNS is not the same thing as the Internet connection itself.
+            </p>
+
+            <div class="note">
+                <strong>Important:</strong>
+                A device can be connected to Wi-Fi but still be unable to
+                access websites if there is a problem with the router, ISP,
+                DNS or another part of the connection.
+            </div>
+        </section>
+
+
+        <section>
+            <h2>What Happens When I Open a Website?</h2>
+
+            <p>
+                Let's follow a simple example. I open my laptop and type a
+                website address into my browser.
+            </p>
+
+            <ol>
+                <li>
+                    My laptop connects to the local network using Wi-Fi or
+                    Ethernet.
+                </li>
+
+                <li>
+                    If I use Wi-Fi, the wireless traffic reaches the access
+                    point.
+                </li>
+
+                <li>
+                    The access point forwards the traffic into the wired
+                    network.
+                </li>
+
+                <li>
+                    The switch forwards the traffic toward the router.
+                </li>
+
+                <li>
+                    The router acts as the gateway to networks outside the
+                    local network.
+                </li>
+
+                <li>
+                    The router forwards the traffic toward the ISP.
+                </li>
+
+                <li>
+                    The ISP provides access to the wider Internet.
+                </li>
+
+                <li>
+                    The traffic eventually reaches the network containing the
+                    destination server.
+                </li>
+
+                <li>
+                    The server sends a response back through the network.
+                </li>
+            </ol>
+
+            <div class="definition">
+                <strong>
+                    Laptop → Access Point → Switch → Router → ISP →
+                    Internet → Server → Response back to Laptop
+                </strong>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Why Can Wi-Fi Work but the Internet Not Work?</h2>
+
+            <p>
+                Wi-Fi and Internet access are related, but they are not the
+                same thing.
+            </p>
+
+            <p>
+                Your laptop can successfully connect to a wireless access point
+                while the network still has no working Internet connection.
+            </p>
+
+            <p>
+                For example, the problem could be:
+            </p>
+
+            <ul>
+                <li>The router is not connected to the ISP.</li>
+                <li>The ISP connection is down.</li>
+                <li>The device has incorrect IP configuration.</li>
+                <li>The default gateway is unreachable.</li>
+                <li>DNS is not working.</li>
+                <li>A network device has failed.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Basic Internet Connectivity Troubleshooting</h2>
+
+            <p>
+                When a device cannot access the Internet, I can check the
+                connection step by step instead of immediately assuming that
+                the Internet itself is down.
+            </p>
+
+            <ol>
+                <li>
+                    Check whether the device is connected to Wi-Fi or Ethernet.
+                </li>
+
+                <li>
+                    Check whether the device has an IP address.
+                </li>
+
+                <li>
+                    Check the default gateway.
+                </li>
+
+                <li>
+                    Test communication with the gateway.
+                </li>
+
+                <li>
+                    Test communication with an Internet IP address.
+                </li>
+
+                <li>
+                    Check whether DNS is working.
+                </li>
+            </ol>
+
+            <p>
+                These checks help narrow down where the problem is occurring.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Following the Complete Connection</h2>
+
+            <p>
+                At this point, I can connect the ideas from the previous
+                topics.
+            </p>
+
+            <div class="definition">
+                <strong>
+                    Laptop
+                    → Wi-Fi
+                    → Access Point
+                    → Switch
+                    → Router
+                    → ISP
+                    → Internet
+                    → Web Server
+                </strong>
+            </div>
+
+            <p>
+                Each part has a different role. The laptop is an end device,
+                the access point provides wireless connectivity, the switch
+                connects devices on the local network, the router connects
+                networks, the ISP provides Internet access, and the web server
+                provides the requested service.
+            </p>
+
+            <p>
+                Understanding this path makes it easier to understand what
+                happens when a network works and what might be wrong when it
+                does not.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What to Remember</h2>
+
+            <ul>
+                <li>The Internet is a network of interconnected networks.</li>
+                <li>A LAN is a local network.</li>
+                <li>A router connects different networks.</li>
+                <li>An ISP provides Internet access.</li>
+                <li>The default gateway provides a path out of the local network.</li>
+                <li>Private IP addresses are commonly used inside local networks.</li>
+                <li>NAT allows private addresses to communicate through a shared public connection.</li>
+                <li>DNS helps translate domain names into IP addresses.</li>
+                <li>Being connected to Wi-Fi does not automatically mean the Internet is working.</li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Go Deeper</h2>
+
+            <p>
+                For a deeper explanation of networking and Internet
+                connectivity, I can continue with Cisco networking resources
+                and Professor Messer's Network+ material.
+            </p>
+        </section>
+
+
+        <div class="page-navigation">
+            <a href="clients-servers.html">Previous: Clients and Servers</a>
+            <a href="putting-everything-together.html">Next: Putting Everything Together</a>
+        </div>
+
+    </main>
+
+
+    <footer>
+        <div class="container">
+            <p>My Networking Journey | Module 2</p>
+        </div>
+    </footer>
+
+</body>
+</html>

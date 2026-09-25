@@ -1,0 +1,3167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Types of Networks</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            line-height: 1.7;
+        }
+
+        .module-header {
+            background: #1f2937;
+            color: white;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        .module-header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .module-header p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #d1d5db;
+        }
+
+        .navigation {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #111827;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .navigation a:hover {
+            background: #374151;
+        }
+
+        .topic-list {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic-list h2 {
+            margin-top: 0;
+        }
+
+        .topic-list ul {
+            columns: 2;
+            padding-left: 25px;
+        }
+
+        .topic-list li {
+            margin-bottom: 8px;
+        }
+
+        .topic-list a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .topic-list a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        .topic-section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .topic-section h2 {
+            color: #1f2937;
+            margin-top: 0;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .topic-section h3 {
+            color: #374151;
+            margin-top: 25px;
+        }
+
+        .concept-box {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .important-box {
+            background: #fff7ed;
+            border-left: 5px solid #ea580c;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .diagram {
+            margin: 25px 0;
+            padding: 25px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .diagram-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
+        .network-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .network-node {
+            min-width: 130px;
+            padding: 18px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .network-arrow {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4b5563;
+        }
+
+        .network-map {
+            position: relative;
+            min-height: 330px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .map-device {
+            position: absolute;
+            padding: 12px 18px;
+            background: white;
+            border: 1px solid #9ca3af;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .map-center {
+            top: 42%;
+            left: 42%;
+        }
+
+        .map-one {
+            top: 15%;
+            left: 12%;
+        }
+
+        .map-two {
+            top: 15%;
+            right: 12%;
+        }
+
+        .map-three {
+            bottom: 15%;
+            left: 12%;
+        }
+
+        .map-four {
+            bottom: 15%;
+            right: 12%;
+        }
+
+        .connection {
+            position: absolute;
+            height: 2px;
+            background: #9ca3af;
+            transform-origin: left center;
+        }
+
+        .connection-one {
+            width: 240px;
+            top: 48%;
+            left: 22%;
+            transform: rotate(25deg);
+        }
+
+        .connection-two {
+            width: 240px;
+            top: 48%;
+            right: 22%;
+            transform: rotate(-25deg);
+        }
+
+        .connection-three {
+            width: 240px;
+            bottom: 48%;
+            left: 22%;
+            transform: rotate(-25deg);
+        }
+
+        .connection-four {
+            width: 240px;
+            bottom: 48%;
+            right: 22%;
+            transform: rotate(25deg);
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .network-card {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+            padding: 20px;
+        }
+
+        .network-card h3 {
+            margin-top: 0;
+            color: #1f2937;
+        }
+
+        .network-label {
+            display: inline-block;
+            background: #1f2937;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .network-size {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #1f2937;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .scope-bar {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .scope-item {
+            padding: 15px 20px;
+            background: #e5e7eb;
+            border-right: 2px solid white;
+            min-width: 120px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .scope-item:first-child {
+            border-radius: 7px 0 0 7px;
+        }
+
+        .scope-item:last-child {
+            border-radius: 0 7px 7px 0;
+            border-right: none;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .architecture-card {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 25px;
+            background: #f9fafb;
+        }
+
+        .architecture-card h3 {
+            margin-top: 0;
+        }
+
+        .server-diagram {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .server-box {
+            display: inline-block;
+            padding: 15px 25px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .client-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .client-box {
+            padding: 12px 18px;
+            background: white;
+            border: 1px solid #9ca3af;
+            border-radius: 6px;
+        }
+
+        .peer-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .peer-box {
+            padding: 15px 20px;
+            background: white;
+            border: 1px solid #9ca3af;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .real-world-box {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9fafb;
+        }
+
+        .real-world-box h3 {
+            margin-top: 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .quiz-option:hover {
+            background: #f3f4f6;
+        }
+
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .quiz-button {
+            background: #1f2937;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .quiz-button:hover {
+            background: #374151;
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .source-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 15px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+            background: #1f2937;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+        }
+
+        .navigation-buttons a:hover {
+            background: #374151;
+        }
+
+        footer {
+            text-align: center;
+            background: #111827;
+            color: #d1d5db;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 900px) {
+
+            .network-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .architecture-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .module-header h1 {
+                font-size: 2rem;
+            }
+
+            .topic-list ul {
+                columns: 1;
+            }
+
+            .network-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-section {
+                padding: 20px;
+            }
+
+            .network-flow {
+                flex-direction: column;
+            }
+
+            .network-arrow {
+                transform: rotate(90deg);
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+            .network-map {
+                min-height: 450px;
+            }
+
+            .map-device {
+                position: static;
+                display: block;
+                width: 160px;
+                margin: 15px auto;
+                text-align: center;
+            }
+
+            .map-center {
+                position: static;
+            }
+
+            .connection {
+                display: none;
+            }
+
+            .scope-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .scope-item {
+                border-right: none;
+                border-bottom: 2px solid white;
+                border-radius: 0 !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Module Header -->
+
+    <header class="module-header">
+
+        <h1>Module 1</h1>
+
+        <p>Types of Networks</p>
+
+    </header>
+
+
+    <!-- Navigation -->
+
+    <nav class="navigation">
+
+        <a href="../index.html">Home</a>
+
+        <a href="index.html">Module 1</a>
+
+        <a href="communication.html">Communication</a>
+
+        <a href="types-of-networks.html">Types of Networks</a>
+
+        <a href="data-transmission.html">Data Transmission</a>
+
+        <a href="bandwidth.html">Bandwidth</a>
+
+        <a href="throughput.html">Throughput</a>
+
+    </nav>
+
+
+    <!-- Topic List -->
+
+    <section class="topic-list">
+
+        <h2>Topics in This Page</h2>
+
+        <ul>
+
+            <li>
+                <a href="#introduction">
+                    Introduction to Network Types
+                </a>
+            </li>
+
+            <li>
+                <a href="#network-size">
+                    Networks by Geographic Scope
+                </a>
+            </li>
+
+            <li>
+                <a href="#pan">
+                    Personal Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#lan">
+                    Local Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#wlan">
+                    Wireless Local Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#can">
+                    Campus Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#man">
+                    Metropolitan Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#wan">
+                    Wide Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#san">
+                    Storage Area Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#vpn">
+                    Virtual Private Network
+                </a>
+            </li>
+
+            <li>
+                <a href="#wired-wireless">
+                    Wired and Wireless Networks
+                </a>
+            </li>
+
+            <li>
+                <a href="#architecture">
+                    Network Architecture
+                </a>
+            </li>
+
+            <li>
+                <a href="#comparison">
+                    Network Comparison
+                </a>
+            </li>
+
+            <li>
+                <a href="#real-world">
+                    Real-World Examples
+                </a>
+            </li>
+
+            <li>
+                <a href="#knowledge-check">
+                    Knowledge Check
+                </a>
+            </li>
+
+            <li>
+                <a href="#summary">
+                    Module Summary
+                </a>
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <main class="content">
+
+
+        <!-- Introduction -->
+
+        <section class="topic-section" id="introduction">
+
+            <h2>1. Introduction to Network Types</h2>
+
+            <p>
+
+                A computer network is a group of connected devices that can communicate
+
+                and share information or resources.
+
+            </p>
+
+            <p>
+
+                Networks can be classified in different ways. One of the most common ways
+
+                is according to the geographical area they cover.
+
+            </p>
+
+            <p>
+
+                A network connecting devices around one person is much smaller than a network
+
+                connecting computers across an entire country or across different continents.
+
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>Key idea:</strong>
+
+                Network types help us describe the size, purpose, technology and architecture
+
+                of a network.
+
+            </div>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    A Simple Network Classification
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        PAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        LAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        MAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        WAN
+
+                    </div>
+
+                </div>
+
+                <p>
+
+                    The geographic coverage generally increases as we move from PAN toward WAN.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Network Size -->
+
+        <section class="topic-section" id="network-size">
+
+            <h2>2. Networks by Geographic Scope</h2>
+
+            <p>
+
+                One useful way of classifying networks is by the geographical area they cover.
+
+            </p>
+
+
+            <div class="scope-bar">
+
+                <div class="scope-item">
+
+                    PAN
+
+                </div>
+
+                <div class="scope-item">
+
+                    LAN
+
+                </div>
+
+                <div class="scope-item">
+
+                    CAN
+
+                </div>
+
+                <div class="scope-item">
+
+                    MAN
+
+                </div>
+
+                <div class="scope-item">
+
+                    WAN
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Network</th>
+
+                    <th>Typical Scope</th>
+
+                    <th>Example</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>PAN</td>
+
+                    <td>Very small area around an individual</td>
+
+                    <td>Phone connected to wireless earbuds</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>LAN</td>
+
+                    <td>Home, office, room or building</td>
+
+                    <td>Office Ethernet network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>CAN</td>
+
+                    <td>Multiple buildings in a campus or organization</td>
+
+                    <td>University network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>MAN</td>
+
+                    <td>Large metropolitan area</td>
+
+                    <td>Network connecting sites across a city</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>WAN</td>
+
+                    <td>Large geographical areas</td>
+
+                    <td>Internet or enterprise network across countries</td>
+
+                </tr>
+
+            </table>
+
+
+            <div class="important-box">
+
+                <strong>Important:</strong>
+
+                These categories describe common network scopes. In the real world,
+
+                network boundaries can overlap, and organizations may use several network
+
+                technologies together.
+
+            </div>
+
+        </section>
+
+
+        <!-- PAN -->
+
+        <section class="topic-section" id="pan">
+
+            <h2>3. Personal Area Network</h2>
+
+            <p>
+
+                A Personal Area Network, or <strong>PAN</strong>, is a small network
+
+                centered around an individual and their personal devices.
+
+            </p>
+
+
+            <div class="network-grid">
+
+                <div class="network-card">
+
+                    <span class="network-label">PAN</span>
+
+                    <h3>Smartphone</h3>
+
+                    <p>
+
+                        A smartphone can connect to personal devices such as wireless
+
+                        earbuds, smartwatches and other accessories.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <span class="network-label">PAN</span>
+
+                    <h3>Bluetooth</h3>
+
+                    <p>
+
+                        Bluetooth is commonly used for short-range connections between
+
+                        personal devices.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <span class="network-label">PAN</span>
+
+                    <h3>Personal Devices</h3>
+
+                    <p>
+
+                        A laptop, smartphone, tablet and smartwatch can form part of
+
+                        one person's personal network.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Example of a Personal Area Network
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        Smartphone
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Smartwatch
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Earbuds
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>Real-World Example</h3>
+
+                <p>
+
+                    You connect your smartphone to wireless earbuds.
+
+                    The two devices communicate over a short-range wireless connection.
+
+                    This is an example of a PAN.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LAN -->
+
+        <section class="topic-section" id="lan">
+
+            <h2>4. Local Area Network</h2>
+
+            <p>
+
+                A Local Area Network, or <strong>LAN</strong>, connects devices within
+
+                a relatively small geographical area such as a home, office, laboratory,
+
+                classroom or building.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Example of a LAN
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        Computer
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Switch
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Server
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                Ethernet is widely used for wired LAN connections.
+
+                Wireless LANs use Wi-Fi and are commonly referred to as WLANs.
+
+            </p>
+
+
+            <div class="network-grid">
+
+                <div class="network-card">
+
+                    <h3>Home LAN</h3>
+
+                    <p>
+
+                        Connects computers, phones, smart TVs, printers and other devices
+
+                        within a home.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>Office LAN</h3>
+
+                    <p>
+
+                        Connects workstations, printers, servers, switches and other
+
+                        business devices.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>School LAN</h3>
+
+                    <p>
+
+                        Connects computers, printers, access points and servers used
+
+                        within a school or building.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-box">
+
+                <strong>Remember:</strong>
+
+                LAN describes the network's relatively local geographic scope.
+
+                It does not necessarily mean the network must use a particular cable.
+
+            </div>
+
+        </section>
+
+
+        <!-- WLAN -->
+
+        <section class="topic-section" id="wlan">
+
+            <h2>5. Wireless Local Area Network</h2>
+
+            <p>
+
+                A Wireless Local Area Network, or <strong>WLAN</strong>, is a LAN
+
+                that uses wireless communication to connect devices.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Basic WLAN Structure
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        Laptop
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Wi-Fi Access Point
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Network
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                A wireless access point provides wireless connectivity to devices
+
+                within its coverage area.
+
+            </p>
+
+
+            <div class="network-grid">
+
+                <div class="network-card">
+
+                    <h3>Advantages</h3>
+
+                    <ul>
+
+                        <li>Allows mobility</li>
+
+                        <li>Reduces the need for cables to individual devices</li>
+
+                        <li>Convenient for portable devices</li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>Limitations</h3>
+
+                    <ul>
+
+                        <li>Radio interference can affect communication</li>
+
+                        <li>Coverage is limited</li>
+
+                        <li>Security must be configured properly</li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>Common Devices</h3>
+
+                    <ul>
+
+                        <li>Wireless access points</li>
+
+                        <li>Laptops</li>
+
+                        <li>Smartphones</li>
+
+                        <li>Tablets</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAN -->
+
+        <section class="topic-section" id="can">
+
+            <h2>6. Campus Area Network</h2>
+
+            <p>
+
+                A Campus Area Network, or <strong>CAN</strong>, connects multiple
+
+                LANs across a campus or organization.
+
+            </p>
+
+
+            <p>
+
+                A university is a good example. Different buildings may each have
+
+                their own LAN while being connected through a larger campus network.
+
+            </p>
+
+
+            <div class="network-map">
+
+                <div class="map-device map-one">
+
+                    Library LAN
+
+                </div>
+
+                <div class="map-device map-two">
+
+                    Administration LAN
+
+                </div>
+
+                <div class="map-device map-three">
+
+                    Laboratory LAN
+
+                </div>
+
+                <div class="map-device map-four">
+
+                    Hostel LAN
+
+                </div>
+
+                <div class="map-device map-center">
+
+                    Campus Core
+
+                </div>
+
+                <div class="connection connection-one"></div>
+
+                <div class="connection connection-two"></div>
+
+                <div class="connection connection-three"></div>
+
+                <div class="connection connection-four"></div>
+
+            </div>
+
+
+            <div class="example-box">
+
+                <h3>University Example</h3>
+
+                <p>
+
+                    A university may have separate networks in its library,
+
+                    administration block, computer laboratories and student hostels.
+
+                    These networks can be interconnected to form a campus-wide network.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAN -->
+
+        <section class="topic-section" id="man">
+
+            <h2>7. Metropolitan Area Network</h2>
+
+            <p>
+
+                A Metropolitan Area Network, or <strong>MAN</strong>, covers a larger
+
+                area than a typical LAN and can connect networks across a city or
+
+                metropolitan region.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Example of a Metropolitan Network
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        Site A
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        City Network
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Site B
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                MANs can be used by organizations, telecommunications providers
+
+                and other institutions to connect locations across a metropolitan area.
+
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>Think of the scale:</strong>
+
+                A LAN might connect devices inside one building.
+
+                A MAN can connect multiple locations distributed across a city.
+
+            </div>
+
+        </section>
+
+
+        <!-- WAN -->
+
+        <section class="topic-section" id="wan">
+
+            <h2>8. Wide Area Network</h2>
+
+            <p>
+
+                A Wide Area Network, or <strong>WAN</strong>, connects networks over
+
+                large geographical areas such as regions, countries or continents.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Simplified WAN
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        LAN A
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        WAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        LAN B
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                A WAN can use many different communication technologies.
+
+                These may include fiber optic links, leased lines, cellular networks,
+
+                satellite links and other telecommunications services.
+
+            </p>
+
+
+            <h3>The Internet</h3>
+
+            <p>
+
+                The Internet is the world's largest interconnected network of networks.
+
+                It connects networks belonging to individuals, organizations,
+
+                businesses, governments and service providers.
+
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>Important distinction:</strong>
+
+                The Internet is not simply one giant LAN.
+
+                It is a global system of interconnected networks that communicate
+
+                using standardized protocols.
+
+            </div>
+
+        </section>
+
+
+        <!-- SAN -->
+
+        <section class="topic-section" id="san">
+
+            <h2>9. Storage Area Network</h2>
+
+            <p>
+
+                A Storage Area Network, or <strong>SAN</strong>, is a specialized
+
+                high-speed network that provides access to shared storage resources.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Simplified SAN Environment
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        Server 1
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        SAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        ↔
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Storage
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                SANs are commonly used in data centers and enterprise environments
+
+                where servers need reliable access to centralized or shared storage.
+
+            </p>
+
+
+            <div class="network-grid">
+
+                <div class="network-card">
+
+                    <h3>Servers</h3>
+
+                    <p>
+
+                        Servers can access storage resources through the SAN.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>Storage Systems</h3>
+
+                    <p>
+
+                        Storage arrays provide capacity for data used by connected systems.
+
+                    </p>
+
+                </div>
+
+
+                <div class="network-card">
+
+                    <h3>Data Centers</h3>
+
+                    <p>
+
+                        SAN technology is commonly associated with enterprise
+
+                        data-center infrastructure.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VPN -->
+
+        <section class="topic-section" id="vpn">
+
+            <h2>10. Virtual Private Network</h2>
+
+            <p>
+
+                A Virtual Private Network, or <strong>VPN</strong>, creates a protected
+
+                logical connection across another network, such as the Internet.
+
+            </p>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    Simplified VPN Connection
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        User
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Encrypted VPN Tunnel
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Private Network
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                VPN technology can provide a secure connection between a user or network
+
+                and another network across an untrusted or public network.
+
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>Important:</strong>
+
+                A VPN is different from PAN, LAN, MAN and WAN.
+
+                PAN, LAN, MAN and WAN primarily describe geographic scope.
+
+                VPN describes a logical method of creating a protected network connection.
+
+            </div>
+
+        </section>
+
+
+        <!-- Wired and Wireless -->
+
+        <section class="topic-section" id="wired-wireless">
+
+            <h2>11. Wired and Wireless Networks</h2>
+
+            <p>
+
+                Networks can also be classified according to how devices connect
+
+                and how signals are transmitted.
+
+            </p>
+
+
+            <div class="architecture-grid">
+
+                <div class="architecture-card">
+
+                    <h3>Wired Network</h3>
+
+                    <p>
+
+                        A wired network uses physical transmission media such as
+
+                        twisted-pair Ethernet cables, coaxial cables or fiber optic cables.
+
+                    </p>
+
+                    <div class="code-box">
+
+                        Computer
+
+                        <br>
+
+                        |
+
+                        <br>
+
+                        Ethernet Cable
+
+                        <br>
+
+                        |
+
+                        <br>
+
+                        Switch
+
+                    </div>
+
+                    <p>
+
+                        Wired connections are commonly used where stable, high-performance
+
+                        connectivity is required.
+
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-card">
+
+                    <h3>Wireless Network</h3>
+
+                    <p>
+
+                        A wireless network uses electromagnetic signals instead of
+
+                        a physical cable for the wireless portion of the connection.
+
+                    </p>
+
+                    <div class="code-box">
+
+                        Laptop
+
+                        <br>
+
+                        ~
+
+                        <br>
+
+                        Wi-Fi
+
+                        <br>
+
+                        ~
+
+                        <br>
+
+                        Access Point
+
+                    </div>
+
+                    <p>
+
+                        Wireless networks provide mobility and convenience for users.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Wired</th>
+
+                    <th>Wireless</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Connection</td>
+
+                    <td>Uses physical media</td>
+
+                    <td>Uses wireless signals for the wireless link</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Mobility</td>
+
+                    <td>Limited by cable connection</td>
+
+                    <td>Allows greater mobility</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Interference</td>
+
+                    <td>Depends on cable and environment</td>
+
+                    <td>Can be affected by radio interference</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Common example</td>
+
+                    <td>Ethernet LAN</td>
+
+                    <td>Wi-Fi LAN</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Architecture -->
+
+        <section class="topic-section" id="architecture">
+
+            <h2>12. Network Architecture</h2>
+
+            <p>
+
+                Networks can also be classified according to how devices share resources
+
+                and provide services.
+
+            </p>
+
+
+            <div class="architecture-grid">
+
+                <div class="architecture-card">
+
+                    <h3>Client-Server Network</h3>
+
+                    <p>
+
+                        In a client-server network, dedicated servers provide services
+
+                        or resources to client devices.
+
+                    </p>
+
+
+                    <div class="server-diagram">
+
+                        <div class="server-box">
+
+                            Server
+
+                        </div>
+
+                        <div class="client-row">
+
+                            <div class="client-box">
+
+                                Client
+
+                            </div>
+
+                            <div class="client-box">
+
+                                Client
+
+                            </div>
+
+                            <div class="client-box">
+
+                                Client
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Examples of server-provided services include file storage,
+
+                        websites, databases, authentication and applications.
+
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-card">
+
+                    <h3>Peer-to-Peer Network</h3>
+
+                    <p>
+
+                        In a peer-to-peer network, devices can communicate directly
+
+                        and may act as both clients and resource providers.
+
+                    </p>
+
+
+                    <div class="peer-row">
+
+                        <div class="peer-box">
+
+                            Peer A
+
+                        </div>
+
+                        <div class="network-arrow">
+
+                            ↔
+
+                        </div>
+
+                        <div class="peer-box">
+
+                            Peer B
+
+                        </div>
+
+                        <div class="network-arrow">
+
+                            ↔
+
+                        </div>
+
+                        <div class="peer-box">
+
+                            Peer C
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Peer-to-peer arrangements can be useful for small networks
+
+                        where dedicated servers are unnecessary.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Client-Server</th>
+
+                    <th>Peer-to-Peer</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>Central server</td>
+
+                    <td>Usually uses dedicated servers</td>
+
+                    <td>Does not require a dedicated server</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Management</td>
+
+                    <td>Can be centrally managed</td>
+
+                    <td>More distributed</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Scalability</td>
+
+                    <td>Suitable for larger environments</td>
+
+                    <td>Often better suited to smaller environments</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Example</td>
+
+                    <td>Company network with file and authentication servers</td>
+
+                    <td>Small direct file-sharing network</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Comparison -->
+
+        <section class="topic-section" id="comparison">
+
+            <h2>13. Network Comparison</h2>
+
+            <p>
+
+                The following table provides a quick comparison of the major network types
+
+                introduced in this topic.
+
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>Type</th>
+
+                    <th>Main Idea</th>
+
+                    <th>Typical Scope</th>
+
+                    <th>Example</th>
+
+                </tr>
+
+                <tr>
+
+                    <td>PAN</td>
+
+                    <td>Personal devices</td>
+
+                    <td>Very small</td>
+
+                    <td>Phone and smartwatch</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>LAN</td>
+
+                    <td>Local network</td>
+
+                    <td>Home or building</td>
+
+                    <td>Office network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>WLAN</td>
+
+                    <td>Wireless LAN</td>
+
+                    <td>Home or building</td>
+
+                    <td>Wi-Fi network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>CAN</td>
+
+                    <td>Campus network</td>
+
+                    <td>Multiple nearby buildings</td>
+
+                    <td>University network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>MAN</td>
+
+                    <td>Metropolitan network</td>
+
+                    <td>City or metropolitan region</td>
+
+                    <td>City-wide organizational network</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>WAN</td>
+
+                    <td>Large-scale network</td>
+
+                    <td>Countries or continents</td>
+
+                    <td>Enterprise WAN</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>SAN</td>
+
+                    <td>Dedicated storage network</td>
+
+                    <td>Usually data-center environment</td>
+
+                    <td>Server storage infrastructure</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>VPN</td>
+
+                    <td>Protected logical connection</td>
+
+                    <td>Can operate across public networks</td>
+
+                    <td>Remote employee connection</td>
+
+                </tr>
+
+            </table>
+
+
+            <div class="concept-box">
+
+                <strong>Study tip:</strong>
+
+                Do not try to memorize the abbreviations without understanding what they mean.
+
+                Think about the purpose and scale of the network first.
+
+            </div>
+
+        </section>
+
+
+        <!-- Real World -->
+
+        <section class="topic-section" id="real-world">
+
+            <h2>14. Network Types in the Real World</h2>
+
+            <p>
+
+                In real environments, several network types can exist together.
+
+                A single organization may use LANs, WLANs, WANs, VPNs and specialized
+
+                storage networks at the same time.
+
+            </p>
+
+
+            <div class="real-world-box">
+
+                <h3>Example 1: University</h3>
+
+                <p>
+
+                    A university may have LANs inside individual buildings.
+
+                    Wi-Fi provides WLAN access to students and staff.
+
+                    Multiple buildings can be connected through a campus network.
+
+                    The university may also use WAN services to connect to other campuses
+
+                    or external services.
+
+                </p>
+
+            </div>
+
+
+            <div class="real-world-box">
+
+                <h3>Example 2: Company</h3>
+
+                <p>
+
+                    A company may have wired and wireless LANs inside its offices.
+
+                    Branch offices in different cities can be connected using a WAN.
+
+                    Employees working remotely may use VPN connections to access
+
+                    internal resources.
+
+                </p>
+
+            </div>
+
+
+            <div class="real-world-box">
+
+                <h3>Example 3: Data Center</h3>
+
+                <p>
+
+                    A data center can contain server networks, storage networks,
+
+                    management networks and connections to external WAN infrastructure.
+
+                </p>
+
+            </div>
+
+
+            <div class="diagram">
+
+                <div class="diagram-title">
+
+                    How Different Network Types Can Work Together
+
+                </div>
+
+                <div class="network-flow">
+
+                    <div class="network-node">
+
+                        User Device
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        WLAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        LAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        WAN
+
+                    </div>
+
+                    <div class="network-arrow">
+
+                        →
+
+                    </div>
+
+                    <div class="network-node">
+
+                        Remote Network
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-box">
+
+                <strong>Big picture:</strong>
+
+                Network classification is not about choosing only one category.
+
+                A real network can contain several different types of networks
+
+                working together.
+
+            </div>
+
+        </section>
+
+
+        <!-- Knowledge Check -->
+
+        <section class="topic-section" id="knowledge-check">
+
+            <h2>15. Knowledge Check</h2>
+
+            <p>
+
+                Test your understanding of Types of Networks.
+
+            </p>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 1</h3>
+
+                <p>
+
+                    Which network is designed around an individual's personal devices?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="a">
+
+                    WAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="b">
+
+                    PAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="c">
+
+                    MAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q1" value="d">
+
+                    SAN
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 2</h3>
+
+                <p>
+
+                    Which network is commonly used within a home, office or building?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="a">
+
+                    LAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="b">
+
+                    MAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="c">
+
+                    WAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q2" value="d">
+
+                    SAN
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 3</h3>
+
+                <p>
+
+                    What does WLAN stand for?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="a">
+
+                    Wide Local Area Network
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="b">
+
+                    Wireless Local Area Network
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="c">
+
+                    Wireless Large Area Network
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q3" value="d">
+
+                    Wide Wireless Area Network
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 4</h3>
+
+                <p>
+
+                    Which network can connect multiple LANs across a university campus?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="a">
+
+                    PAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="b">
+
+                    CAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="c">
+
+                    SAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q4" value="d">
+
+                    VPN
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 5</h3>
+
+                <p>
+
+                    Which network type is associated with connecting networks over
+
+                    large geographical areas?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="a">
+
+                    PAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="b">
+
+                    LAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="c">
+
+                    WAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q5" value="d">
+
+                    WLAN
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 6</h3>
+
+                <p>
+
+                    What is the main purpose of a SAN?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="a">
+
+                    Connecting personal devices
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="b">
+
+                    Providing access to shared storage resources
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="c">
+
+                    Providing wireless Internet to phones
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q6" value="d">
+
+                    Connecting only two computers
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 7</h3>
+
+                <p>
+
+                    What does a VPN provide?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="a">
+
+                    A physical Ethernet cable
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="b">
+
+                    A protected logical connection across another network
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="c">
+
+                    A replacement for every network device
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q7" value="d">
+
+                    A type of fiber optic cable
+
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>Question 8</h3>
+
+                <p>
+
+                    Which network architecture normally uses dedicated servers
+
+                    to provide services to client devices?
+
+                </p>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="a">
+
+                    Peer-to-peer
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="b">
+
+                    Client-server
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="c">
+
+                    PAN
+
+                </label>
+
+                <label class="quiz-option">
+
+                    <input type="radio" name="q8" value="d">
+
+                    Simplex
+
+                </label>
+
+            </div>
+
+
+            <button class="quiz-button" onclick="checkQuiz()">
+
+                Check My Answers
+
+            </button>
+
+
+            <div id="quizResult" class="quiz-result"></div>
+
+        </section>
+
+
+        <!-- Summary -->
+
+        <section class="topic-section" id="summary">
+
+            <h2>16. Module Summary</h2>
+
+            <p>
+
+                Networks can be classified according to their geographical scope,
+
+                technology, purpose and architecture.
+
+            </p>
+
+
+            <div class="success-box">
+
+                <strong>Key points to remember:</strong>
+
+                <ul>
+
+                    <li>
+
+                        PAN connects personal devices over a very small area.
+
+                    </li>
+
+                    <li>
+
+                        LAN connects devices within a relatively small local area.
+
+                    </li>
+
+                    <li>
+
+                        WLAN is a wireless LAN.
+
+                    </li>
+
+                    <li>
+
+                        CAN can connect multiple LANs across a campus or organization.
+
+                    </li>
+
+                    <li>
+
+                        MAN can connect networks across a metropolitan area.
+
+                    </li>
+
+                    <li>
+
+                        WAN connects networks across large geographical areas.
+
+                    </li>
+
+                    <li>
+
+                        SAN provides specialized network access to storage resources.
+
+                    </li>
+
+                    <li>
+
+                        VPN creates a protected logical connection across another network.
+
+                    </li>
+
+                    <li>
+
+                        Networks can use wired or wireless communication.
+
+                    </li>
+
+                    <li>
+
+                        Client-server networks use dedicated servers to provide services.
+
+                    </li>
+
+                    <li>
+
+                        Peer-to-peer networks allow devices to communicate and share
+
+                        resources without requiring a dedicated central server.
+
+                    </li>
+
+                    <li>
+
+                        Real-world networks commonly combine several network types.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <h3>What Comes Next?</h3>
+
+            <p>
+
+                The next topic is <strong>Data Transmission</strong>.
+
+                After understanding the different types of networks, the next step
+
+                is to understand how data actually moves between devices.
+
+            </p>
+
+
+            <div class="navigation-buttons">
+
+                <a href="communication.html">
+
+                    Previous: Communication
+
+                </a>
+
+                <a href="data-transmission.html">
+
+                    Next: Data Transmission
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            My Networking Journey © 2026
+
+        </p>
+
+        <p>
+
+            Module 1 | Types of Networks
+
+        </p>
+
+    </footer>
+
+
+    <!-- Quiz JavaScript -->
+
+    <script>
+
+        function checkQuiz() {
+
+            const answers = {
+
+                q1: "b",
+
+                q2: "a",
+
+                q3: "b",
+
+                q4: "b",
+
+                q5: "c",
+
+                q6: "b",
+
+                q7: "b",
+
+                q8: "b"
+
+            };
+
+
+            let score = 0;
+
+            let answered = 0;
+
+            const total = Object.keys(answers).length;
+
+
+            for (const question in answers) {
+
+                const selected = document.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+
+                if (selected) {
+
+                    answered++;
+
+                    if (selected.value === answers[question]) {
+
+                        score++;
+
+                    }
+
+                }
+
+            }
+
+
+            const result = document.getElementById("quizResult");
+
+
+            result.style.display = "block";
+
+
+            if (answered < total) {
+
+                result.innerHTML =
+                    "You answered " +
+                    answered +
+                    " out of " +
+                    total +
+                    " questions. Please answer all questions before checking your final score.";
+
+                result.style.background = "#fff7ed";
+
+                result.style.border = "1px solid #fed7aa";
+
+                return;
+
+            }
+
+
+            const percentage = Math.round((score / total) * 100);
+
+
+            if (percentage >= 80) {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Excellent work. You have a strong understanding of network types.";
+
+                result.style.background = "#f0fdf4";
+
+                result.style.border = "1px solid #bbf7d0";
+
+            } else if (percentage >= 60) {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Good work. Review the sections you found difficult and try again.";
+
+                result.style.background = "#eff6ff";
+
+                result.style.border = "1px solid #bfdbfe";
+
+            } else {
+
+                result.innerHTML =
+                    "Your score is " +
+                    score +
+                    "/" +
+                    total +
+                    " (" +
+                    percentage +
+                    "%). Review the module and try the knowledge check again.";
+
+                result.style.background = "#fff7ed";
+
+                result.style.border = "1px solid #fed7aa";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

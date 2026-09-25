@@ -1,0 +1,481 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Wi-Fi Configuration | Module 3</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Mobile Wi-Fi Configuration</h1>
+        <p>Module 3: Wireless and Mobile Networks</p>
+    </header>
+
+
+    <main>
+
+        <section>
+            <h2>Introduction</h2>
+
+            <p>
+                Mobile devices such as smartphones and tablets can connect
+                to wireless networks using Wi-Fi. A Wi-Fi connection allows
+                a device to communicate with other devices on a local network
+                and, when the network has internet access, communicate with
+                online services.
+            </p>
+
+            <p>
+                To connect a phone to Wi-Fi, we need to understand concepts
+                such as the SSID, Wi-Fi password, router, access point,
+                IP address, and DHCP.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What is an SSID?</h2>
+
+            <p>
+                SSID stands for Service Set Identifier. It is the name used
+                to identify a Wi-Fi network.
+            </p>
+
+            <p>
+                When you open Wi-Fi settings on your phone, you will normally
+                see a list of available wireless network names. These names
+                are SSIDs.
+            </p>
+
+            <div class="example-box">
+
+                <h3>Example</h3>
+
+                <ul>
+                    <li>Home_WiFi</li>
+                    <li>Campus_Network</li>
+                    <li>Office_WiFi</li>
+                    <li>Guest_Network</li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>What is a Router?</h2>
+
+            <p>
+                A router is a networking device that connects different
+                networks and forwards packets between them.
+            </p>
+
+            <p>
+                A typical home router can also provide wireless connectivity
+                through a built-in wireless access point. This allows phones,
+                laptops, tablets, and other devices to connect to the local
+                network using Wi-Fi.
+            </p>
+
+            <p>
+                The router may also provide services such as DHCP, which
+                automatically gives connected devices IP configuration.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Connecting a Phone to Wi-Fi</h2>
+
+            <p>
+                The exact names of settings can vary between Android and iOS
+                devices, but the basic process is similar.
+            </p>
+
+            <div class="network-flow">
+
+                <div class="flow-step">
+                    <h3>1. Open Wi-Fi Settings</h3>
+                    <p>
+                        Open the network settings on the mobile device and
+                        enable Wi-Fi.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>2. Find the SSID</h3>
+                    <p>
+                        Look through the available networks and identify the
+                        network you want to join.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>3. Enter the Password</h3>
+                    <p>
+                        Enter the password required by the wireless network.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>4. Connect</h3>
+                    <p>
+                        The phone establishes the wireless connection with
+                        the router or access point.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>What Happens After Connecting?</h2>
+
+            <p>
+                Connecting to Wi-Fi is not simply about making the phone
+                communicate with the router. The phone also needs network
+                configuration so that it can communicate using IP.
+            </p>
+
+            <p>
+                In many home and school networks, this configuration is
+                provided automatically using DHCP.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>DHCP</h2>
+
+            <p>
+                DHCP stands for Dynamic Host Configuration Protocol. It
+                automatically provides network configuration to devices
+                joining a network.
+            </p>
+
+            <p>
+                A DHCP server can provide information such as:
+            </p>
+
+            <ul>
+                <li>IP address</li>
+                <li>Subnet mask</li>
+                <li>Default gateway</li>
+                <li>DNS server information</li>
+            </ul>
+
+            <p>
+                On a typical home network, the router commonly performs the
+                role of the DHCP server.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Example of DHCP</h2>
+
+            <p>
+                Imagine that your phone connects to your home Wi-Fi network.
+                The phone needs an IP address before it can communicate
+                normally on the local IP network.
+            </p>
+
+            <div class="network-flow">
+
+                <div class="flow-step">
+                    <h3>Phone</h3>
+                    <p>
+                        Requests network configuration.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>Router</h3>
+                    <p>
+                        DHCP provides the required network configuration.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>Phone Receives IP Information</h3>
+                    <p>
+                        The device can now communicate using the local IP
+                        network.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Static IP vs DHCP</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>How It Works</th>
+                        <th>Common Use</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>DHCP</td>
+                        <td>
+                            Network configuration is assigned automatically.
+                        </td>
+                        <td>
+                            Phones, laptops, tablets, and most home devices.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Static IP</td>
+                        <td>
+                            Network configuration is manually assigned.
+                        </td>
+                        <td>
+                            Some servers, network devices, and specialized
+                            systems.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section>
+            <h2>Router and SSID</h2>
+
+            <p>
+                A wireless router can broadcast one or more SSIDs. When a
+                phone scans for Wi-Fi networks, it detects wireless networks
+                that are being advertised in its surroundings.
+            </p>
+
+            <p>
+                The SSID identifies the wireless network. The router's
+                configuration determines how that wireless network is
+                provided, including its security settings.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Wi-Fi Password</h2>
+
+            <p>
+                A secured Wi-Fi network normally requires authentication
+                before a device is allowed to join.
+            </p>
+
+            <p>
+                On a personal Wi-Fi network, this is commonly done using
+                a shared password. The router and the device use the
+                configured wireless security protocol to establish the
+                connection.
+            </p>
+
+            <p>
+                Modern routers commonly support WPA2 or WPA3 security.
+                WPA3 is the newer standard, while WPA2 remains widely
+                deployed.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Wi-Fi and Mobile Data</h2>
+
+            <p>
+                A phone can have both Wi-Fi and mobile data capabilities.
+                These are two different methods of obtaining network
+                connectivity.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Wi-Fi</th>
+                        <th>Mobile Data</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Network</td>
+                        <td>Wireless local network</td>
+                        <td>Cellular network</td>
+                    </tr>
+
+                    <tr>
+                        <td>Connection Point</td>
+                        <td>Router or access point</td>
+                        <td>Cellular base station</td>
+                    </tr>
+
+                    <tr>
+                        <td>Typical Example</td>
+                        <td>Home or university Wi-Fi</td>
+                        <td>4G or 5G</td>
+                    </tr>
+
+                    <tr>
+                        <td>Coverage</td>
+                        <td>Usually local</td>
+                        <td>Can cover a much larger geographical area</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section>
+            <h2>Practical Example</h2>
+
+            <p>
+                Imagine that you are at home using your phone.
+            </p>
+
+            <p>
+                You open Wi-Fi settings and select your home network,
+                "Jelimo_Home". You enter the correct password and your phone
+                connects to the router.
+            </p>
+
+            <p>
+                The router authenticates the connection according to its
+                configured Wi-Fi security settings. DHCP then provides the
+                phone with an IP address and other network configuration.
+            </p>
+
+            <p>
+                Your phone can now communicate with devices on the local
+                network and, if the router has internet connectivity,
+                access websites and online services.
+            </p>
+
+            <div class="network-flow">
+
+                <div class="flow-step">
+                    <h3>Phone</h3>
+                    <p>
+                        Connects to the Wi-Fi network.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>SSID + Password</h3>
+                    <p>
+                        Identifies the network and provides the credentials
+                        needed for access.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>Router</h3>
+                    <p>
+                        Provides wireless connectivity and network services.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>DHCP</h3>
+                    <p>
+                        Provides IP configuration to the phone.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>Internet</h3>
+                    <p>
+                        The phone can access online services through the
+                        router's internet connection.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Key Idea</h2>
+
+            <p>
+                Connecting a mobile device to Wi-Fi involves several parts.
+                The SSID identifies the wireless network, the security
+                configuration controls access, the router provides the
+                wireless connection, and DHCP can automatically provide the
+                IP configuration required by the device.
+            </p>
+
+            <p>
+                Once these pieces work together, the phone can communicate
+                on the local network and access the internet through the
+                router.
+            </p>
+        </section>
+
+
+        <nav>
+            <a href="wifi-security.html">Previous: Wi-Fi Security</a>
+            <a href="module3.html">Back to Module 3</a>
+            <a href="tethering-syncing-pairing.html">Next: Tethering, Syncing and Pairing</a>
+        </nav>
+
+    </main>
+
+
+    <footer>
+        <p>My Networking Journey | Module 3</p>
+    </footer>
+
+</body>
+</html>
+```

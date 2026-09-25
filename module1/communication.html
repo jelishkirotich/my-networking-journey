@@ -1,0 +1,2858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Communication</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================
+           MODULE HEADER
+        ===================================== */
+
+        .module-header {
+            background: #1e293b;
+            color: white;
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .module-header .module-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .module-header h1 {
+            font-size: 23px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .module-header p {
+            display: none;
+        }
+
+
+        /* =====================================
+           MAIN WEBSITE NAVIGATION
+        ===================================== */
+
+        .main-navigation {
+            background: #0f172a;
+
+            min-height: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 42px;
+
+            padding: 20px 25px;
+
+            flex-wrap: wrap;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-navigation a {
+            color: white;
+            text-decoration: none;
+
+            font-size: 17px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .main-navigation a:hover {
+            color: #93c5fd;
+        }
+
+        .main-navigation a.active {
+            color: white;
+        }
+
+
+        /* =====================================
+           TOPICS IN THIS PAGE
+        ===================================== */
+
+        .topics-card {
+            max-width: 1500px;
+
+            margin: 30px auto 40px;
+
+            background: white;
+
+            padding: 30px 40px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .topics-card h2 {
+            font-size: 30px;
+
+            margin-bottom: 25px;
+
+            color: #111827;
+        }
+
+        .topics-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+        }
+
+        .topics-grid ul {
+            margin: 0;
+
+            padding-left: 30px;
+        }
+
+        .topics-grid li {
+            margin-bottom: 15px;
+
+            padding-left: 5px;
+        }
+
+        .topics-grid a {
+            color: #1d4ed8;
+
+            text-decoration: none;
+
+            font-size: 18px;
+        }
+
+        .topics-grid a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           MAIN CONTENT
+        ===================================== */
+
+        .content {
+            max-width: 1100px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+        .topic-section {
+            background: white;
+
+            padding: 40px;
+
+            margin-bottom: 30px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06);
+
+            scroll-margin-top: 100px;
+        }
+
+        .topic-section h2 {
+            color: #172554;
+
+            margin-bottom: 20px;
+
+            font-size: 28px;
+        }
+
+        .topic-section h3 {
+            color: #1e3a8a;
+
+            margin-top: 25px;
+
+            margin-bottom: 10px;
+
+            font-size: 21px;
+        }
+
+        .topic-section p {
+            margin-bottom: 15px;
+        }
+
+        .topic-section ul,
+        .topic-section ol {
+            margin: 15px 0 20px 25px;
+        }
+
+        .topic-section li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================
+           CONCEPT BOX
+        ===================================== */
+
+        .concept-box {
+            background: #eef2ff;
+
+            border-left: 5px solid #172554;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           IMPORTANT BOX
+        ===================================== */
+
+        .important-box {
+            background: #f8fafc;
+
+            border-left: 5px solid #334155;
+
+            padding: 20px;
+
+            margin: 25px 0;
+
+            border-radius: 5px;
+        }
+
+
+        /* =====================================
+           CODE BOX
+        ===================================== */
+
+        .code-box {
+            background: #111827;
+
+            color: #f9fafb;
+
+            padding: 20px;
+
+            border-radius: 7px;
+
+            margin: 20px 0;
+
+            font-family: Consolas, monospace;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           DIAGRAM
+        ===================================== */
+
+        .diagram {
+            background: #f8fafc;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            text-align: center;
+
+            border-radius: 8px;
+
+            font-family: Consolas, monospace;
+
+            font-size: 16px;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           SCREENSHOTS
+        ===================================== */
+
+        .screenshot {
+            margin: 25px 0;
+
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+
+            height: auto;
+
+            border-radius: 8px;
+
+            border: 1px solid #d1d5db;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .screenshot p {
+            margin-top: 10px;
+
+            color: #4b5563;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================
+           PACKET TRACER EXERCISE
+        ===================================== */
+
+        .exercise-step {
+            background: #f8fafc;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            border-radius: 8px;
+
+            border: 1px solid #e5e7eb;
+        }
+
+        .exercise-step h3 {
+            margin-top: 0;
+        }
+
+
+        /* =====================================
+           REAL DEVICE CARDS
+        ===================================== */
+
+        .device-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+
+            margin: 30px 0;
+        }
+
+        .device-card {
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            transition: 0.2s;
+        }
+
+        .device-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .device-card img {
+            width: 100%;
+
+            height: 220px;
+
+            object-fit: contain;
+
+            background: white;
+
+            padding: 15px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .device-card-content {
+            padding: 20px;
+        }
+
+        .device-card h3 {
+            margin-top: 0;
+
+            color: #172554;
+
+            font-size: 21px;
+        }
+
+        .device-card p {
+            margin-bottom: 10px;
+        }
+
+        .device-label {
+            display: inline-block;
+
+            background: #172554;
+
+            color: white;
+
+            padding: 4px 9px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =====================================
+           REAL NETWORK DIAGRAM
+        ===================================== */
+
+        .real-network-diagram {
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            padding: 30px;
+
+            margin: 30px 0;
+
+            text-align: center;
+
+            font-family: Consolas, monospace;
+
+            font-size: 17px;
+
+            line-height: 2;
+
+            overflow-x: auto;
+        }
+
+
+        /* =====================================
+           COMPARISON TABLE
+        ===================================== */
+
+        .comparison-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 25px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #d1d5db;
+
+            padding: 14px;
+
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #172554;
+
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+
+        /* =====================================
+           SOURCE NOTE
+        ===================================== */
+
+        .source-note {
+            font-size: 13px;
+
+            color: #64748b;
+
+            margin-top: 10px;
+        }
+
+
+        /* =====================================
+           BOTTOM NAVIGATION
+        ===================================== */
+
+        .navigation-buttons {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .navigation-buttons a {
+            text-decoration: none;
+
+            background: #172554;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 6px;
+        }
+
+        .navigation-buttons a:hover {
+            background: #1e3a8a;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 800px) {
+
+            .module-header {
+                padding: 45px 20px;
+            }
+
+            .module-header .module-number {
+                font-size: 38px;
+            }
+
+            .main-navigation {
+                gap: 20px;
+            }
+
+            .main-navigation a {
+                font-size: 15px;
+            }
+
+            .topics-card {
+                margin: 20px;
+
+                padding: 25px;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .topic-section {
+                padding: 25px;
+            }
+
+            .topic-section h2 {
+                font-size: 24px;
+            }
+
+            .device-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         MODULE HEADER
+    =========================================== -->
+
+    <header class="module-header">
+
+        <div class="module-number">
+            Module 1
+        </div>
+
+        <h1>
+            Communication
+        </h1>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         MAIN NAVIGATION
+    =========================================== -->
+
+    <nav class="main-navigation">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="../module1.html">
+            Module 1
+        </a>
+
+        <a href="communication.html" class="active">
+            Communication
+        </a>
+
+        <a href="types-of-networks.html">
+            Types of Networks
+        </a>
+
+        <a href="data-transmission.html">
+            Data Transmission
+        </a>
+
+        <a href="bandwidth.html">
+            Bandwidth
+        </a>
+
+        <a href="throughput.html">
+            Throughput
+        </a>
+
+    </nav>
+
+
+
+    <!-- ==========================================
+         TOPICS IN THIS PAGE
+    =========================================== -->
+
+    <section class="topics-card">
+
+        <h2>
+            Topics in This Page
+        </h2>
+
+
+        <div class="topics-grid">
+
+
+            <!-- LEFT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#introduction">
+                        Introduction to Communication
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#network-communication">
+                        Communication in Networks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#devices">
+                        Network Devices
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#data-travel">
+                        How Data Travels
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#packets">
+                        Packets & Frames
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#ip-addresses">
+                        IP Addresses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#protocols">
+                        Network Protocols
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- RIGHT COLUMN -->
+
+            <ul>
+
+                <li>
+                    <a href="#icmp">
+                        ICMP & Ping
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#exercise1">
+                        Packet Tracer Exercise 1
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#mac-addresses">
+                        MAC Addresses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#arp">
+                        ARP
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#switching">
+                        Switching
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#exercise2">
+                        Packet Tracer Exercise 2
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#real-devices">
+                        Real Networking Devices
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MODULE CONTENT
+    =========================================== -->
+
+    <main class="content">
+
+
+
+        <!-- ======================================
+             SECTION 1
+        ======================================= -->
+
+        <section class="topic-section" id="introduction">
+
+            <h2>
+                1. Introduction to Communication
+            </h2>
+
+            <p>
+                Communication is the process of exchanging information between
+                two or more parties. In computer networking, communication
+                occurs when network devices exchange information with one
+                another.
+            </p>
+
+            <p>
+                Communication happens everywhere in our daily lives. When you
+                send a message, make a phone call, send an email, or share a
+                photograph, information is being transferred from one place to
+                another.
+            </p>
+
+            <p>
+                Computer networks use the same basic idea. Instead of people
+                communicating directly, computers, phones, printers, servers,
+                switches, routers, and other network devices communicate with
+                one another.
+            </p>
+
+
+            <h3>
+                The Basic Components of Communication
+            </h3>
+
+            <p>
+                Communication in a network can be understood by identifying
+                several important components.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Sender:</strong>
+                    The device that starts the communication.
+                </li>
+
+                <li>
+                    <strong>Receiver:</strong>
+                    The device that receives the information.
+                </li>
+
+                <li>
+                    <strong>Message:</strong>
+                    The information being exchanged.
+                </li>
+
+                <li>
+                    <strong>Communication medium:</strong>
+                    The path through which the information travels.
+                </li>
+
+                <li>
+                    <strong>Protocols:</strong>
+                    The rules that devices follow when communicating.
+                </li>
+
+            </ul>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Key idea:
+                </strong>
+
+                <p>
+                    A network connection alone does not automatically mean
+                    that communication will be successful. Devices need
+                    addressing, compatible configurations, communication
+                    protocols, and a suitable path through the network.
+                </p>
+
+            </div>
+
+
+            <h3>
+                Communication in a Simple Network
+            </h3>
+
+            <p>
+                Consider two computers connected through a switch.
+            </p>
+
+
+            <div class="diagram">
+
+                PC0
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Switch
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                PC1
+
+                <br><br>
+
+                Source
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Network Device
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Destination
+
+            </div>
+
+
+            <p>
+                If PC0 wants to communicate with PC1, information must travel
+                from PC0 through the network and eventually reach PC1.
+            </p>
+
+            <p>
+                As we continue through this module, we will investigate what
+                happens during this process. We will examine IP addresses,
+                packets, protocols, Internet Control Message Protocol (ICMP),
+                Media Access Control (MAC) addresses, Address Resolution
+                Protocol (ARP), Ethernet frames, and switching.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 2
+        ======================================= -->
+
+        <section class="topic-section" id="network-communication">
+
+            <h2>
+                2. Communication in Networks
+            </h2>
+
+            <p>
+                A computer network allows multiple devices to communicate and
+                share information and resources.
+            </p>
+
+            <p>
+                Devices may communicate within the same local network or across
+                multiple networks. For example, two computers in the same
+                computer laboratory may communicate through a switch, while a
+                computer accessing a website may communicate with servers
+                located on another network.
+            </p>
+
+
+            <h3>
+                Local Communication
+            </h3>
+
+            <p>
+                Devices connected to the same local network can communicate
+                directly through the local network infrastructure.
+            </p>
+
+            <p>
+                Ethernet networks commonly use switches to connect devices
+                within the local network.
+            </p>
+
+
+            <h3>
+                Communication Between Different Networks
+            </h3>
+
+            <p>
+                When the destination exists on another network, a router is
+                normally required to move traffic between the networks.
+            </p>
+
+
+            <div class="diagram">
+
+                Network A
+
+                <br>
+
+                PC0 ─── Switch ─── Router
+
+                <br><br>
+
+                Router
+
+                <br><br>
+
+                Network B
+
+                <br>
+
+                Router ─── Switch ─── Server
+
+            </div>
+
+
+            <p>
+                This distinction is important. A switch primarily connects
+                devices within a local network, while a router connects
+                different networks and determines where IP packets should be
+                forwarded.
+            </p>
+
+
+            <h3>
+                Communication Requires Identification
+            </h3>
+
+            <p>
+                Before information can be delivered, networking devices need
+                ways to identify sources and destinations.
+            </p>
+
+            <p>
+                At the network layer, Internet Protocol (IP) addresses provide
+                logical addressing. At the data link layer, Ethernet uses Media
+                Access Control (MAC) addresses to identify network interfaces
+                on a local network.
+            </p>
+
+            <p>
+                We will study these addressing systems in greater detail later
+                in this module.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 3
+        ======================================= -->
+
+        <section class="topic-section" id="devices">
+
+            <h2>
+                3. Network Devices
+            </h2>
+
+            <p>
+                Network communication depends on different types of devices.
+                Each device has a particular role in the network.
+            </p>
+
+
+            <h3>
+                End Devices
+            </h3>
+
+            <p>
+                End devices are devices that generate or receive network
+                information.
+            </p>
+
+            <p>
+                Examples include:
+            </p>
+
+            <ul>
+
+                <li>Desktop computers</li>
+                <li>Laptops</li>
+                <li>Smartphones</li>
+                <li>Network printers</li>
+                <li>Servers</li>
+                <li>IP phones</li>
+
+            </ul>
+
+
+            <h3>
+                Network Switch
+            </h3>
+
+            <p>
+                A switch connects multiple devices within a local network.
+                Ethernet switches use MAC addresses to determine where Ethernet
+                frames should be forwarded.
+            </p>
+
+            <p>
+                When a frame enters a switch, the switch can examine the
+                source MAC address and learn which port is associated with that
+                address.
+            </p>
+
+            <p>
+                We will examine this process more deeply in the MAC address
+                and switching sections.
+            </p>
+
+
+            <h3>
+                Router
+            </h3>
+
+            <p>
+                A router connects different networks. Routers operate primarily
+                at the network layer and use IP addressing to make forwarding
+                decisions.
+            </p>
+
+            <p>
+                For example, your home router can connect your local home
+                network to your Internet Service Provider's network.
+            </p>
+
+
+            <h3>
+                Wireless Access Point
+            </h3>
+
+            <p>
+                A wireless access point provides wireless network connectivity
+                to devices such as laptops and smartphones.
+            </p>
+
+            <p>
+                Instead of using a physical Ethernet cable between the client
+                device and the access point, communication occurs using
+                wireless radio signals.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Remember:
+                </strong>
+
+                <p>
+                    Different networking devices perform different jobs.
+                    Understanding the role of each device makes it easier to
+                    understand how information moves through a network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 4
+        ======================================= -->
+
+        <section class="topic-section" id="data-travel">
+
+            <h2>
+                4. How Data Travels
+            </h2>
+
+            <p>
+                When an application sends information across a network, the
+                information does not simply move directly from one computer to
+                another as one large object.
+            </p>
+
+            <p>
+                The data is processed and prepared for transmission. Networking
+                protocols add information that allows the receiving devices to
+                understand how the data should be handled.
+            </p>
+
+
+            <h3>
+                Example
+            </h3>
+
+            <p>
+                Imagine PC0 wants to send information to PC1.
+            </p>
+
+
+            <div class="diagram">
+
+                PC0
+                <br>
+                ↓
+                <br>
+                Network Interface
+                <br>
+                ↓
+                <br>
+                Switch
+                <br>
+                ↓
+                <br>
+                Network Interface
+                <br>
+                ↓
+                <br>
+                PC1
+
+            </div>
+
+
+            <p>
+                PC0 prepares the information for transmission. The network
+                interface sends the resulting Ethernet frame onto the network.
+                The switch receives the frame and makes a forwarding decision.
+                PC1 eventually receives the frame and processes the information
+                contained within it.
+            </p>
+
+
+            <h3>
+                Encapsulation
+            </h3>
+
+            <p>
+                One of the fundamental ideas in networking is encapsulation.
+                As data moves down through the networking layers, additional
+                information is added to help deliver and process the data.
+            </p>
+
+            <p>
+                This allows different networking layers to perform different
+                responsibilities without every layer needing to understand
+                everything about the application data.
+            </p>
+
+            <p>
+                We will examine encapsulation in more detail when we discuss
+                packets, frames, and networking models.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 5
+        ======================================= -->
+
+        <section class="topic-section" id="packets">
+
+            <h2>
+                5. Packets and Frames
+            </h2>
+
+            <p>
+                The terms packet and frame are often used when discussing
+                network communication, but they do not refer to exactly the
+                same thing.
+            </p>
+
+
+            <h3>
+                Packet
+            </h3>
+
+            <p>
+                A packet is a unit of data associated with the network layer.
+                In an IPv4 network, an IP packet contains information such as
+                the source IP address and destination IP address.
+            </p>
+
+
+            <div class="code-box">
+
+                Source IP:      192.168.1.10
+                <br>
+                Destination IP: 192.168.1.20
+                <br>
+                Data:           Information being transmitted
+
+            </div>
+
+
+            <h3>
+                Frame
+            </h3>
+
+            <p>
+                A frame is associated with the data link layer. Ethernet
+                frames contain information used for communication across
+                a local Ethernet network.
+            </p>
+
+            <p>
+                Ethernet frames use source and destination MAC addresses.
+            </p>
+
+
+            <h3>
+                Why Do We Need Both?
+            </h3>
+
+            <p>
+                IP addressing and MAC addressing perform different roles.
+                An IP address provides logical addressing, while a MAC
+                address is used for local Ethernet delivery.
+            </p>
+
+            <p>
+                This separation allows networks to operate efficiently even
+                when information travels through multiple network technologies
+                and networks.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Simple distinction:
+                </strong>
+
+                <p>
+                    IP addresses help identify the logical destination of
+                    communication, while MAC addresses are used for local
+                    Ethernet delivery.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 6
+        ======================================= -->
+
+        <section class="topic-section" id="ip-addresses">
+
+            <h2>
+                6. IP Addresses
+            </h2>
+
+            <p>
+                An Internet Protocol (IP) address is a logical address assigned
+                to a network interface.
+            </p>
+
+            <p>
+                IP addresses allow devices to identify network destinations
+                and communicate across interconnected networks.
+            </p>
+
+
+            <h3>
+                IPv4
+            </h3>
+
+            <p>
+                Internet Protocol version 4 (IPv4) uses 32-bit addresses.
+                These addresses are normally written as four decimal octets.
+            </p>
+
+
+            <div class="code-box">
+
+                192.168.1.10
+
+            </div>
+
+
+            <p>
+                Each octet represents eight bits, giving a total of 32 bits.
+            </p>
+
+
+            <h3>
+                Example Network
+            </h3>
+
+
+            <div class="code-box">
+
+                PC0: 192.168.1.10
+                <br>
+                PC1: 192.168.1.20
+                <br>
+                Subnet Mask: 255.255.255.0
+
+            </div>
+
+
+            <p>
+                In this example, both devices belong to the same IPv4 network,
+                assuming the subnet mask is configured as shown.
+            </p>
+
+            <p>
+                IP addressing becomes especially important when we begin
+                studying communication between different networks and routing.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                <p>
+                    An IP address is not the same thing as a MAC address.
+                    They operate at different networking layers and serve
+                    different purposes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 7
+        ======================================= -->
+
+        <section class="topic-section" id="protocols">
+
+            <h2>
+                7. Network Protocols
+            </h2>
+
+            <p>
+                A protocol is a set of rules that defines how devices
+                communicate.
+            </p>
+
+            <p>
+                Without protocols, devices from different manufacturers and
+                different operating systems would have difficulty communicating
+                reliably.
+            </p>
+
+
+            <h3>
+                Important Protocols
+            </h3>
+
+            <ul>
+
+                <li>
+                    <strong>Internet Protocol (IP):</strong>
+                    Provides logical addressing and helps deliver packets
+                    between networks.
+                </li>
+
+                <li>
+                    <strong>Transmission Control Protocol (TCP):</strong>
+                    Provides reliable, connection-oriented transport of data.
+                </li>
+
+                <li>
+                    <strong>User Datagram Protocol (UDP):</strong>
+                    Provides connectionless transport with lower overhead.
+                </li>
+
+                <li>
+                    <strong>Internet Control Message Protocol (ICMP):</strong>
+                    Used for network control, error reporting, and diagnostic
+                    functions.
+                </li>
+
+                <li>
+                    <strong>Address Resolution Protocol (ARP):</strong>
+                    Helps IPv4 devices discover the MAC address associated
+                    with an IPv4 address on a local network.
+                </li>
+
+                <li>
+                    <strong>Dynamic Host Configuration Protocol (DHCP):</strong>
+                    Automatically provides network configuration information
+                    such as IP addresses to clients.
+                </li>
+
+                <li>
+                    <strong>Domain Name System (DNS):</strong>
+                    Translates domain names into IP addresses and performs
+                    other name resolution functions.
+                </li>
+
+            </ul>
+
+
+            <p>
+                Different protocols solve different problems. Together they
+                allow complex network communication to occur.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 8
+        ======================================= -->
+
+        <section class="topic-section" id="icmp">
+
+            <h2>
+                8. Internet Control Message Protocol and Ping
+            </h2>
+
+            <p>
+                Internet Control Message Protocol (ICMP) is a network layer
+                protocol used for control, diagnostic, and error-reporting
+                messages.
+            </p>
+
+
+            <h3>
+                What is Ping?
+            </h3>
+
+            <p>
+                The ping command is commonly used to test whether one device
+                can reach another device across an IP network.
+            </p>
+
+            <p>
+                Ping normally uses an ICMP Echo Request message. If the
+                destination is reachable and configured to respond, it sends
+                an ICMP Echo Reply.
+            </p>
+
+
+            <div class="diagram">
+
+                PC0
+                <br>
+                ↓
+                <br>
+                ICMP Echo Request
+                <br>
+                ↓
+                <br>
+                PC1
+                <br>
+                ↓
+                <br>
+                ICMP Echo Reply
+                <br>
+                ↓
+                <br>
+                PC0
+
+            </div>
+
+
+            <h3>
+                Why Do We Use Ping?
+            </h3>
+
+            <p>
+                Ping is useful for basic connectivity testing. If a ping is
+                successful, it provides evidence that the destination can be
+                reached and that the relevant network path is functioning.
+            </p>
+
+            <p>
+                However, a failed ping does not automatically mean that the
+                physical network is broken. Firewalls, configuration problems,
+                routing problems, or disabled ICMP responses can also cause
+                ping failures.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    In our Packet Tracer exercise:
+                </strong>
+
+                <p>
+                    We will use ping to demonstrate communication between PC0
+                    and PC1 and observe the network configuration that makes
+                    the communication possible.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             EXERCISE 1
+        ======================================= -->
+
+        <section class="topic-section" id="exercise1">
+
+            <h2>
+                9. Packet Tracer Exercise 1: Basic Communication
+            </h2>
+
+            <p>
+                In this exercise, we create a simple network and test
+                communication between two computers.
+            </p>
+
+            <p>
+                The purpose of the exercise is not simply to make the ping
+                command work. It is to connect the theory we have studied with
+                an actual network simulation.
+            </p>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 1: Network Topology
+                </h3>
+
+                <p>
+                    The first screenshot shows the topology used in the
+                    exercise. PC0 and PC1 are connected through a switch.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise1_topology.png"
+                        alt="Packet Tracer Exercise 1 network topology"
+                    >
+
+                    <p>
+                        Exercise 1: Network topology
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 2: IP Configuration
+                </h3>
+
+                <p>
+                    Each PC needs an IP address so that it can participate in
+                    IPv4 communication.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise1_ip_configuration.png"
+                        alt="Exercise 1 IP configuration"
+                    >
+
+                    <p>
+                        Exercise 1: IP configuration
+                    </p>
+
+                </div>
+
+                <p>
+                    The IP addresses provide logical identities for the
+                    devices within the network.
+                </p>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 3: Testing from PC0
+                </h3>
+
+                <p>
+                    We then use the ping command from PC0 to test whether PC1
+                    can be reached.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise1_pc0_ping.png"
+                        alt="PC0 ping test in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 1: PC0 successfully testing communication
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 4: Testing from PC1
+                </h3>
+
+                <p>
+                    We also test communication in the opposite direction by
+                    sending a ping from PC1 to PC0.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise1_pc1_ping.png"
+                        alt="PC1 ping test in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 1: PC1 testing communication with PC0
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    What did we learn?
+                </strong>
+
+                <p>
+                    We demonstrated that two devices can communicate when they
+                    have appropriate network configurations and a working
+                    connection through the network.
+                </p>
+
+                <p>
+                    We also used Internet Control Message Protocol (ICMP)
+                    through the ping command to test connectivity.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 10
+        ======================================= -->
+
+        <section class="topic-section" id="mac-addresses">
+
+            <h2>
+                10. MAC Addresses
+            </h2>
+
+            <p>
+                A Media Access Control (MAC) address is an address associated
+                with a network interface and is used at the data link layer
+                for local network communication.
+            </p>
+
+            <p>
+                Ethernet networks use MAC addresses when delivering frames
+                across a local network.
+            </p>
+
+
+            <h3>
+                MAC Address Example
+            </h3>
+
+            <div class="code-box">
+
+                00E0.8F12.3456
+
+            </div>
+
+
+            <p>
+                MAC addresses are normally represented using hexadecimal
+                notation. A traditional Ethernet MAC address is 48 bits long.
+            </p>
+
+
+            <h3>
+                IP Address vs MAC Address
+            </h3>
+
+            <div class="code-box">
+
+                IP Address
+                <br>
+                192.168.1.10
+                <br><br>
+                Logical address used by IP
+                <br><br>
+                MAC Address
+                <br>
+                00E0.8F12.3456
+                <br><br>
+                Link-layer address used by Ethernet
+
+            </div>
+
+
+            <p>
+                These addresses work together but perform different functions.
+                The IP address helps identify the logical destination, while
+                the MAC address is used for local Ethernet delivery.
+            </p>
+
+            <p>
+                In the next sections we will examine how a device can discover
+                another device's MAC address and how a switch uses MAC
+                addresses to forward frames.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 11
+        ======================================= -->
+
+        <section class="topic-section" id="arp">
+
+            <h2>
+                11. Address Resolution Protocol
+            </h2>
+
+            <p>
+                Address Resolution Protocol (ARP) is used by IPv4 devices to
+                discover the MAC address associated with a known IPv4 address
+                on the local network.
+            </p>
+
+
+            <h3>
+                Why is ARP Needed?
+            </h3>
+
+            <p>
+                Suppose PC0 knows that PC1 has the IPv4 address
+                <strong>192.168.1.20</strong>.
+            </p>
+
+            <p>
+                PC0 still needs to know which MAC address should be used for
+                the Ethernet frame that will deliver the information across
+                the local network.
+            </p>
+
+            <p>
+                PC0 can use ARP to ask:
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    "Who has 192.168.1.20?"
+                </strong>
+
+                <p>
+                    The device that owns that IPv4 address can respond with
+                    its MAC address.
+                </p>
+
+            </div>
+
+
+            <h3>
+                ARP Request
+            </h3>
+
+            <p>
+                An ARP Request is broadcast on the local network because the
+                sender does not initially know which device owns the requested
+                IPv4 address.
+            </p>
+
+
+            <h3>
+                ARP Reply
+            </h3>
+
+            <p>
+                The device that owns the requested IPv4 address sends an ARP
+                Reply containing its MAC address.
+            </p>
+
+
+            <div class="diagram">
+
+                PC0
+                <br>
+                |
+                <br>
+                | ARP Request
+                <br>
+                ↓
+                <br>
+                Switch
+                <br>
+                ↓
+                <br>
+                PC1
+                <br><br>
+                PC1 sends ARP Reply containing its MAC address
+
+            </div>
+
+
+            <p>
+                Once the information has been learned, the device can use the
+                MAC address when constructing Ethernet frames for local
+                communication.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important distinction:
+                </strong>
+
+                <p>
+                    ARP does not replace IP addressing. ARP connects an IPv4
+                    address to a MAC address for local network communication.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             SECTION 12
+        ======================================= -->
+
+        <section class="topic-section" id="switching">
+
+            <h2>
+                12. Switching and MAC Address Tables
+            </h2>
+
+            <p>
+                A switch uses a MAC address table to help determine where
+                Ethernet frames should be forwarded.
+            </p>
+
+
+            <h3>
+                What is a MAC Address Table?
+            </h3>
+
+            <p>
+                A MAC address table contains information about MAC addresses
+                that the switch has learned and the ports through which those
+                devices can be reached.
+            </p>
+
+
+            <div class="code-box">
+
+                MAC Address          Port
+                <br>
+                00AA.1111.2222       Fa0/1
+                <br>
+                00BB.3333.4444       Fa0/2
+
+            </div>
+
+
+            <h3>
+                How Does a Switch Learn?
+            </h3>
+
+            <p>
+                When an Ethernet frame arrives at a switch, the switch
+                examines the source MAC address.
+            </p>
+
+            <p>
+                The switch can associate that source MAC address with the port
+                where the frame arrived.
+            </p>
+
+            <p>
+                Over time, the switch builds a table containing learned MAC
+                addresses and their associated ports.
+            </p>
+
+
+            <h3>
+                What Happens When the Destination is Known?
+            </h3>
+
+            <p>
+                If the switch already knows the destination MAC address, it
+                can forward the frame through the appropriate port.
+            </p>
+
+
+            <h3>
+                What Happens When the Destination is Unknown?
+            </h3>
+
+            <p>
+                If the switch does not yet know which port contains the
+                destination MAC address, it can flood the frame out of the
+                appropriate ports within the local network, except the port
+                on which the frame arrived.
+            </p>
+
+            <p>
+                When the destination responds, the switch can learn the
+                destination's source MAC address from the returning frame.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    Why this matters:
+                </strong>
+
+                <p>
+                    Switches use MAC address learning to make Ethernet
+                    communication more efficient. Instead of forwarding every
+                    known unicast frame everywhere, the switch can use its
+                    MAC address table to send the frame toward the correct
+                    port.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             EXERCISE 2
+        ======================================= -->
+
+        <section class="topic-section" id="exercise2">
+
+            <h2>
+                13. Packet Tracer Exercise 2: MAC Addresses and Switching
+            </h2>
+
+            <p>
+                This exercise takes our first communication exercise a step
+                further.
+            </p>
+
+            <p>
+                Instead of only asking whether PC0 and PC1 can communicate, we
+                investigate what happens inside the local Ethernet network.
+            </p>
+
+            <p>
+                We will look at MAC addresses, the switch's MAC address table,
+                the frame at the switch, and the successful communication
+                process.
+            </p>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 1: Find PC0's MAC Address
+                </h3>
+
+                <p>
+                    First, we identify the MAC address associated with PC0's
+                    network interface.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_pc0_mac_address.png"
+                        alt="PC0 MAC address in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 2: PC0 MAC address
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 2: Find PC1's MAC Address
+                </h3>
+
+                <p>
+                    We then identify the MAC address associated with PC1.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_pc1_mac_address.png"
+                        alt="PC1 MAC address in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 2: PC1 MAC address
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 3: Examine the MAC Address Table Before the Ping
+                </h3>
+
+                <p>
+                    Before communication takes place, we inspect the switch's
+                    MAC address table.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_mac_table_before_ping.png"
+                        alt="Switch MAC address table before ping"
+                    >
+
+                    <p>
+                        Exercise 2: MAC address table before communication
+                    </p>
+
+                </div>
+
+                <p>
+                    This allows us to see what information the switch has
+                    already learned.
+                </p>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 4: Observe the Packet at the Switch
+                </h3>
+
+                <p>
+                    We then initiate communication and observe the packet or
+                    frame as it reaches the switch.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_packet_at_switch.png"
+                        alt="Packet at switch in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 2: Communication observed at the switch
+                    </p>
+
+                </div>
+
+                <p>
+                    The switch receives the Ethernet frame and examines the
+                    information contained within it.
+                </p>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 5: Packet Reaches PC1
+                </h3>
+
+                <p>
+                    The frame is eventually forwarded toward PC1.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_packet_reaches_pc1.png"
+                        alt="Packet reaches PC1 in Packet Tracer"
+                    >
+
+                    <p>
+                        Exercise 2: Packet reaches PC1
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 6: Examine the MAC Address Table After Communication
+                </h3>
+
+                <p>
+                    After communication has taken place, we inspect the MAC
+                    address table again.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_mac_table_after_ping.png"
+                        alt="Switch MAC address table after ping"
+                    >
+
+                    <p>
+                        Exercise 2: MAC address table after communication
+                    </p>
+
+                </div>
+
+                <p>
+                    The switch may now have learned additional MAC address
+                    information from the frames that travelled through it.
+                </p>
+
+            </div>
+
+
+            <div class="exercise-step">
+
+                <h3>
+                    Step 7: Confirm Successful Simulation
+                </h3>
+
+                <p>
+                    Finally, we verify that the communication completed
+                    successfully in Packet Tracer's Simulation Mode.
+                </p>
+
+                <div class="screenshot">
+
+                    <img
+                        src="images/exercise2_simulation_success.png"
+                        alt="Successful Packet Tracer simulation"
+                    >
+
+                    <p>
+                        Exercise 2: Successful communication in Simulation Mode
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    What did we learn?
+                </strong>
+
+                <p>
+                    The second exercise demonstrates that successful network
+                    communication involves more than simply knowing the
+                    destination IP address.
+                </p>
+
+                <p>
+                    Local Ethernet communication also involves MAC addresses,
+                    ARP, Ethernet frames, and switch MAC address learning.
+                </p>
+
+                <p>
+                    We will study these concepts in much greater depth in the
+                    next networking sections.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             REAL DEVICES
+        ======================================= -->
+
+        <section class="topic-section" id="real-devices">
+
+            <h2>
+                14. Real Networking Devices — Visual Reference
+            </h2>
+
+            <p>
+                Computer networks are not only simulations. The same concepts
+                demonstrated in Packet Tracer are implemented using physical
+                networking equipment in homes, schools, offices, data centers,
+                and other environments.
+            </p>
+
+            <p>
+                This section provides visual references for the physical
+                devices that correspond to the devices we have been using in
+                Packet Tracer.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>
+                    Important:
+                </strong>
+
+                <p>
+                    The images below are real-world visual references. They are
+                    not photographs of equipment personally owned or operated
+                    during this project. The practical network exercises in
+                    this module are performed using Cisco Packet Tracer.
+                </p>
+
+            </div>
+
+
+            <h3>
+                Real Network Devices
+            </h3>
+
+
+            <div class="device-grid">
+
+
+                <!-- COMPUTER -->
+
+                <div class="device-card">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Laptop-computer.jpg/800px-Laptop-computer.jpg"
+                        alt="Laptop computer used as a network end device"
+                    >
+
+                    <div class="device-card-content">
+
+                        <span class="device-label">
+                            END DEVICE
+                        </span>
+
+                        <h3>
+                            PC / Laptop
+                        </h3>
+
+                        <p>
+                            A computer is an end device that can send and
+                            receive network data.
+                        </p>
+
+                        <p>
+                            In Packet Tracer, PCs such as PC0 and PC1 represent
+                            computers connected to the network.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SWITCH -->
+
+                <div class="device-card">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cisco_Catalyst_4506-E_Switch_001.jpg/800px-Cisco_Catalyst_4506-E_Switch_001.jpg"
+                        alt="Cisco Catalyst Ethernet switch"
+                    >
+
+                    <div class="device-card-content">
+
+                        <span class="device-label">
+                            NETWORK DEVICE
+                        </span>
+
+                        <h3>
+                            Ethernet Switch
+                        </h3>
+
+                        <p>
+                            A switch connects multiple devices within a local
+                            network.
+                        </p>
+
+                        <p>
+                            It uses MAC address information to determine where
+                            Ethernet frames should be forwarded.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ROUTER -->
+
+                <div class="device-card">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cisco1800seriesrouter.jpg/800px-Cisco1800seriesrouter.jpg"
+                        alt="Cisco router"
+                    >
+
+                    <div class="device-card-content">
+
+                        <span class="device-label">
+                            NETWORK DEVICE
+                        </span>
+
+                        <h3>
+                            Router
+                        </h3>
+
+                        <p>
+                            A router connects different networks and forwards
+                            IP packets toward their destinations.
+                        </p>
+
+                        <p>
+                            Routers are commonly used to connect local networks
+                            to other networks, including the Internet.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACCESS POINT -->
+
+                <div class="device-card">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wireless_access_point.jpg/800px-Wireless_access_point.jpg"
+                        alt="Wireless network access point"
+                    >
+
+                    <div class="device-card-content">
+
+                        <span class="device-label">
+                            WIRELESS DEVICE
+                        </span>
+
+                        <h3>
+                            Wireless Access Point
+                        </h3>
+
+                        <p>
+                            A wireless access point allows wireless devices
+                            such as laptops and smartphones to connect to a
+                            network.
+                        </p>
+
+                        <p>
+                            It provides a connection between wireless clients
+                            and the wired network.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ETHERNET CABLE -->
+
+                <div class="device-card">
+
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Category_5e_ethernet_cable.jpg/800px-Category_5e_ethernet_cable.jpg"
+                        alt="Category 5e Ethernet network cable"
+                    >
+
+                    <div class="device-card-content">
+
+                        <span class="device-label">
+                            TRANSMISSION MEDIUM
+                        </span>
+
+                        <h3>
+                            Ethernet Cable
+                        </h3>
+
+                        <p>
+                            Ethernet cables provide a physical communication
+                            medium for wired networks.
+                        </p>
+
+                        <p>
+                            They are commonly used to connect computers,
+                            switches, routers, and other network devices.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <h3>
+                How the Physical Devices Work Together
+            </h3>
+
+            <p>
+                A typical wired network may contain end devices connected to
+                switches, with routers providing communication between
+                different networks.
+            </p>
+
+
+            <div class="real-network-diagram">
+
+                <strong>
+                    Example Real-World Network
+                </strong>
+
+                <br><br>
+
+                Laptop / PC
+                <br>
+                ↓
+                <br>
+                Ethernet Cable
+                <br>
+                ↓
+                <br>
+                Ethernet Switch
+                <br>
+                ↓
+                <br>
+                Router
+                <br>
+                ↓
+                <br>
+                Other Network / Internet
+
+            </div>
+
+
+
+            <h3>
+                Wireless Example
+            </h3>
+
+
+            <div class="real-network-diagram">
+
+                Smartphone
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Laptop
+
+                <br>
+
+                ↘
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↙
+
+                <br>
+
+                Wireless Access Point
+
+                <br>
+
+                ↓
+
+                <br>
+
+                Ethernet Switch
+
+                <br>
+
+                ↓
+
+                <br>
+
+                Router
+
+                <br>
+
+                ↓
+
+                <br>
+
+                Internet
+
+            </div>
+
+
+
+            <h3>
+                Packet Tracer vs Real Network
+            </h3>
+
+            <p>
+                Packet Tracer allows us to simulate the behavior of physical
+                networking equipment without requiring access to the actual
+                hardware.
+            </p>
+
+
+            <table class="comparison-table">
+
+                <tr>
+
+                    <th>
+                        Packet Tracer
+                    </th>
+
+                    <th>
+                        Real Network
+                    </th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        PC-PT
+                    </td>
+
+                    <td>
+                        Physical computer or laptop
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        2960 switch
+                    </td>
+
+                    <td>
+                        Physical Ethernet switch
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Router
+                    </td>
+
+                    <td>
+                        Physical network router
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Wireless device
+                    </td>
+
+                    <td>
+                        Physical wireless access point
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Copper straight-through cable
+                    </td>
+
+                    <td>
+                        Physical Ethernet cable
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Simulation Mode
+                    </td>
+
+                    <td>
+                        Actual network traffic
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+            <div class="concept-box">
+
+                <strong>
+                    The connection between theory and practice:
+                </strong>
+
+                <p>
+                    The devices we configure in Packet Tracer represent the
+                    same basic networking concepts found in physical networks.
+                    The main difference is that Packet Tracer provides a
+                    simulated environment where we can safely observe and
+                    experiment with network communication.
+                </p>
+
+            </div>
+
+
+
+            <h3>
+                Device Roles at a Glance
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    <strong>PC/Laptop:</strong>
+                    Generates and receives network data.
+                </li>
+
+                <li>
+                    <strong>Switch:</strong>
+                    Connects devices within a local network and forwards
+                    Ethernet frames.
+                </li>
+
+                <li>
+                    <strong>Router:</strong>
+                    Connects different IP networks and forwards packets.
+                </li>
+
+                <li>
+                    <strong>Wireless Access Point:</strong>
+                    Provides wireless connectivity to network clients.
+                </li>
+
+                <li>
+                    <strong>Ethernet Cable:</strong>
+                    Provides a physical medium for wired communication.
+                </li>
+
+            </ul>
+
+
+            <p class="source-note">
+                Visual reference images are from publicly available Wikimedia
+                Commons resources. Device roles are consistent with standard
+                networking descriptions from Cisco documentation.
+            </p>
+
+        </section>
+
+
+
+        <!-- ======================================
+             MODULE SUMMARY
+        ======================================= -->
+
+        <section class="topic-section">
+
+            <h2>
+                Module 1 Summary
+            </h2>
+
+            <p>
+                Communication is the foundation of computer networking. Devices
+                communicate by exchanging information through wired or
+                wireless communication media while following standardized
+                protocols.
+            </p>
+
+            <p>
+                We introduced network devices such as end devices, switches,
+                routers, and wireless access points.
+            </p>
+
+            <p>
+                We learned that IP addresses provide logical addressing and
+                that Ethernet uses MAC addresses for local delivery.
+            </p>
+
+            <p>
+                We introduced packets and Ethernet frames and discussed how
+                information moves through a network.
+            </p>
+
+            <p>
+                We also introduced important protocols including Internet
+                Protocol (IP), Internet Control Message Protocol (ICMP), and
+                Address Resolution Protocol (ARP).
+            </p>
+
+            <p>
+                Finally, we used Cisco Packet Tracer to demonstrate basic
+                communication and then examined MAC addresses, switching, and
+                MAC address learning.
+            </p>
+
+            <p>
+                We also connected the simulated devices to their real-world
+                physical counterparts, including computers, switches, routers,
+                wireless access points, and Ethernet cables.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>
+                    The big picture:
+                </strong>
+
+                <p>
+                    A device needs a way to identify its destination, a way to
+                    transmit information, and a set of protocols that define
+                    how communication should occur.
+                </p>
+
+                <p>
+                    As we continue studying networking, we will move from this
+                    general understanding into the detailed mechanisms that
+                    make communication possible.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ======================================
+             BOTTOM NAVIGATION
+        ======================================= -->
+
+        <div class="navigation-buttons">
+
+            <a href="#introduction">
+                ↑ Back to Introduction
+            </a>
+
+            <a href="#real-devices">
+                Real Devices ↓
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

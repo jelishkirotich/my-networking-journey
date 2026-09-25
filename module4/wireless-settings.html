@@ -1,0 +1,597 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4 | Wireless Settings</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 4</p>
+            <h1>Wireless Settings</h1>
+            <p class="module-intro">
+                Understanding Wi-Fi standards, SSIDs, wireless channels,
+                mixed modes, channel width, and basic wireless settings.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+
+            <h2>Introduction</h2>
+
+            <p>
+                A wireless router does more than simply provide a Wi-Fi
+                signal. It has several settings that control how wireless
+                devices connect to the network.
+            </p>
+
+            <p>
+                When we open a router's wireless configuration page,
+                we may see options such as wireless mode, SSID, channel,
+                channel width, and SSID broadcast.
+            </p>
+
+            <p>
+                Understanding these settings helps us understand what
+                is happening when a phone or laptop connects to Wi-Fi.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>1. What Is Wi-Fi?</h2>
+
+            <p>
+                Wi-Fi is a wireless networking technology used to connect
+                devices to a local network without using a physical
+                Ethernet cable.
+            </p>
+
+            <p>
+                Wi-Fi is based on the
+                <strong>IEEE 802.11</strong> family of wireless networking
+                standards.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/wifi-router.jpg"
+                     alt="Wireless router providing Wi-Fi connectivity"
+                     class="screenshot">
+
+                <p>
+                    A wireless router can provide Wi-Fi connectivity
+                    to nearby devices.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>2. IEEE 802.11</h2>
+
+            <p>
+                IEEE 802.11 is a family of standards used for wireless
+                local area networking.
+            </p>
+
+            <p>
+                Over time, different versions of the standard have been
+                developed. These versions introduced improvements in areas
+                such as speed, efficiency, frequency bands, and wireless
+                capabilities.
+            </p>
+
+            <table class="comparison-table">
+
+                <tr>
+                    <th>Standard</th>
+                    <th>Common Wi-Fi Name</th>
+                    <th>General Idea</th>
+                </tr>
+
+                <tr>
+                    <td>802.11b</td>
+                    <td>Wi-Fi 1</td>
+                    <td>Older 2.4 GHz wireless technology</td>
+                </tr>
+
+                <tr>
+                    <td>802.11g</td>
+                    <td>Wi-Fi 3</td>
+                    <td>Improved 2.4 GHz wireless networking</td>
+                </tr>
+
+                <tr>
+                    <td>802.11n</td>
+                    <td>Wi-Fi 4</td>
+                    <td>Improved performance and support for 2.4 GHz and 5 GHz</td>
+                </tr>
+
+                <tr>
+                    <td>802.11ac</td>
+                    <td>Wi-Fi 5</td>
+                    <td>Primarily associated with higher-speed 5 GHz Wi-Fi</td>
+                </tr>
+
+                <tr>
+                    <td>802.11ax</td>
+                    <td>Wi-Fi 6 / Wi-Fi 6E</td>
+                    <td>Improved efficiency and performance in busy networks</td>
+                </tr>
+
+            </table>
+
+            <p>
+                You do not need to memorize all of these standards at once.
+                The important idea is that newer standards generally
+                introduce improvements while modern routers may support
+                several standards.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>3. Wireless Mode</h2>
+
+            <p>
+                Wireless mode determines which wireless standards a router
+                or access point will support.
+            </p>
+
+            <p>
+                Depending on the router, you may see settings such as
+                802.11n, 802.11ac, 802.11ax, or a mixed mode.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>Example</h3>
+
+                <p>
+                    If a router is configured to support multiple wireless
+                    standards, devices using different supported standards
+                    may be able to connect to the same wireless network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>4. Mixed Mode or Legacy Mode</h2>
+
+            <p>
+                Some routers provide a mixed or legacy mode that allows
+                different generations of wireless clients to connect.
+            </p>
+
+            <p>
+                For example, a router may allow newer devices and older
+                compatible devices to use the same wireless network.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Why Use Mixed Mode?</h3>
+
+                <p>
+                    Mixed mode can be useful when a network contains
+                    devices that do not all support the same wireless
+                    standard.
+                </p>
+
+                <p>
+                    However, supporting older technologies can sometimes
+                    introduce limitations compared with using a newer
+                    standard throughout the network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>5. SSID</h2>
+
+            <p>
+                SSID stands for
+                <strong>Service Set Identifier</strong>.
+            </p>
+
+            <p>
+                The SSID is the name used to identify a wireless network.
+                It is the name you normally see when you open the Wi-Fi
+                list on your phone or laptop.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/wifi-network-list.jpg"
+                     alt="Wireless networks displayed in a Wi-Fi list"
+                     class="screenshot">
+
+                <p>
+                    The names displayed in a Wi-Fi network list are
+                    examples of SSIDs.
+                </p>
+
+            </div>
+
+            <div class="concept-box">
+
+                <h3>Example</h3>
+
+                <p>
+                    Suppose you name your home Wi-Fi:
+                </p>
+
+                <p>
+                    <strong>Jelish Home WiFi</strong>
+                </p>
+
+                <p>
+                    That name is the SSID of the wireless network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>6. SSID Broadcast</h2>
+
+            <p>
+                Wireless access points regularly transmit information
+                that allows nearby wireless devices to discover available
+                networks. The SSID is included in wireless network
+                information advertised by the access point.
+            </p>
+
+            <p>
+                Most home routers have an option called
+                <strong>SSID Broadcast</strong>.
+            </p>
+
+            <h3>SSID Broadcast Enabled</h3>
+
+            <p>
+                When SSID broadcast is enabled, the network normally
+                appears in the Wi-Fi list of nearby devices.
+            </p>
+
+            <h3>SSID Broadcast Disabled</h3>
+
+            <p>
+                When the broadcast is disabled, the network name may not
+                appear in the normal list of available Wi-Fi networks.
+                A user may need to enter the network name manually.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Important Security Point</h3>
+
+                <p>
+                    Hiding an SSID should not be treated as a strong
+                    security measure. The SSID can still be discovered
+                    through wireless communication.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>7. Wireless Channels</h2>
+
+            <p>
+                A wireless channel is a portion of the radio spectrum
+                used by a Wi-Fi network to communicate.
+            </p>
+
+            <p>
+                Wireless routers can use different channels depending
+                on the frequency band and the regulatory rules in the
+                region where the equipment is being used.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/wifi-channels.jpg"
+                     alt="Wireless Wi-Fi channels diagram"
+                     class="screenshot">
+
+                <p>
+                    Wireless networks use channels within their available
+                    frequency bands.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>8. Why Do Channels Matter?</h2>
+
+            <p>
+                Wi-Fi signals from nearby networks can interfere with
+                each other when they use overlapping or heavily congested
+                channels.
+            </p>
+
+            <p>
+                This is especially important in places where many homes,
+                offices, or access points are close together.
+            </p>
+
+            <p>
+                In the 2.4 GHz band, channels 1, 6, and 11 are commonly
+                used because they are separated so that they do not
+                overlap with each other in the usual 20/22 MHz channel
+                arrangements.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>Simple Example</h3>
+
+                <p>
+                    Imagine several houses next to each other. If all
+                    the routers are using the same congested channel,
+                    their wireless transmissions may compete for the
+                    same radio space.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>9. Automatic Channel Selection</h2>
+
+            <p>
+                Many routers have an <strong>Auto</strong> option for
+                the wireless channel.
+            </p>
+
+            <p>
+                When automatic channel selection is enabled, the wireless
+                device can scan the available channels and choose one
+                according to the router's channel-selection process.
+            </p>
+
+            <p>
+                Cisco documentation describes automatic channel selection
+                as a process that can choose a channel based on detected
+                traffic or congestion.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>10. Channel Width</h2>
+
+            <p>
+                Channel width refers to how much radio spectrum a wireless
+                transmission uses.
+            </p>
+
+            <p>
+                Common settings may include values such as
+                <strong>20 MHz</strong>, <strong>40 MHz</strong>, or
+                wider channels on newer Wi-Fi technologies.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>Simple Idea</h3>
+
+                <p>
+                    A wider channel can provide more capacity, but it
+                    also uses more of the available radio spectrum.
+                    In a crowded wireless environment, wider channels
+                    may encounter more competition from other networks.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>11. Wireless Frequency Bands</h2>
+
+            <p>
+                Modern Wi-Fi equipment can operate on different frequency
+                bands. Common home routers support 2.4 GHz and 5 GHz,
+                while some newer equipment also supports 6 GHz.
+            </p>
+
+            <table class="comparison-table">
+
+                <tr>
+                    <th>Band</th>
+                    <th>General Characteristics</th>
+                </tr>
+
+                <tr>
+                    <td>2.4 GHz</td>
+                    <td>
+                        Longer typical range and greater susceptibility
+                        to congestion from other devices.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5 GHz</td>
+                    <td>
+                        More available channels and generally less
+                        crowded than 2.4 GHz, but shorter typical range.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>6 GHz</td>
+                    <td>
+                        Used by newer Wi-Fi generations and provides
+                        additional spectrum where supported.
+                    </td>
+                </tr>
+
+            </table>
+
+            <p>
+                The exact channels and frequencies available depend on
+                the wireless standard, device, and regulatory requirements
+                for the region.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>12. Basic Wireless Settings Example</h2>
+
+            <p>
+                A typical home router's wireless settings might contain
+                options similar to these:
+            </p>
+
+            <div class="exercise-step">
+
+                <h3>Wireless Network Name</h3>
+
+                <p>
+                    This is the SSID that users see when looking for
+                    available Wi-Fi networks.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Wireless Mode</h3>
+
+                <p>
+                    Determines which supported wireless standards can
+                    be used.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Channel</h3>
+
+                <p>
+                    Determines which wireless channel the network uses.
+                    Some routers can select this automatically.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Channel Width</h3>
+
+                <p>
+                    Determines how much spectrum the wireless transmission
+                    uses.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>SSID Broadcast</h3>
+
+                <p>
+                    Determines whether the network name is advertised
+                    normally to nearby wireless devices.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>13. What We Need to Remember</h2>
+
+            <div class="important-box">
+
+                <ul>
+                    <li>Wi-Fi is based on the IEEE 802.11 family of standards.</li>
+                    <li>Wireless mode determines which standards a device supports.</li>
+                    <li>Mixed or legacy modes can allow compatible older and newer devices to connect.</li>
+                    <li>SSID means Service Set Identifier.</li>
+                    <li>The SSID is the name used to identify a wireless network.</li>
+                    <li>Wireless channels are portions of the radio spectrum used for communication.</li>
+                    <li>Channel congestion and interference can affect wireless performance.</li>
+                    <li>Channel width determines how much spectrum a transmission uses.</li>
+                    <li>SSID broadcast controls whether the network is normally advertised to nearby devices.</li>
+                    <li>Hiding an SSID is not a strong replacement for proper wireless security.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <section class="navigation-buttons">
+
+            <a href="home-router.html" class="nav-button">
+                Previous: Home Router
+            </a>
+
+            <a href="wireless-router-configuration.html" class="nav-button">
+                Next: Wireless Router Configuration
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 4</p>
+    </footer>
+
+</body>
+</html>
+```

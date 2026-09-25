@@ -1,0 +1,813 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4 | Wireless Router Configuration</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 4</p>
+            <h1>Wireless Router Configuration</h1>
+            <p class="module-intro">
+                Learning how to access a wireless router, configure basic
+                settings, create a Wi-Fi network, and connect devices.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+
+            <h2>Introduction</h2>
+
+            <p>
+                A wireless router normally comes with a configuration
+                interface that allows an administrator to change its
+                settings.
+            </p>
+
+            <p>
+                Many home routers provide a web-based graphical interface
+                that can be accessed using a web browser. The exact
+                appearance and menu names depend on the manufacturer
+                and router model.
+            </p>
+
+            <p>
+                In this topic, we will go through the basic process of
+                connecting a computer to a router, opening the router's
+                configuration page, changing wireless settings, and
+                connecting a device to the resulting Wi-Fi network.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>1. What Do We Need?</h2>
+
+            <p>
+                Before configuring a wireless router, we need a few basic
+                things.
+            </p>
+
+            <div class="concept-box">
+
+                <ul>
+                    <li>A wireless router</li>
+                    <li>A computer or laptop</li>
+                    <li>An Ethernet cable</li>
+                    <li>Power for the router</li>
+                    <li>A web browser</li>
+                    <li>The router's login information</li>
+                </ul>
+
+            </div>
+
+            <p>
+                For initial configuration, using an Ethernet cable is
+                useful because it gives us a direct connection to the
+                router without depending on the wireless settings that
+                we are about to configure.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>2. Connect the Computer to the Router</h2>
+
+            <p>
+                First, connect the computer to one of the router's
+                <strong>LAN Ethernet ports</strong>.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/router-pc-ethernet.jpg"
+                     alt="Computer connected to router using Ethernet cable"
+                     class="screenshot">
+
+                <p>
+                    The computer can be connected to a LAN port using
+                    an Ethernet cable.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 1</h3>
+
+                <p>
+                    Connect one end of the Ethernet cable to the
+                    computer's Ethernet port.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 2</h3>
+
+                <p>
+                    Connect the other end of the cable to one of the
+                    router's LAN ports.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 3</h3>
+
+                <p>
+                    Turn on the router and wait for it to finish starting.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>3. Why Use a LAN Port?</h2>
+
+            <p>
+                The router normally has a WAN or Internet port and one
+                or more LAN ports.
+            </p>
+
+            <p>
+                During local configuration, the computer should normally
+                be connected to a LAN port because we are accessing the
+                router from inside the local network.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Remember</h3>
+
+                <p>
+                    <strong>WAN</strong> is normally used toward the
+                    external or ISP network.
+                </p>
+
+                <p>
+                    <strong>LAN</strong> is used for devices inside
+                    the local network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>4. Find the Router's IP Address</h2>
+
+            <p>
+                The router normally has a local IP address that can be
+                used to access its configuration interface.
+            </p>
+
+            <p>
+                Common router addresses include addresses such as
+                <strong>192.168.0.1</strong> or
+                <strong>192.168.1.1</strong>, but the actual address
+                depends on the router.
+            </p>
+
+            <p>
+                You should use the address provided by the router's
+                manufacturer or ISP rather than assuming that every
+                router uses the same address.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>Example</h3>
+
+                <p>
+                    If your router uses:
+                </p>
+
+                <p>
+                    <strong>192.168.1.1</strong>
+                </p>
+
+                <p>
+                    that address can be entered into the browser's
+                    address bar to reach the router's configuration page.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>5. Open the Router's Web Interface</h2>
+
+            <p>
+                Open a web browser on the connected computer.
+            </p>
+
+            <div class="exercise-step">
+
+                <h3>Step 1</h3>
+
+                <p>
+                    Open a browser such as Chrome, Edge, Firefox,
+                    or another browser.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 2</h3>
+
+                <p>
+                    Click the address bar at the top of the browser.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 3</h3>
+
+                <p>
+                    Enter the router's local management address.
+                </p>
+
+                <p>
+                    Example:
+                    <strong>192.168.1.1</strong>
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 4</h3>
+
+                <p>
+                    Press Enter.
+                </p>
+
+            </div>
+
+            <div class="diagram">
+
+                <img src="images/router-login-page.jpg"
+                     alt="Example wireless router web configuration login page"
+                     class="screenshot">
+
+                <p>
+                    A router may display a login page before allowing
+                    access to its configuration settings.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>6. Log In to the Router</h2>
+
+            <p>
+                The router may require an administrator username and
+                password before allowing configuration changes.
+            </p>
+
+            <p>
+                The login details depend on the router. They may be
+                printed on the router, supplied by the ISP, or created
+                during the initial setup.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Security Reminder</h3>
+
+                <p>
+                    Do not leave the router using an easily guessed
+                    administrator password. The administrator password
+                    controls access to the router's configuration.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>7. Find the Wireless Settings</h2>
+
+            <p>
+                After logging in, look for a section named something
+                similar to:
+            </p>
+
+            <div class="concept-box">
+
+                <ul>
+                    <li>Wireless</li>
+                    <li>Wi-Fi</li>
+                    <li>Wireless Settings</li>
+                    <li>Wireless Setup</li>
+                    <li>WLAN</li>
+                </ul>
+
+            </div>
+
+            <p>
+                The exact name depends on the router manufacturer.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/wireless-settings-page.jpg"
+                     alt="Example router wireless settings page"
+                     class="screenshot">
+
+                <p>
+                    A router's wireless configuration page may contain
+                    settings for the SSID, channel, wireless mode,
+                    security, and other options.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>8. Configure the SSID</h2>
+
+            <p>
+                The first setting we can configure is the
+                <strong>SSID</strong>, which is the name of the
+                wireless network.
+            </p>
+
+            <div class="exercise-step">
+
+                <h3>Example</h3>
+
+                <p>
+                    Suppose we want our home network to appear as:
+                </p>
+
+                <p>
+                    <strong>MyHomeWiFi</strong>
+                </p>
+
+                <p>
+                    We would enter that name in the SSID field.
+                </p>
+
+            </div>
+
+            <p>
+                After saving the setting, nearby devices may see
+                <strong>MyHomeWiFi</strong> in their list of available
+                wireless networks.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>9. Choose the Wireless Mode</h2>
+
+            <p>
+                The wireless mode determines which supported wireless
+                standards the router can use.
+            </p>
+
+            <p>
+                Depending on the router, you may see options such as
+                a specific 802.11 standard or a mixed mode.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>Mixed Mode</h3>
+
+                <p>
+                    Mixed mode allows compatible devices using different
+                    generations of wireless technology to connect to
+                    the same wireless network.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>10. Choose a Wireless Channel</h2>
+
+            <p>
+                The wireless settings may also contain a channel option.
+            </p>
+
+            <p>
+                You may be able to choose a specific channel or allow
+                the router to select a channel automatically.
+            </p>
+
+            <div class="concept-box">
+
+                <h3>For a Beginner</h3>
+
+                <p>
+                    If you are not troubleshooting a wireless problem,
+                    leaving channel selection on Auto is often the
+                    simplest starting point.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>11. Configure Wireless Security</h2>
+
+            <p>
+                A wireless network should normally use appropriate
+                security rather than leaving the network open.
+            </p>
+
+            <p>
+                Modern equipment may provide WPA2-Personal, WPA3-Personal,
+                or a WPA2/WPA3 transition option depending on the router
+                and the devices that need to connect. Cisco documentation
+                describes WPA2/WPA3 mixed configurations for compatible
+                clients.
+            </p>
+
+            <div class="diagram">
+
+                <img src="images/wireless-security-settings.jpg"
+                     alt="Example wireless security settings"
+                     class="screenshot">
+
+            </div>
+
+            <h3>Wireless Password</h3>
+
+            <p>
+                The wireless password is used by clients when they join
+                the secured Wi-Fi network.
+            </p>
+
+            <p>
+                Use a strong password rather than something that is easy
+                for other people to guess.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Do Not Confuse These Passwords</h3>
+
+                <p>
+                    The <strong>router administrator password</strong>
+                    protects access to the router's configuration.
+                </p>
+
+                <p>
+                    The <strong>Wi-Fi password</strong> allows devices
+                    to join the wireless network.
+                </p>
+
+                <p>
+                    They perform different jobs.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>12. SSID Broadcast</h2>
+
+            <p>
+                The wireless configuration may also contain an
+                <strong>SSID Broadcast</strong> option.
+            </p>
+
+            <p>
+                When enabled, the wireless network is normally advertised
+                so that nearby devices can see its name in their Wi-Fi
+                list.
+            </p>
+
+            <p>
+                If disabled, the network may not appear in the normal
+                list and a user may need to enter the network name
+                manually.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Security Reminder</h3>
+
+                <p>
+                    Disabling SSID broadcast does not make a wireless
+                    network secure by itself. Proper wireless encryption
+                    and a strong password are much more important.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>13. Save the Configuration</h2>
+
+            <p>
+                After changing the settings, look for a button such as:
+            </p>
+
+            <div class="concept-box">
+
+                <ul>
+                    <li>Save</li>
+                    <li>Apply</li>
+                    <li>Save Changes</li>
+                    <li>Apply Settings</li>
+                </ul>
+
+            </div>
+
+            <p>
+                The router may restart its wireless service after the
+                settings are applied.
+            </p>
+
+            <div class="important-box">
+
+                <h3>Important</h3>
+
+                <p>
+                    If you change the SSID or wireless password while
+                    connected through Wi-Fi, your wireless connection
+                    may be disconnected. This is another reason why
+                    using an Ethernet connection during initial
+                    configuration can be useful.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>14. Connect a Device to the New Wi-Fi Network</h2>
+
+            <p>
+                Once the router has been configured, we can connect
+                another device such as a smartphone or laptop.
+            </p>
+
+            <div class="exercise-step">
+
+                <h3>Step 1</h3>
+
+                <p>
+                    Open the Wi-Fi settings on the device.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 2</h3>
+
+                <p>
+                    Find the SSID that was configured on the router.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 3</h3>
+
+                <p>
+                    Select the network.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 4</h3>
+
+                <p>
+                    Enter the wireless password.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Step 5</h3>
+
+                <p>
+                    Wait for the device to connect.
+                </p>
+
+            </div>
+
+            <div class="diagram">
+
+                <img src="images/device-connected-to-wifi.jpg"
+                     alt="Laptop connected to a wireless network"
+                     class="screenshot">
+
+                <p>
+                    A wireless client can connect to the configured SSID
+                    using the correct security credentials.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>15. Check the Connection</h2>
+
+            <p>
+                After connecting the device, we can test whether the
+                network is working.
+            </p>
+
+            <div class="exercise-step">
+
+                <h3>Check 1: Wi-Fi Connection</h3>
+
+                <p>
+                    Confirm that the device shows that it is connected
+                    to the correct wireless network.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Check 2: IP Address</h3>
+
+                <p>
+                    Check that the device received an IP address from
+                    the router.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Check 3: Router Connectivity</h3>
+
+                <p>
+                    Test whether the device can communicate with the
+                    local router.
+                </p>
+
+            </div>
+
+            <div class="exercise-step">
+
+                <h3>Check 4: Internet Connectivity</h3>
+
+                <p>
+                    If the router has a working Internet connection,
+                    test whether the device can reach an Internet
+                    service.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>16. Basic Configuration Summary</h2>
+
+            <div class="diagram">
+
+                <img src="images/wireless-router-setup.jpg"
+                     alt="Basic wireless router configuration process"
+                     class="screenshot">
+
+            </div>
+
+            <p>
+                The basic configuration process can be summarized as:
+            </p>
+
+            <div class="concept-box">
+
+                <p>
+                    <strong>
+                        Computer → Ethernet → LAN Port → Router GUI
+                    </strong>
+                </p>
+
+                <p>
+                    <strong>
+                        Router GUI → SSID → Wireless Mode → Channel → Security
+                    </strong>
+                </p>
+
+                <p>
+                    <strong>
+                        Save → Connect Device → Test Connection
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <h2>17. What We Need to Remember</h2>
+
+            <div class="important-box">
+
+                <ul>
+                    <li>A router can be configured through a web-based interface.</li>
+                    <li>A computer can be connected to a router through a LAN Ethernet port.</li>
+                    <li>The router has a local management IP address.</li>
+                    <li>The SSID is the name of the wireless network.</li>
+                    <li>Wireless mode determines supported wireless standards.</li>
+                    <li>The channel determines where the wireless network operates within its available spectrum.</li>
+                    <li>Wireless security protects the network from unauthorized access.</li>
+                    <li>The Wi-Fi password and administrator password have different purposes.</li>
+                    <li>After configuration, wireless devices can connect using the SSID and correct credentials.</li>
+                    <li>The connection should be tested after configuration.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <section class="navigation-buttons">
+
+            <a href="wireless-settings.html" class="nav-button">
+                Previous: Wireless Settings
+            </a>
+
+            <a href="packet-tracer-lab.html" class="nav-button">
+                Next: Packet Tracer Lab
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 4</p>
+    </footer>
+
+</body>
+</html>
+```

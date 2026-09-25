@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 1 | Communication & Networking Fundamentals</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f5f9;
+            color: #334155;
+        }
+
+        /* =========================
+           MODULE HEADER
+        ========================= */
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            text-align: center;
+            padding: 70px 20px 65px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            top: -180px;
+            right: -100px;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -80px;
+        }
+
+        header h1 {
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #94a3b8;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #1e293b;
+            color: white;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 50px 20px 70px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: white;
+            border-radius: 18px;
+            padding: 45px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "01";
+            position: absolute;
+            right: 30px;
+            top: 5px;
+            font-size: 150px;
+            font-weight: bold;
+            color: #f1f5f9;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 750px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #334155;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .hero h2 {
+            color: #0f172a;
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           LEARNING OBJECTIVES
+        ========================= */
+
+        .objectives {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 45px;
+        }
+
+        .objective {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+            border-left: 4px solid #334155;
+        }
+
+        .objective span {
+            font-size: 26px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .objective h3 {
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .objective p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            color: #0f172a;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* =========================
+           TOPIC CARDS
+        ========================= */
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-bottom: 45px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .topic-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: #e2e8f0;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .topic-card h3 {
+            color: #0f172a;
+            font-size: 21px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .topic-card p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 14px;
+            min-height: 70px;
+            margin-bottom: 20px;
+        }
+
+        .topic-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #0f172a;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .topic-link:hover {
+            background: #0f172a;
+            color: white;
+        }
+
+        /* Last card centered */
+
+        .topic-card:last-child {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 11px);
+            width: 100%;
+            justify-self: center;
+        }
+
+        /* =========================
+           MODULE FLOW
+        ========================= */
+
+        .module-flow {
+            background: #0f172a;
+            color: white;
+            padding: 40px;
+            border-radius: 18px;
+            margin-bottom: 35px;
+        }
+
+        .module-flow h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 27px;
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .flow-item {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 135px;
+        }
+
+        .flow-item strong {
+            display: block;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .flow-arrow {
+            color: #64748b;
+            font-size: 22px;
+        }
+
+        /* =========================
+           COMPLETION
+        ========================= */
+
+        .completion {
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+        }
+
+        .completion-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #e2e8f0;
+            color: #334155;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .completion h2 {
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .completion p {
+            max-width: 700px;
+            margin: auto;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header p {
+                font-size: 32px;
+            }
+
+            .objectives {
+                grid-template-columns: 1fr;
+            }
+
+            .topics {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-card:last-child {
+                grid-column: auto;
+                max-width: none;
+            }
+
+            .hero {
+                padding: 30px;
+            }
+
+            .module-flow {
+                padding: 30px 20px;
+            }
+
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            header {
+                padding: 50px 15px;
+            }
+
+            header p {
+                font-size: 27px;
+            }
+
+            main {
+                padding: 30px 15px 50px;
+            }
+
+            .hero h2 {
+                font-size: 25px;
+            }
+
+            .topic-card {
+                padding: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MODULE HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>Module 1</h1>
+
+        <p>Communication &amp; Networking Fundamentals</p>
+
+    </header>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <a href="../index.html">Home</a>
+
+        <a href="index.html" class="active">
+            Module 1
+        </a>
+
+    </nav>
+
+
+    <main>
+
+
+        <!-- =========================
+             HERO / INTRODUCTION
+        ========================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    Networking Fundamentals
+                </span>
+
+                <h2>
+                    How Devices Communicate
+                </h2>
+
+                <p>
+                    Welcome to Module 1. This module introduces the
+                    fundamental concepts behind computer networking
+                    and communication.
+                </p>
+
+                <p>
+                    You will explore how devices exchange information,
+                    how networks are organized, how data is transmitted,
+                    and how network performance is measured.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LEARNING OBJECTIVES
+        ========================= -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <h2>What You Will Learn</h2>
+
+                <p>
+                    By the end of this module, you should understand
+                    the foundations of network communication.
+                </p>
+
+            </div>
+
+
+            <div class="objectives">
+
+
+                <div class="objective">
+
+                    <span>🔗</span>
+
+                    <h3>Network Communication</h3>
+
+                    <p>
+                        Understand how devices communicate and
+                        exchange information across networks.
+                    </p>
+
+                </div>
+
+
+                <div class="objective">
+
+                    <span>🌐</span>
+
+                    <h3>Network Types</h3>
+
+                    <p>
+                        Identify different types of networks and
+                        understand where they are commonly used.
+                    </p>
+
+                </div>
+
+
+                <div class="objective">
+
+                    <span>📡</span>
+
+                    <h3>Data Transmission</h3>
+
+                    <p>
+                        Learn how information is represented and
+                        transmitted between network devices.
+                    </p>
+
+                </div>
+
+
+                <div class="objective">
+
+                    <span>⚡</span>
+
+                    <h3>Bandwidth</h3>
+
+                    <p>
+                        Understand the capacity of a network connection
+                        and how bandwidth is measured.
+                    </p>
+
+                </div>
+
+
+                <div class="objective">
+
+                    <span>📊</span>
+
+                    <h3>Throughput</h3>
+
+                    <p>
+                        Understand the actual rate at which data is
+                        successfully transferred through a network.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MODULE TOPICS
+        ========================= -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <h2>Module 1 Topics</h2>
+
+                <p>
+                    Follow the topics in order to build your
+                    networking knowledge step by step.
+                </p>
+
+            </div>
+
+
+            <div class="topics">
+
+
+                <!-- TOPIC 01 -->
+
+                <div class="topic-card">
+
+                    <span class="topic-number">01</span>
+
+                    <h3>Communication</h3>
+
+                    <p>
+                        Learn the fundamentals of communication
+                        between devices and understand how information
+                        is exchanged across a network.
+                    </p>
+
+                    <a
+                        href="communication.html"
+                        class="topic-link">
+                        Explore Topic →
+                    </a>
+
+                </div>
+
+
+                <!-- TOPIC 02 -->
+
+                <div class="topic-card">
+
+                    <span class="topic-number">02</span>
+
+                    <h3>Types of Networks</h3>
+
+                    <p>
+                        Explore LAN, WAN, MAN, PAN and other network
+                        classifications and understand their real-world
+                        applications.
+                    </p>
+
+                    <a
+                        href="types-of-networks.html"
+                        class="topic-link">
+                        Explore Topic →
+                    </a>
+
+                </div>
+
+
+                <!-- TOPIC 03 -->
+
+                <div class="topic-card">
+
+                    <span class="topic-number">03</span>
+
+                    <h3>Data Transmission</h3>
+
+                    <p>
+                        Discover how data travels between devices,
+                        including transmission methods, media and
+                        communication techniques.
+                    </p>
+
+                    <a
+                        href="data-transmission.html"
+                        class="topic-link">
+                        Explore Topic →
+                    </a>
+
+                </div>
+
+
+                <!-- TOPIC 04 -->
+
+                <div class="topic-card">
+
+                    <span class="topic-number">04</span>
+
+                    <h3>Bandwidth</h3>
+
+                    <p>
+                        Learn about network capacity, bandwidth units,
+                        shared bandwidth and the factors that influence
+                        network performance.
+                    </p>
+
+                    <a
+                        href="bandwidth.html"
+                        class="topic-link">
+                        Explore Topic →
+                    </a>
+
+                </div>
+
+
+                <!-- TOPIC 05 -->
+
+                <div class="topic-card">
+
+                    <span class="topic-number">05</span>
+
+                    <h3>Throughput</h3>
+
+                    <p>
+                        Understand the difference between network
+                        capacity and actual data delivery, and learn
+                        what affects real-world throughput.
+                    </p>
+
+                    <a
+                        href="throughput.html"
+                        class="topic-link">
+                        Explore Topic →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LEARNING FLOW
+        ========================= -->
+
+        <section class="module-flow">
+
+            <h2>
+                Your Learning Path
+            </h2>
+
+
+            <div class="flow-container">
+
+                <div class="flow-item">
+                    <strong>01</strong>
+                    Communication
+                </div>
+
+                <span class="flow-arrow">→</span>
+
+                <div class="flow-item">
+                    <strong>02</strong>
+                    Network Types
+                </div>
+
+                <span class="flow-arrow">→</span>
+
+                <div class="flow-item">
+                    <strong>03</strong>
+                    Data Transmission
+                </div>
+
+                <span class="flow-arrow">→</span>
+
+                <div class="flow-item">
+                    <strong>04</strong>
+                    Bandwidth
+                </div>
+
+                <span class="flow-arrow">→</span>
+
+                <div class="flow-item">
+                    <strong>05</strong>
+                    Throughput
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMPLETION
+        ========================= -->
+
+        <section class="completion">
+
+            <span class="completion-badge">
+                Module Overview
+            </span>
+
+            <h2>
+                Build Your Networking Foundation
+            </h2>
+
+            <p>
+                These five topics form the foundation for the
+                networking concepts you will encounter in the
+                upcoming modules. Start with Communication and
+                work through each topic in order.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            My Networking Journey © 2026
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

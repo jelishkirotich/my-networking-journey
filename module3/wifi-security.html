@@ -1,0 +1,432 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wi-Fi Security | Module 3</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Wi-Fi Security</h1>
+        <p>Module 3: Wireless and Mobile Networks</p>
+    </header>
+
+
+    <main>
+
+        <section>
+            <h2>Introduction</h2>
+
+            <p>
+                Wireless networks use radio signals to communicate with
+                devices. Because these signals travel through the air,
+                wireless networks need security mechanisms to help prevent
+                unauthorized access and protect information.
+            </p>
+
+            <p>
+                Wi-Fi security uses technologies such as authentication and
+                encryption to protect wireless communication between devices
+                and the wireless network.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Why Does Wi-Fi Need Security?</h2>
+
+            <p>
+                A wired connection requires a physical connection to the
+                network. Wireless communication is different because devices
+                communicate through radio waves.
+            </p>
+
+            <p>
+                Without appropriate security, an unauthorized device could
+                potentially attempt to connect to a wireless network.
+            </p>
+
+            <p>
+                Wi-Fi security helps control who can connect to the network
+                and helps protect data being transmitted over the wireless
+                connection.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>What is Authentication?</h2>
+
+            <p>
+                Authentication is the process of verifying the identity of a
+                device or user before allowing access to a network.
+            </p>
+
+            <p>
+                When you connect your phone to a password-protected Wi-Fi
+                network, you normally provide the network password. The
+                wireless security system uses this information as part of
+                the process of establishing access to the network.
+            </p>
+
+            <p>
+                In simple terms, authentication helps answer the question:
+            </p>
+
+            <blockquote>
+                "Are you allowed to connect to this network?"
+            </blockquote>
+        </section>
+
+
+        <section>
+            <h2>What is Encryption?</h2>
+
+            <p>
+                Encryption transforms readable information into a protected
+                form so that someone who does not have the required information
+                to decrypt it cannot easily understand the original data.
+            </p>
+
+            <p>
+                The readable information is often called plaintext. The
+                transformed information is called ciphertext.
+            </p>
+
+            <div class="comparison-box">
+
+                <div>
+                    <h3>Plaintext</h3>
+                    <p>
+                        This is the original readable information.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Encryption</h3>
+                    <p>
+                        An encryption algorithm transforms the information.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Ciphertext</h3>
+                    <p>
+                        The resulting information is not directly readable
+                        as the original message.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>WEP</h2>
+
+            <p>
+                WEP stands for Wired Equivalent Privacy. It was an early
+                security standard for Wi-Fi networks.
+            </p>
+
+            <p>
+                WEP is now considered insecure because weaknesses were
+                discovered in its security design. Modern networks should
+                not rely on WEP for protection.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>WPA</h2>
+
+            <p>
+                WPA stands for Wi-Fi Protected Access. It was introduced as
+                an improvement over WEP.
+            </p>
+
+            <p>
+                WPA provided stronger security mechanisms and addressed
+                important weaknesses associated with WEP.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>WPA2</h2>
+
+            <p>
+                WPA2 stands for Wi-Fi Protected Access 2. It became widely
+                used for securing wireless networks and provided stronger
+                protection than the older WEP and WPA standards.
+            </p>
+
+            <p>
+                WPA2 commonly uses the AES encryption standard to protect
+                wireless communication.
+            </p>
+
+            <h3>WPA2-Personal</h3>
+
+            <p>
+                WPA2-Personal is commonly used in homes and small networks.
+                Users normally connect using a shared Wi-Fi password.
+            </p>
+
+            <h3>WPA2-Enterprise</h3>
+
+            <p>
+                WPA2-Enterprise is designed for organizations that need
+                stronger access control. Instead of relying on one shared
+                password for everyone, it can use an authentication server
+                to authenticate individual users or devices.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>WPA3</h2>
+
+            <p>
+                WPA3 is a newer Wi-Fi security standard designed to provide
+                improvements over WPA2.
+            </p>
+
+            <p>
+                WPA3 includes stronger protections for certain authentication
+                scenarios and provides improved security for modern wireless
+                networks.
+            </p>
+
+            <p>
+                The exact security features available depend on the WPA3 mode
+                and the devices being used.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Comparing Wi-Fi Security Standards</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Standard</th>
+                        <th>Security Level</th>
+                        <th>Current Use</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>WEP</td>
+                        <td>Weak</td>
+                        <td>Obsolete</td>
+                    </tr>
+
+                    <tr>
+                        <td>WPA</td>
+                        <td>Improved over WEP</td>
+                        <td>Legacy</td>
+                    </tr>
+
+                    <tr>
+                        <td>WPA2</td>
+                        <td>Strong when properly configured</td>
+                        <td>Widely deployed</td>
+                    </tr>
+
+                    <tr>
+                        <td>WPA3</td>
+                        <td>Newer security improvements</td>
+                        <td>Modern networks and compatible devices</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section>
+            <h2>What Happens When You Connect to Wi-Fi?</h2>
+
+            <p>
+                Connecting to a secured Wi-Fi network involves more than
+                simply typing a password. The device and the wireless network
+                perform authentication and establish the information needed
+                to protect the communication.
+            </p>
+
+            <div class="network-flow">
+
+                <div class="flow-step">
+                    <h3>1. Select the Network</h3>
+                    <p>
+                        Your phone displays available wireless networks,
+                        identified by their SSIDs.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>2. Enter the Password</h3>
+                    <p>
+                        You provide the credentials required to access the
+                        secured network.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>3. Authentication</h3>
+                    <p>
+                        The device and network establish that the connection
+                        can be authorized.
+                    </p>
+                </div>
+
+                <div class="flow-arrow">
+                    ↓
+                </div>
+
+                <div class="flow-step">
+                    <h3>4. Secure Communication</h3>
+                    <p>
+                        The connection uses the security mechanisms provided
+                        by the selected Wi-Fi security standard.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section>
+            <h2>SSID</h2>
+
+            <p>
+                SSID stands for Service Set Identifier. It is the name used
+                to identify a Wi-Fi network.
+            </p>
+
+            <p>
+                For example, when you open the Wi-Fi settings on your phone,
+                you might see networks with names such as:
+            </p>
+
+            <ul>
+                <li>Home_WiFi</li>
+                <li>University_WiFi</li>
+                <li>Office_Network</li>
+            </ul>
+
+            <p>
+                These names are SSIDs. An SSID identifies the wireless network,
+                but it is not the same thing as the Wi-Fi password.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Wi-Fi Password vs Encryption</h2>
+
+            <p>
+                A common misunderstanding is that the Wi-Fi password itself
+                is the encryption. They are not the same thing.
+            </p>
+
+            <p>
+                The password is used as part of the authentication and key
+                establishment process. The wireless security protocol then
+                uses cryptographic mechanisms to protect the communication.
+            </p>
+
+            <p>
+                Therefore:
+            </p>
+
+            <ul>
+                <li>
+                    <strong>SSID:</strong> Identifies the wireless network.
+                </li>
+
+                <li>
+                    <strong>Password:</strong> Helps authenticate access to
+                    the network.
+                </li>
+
+                <li>
+                    <strong>Encryption:</strong> Protects data so that it is
+                    not transmitted as ordinary readable information.
+                </li>
+            </ul>
+        </section>
+
+
+        <section>
+            <h2>Wireless Security in Everyday Life</h2>
+
+            <p>
+                When you connect your phone to your home Wi-Fi, you may see
+                something such as "WPA2" or "WPA3" in the network's security
+                information.
+            </p>
+
+            <p>
+                This tells you which wireless security standard the network
+                is using. Your phone and the router use compatible security
+                mechanisms to establish the wireless connection.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Key Idea</h2>
+
+            <p>
+                Wi-Fi security has several parts. Authentication controls
+                access to the network, while encryption helps protect
+                information transmitted over the wireless connection.
+            </p>
+
+            <p>
+                WEP is an obsolete security standard. WPA improved on WEP,
+                WPA2 became widely deployed, and WPA3 introduced newer
+                security improvements.
+            </p>
+
+            <p>
+                Understanding SSIDs, passwords, authentication, and encryption
+                gives you the foundation needed to understand how a secured
+                wireless network works.
+            </p>
+        </section>
+
+
+        <nav>
+            <a href="mobile-connectivity.html">Previous: Mobile Connectivity</a>
+            <a href="module3.html">Back to Module 3</a>
+            <a href="mobile-wifi.html">Next: Mobile Wi-Fi Configuration</a>
+        </nav>
+
+    </main>
+
+
+    <footer>
+        <p>My Networking Journey | Module 3</p>
+    </footer>
+
+</body>
+</html>
+```

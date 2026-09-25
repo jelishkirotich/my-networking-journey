@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Packet Tracer Lab | My Networking Journey</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="../index.html" class="site-title">
+                My Networking Journey
+            </a>
+
+            <p class="module-label">Module 2</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="intro">
+            <h1>Packet Tracer Lab</h1>
+
+            <p>
+                This lab was used to put the concepts I learned in Module 2
+                into practice using Cisco Packet Tracer. I worked through
+                three exercises covering communication between different
+                networks, client-server communication and wireless
+                connectivity.
+            </p>
+        </section>
+
+
+        <!-- EXERCISE 1 -->
+
+        <section>
+            <h2>Exercise 1: Connecting Two Different Networks</h2>
+
+            <p>
+                The first exercise focused on understanding how a router
+                connects different networks. I created a topology with two
+                PCs, two switches and one router.
+            </p>
+
+            <h3>Topology</h3>
+
+            <pre><code>PC0 ─── Switch0 ─── Router0 ─── Switch1 ─── PC1</code></pre>
+
+            <p>
+                PC0 and PC1 were placed on different networks. PC0 used the
+                192.168.1.0/24 network while PC1 used the 192.168.2.0/24
+                network.
+            </p>
+
+            <img src="images/exercise1_topology1.png"
+                 alt="Packet Tracer topology with two networks connected by a router"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                The topology used to connect two different networks.
+            </p>
+
+            <h3>IP Addressing</h3>
+
+            <table>
+                <tr>
+                    <th>Device</th>
+                    <th>IP Address</th>
+                    <th>Default Gateway</th>
+                </tr>
+
+                <tr>
+                    <td>PC0</td>
+                    <td>192.168.1.10</td>
+                    <td>192.168.1.1</td>
+                </tr>
+
+                <tr>
+                    <td>Router0 G0/0</td>
+                    <td>192.168.1.1</td>
+                    <td>—</td>
+                </tr>
+
+                <tr>
+                    <td>Router0 G0/1</td>
+                    <td>192.168.2.1</td>
+                    <td>—</td>
+                </tr>
+
+                <tr>
+                    <td>PC1</td>
+                    <td>192.168.2.10</td>
+                    <td>192.168.2.1</td>
+                </tr>
+            </table>
+
+            <h3>Configuring the Router</h3>
+
+            <p>
+                I configured both GigabitEthernet interfaces on Router0 with
+                IP addresses. I also learned that router interfaces can be
+                administratively down, so I had to use the
+                <code>no shutdown</code> command to bring them up.
+            </p>
+
+            <pre><code>enable
+configure terminal
+
+interface gigabitEthernet 0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+
+interface gigabitEthernet 0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown</code></pre>
+
+            <h3>Testing PC0 to PC1</h3>
+
+            <p>
+                After configuring the devices, I used the ping command on PC0
+                to test communication with PC1. The communication was
+                successful.
+            </p>
+
+            <img src="images/exercise1_ping_pc0_to_pc1.png"
+                 alt="Successful ping from PC0 to PC1"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                PC0 successfully communicating with PC1 through Router0.
+            </p>
+
+            <h3>Testing PC1 to PC0</h3>
+
+            <p>
+                I also tested communication in the opposite direction by
+                pinging PC0 from PC1. This was successful as well.
+            </p>
+
+            <img src="images/exercise1_ping_pc1_to_pc0.png"
+                 alt="Successful ping from PC1 to PC0"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                PC1 successfully communicating with PC0.
+            </p>
+
+            <h3>Checking the Router Interfaces</h3>
+
+            <p>
+                I used <code>show ip interface brief</code> to check the
+                router interfaces and confirm that they had the correct IP
+                addresses and were operational.
+            </p>
+
+            <img src="images/exercise1_router_interfaces.png"
+                 alt="Router interface status in Packet Tracer"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                Router0 interfaces after configuration.
+            </p>
+
+            <div class="note">
+                <strong>What I learned:</strong>
+                A switch connects devices within a network, while a router
+                allows communication between different networks. I also
+                learned how IP addresses, default gateways and router
+                interfaces work together.
+            </div>
+        </section>
+
+
+        <!-- EXERCISE 2 -->
+
+        <section>
+            <h2>Exercise 2: Client and Server Communication</h2>
+
+            <p>
+                In the second exercise, I extended the network from Exercise 1
+                by adding a server. The server was connected to Switch0 and
+                configured with an IP address on the 192.168.1.0/24 network.
+            </p>
+
+            <pre><code>PC0 ─── Switch0 ─── Server0</code></pre>
+
+            <h3>Configuring Server0</h3>
+
+            <p>
+                Server0 was configured with the following IPv4 settings:
+            </p>
+
+            <table>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>IPv4 Address</td>
+                    <td>192.168.1.20</td>
+                </tr>
+
+                <tr>
+                    <td>Subnet Mask</td>
+                    <td>255.255.255.0</td>
+                </tr>
+
+                <tr>
+                    <td>Default Gateway</td>
+                    <td>192.168.1.1</td>
+                </tr>
+            </table>
+
+            <h3>Testing PC0 to Server0</h3>
+
+            <p>
+                I used PC0 to ping Server0. The successful ping showed that
+                the client could reach the server over the network.
+            </p>
+
+            <img src="images/exercise2_pc0_to_server_ping.png"
+                 alt="Successful ping from PC0 to Server0"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                PC0 successfully communicating with Server0.
+            </p>
+
+            <h3>Accessing the Server</h3>
+
+            <p>
+                I enabled the HTTP service on Server0 and used PC0 to access
+                the server. This helped me understand that a server does more
+                than simply have an IP address. It can provide services that
+                clients can request.
+            </p>
+
+            <img src="images/exercise2_pc0_access_server.png"
+                 alt="PC0 accessing Server0"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                PC0 accessing the service provided by Server0.
+            </p>
+
+            <h3>Testing Server0 to PC0</h3>
+
+            <p>
+                I then tested communication from Server0 back to PC0. The
+                successful result confirmed that the two devices could
+                communicate with each other.
+            </p>
+
+            <img src="images/exercise2_server_to_pc0_ping.png"
+                 alt="Successful ping from Server0 to PC0"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                Server0 successfully communicating with PC0.
+            </p>
+
+            <div class="note">
+                <strong>What I learned:</strong>
+                A client can communicate with a server and request services
+                from it. I also learned the difference between simply testing
+                connectivity with ping and actually using a service such as
+                HTTP.
+            </div>
+        </section>
+
+
+        <!-- EXERCISE 3 -->
+
+        <section>
+            <h2>Exercise 3: Wireless Connectivity</h2>
+
+            <p>
+                The third exercise extended the existing network by adding a
+                wireless access point and a laptop. The purpose was to
+                understand how a wireless device can join a network without
+                using an Ethernet cable.
+            </p>
+
+            <h3>Adding the Access Point</h3>
+
+            <p>
+                I added an Access Point and connected it to Switch1 using a
+                copper straight-through cable. The Access Point provided the
+                wireless connection for Laptop0.
+            </p>
+
+            <pre><code>Switch1 ─── Access Point
+                  )))
+               Laptop0</code></pre>
+
+            <h3>Connecting Laptop0 Wirelessly</h3>
+
+            <p>
+                Laptop0 was connected to the wireless network through the
+                Access Point. No Ethernet cable was used between Laptop0 and
+                the Access Point.
+            </p>
+
+            <p>
+                I then configured Laptop0 with an IPv4 address on the
+                192.168.2.0/24 network.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>IPv4 Address</td>
+                    <td>192.168.2.20</td>
+                </tr>
+
+                <tr>
+                    <td>Subnet Mask</td>
+                    <td>255.255.255.0</td>
+                </tr>
+
+                <tr>
+                    <td>Default Gateway</td>
+                    <td>192.168.2.1</td>
+                </tr>
+            </table>
+
+            <h3>Testing Wireless Communication</h3>
+
+            <p>
+                After connecting Laptop0 wirelessly and configuring its IP
+                address, I used ping to test communication. The successful
+                result showed that Laptop0 could communicate through the
+                wireless network.
+            </p>
+
+            <img src="images/exercise3_laptop_wireless_ping.png"
+                 alt="Successful wireless communication from Laptop0"
+                 class="lesson-image">
+
+            <p class="image-caption">
+                Laptop0 successfully communicating through the wireless network.
+            </p>
+
+            <div class="note">
+                <strong>What I learned:</strong>
+                A wireless device can communicate with a network through an
+                access point without requiring a physical Ethernet connection
+                to the access point.
+            </div>
+        </section>
+
+
+        <!-- OVERALL LEARNING -->
+
+        <section>
+            <h2>What I Learned From the Packet Tracer Labs</h2>
+
+            <p>
+                These exercises helped me connect the concepts from Module 2
+                to practical networking tasks. I worked with several different
+                network devices and saw how they work together.
+            </p>
+
+            <ul>
+                <li>Switches connect devices within a network.</li>
+                <li>Routers connect different IP networks.</li>
+                <li>Devices need correctly configured IP addresses.</li>
+                <li>Default gateways allow devices to reach other networks.</li>
+                <li>Router interfaces may need to be enabled using <code>no shutdown</code>.</li>
+                <li>Servers can provide services to clients.</li>
+                <li>Ping can be used to test IP connectivity.</li>
+                <li>Access points allow devices to connect wirelessly.</li>
+                <li>A network can contain both wired and wireless devices.</li>
+            </ul>
+
+            <p>
+                The labs also showed me that networking is not about one device
+                working alone. Different components have different roles, and
+                they have to be correctly connected and configured for
+                communication to work.
+            </p>
+        </section>
+
+
+        <!-- FINAL SUMMARY -->
+
+        <section>
+            <h2>Final Summary</h2>
+
+            <p>
+                By the end of the practical work, I had worked with PCs,
+                switches, a router, a server and a wireless access point. I
+                configured IPv4 addresses, default gateways and router
+                interfaces, then used ping and a server service to test
+                communication.
+            </p>
+
+            <p>
+                The Internet and ISP connection were covered separately in the
+                Internet Connectivity lesson. The Packet Tracer work focused
+                on the network components and connectivity that I could
+                configure and test directly.
+            </p>
+
+            <div class="note">
+                <strong>Module 2 practical work complete.</strong>
+                The Packet Tracer exercises brought together the main concepts
+                covered in this module.
+            </div>
+        </section>
+
+
+        <div class="page-navigation">
+            <a href="putting-everything-together.html">
+                ← Previous: Putting Everything Together
+            </a>
+
+            <a href="module2.html">
+                Back to Module 2
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>My Networking Journey | Module 2</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Communication | Module 5</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 5</p>
+            <h1>Network Communication</h1>
+            <p class="module-intro">
+                Understanding how information moves from a sender to a receiver
+                and how different communication rules and protocols work together.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+            <h2>How Network Communication Works</h2>
+
+            <p>
+                Network communication is the process of exchanging information
+                between devices across a network. A device may send information
+                to another device on the same local network or to a device located
+                on a completely different network.
+            </p>
+
+            <p>
+                Successful communication requires more than a physical connection.
+                The devices must follow compatible rules for identifying the
+                sender and receiver, formatting information, transmitting the
+                information, and interpreting what is received.
+            </p>
+
+            <p>
+                Different protocols perform different jobs during this process.
+                Instead of one protocol controlling everything, multiple protocols
+                can work together as a protocol suite.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>The Basic Communication Process</h2>
+
+            <p>
+                At its simplest, communication involves a sender, a message,
+                a communication medium, and a receiver.
+            </p>
+
+            <p>
+                The sender creates information and prepares it according to the
+                rules of the communication system. The information is then
+                transmitted through a communication channel until it reaches
+                the intended receiver.
+            </p>
+
+            <p>
+                The receiver processes the incoming information and interprets
+                it according to the same communication rules.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Elements of Network Communication</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Sender</h4>
+                    <p>
+                        The sender is the device or system that originates
+                        the information being transmitted across the network.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Receiver</h4>
+                    <p>
+                        The receiver is the intended destination that accepts
+                        and processes the transmitted information.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Message</h4>
+                    <p>
+                        The message is the information being communicated.
+                        It may contain text, a file, a web request, audio,
+                        video, or other types of data.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Communication Channel</h4>
+                    <p>
+                        The communication channel is the path used to move
+                        information between devices. It may use copper cable,
+                        fiber-optic cable, or wireless signals.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>05</h3>
+                    <h4>Protocol</h4>
+                    <p>
+                        Protocols define the rules that the communicating
+                        devices follow when exchanging information.
+                    </p>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>06</h3>
+                    <h4>Acknowledgement</h4>
+                    <p>
+                        Depending on the protocol, the receiver may send
+                        information back to indicate that data was received
+                        or to provide other delivery information.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Communication Rules</h2>
+
+            <p>
+                For communication to succeed, the sender and receiver must
+                follow compatible rules. These rules can determine how the
+                information is represented, how large messages can be,
+                when information is transmitted, and how the receiver should
+                respond.
+            </p>
+
+            <p>
+                These rules can be compared to the rules used in human
+                communication. If two people do not understand the same
+                language or do not agree on how a message should be exchanged,
+                communication becomes difficult.
+            </p>
+
+            <p>
+                Network devices solve this problem by using standardized
+                protocols that define communication procedures precisely.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Message Format</h2>
+
+            <p>
+                Devices need to know how a message is structured. A protocol
+                defines which parts of the transmitted information represent
+                particular pieces of information.
+            </p>
+
+            <p>
+                For example, a network message may contain control information
+                as well as the actual data that an application wants to send.
+                The receiving device uses the protocol rules to determine
+                which information should be processed and how.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Message Size</h2>
+
+            <p>
+                Networks cannot always transmit an unlimited amount of
+                information as one unit. Data may need to be divided into
+                smaller units before transmission.
+            </p>
+
+            <p>
+                Different protocols and technologies have different limits
+                and mechanisms for handling data size. This becomes especially
+                important when information travels across several networks
+                that may use different technologies.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Timing and Speed</h2>
+
+            <p>
+                Communication also involves timing. Devices need to know when
+                information should be transmitted and how the receiver should
+                handle incoming data.
+            </p>
+
+            <p>
+                Timing becomes particularly important when large amounts of
+                information are being exchanged or when the sender can transmit
+                information faster than the receiver can process it.
+            </p>
+
+            <p>
+                Transport protocols such as TCP provide mechanisms for managing
+                the rate of data transfer. TCP includes flow-control mechanisms
+                that can prevent a sender from overwhelming the receiving system.
+               
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Encoding</h2>
+
+            <p>
+                Before information can travel through a network, it must be
+                represented in a form that the communication system can transmit.
+                This process involves encoding.
+            </p>
+
+            <p>
+                At the lowest physical level, digital information is represented
+                as bits. Depending on the transmission technology, those bits
+                can be represented using electrical signals, light, or radio
+                waves.
+            </p>
+
+            <p>
+                The receiver must be able to interpret the transmitted signals
+                according to the rules of the communication technology.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Addressing the Destination</h2>
+
+            <p>
+                A network needs a way to determine where information should go.
+                Different networking technologies use different forms of addressing
+                for different purposes.
+            </p>
+
+            <p>
+                At the local network level, technologies such as Ethernet use
+                MAC addresses for frame delivery. At the Internet layer, IP
+                addresses identify logical network endpoints and allow packets
+                to be routed between networks.
+            </p>
+
+            <p>
+                This is why a device can communicate with another device even
+                when the destination is located on a different network.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>One Message Can Use Multiple Protocols</h2>
+
+            <p>
+                One of the most important ideas in networking is that a single
+                communication does not normally depend on one protocol.
+                Multiple protocols can work together, with each protocol
+                performing a particular function.
+            </p>
+
+            <p>
+                Consider a user opening a website. The application may use
+                HTTP to communicate with a web server. A transport protocol
+                such as TCP may provide reliable transport. IP provides
+                logical addressing and routing, while Ethernet or Wi-Fi may
+                carry the information across a local network.
+            </p>
+
+            <p>
+                These protocols do not perform the same job. They cooperate
+                as part of a protocol suite.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Example: Opening a Website</h2>
+
+            <p>
+                Imagine that you open a website on your laptop. Your browser
+                needs to communicate with a web server somewhere on the Internet.
+            </p>
+
+            <p>
+                The browser creates a request for the web resource. The
+                application-level protocol handles the web communication.
+                Transport protocols provide communication between applications,
+                and IP provides logical addressing so packets can travel
+                between networks.
+            </p>
+
+            <p>
+                When the information reaches the local network, Ethernet or
+                Wi-Fi can be used to deliver the data across the local link.
+                Routers can then forward IP packets toward their destination.
+            </p>
+
+            <p>
+                At the destination, the receiving system processes the
+                information through the appropriate networking layers until
+                the application receives the data it requested.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Communication Across Different Networks</h2>
+
+            <p>
+                A major purpose of networking is allowing devices on different
+                networks to communicate. A packet does not necessarily travel
+                directly from the source device to the destination device.
+            </p>
+
+            <p>
+                Routers can examine network-layer addressing information and
+                forward packets toward another network. Each network along
+                the path may use different local technologies, while IP provides
+                a common way to move packets between interconnected networks.
+            </p>
+
+            <p>
+                This ability to connect different types of networks is one of
+                the fundamental ideas behind the Internet.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>From Communication to Layered Models</h2>
+
+            <p>
+                Network communication involves many different responsibilities.
+                Trying to understand all of these responsibilities as one large
+                process would be difficult.
+            </p>
+
+            <p>
+                Networking models solve this problem by dividing communication
+                into layers. Each layer has a specific role and works with the
+                layers above and below it.
+            </p>
+
+            <p>
+                The next topics in this module will introduce the TCP/IP model
+                and the OSI reference model. These models will help us organize
+                everything we have learned so far and understand exactly where
+                protocols such as HTTP, TCP, IP, and Ethernet fit into network
+                communication.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Key Idea</h2>
+
+            <p>
+                Network communication is a coordinated process. A sender creates
+                information, protocols define how that information should be
+                handled, communication technologies carry it across the network,
+                and the receiver processes the information according to the
+                same agreed rules.
+            </p>
+
+            <p>
+                Multiple protocols can participate in the same communication,
+                with each one responsible for a particular function. This is
+                the reason layered networking models are useful.
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```
