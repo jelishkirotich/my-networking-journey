@@ -1,0 +1,1441 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Tracer Lab | Module 5</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="module-header">
+        <div class="header-content">
+            <p class="module-number">MODULE 5</p>
+
+            <h1>Packet Tracer Lab</h1>
+
+            <p class="module-intro">
+                Putting communication protocols, the OSI model, TCP/IP,
+                IP addressing, Ethernet, ICMP, and encapsulation into practice
+                using Cisco Packet Tracer.
+            </p>
+        </div>
+    </header>
+
+
+    <main class="module-container">
+
+        <section class="introduction">
+            <h2>Introduction</h2>
+
+            <p>
+                Throughout Module 5, we have learned that network communication
+                is not handled by one protocol or one device. Different protocols
+                perform different tasks, while different network devices process
+                the information at different layers of the networking models.
+            </p>
+
+            <p>
+                In this practical exercise, we use Cisco Packet Tracer to observe
+                these ideas in action. Instead of only checking whether two
+                devices can communicate, we use Simulation Mode to watch the
+                communication move through the network step by step.
+            </p>
+
+            <p>
+                The exercise helps connect the theory from the previous topics
+                with what actually happens when information travels from one
+                device to another.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>What We Are Demonstrating</h2>
+
+            <p>
+                The main purpose of this exercise is to observe how a message
+                travels through different network devices and how different
+                protocols are involved in the process.
+            </p>
+
+            <p>
+                We will observe the roles of Ethernet, MAC addresses, IP
+                addresses, ICMP, switches, routers, and physical interfaces.
+                We will also connect what we see in Packet Tracer to the OSI
+                and TCP/IP models.
+            </p>
+
+            <p>
+                The communication path used in the exercise is:
+            </p>
+
+            <p>
+                <strong>
+                    PC0 → Switch0 → Router0 → Server0
+                </strong>
+            </p>
+
+            <p>
+                The response can then travel back through the network:
+            </p>
+
+            <p>
+                <strong>
+                    Server0 → Router0 → Switch0 → PC0
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Network Topology</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>PC0</h4>
+                    <p>
+                        PC0 is the source device that starts the test
+                        communication. Its IP address is 192.168.1.10.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Switch0</h4>
+                    <p>
+                        Switch0 connects devices on the local Ethernet network
+                        and forwards frames using Layer 2 information.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>Router0</h4>
+                    <p>
+                        Router0 connects the two different IP networks and
+                        forwards packets from one network to another.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>Server0</h4>
+                    <p>
+                        Server0 is the destination device. Its IP address is
+                        192.168.2.10.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="introduction">
+            <h2>IP Addressing Used in the Lab</h2>
+
+            <p>
+                We used two different networks so that the router would have
+                an important role in the communication.
+            </p>
+
+            <p>
+                The first network is 192.168.1.0/24 and the second network is
+                192.168.2.0/24.
+            </p>
+
+            <p>
+                PC0 was configured with:
+            </p>
+
+            <p>
+                <strong>IP address:</strong> 192.168.1.10
+                <br>
+                <strong>Subnet mask:</strong> 255.255.255.0
+                <br>
+                <strong>Default gateway:</strong> 192.168.1.1
+            </p>
+
+            <p>
+                Router0 was configured with two interfaces:
+            </p>
+
+            <p>
+                <strong>GigabitEthernet0/0:</strong> 192.168.1.1
+                <br>
+                <strong>GigabitEthernet0/1:</strong> 192.168.2.1
+            </p>
+
+            <p>
+                Server0 was configured with:
+            </p>
+
+            <p>
+                <strong>IP address:</strong> 192.168.2.10
+                <br>
+                <strong>Subnet mask:</strong> 255.255.255.0
+                <br>
+                <strong>Default gateway:</strong> 192.168.2.1
+            </p>
+
+            <p>
+                The default gateway is important because PC0 and Server0 are
+                on different networks. When PC0 needs to communicate with a
+                destination outside its own network, it sends the traffic
+                toward Router0.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Why We Used Static IP Addresses</h2>
+
+            <p>
+                The devices were configured with static IP addresses instead
+                of using DHCP.
+            </p>
+
+            <p>
+                DHCP could automatically provide IP addresses, subnet masks,
+                gateways, and other network information. However, using DHCP
+                would introduce additional DHCP messages into the simulation.
+            </p>
+
+            <p>
+                For this exercise, static addressing makes the network easier
+                to understand because we already know the exact addresses
+                assigned to PC0, Router0, and Server0.
+            </p>
+
+            <p>
+                This allows us to concentrate on the main purpose of the lab:
+                understanding protocols, layers, frames, packets, and how
+                devices process network communication.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Building the Network</h2>
+
+            <p>
+                The topology was built using four devices:
+            </p>
+
+            <p>
+                <strong>
+                    PC0 → Switch0 → Router0 → Server0
+                </strong>
+            </p>
+
+            <p>
+                Copper straight-through cables were used to connect the
+                Ethernet interfaces.
+            </p>
+
+            <p>
+                The connections were:
+            </p>
+
+            <ul>
+                <li>PC0 FastEthernet0 to Switch0 FastEthernet0/1</li>
+                <li>Switch0 FastEthernet0/2 to Router0 GigabitEthernet0/0</li>
+                <li>Router0 GigabitEthernet0/1 to Server0 FastEthernet0</li>
+            </ul>
+
+            <p>
+                The router interfaces initially had to be enabled because
+                router interfaces can be administratively disabled by default
+                in Packet Tracer.
+            </p>
+
+            <p>
+                The interfaces were enabled using the
+                <strong>no shutdown</strong> command.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Testing the Network</h2>
+
+            <p>
+                Before entering Simulation Mode, the IP configuration was
+                checked and communication between PC0 and Server0 was tested.
+            </p>
+
+            <p>
+                The test was successful, confirming that the addressing,
+                default gateways, router interfaces, and connections were
+                correctly configured.
+            </p>
+
+            <p>
+                The ping result itself is not included as a main screenshot
+                here because basic IP connectivity and ping were already
+                covered in Module 1.
+            </p>
+
+            <p>
+                Instead, this lab focuses on what happens inside the network
+                while the communication is taking place.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Entering Simulation Mode</h2>
+
+            <p>
+                Packet Tracer provides Realtime Mode and Simulation Mode.
+            </p>
+
+            <p>
+                Realtime Mode allows the network to operate normally, while
+                Simulation Mode allows individual network events to be
+                observed.
+            </p>
+
+            <p>
+                For this exercise, Simulation Mode was used because we wanted
+                to see the communication moving through each device.
+            </p>
+
+            <p>
+                The <strong>Capture / Forward</strong> control was used instead
+                of allowing the simulation to play automatically. Capture /
+                Forward moves the event forward one step at a time, making it
+                easier to study what happens at each stage.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Creating the Simple PDU</h2>
+
+            <p>
+                Packet Tracer's <strong>Add Simple PDU</strong> tool was used
+                to create the test communication.
+            </p>
+
+            <p>
+                The first device selected was PC0, which became the source.
+                The second device selected was Server0, which became the
+                destination.
+            </p>
+
+            <p>
+                This created a simulated communication path:
+            </p>
+
+            <p>
+                <strong>
+                    PC0 → Switch0 → Router0 → Server0
+                </strong>
+            </p>
+
+            <p>
+                Packet Tracer then allowed the communication to be observed
+                through the Event List and PDU Details window.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Stage 1: PC0 to Switch0</h2>
+
+            <p>
+                The first stage of the communication is:
+            </p>
+
+            <p>
+                <strong>
+                    PC0 → Switch0
+                </strong>
+            </p>
+
+            <p>
+                PC0 sends the communication onto its local network. The
+                Ethernet frame travels from PC0's network interface to the
+                switch.
+            </p>
+
+            <p>
+                In the PDU Details window, the OSI Model section showed
+                information associated with the lower layers.
+            </p>
+
+            <h3>Layer 1: Physical</h3>
+
+            <p>
+                Layer 1 deals with the actual transmission of bits through
+                the physical medium. In our topology, the communication
+                travels through an Ethernet cable.
+            </p>
+
+            <p>
+                Packet Tracer showed the FastEthernet port through which
+                the communication entered the switch.
+            </p>
+
+            <h3>Layer 2: Data Link</h3>
+
+            <p>
+                At Layer 2, Ethernet is used. Ethernet frames contain MAC
+                address information used for communication across the local
+                network.
+            </p>
+
+            <p>
+                The switch uses Layer 2 information to determine where the
+                frame should be forwarded.
+            </p>
+
+            <img
+                src="images/module5_switch_osi_pdu.png"
+                alt="Packet Tracer showing the PDU at Switch0"
+                class="module-image"
+            >
+
+            <p>
+                This screenshot shows the frame being processed by Switch0.
+                The frame entered through the port connected to PC0 and was
+                then prepared for forwarding toward Router0.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>What the Switch Does</h2>
+
+            <p>
+                A switch primarily operates at Layer 2 of the OSI model.
+                It connects devices on a local network and forwards Ethernet
+                frames.
+            </p>
+
+            <p>
+                Switches learn MAC addresses by examining the source MAC
+                addresses of frames that arrive at their ports. These learned
+                addresses can be stored in a MAC address table.
+            </p>
+
+            <p>
+                When the switch needs to forward a frame, it can use this
+                information to determine the appropriate outgoing interface.
+            </p>
+
+            <p>
+                In our topology, the frame entered Switch0 through
+                FastEthernet0/1 and was forwarded through FastEthernet0/2,
+                which is connected to Router0.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Stage 2: Switch0 to Router0</h2>
+
+            <p>
+                After Switch0 processes the frame, it forwards the
+                communication toward Router0.
+            </p>
+
+            <p>
+                The next part of the path is:
+            </p>
+
+            <p>
+                <strong>
+                    Switch0 → Router0
+                </strong>
+            </p>
+
+            <p>
+                Router0 receives the Ethernet frame through its
+                GigabitEthernet0/0 interface.
+            </p>
+
+            <p>
+                This is where the role of the router becomes important because
+                PC0 and Server0 belong to different IP networks.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Stage 3: Router0 Processes the Communication</h2>
+
+            <p>
+                Router0 connects:
+            </p>
+
+            <p>
+                <strong>192.168.1.0/24</strong>
+                <br>
+                and
+                <br>
+                <strong>192.168.2.0/24</strong>
+            </p>
+
+            <p>
+                When the router receives the frame, it processes the
+                information required to determine where the IP packet should
+                be forwarded.
+            </p>
+
+            <h3>Layer 1</h3>
+
+            <p>
+                The router receives the incoming electrical or physical
+                signal through its GigabitEthernet0/0 interface.
+            </p>
+
+            <h3>Layer 2</h3>
+
+            <p>
+                The router receives an Ethernet frame. The Layer 2 information
+                belongs to the local link between Switch0 and Router0.
+            </p>
+
+            <h3>Layer 3</h3>
+
+            <p>
+                The router examines the IP information contained in the
+                packet. The destination IP address is important because the
+                router uses network-layer information to determine where
+                the packet should go next.
+            </p>
+
+            <img
+                src="images/module5_router_osi_pdu.png"
+                alt="Packet Tracer showing the PDU at Router0"
+                class="module-image"
+            >
+
+            <p>
+                The screenshot shows Router0 processing Layer 3 IP information
+                together with the Layer 2 Ethernet and Layer 1 interface
+                information.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>MAC Addresses and IP Addresses</h2>
+
+            <p>
+                The PDU information helps demonstrate that MAC addresses and
+                IP addresses have different roles.
+            </p>
+
+            <p>
+                A <strong>MAC address</strong> is associated with a network
+                interface and is used for Layer 2 communication such as
+                Ethernet delivery on a local network.
+            </p>
+
+            <p>
+                An <strong>IP address</strong> is a logical address used at
+                Layer 3. IP allows packets to be addressed and routed between
+                different networks.
+            </p>
+
+            <p>
+                In simple terms:
+            </p>
+
+            <p>
+                <strong>
+                    MAC addresses help with local frame delivery.
+                </strong>
+            </p>
+
+            <p>
+                <strong>
+                    IP addresses help identify the destination at the network
+                    layer and allow routers to forward packets between networks.
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>ICMP: Internet Control Message Protocol</h2>
+
+            <p>
+                The Simple PDU used in this exercise uses
+                <strong>ICMP</strong>.
+            </p>
+
+            <p>
+                ICMP stands for
+                <strong>Internet Control Message Protocol</strong>.
+            </p>
+
+            <p>
+                ICMP is associated with the Internet layer of the TCP/IP model
+                and the Network layer of the OSI model. It is used to exchange
+                control, diagnostic, and error-related information about IP
+                communication.
+            </p>
+
+            <p>
+                One of the best-known uses of ICMP is the
+                <strong>ping</strong> command.
+            </p>
+
+            <p>
+                When a device sends a traditional ping request, it sends an
+                ICMP Echo Request. If the destination responds, it sends an
+                ICMP Echo Reply.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>ICMP Type 8: Echo Request</h2>
+
+            <p>
+                ICMP Type 8 is an <strong>Echo Request</strong>.
+            </p>
+
+            <p>
+                It is used to ask the destination whether it can receive
+                the message and respond.
+            </p>
+
+            <p>
+                In simple terms, the request is like asking:
+            </p>
+
+            <p>
+                <strong>
+                    "Are you reachable, and can you reply to me?"
+                </strong>
+            </p>
+
+            <p>
+                This is the request side of the traditional ping process.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>ICMP Type 0: Echo Reply</h2>
+
+            <p>
+                ICMP Type 0 is an <strong>Echo Reply</strong>.
+            </p>
+
+            <p>
+                It is sent as the response to an Echo Request.
+            </p>
+
+            <p>
+                In simple terms:
+            </p>
+
+            <p>
+                <strong>
+                    "I received your request and I am responding."
+                </strong>
+            </p>
+
+            <p>
+                During the Packet Tracer exercise, the PDU information
+                displayed ICMP Type 8 and Type 0, allowing us to see the
+                request and response sides of the communication.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Other Important ICMP Messages</h2>
+
+            <p>
+                ICMP contains more message types than Echo Request and Echo
+                Reply. Some important examples include:
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>Destination Unreachable</h3>
+                    <p>
+                        Indicates that a destination or required service
+                        cannot be reached.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Time Exceeded</h3>
+                    <p>
+                        Indicates that a packet's time-to-live has reached
+                        zero. This type of message is important in tools
+                        such as traceroute.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Echo Request</h3>
+                    <p>
+                        Requests an echo response from another device.
+                        The commonly used IPv4 type is Type 8.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Echo Reply</h3>
+                    <p>
+                        Responds to an Echo Request. The commonly used IPv4
+                        type is Type 0.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                ICMP is different from TCP and UDP. It does not use TCP or
+                UDP port numbers.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Stage 4: Router0 to Server0</h2>
+
+            <p>
+                After Router0 determines that the packet needs to travel
+                through its second interface, the communication continues:
+            </p>
+
+            <p>
+                <strong>
+                    Router0 → Server0
+                </strong>
+            </p>
+
+            <p>
+                Router0 forwards the communication onto the
+                192.168.2.0/24 network, where Server0 is located.
+            </p>
+
+            <p>
+                Server0 receives the Ethernet frame through its network
+                interface and processes the information.
+            </p>
+
+            <img
+                src="images/module5_server_osi_pdu.png"
+                alt="Packet Tracer showing the PDU arriving at Server0"
+                class="module-image"
+            >
+
+            <p>
+                The PDU Details window at Server0 showed Layer 3 IP
+                information, Layer 2 Ethernet information, and Layer 1
+                physical interface information.
+            </p>
+
+            <p>
+                This confirms that the communication has reached the
+                destination device.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Why Only Some OSI Layers Appear</h2>
+
+            <p>
+                One thing we observed during the exercise was that Packet
+                Tracer did not always display information for all seven OSI
+                layers.
+            </p>
+
+            <p>
+                This does not mean that the other layers are not important.
+                Packet Tracer is showing the protocol processing that is
+                relevant to the particular PDU and device at that point.
+            </p>
+
+            <p>
+                Our Simple PDU uses ICMP. ICMP is carried by IP and does not
+                use TCP or UDP as its transport protocol.
+            </p>
+
+            <p>
+                Therefore, we should not expect this particular PDU to show
+                a TCP header or UDP header.
+            </p>
+
+            <p>
+                The simplified protocol structure for this communication is:
+            </p>
+
+            <p>
+                <strong>
+                    ICMP message → IP packet → Ethernet frame → Physical transmission
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>TCP: Transmission Control Protocol</h2>
+
+            <p>
+                TCP stands for <strong>Transmission Control Protocol</strong>.
+                It is a transport-layer protocol.
+            </p>
+
+            <p>
+                Unlike our ICMP test, TCP is used when an application needs
+                transport services such as reliable and ordered delivery.
+            </p>
+
+            <h3>Connection-Oriented Communication</h3>
+
+            <p>
+                TCP is connection-oriented. Before normal application data
+                is exchanged, TCP establishes a connection between the
+                communicating endpoints.
+            </p>
+
+            <p>
+                The process is commonly described using the TCP three-way
+                handshake:
+            </p>
+
+            <p>
+                <strong>
+                    SYN → SYN-ACK → ACK
+                </strong>
+            </p>
+
+            <p>
+                This allows the two endpoints to establish the TCP connection
+                before normal data transfer begins.
+            </p>
+
+            <h3>Reliable Delivery</h3>
+
+            <p>
+                TCP uses sequence numbers, acknowledgements, retransmission,
+                and other mechanisms to provide reliable communication.
+            </p>
+
+            <p>
+                If transmitted data is not successfully acknowledged, TCP can
+                retransmit the missing data.
+            </p>
+
+            <h3>Ordered Delivery</h3>
+
+            <p>
+                TCP uses sequence information so that data can be reconstructed
+                in the correct order at the receiving side.
+            </p>
+
+            <h3>Flow Control</h3>
+
+            <p>
+                TCP provides flow-control mechanisms that help prevent a sender
+                from sending data faster than the receiver can handle.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>UDP: User Datagram Protocol</h2>
+
+            <p>
+                UDP stands for <strong>User Datagram Protocol</strong>.
+                It is also a transport-layer protocol.
+            </p>
+
+            <p>
+                UDP provides a simpler transport service than TCP. It does
+                not establish a TCP connection before sending data.
+            </p>
+
+            <h3>Connectionless Communication</h3>
+
+            <p>
+                UDP sends datagrams without the connection-establishment
+                process used by TCP.
+            </p>
+
+            <h3>Less Built-in Overhead</h3>
+
+            <p>
+                UDP does not provide the same built-in reliability,
+                acknowledgement, ordering, and retransmission mechanisms
+                that TCP provides.
+            </p>
+
+            <p>
+                This makes UDP useful for applications that may prefer lower
+                protocol overhead or need to handle timing and reliability
+                at the application level.
+            </p>
+
+            <p>
+                DNS is one example of a protocol that can use UDP. Some
+                real-time applications can also use UDP when the application
+                design benefits from its simpler transport behaviour.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>TCP and UDP Compared</h2>
+
+            <p>
+                TCP and UDP both operate at the transport layer, but they
+                provide different services.
+            </p>
+
+            <p>
+                <strong>TCP:</strong>
+                connection-oriented, reliable, ordered, and includes
+                acknowledgements, retransmission, and flow-control mechanisms.
+            </p>
+
+            <p>
+                <strong>UDP:</strong>
+                connectionless and simpler, without TCP's built-in
+                reliability and ordering mechanisms.
+            </p>
+
+            <p>
+                Neither protocol is automatically better. The appropriate
+                choice depends on what the application requires.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Understanding Port Numbers</h2>
+
+            <p>
+                TCP and UDP use port numbers to identify applications or
+                services at the transport layer.
+            </p>
+
+            <p>
+                An IP address helps identify the network destination, while
+                a port number helps identify the particular application or
+                service involved in the communication.
+            </p>
+
+            <p>
+                A useful simplified way of remembering this is:
+            </p>
+
+            <p>
+                <strong>
+                    IP address = where the communication needs to go
+                </strong>
+            </p>
+
+            <p>
+                <strong>
+                    Port number = which application or service should receive it
+                </strong>
+            </p>
+
+            <p>
+                Our ICMP Simple PDU does not use TCP or UDP ports. That is
+                why no TCP or UDP port information appeared in the ICMP
+                simulation.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Encapsulation</h2>
+
+            <p>
+                Encapsulation is the process of adding protocol information
+                as data moves down through the networking layers before
+                transmission.
+            </p>
+
+            <p>
+                A simplified example using TCP is:
+            </p>
+
+            <p>
+                <strong>
+                    Application Data
+                    <br>
+                    ↓
+                    <br>
+                    TCP Header + Data = Segment
+                    <br>
+                    ↓
+                    <br>
+                    IP Header + Segment = Packet
+                    <br>
+                    ↓
+                    <br>
+                    Ethernet Header + Packet + Trailer = Frame
+                    <br>
+                    ↓
+                    <br>
+                    Bits
+                </strong>
+            </p>
+
+            <p>
+                Our ICMP communication is slightly different because ICMP
+                does not use TCP or UDP.
+            </p>
+
+            <p>
+                In simplified form:
+            </p>
+
+            <p>
+                <strong>
+                    ICMP Message
+                    <br>
+                    ↓
+                    <br>
+                    IP Packet
+                    <br>
+                    ↓
+                    <br>
+                    Ethernet Frame
+                    <br>
+                    ↓
+                    <br>
+                    Bits
+                </strong>
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>What Happens at the Router?</h2>
+
+            <p>
+                The router is particularly important because it connects
+                different networks.
+            </p>
+
+            <p>
+                Router0 receives a Layer 2 frame through its first interface.
+                It processes the information inside the frame, including the
+                IP packet.
+            </p>
+
+            <p>
+                The router then determines where the IP packet should be
+                forwarded.
+            </p>
+
+            <p>
+                When the packet leaves through the router's other interface,
+                it is placed into a new Layer 2 frame for the next local link.
+            </p>
+
+            <p>
+                This means the Ethernet frame used on one local link is not
+                simply carried unchanged across the entire path.
+            </p>
+
+            <p>
+                The Layer 2 information is associated with each local link,
+                while the IP packet provides the Layer 3 addressing used to
+                move the communication between networks.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Decapsulation</h2>
+
+            <p>
+                At the destination, the receiving device processes the
+                information through the appropriate layers. This reverse
+                process is called decapsulation.
+            </p>
+
+            <p>
+                In a typical TCP communication, the general idea is:
+            </p>
+
+            <p>
+                <strong>
+                    Bits → Frame → Packet → Segment → Application Data
+                </strong>
+            </p>
+
+            <p>
+                For our ICMP communication, there is no TCP or UDP segment.
+                The ICMP message is carried inside the IP packet.
+            </p>
+
+            <p>
+                The destination therefore processes the Ethernet frame,
+                the IP packet, and the ICMP message so that the communication
+                can be handled by the destination system.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Connecting the Lab to the OSI Model</h2>
+
+            <p>
+                The OSI reference model contains seven layers:
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>Layer 7</h3>
+                    <h4>Application</h4>
+                    <p>
+                        Provides network services used by applications,
+                        such as HTTP, DNS, SMTP, and other protocols.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 6</h3>
+                    <h4>Presentation</h4>
+                    <p>
+                        Deals with data representation, formatting,
+                        encryption, and compression.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 5</h3>
+                    <h4>Session</h4>
+                    <p>
+                        Manages communication sessions between systems.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 4</h3>
+                    <h4>Transport</h4>
+                    <p>
+                        Provides end-to-end transport services using
+                        protocols such as TCP and UDP.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 3</h3>
+                    <h4>Network</h4>
+                    <p>
+                        Provides logical addressing and routing. IP and
+                        ICMP are associated with this layer.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 2</h3>
+                    <h4>Data Link</h4>
+                    <p>
+                        Handles local link delivery using technologies
+                        such as Ethernet and MAC addresses.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Layer 1</h3>
+                    <h4>Physical</h4>
+                    <p>
+                        Transmits bits as electrical signals, light, or
+                        radio signals through the physical medium.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                In our ICMP simulation, the most visible layers were Layers
+                1, 2, and 3 because the PDU involved physical transmission,
+                Ethernet, IP, and ICMP.
+            </p>
+        </section>
+
+
+        <section class="introduction">
+            <h2>Connecting the Lab to the TCP/IP Model</h2>
+
+            <p>
+                The TCP/IP model is commonly represented using four layers:
+            </p>
+
+            <p>
+                <strong>Application:</strong>
+                protocols such as HTTP, DNS, and DHCP.
+            </p>
+
+            <p>
+                <strong>Transport:</strong>
+                protocols such as TCP and UDP.
+            </p>
+
+            <p>
+                <strong>Internet:</strong>
+                IP and related protocols such as ICMP.
+            </p>
+
+            <p>
+                <strong>Network Access:</strong>
+                technologies such as Ethernet and Wi-Fi that provide local
+                network delivery and physical transmission.
+            </p>
+
+            <p>
+                Our Simple PDU mainly demonstrates the Internet and Network
+                Access layers because it uses ICMP, IP, Ethernet, and the
+                physical network connection.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>Protocols Working Together</h2>
+
+            <p>
+                The lab demonstrates an important networking principle:
+                different protocols can work together without performing
+                the same job.
+            </p>
+
+            <p>
+                For example, in a typical web communication:
+            </p>
+
+            <p>
+                <strong>DNS</strong> can help resolve a domain name into an
+                IP address.
+            </p>
+
+            <p>
+                <strong>HTTP or HTTPS</strong> handles communication between
+                the web client and web server.
+            </p>
+
+            <p>
+                <strong>TCP</strong> can provide reliable transport for
+                protocols that use TCP.
+            </p>
+
+            <p>
+                <strong>IP</strong> provides logical addressing and routing.
+            </p>
+
+            <p>
+                <strong>Ethernet or Wi-Fi</strong> can provide local link
+                delivery.
+            </p>
+
+            <p>
+                These protocols form part of a larger protocol suite and
+                cooperate through the layered networking architecture.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Packet Tracer Simulation Video</h2>
+
+            <p>
+                The video below shows the communication being observed in
+                Packet Tracer Simulation Mode.
+            </p>
+
+            <p>
+                The packet begins at PC0 and travels through Switch0,
+                Router0, and Server0. The response then travels back through
+                the network toward PC0.
+            </p>
+
+            <video controls class="module-video">
+                <source src="videos/module5_packet_travel.mp4" type="video/mp4">
+
+                Your browser does not support the video element.
+            </video>
+
+            <p>
+                The simulation was advanced using Capture / Forward so that
+                the movement of the communication could be observed one
+                stage at a time.
+            </p>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>What the Screenshots Show</h2>
+
+            <p>
+                The screenshots taken during the simulation provide a closer
+                look at what Packet Tracer was processing at different points
+                in the network.
+            </p>
+
+            <p>
+                The Switch0 screenshot shows the Ethernet frame being
+                processed at the switch.
+            </p>
+
+            <p>
+                The Router0 screenshot shows the router processing Ethernet
+                and IP information as it forwards the communication between
+                the two networks.
+            </p>
+
+            <p>
+                The Server0 screenshot shows the communication arriving at
+                the destination device.
+            </p>
+        </section>
+
+
+        <section class="topics">
+            <h2>What We Learned From the Exercise</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>01</h3>
+                    <h4>Switches</h4>
+                    <p>
+                        Switches use Layer 2 information such as MAC addresses
+                        to forward Ethernet frames on a local network.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>02</h3>
+                    <h4>Routers</h4>
+                    <p>
+                        Routers connect different IP networks and use
+                        network-layer information to forward packets.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>03</h3>
+                    <h4>ICMP</h4>
+                    <p>
+                        ICMP provides control and diagnostic messaging for
+                        IP communication. Echo Request and Echo Reply are
+                        used by traditional ping.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>04</h3>
+                    <h4>TCP and UDP</h4>
+                    <p>
+                        TCP and UDP are transport-layer protocols with
+                        different communication characteristics.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>05</h3>
+                    <h4>Encapsulation</h4>
+                    <p>
+                        Network layers add the information needed for their
+                        particular functions as data moves toward transmission.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <h3>06</h3>
+                    <h4>Layered Communication</h4>
+                    <p>
+                        Different protocols and devices perform different
+                        jobs while working together to move information
+                        across the network.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="module-summary">
+            <h2>Final Summary</h2>
+
+            <p>
+                This Packet Tracer exercise allowed us to move from the
+                theoretical concepts of Module 5 to a practical network
+                simulation.
+            </p>
+
+            <p>
+                We created a network containing PC0, Switch0, Router0, and
+                Server0. PC0 and Server0 were placed on different networks,
+                making Router0 necessary for communication between them.
+            </p>
+
+            <p>
+                Using Simulation Mode and Capture / Forward, we observed the
+                communication as it travelled from PC0 to Switch0, from
+                Switch0 to Router0, and from Router0 to Server0.
+            </p>
+
+            <p>
+                We saw Ethernet and MAC address information at Layer 2,
+                IP and ICMP information at Layer 3, and physical interfaces
+                at Layer 1.
+            </p>
+
+            <p>
+                We also examined ICMP, including the difference between an
+                Echo Request and an Echo Reply, and learned why ICMP is
+                different from TCP and UDP.
+            </p>
+
+            <p>
+                TCP provides transport services that include reliable and
+                ordered delivery, while UDP provides a simpler connectionless
+                transport service without TCP's built-in reliability and
+                ordering mechanisms.
+            </p>
+
+            <p>
+                Most importantly, the exercise demonstrated that network
+                communication is a layered process. Protocols such as ICMP,
+                IP, Ethernet, TCP, and UDP each have different responsibilities,
+                while devices such as switches and routers process the
+                communication according to their roles in the network.
+            </p>
+
+            <p>
+                The practical exercise therefore connects the concepts of
+                communication protocols, protocol models, OSI, TCP/IP,
+                encapsulation, addressing, and network devices into one
+                complete example.
+            </p>
+        </section>
+
+    </main>
+
+
+    <footer class="module-footer">
+        <p>My Networking Journey | Module 5</p>
+    </footer>
+
+</body>
+</html>
+```
