@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 | Ethernet Switches</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <span class="module-number">MODULE 7</span>
+        <h1>Ethernet Switches</h1>
+        <p class="module-intro">
+            Learn how Ethernet switches receive frames, learn MAC addresses,
+            make forwarding decisions, and improve communication on a LAN.
+        </p>
+    </div>
+</header>
+
+<main>
+
+```
+<!-- INTRODUCTION -->
+<section class="topic-section">
+    <h2>1. What Is an Ethernet Switch?</h2>
+
+    <p>
+        An <strong>Ethernet switch</strong> is a networking device used to
+        connect devices together on a local area network (LAN).
+    </p>
+
+    <p>
+        For example, a small network might contain:
+    </p>
+
+    <ul>
+        <li>PC0</li>
+        <li>PC1</li>
+        <li>PC2</li>
+        <li>A printer</li>
+        <li>A server</li>
+        <li>An Ethernet switch</li>
+    </ul>
+
+    <p>
+        Instead of connecting every computer directly to every other
+        computer, the devices connect to the switch.
+    </p>
+
+    <div class="diagram">
+
+        <h3>Simple LAN</h3>
+
+        <div class="code-box">
+
+            <p>
+                PC0 ────────┐
+            </p>
+
+            <p>
+                PC1 ────────┤
+            </p>
+
+            <p>
+                PC2 ────────┼──── SWITCH
+            </p>
+
+            <p>
+                Printer ────┤
+            </p>
+
+            <p>
+                Server ─────┘
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        The switch receives Ethernet frames from connected devices and
+        decides which port should receive each frame.
+    </p>
+
+    <div class="important-box">
+        <h3>Simple Definition</h3>
+
+        <p>
+            <strong>
+                A switch connects devices on a LAN and forwards Ethernet
+                frames toward their destination using MAC addresses.
+            </strong>
+        </p>
+    </div>
+</section>
+
+
+<!-- WHY SWITCH -->
+<section class="topic-section">
+    <h2>2. Why Do We Need a Switch?</h2>
+
+    <p>
+        Imagine having five computers that need to communicate.
+    </p>
+
+    <p>
+        You could theoretically connect devices directly to each other,
+        but that would become complicated very quickly.
+    </p>
+
+    <p>
+        A switch gives the network a central point where devices can
+        connect.
+    </p>
+
+    <div class="concept-box">
+
+        <h3>Without a Switch</h3>
+
+        <p>
+            Many direct connections would be required.
+        </p>
+
+        <h3>With a Switch</h3>
+
+        <p>
+            Each device connects to the switch, and the switch handles
+            forwarding between them.
+        </p>
+
+    </div>
+
+    <p>
+        A switch also makes communication more efficient because it can
+        learn where devices are located and forward known unicast frames
+        toward the appropriate port instead of sending every frame
+        everywhere.
+    </p>
+</section>
+
+
+<!-- SWITCH AND FRAME -->
+<section class="topic-section">
+    <h2>3. What Happens When a Frame Reaches a Switch?</h2>
+
+    <p>
+        This is the most important process to understand.
+    </p>
+
+    <p>
+        Remember what you learned in the previous page about
+        <strong>encapsulation</strong>.
+    </p>
+
+    <p>
+        A computer creates an Ethernet frame containing information such
+        as:
+    </p>
+
+    <ul>
+        <li>Source MAC address</li>
+        <li>Destination MAC address</li>
+        <li>Type/Length information</li>
+        <li>Payload</li>
+        <li>FCS</li>
+    </ul>
+
+    <p>
+        When that frame arrives at a switch, the switch examines the
+        Ethernet information and makes a forwarding decision.
+    </p>
+
+    <div class="important-box">
+        <h3>The Basic Process</h3>
+
+        <p>
+            <strong>
+                Receive → Learn → Look up destination → Forward, flood, or filter
+            </strong>
+        </p>
+    </div>
+</section>
+
+
+<!-- STEP 1 -->
+<section class="topic-section">
+    <h2>4. Step 1 — The Switch Receives the Frame</h2>
+
+    <p>
+        Imagine PC0 sends an Ethernet frame.
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch Port 1
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        The frame enters the switch through one of its ports.
+    </p>
+
+    <p>
+        The switch knows which physical port the frame arrived on because
+        the switch interface itself received the frame.
+    </p>
+
+    <p>
+        This incoming port is important because the switch uses it when
+        learning the source MAC address.
+    </p>
+</section>
+
+
+<!-- STEP 2 -->
+<section class="topic-section">
+    <h2>5. Step 2 — The Switch Learns the Source MAC Address</h2>
+
+    <p>
+        This is one of the most important ideas in Ethernet switching.
+    </p>
+
+    <p>
+        When a frame arrives, the switch looks at the
+        <strong>source MAC address</strong>.
+    </p>
+
+    <p>
+        It then associates that MAC address with the port on which the
+        frame arrived.
+    </p>
+
+    <p>
+        For example, suppose PC0 has:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC0 MAC = 00:11:22:33:44:55
+        </p>
+
+        <p>
+            PC0 is connected to Switch Port 1
+        </p>
+
+    </div>
+
+    <p>
+        When PC0 sends a frame, the switch can learn:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            00:11:22:33:44:55 → Port 1
+        </p>
+
+    </div>
+
+    <p>
+        This information is stored in the switch's
+        <strong>MAC address table</strong>.
+    </p>
+
+    <p>
+        Cisco documentation describes this process as dynamically building
+        the table from the source MAC addresses of received frames and
+        associating them with the incoming ports.
+    </p>
+
+    <div class="important-box">
+        <h3>Very Important</h3>
+
+        <p>
+            The switch learns from the
+            <strong>source MAC address</strong>.
+        </p>
+
+        <p>
+            It does <strong>not</strong> learn the destination MAC address
+            simply because that address appears in the destination field.
+        </p>
+    </div>
+</section>
+
+
+<!-- SOURCE VS DESTINATION -->
+<section class="topic-section">
+    <h2>6. Source MAC vs Destination MAC</h2>
+
+    <p>
+        This distinction is extremely important.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>MAC Address</th>
+                    <th>What the Switch Does</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Source MAC</td>
+                    <td>
+                        Learns which port the source device is reachable
+                        through.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Destination MAC</td>
+                    <td>
+                        Looks for a matching MAC-to-port entry to decide
+                        where to forward the frame.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        Think of it this way:
+    </p>
+
+    <div class="concept-box">
+
+        <p>
+            <strong>Source MAC:</strong>
+            "Where did this frame come from?"
+        </p>
+
+        <p>
+            <strong>Destination MAC:</strong>
+            "Where does this frame need to go?"
+        </p>
+
+    </div>
+</section>
+
+
+<!-- MAC TABLE -->
+<section class="topic-section">
+    <h2>7. The MAC Address Table</h2>
+
+    <p>
+        A switch maintains a table that maps MAC addresses to the ports
+        through which those devices can be reached.
+    </p>
+
+    <p>
+        A simplified table might look like this:
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>MAC Address</th>
+                    <th>Port</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>00:11:22:33:44:55</td>
+                    <td>Fa0/1</td>
+                </tr>
+
+                <tr>
+                    <td>AA:BB:CC:DD:EE:FF</td>
+                    <td>Fa0/2</td>
+                </tr>
+
+                <tr>
+                    <td>12:34:56:78:9A:BC</td>
+                    <td>Fa0/3</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        This means the switch has learned that a particular MAC address is
+        reachable through a particular port.
+    </p>
+
+    <p>
+        In actual switches, the table can also contain information such as
+        the VLAN associated with the entry.
+    </p>
+</section>
+
+
+<!-- KNOWN DESTINATION -->
+<section class="topic-section">
+    <h2>8. What If the Destination MAC Is Known?</h2>
+
+    <p>
+        Suppose PC0 wants to send a frame to PC1.
+    </p>
+
+    <p>
+        Assume the switch already has this information:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC1 MAC → Port 3
+        </p>
+
+    </div>
+
+    <p>
+        The frame arrives from PC0 through Port 1.
+    </p>
+
+    <p>
+        The switch:
+    </p>
+
+    <ol>
+
+        <li>Receives the frame on Port 1.</li>
+
+        <li>Examines the source MAC address.</li>
+
+        <li>Updates or learns the source MAC-to-port mapping.</li>
+
+        <li>Reads the destination MAC address.</li>
+
+        <li>Looks for that destination MAC in its MAC address table.</li>
+
+        <li>Finds the destination on Port 3.</li>
+
+        <li>Forwards the frame out Port 3.</li>
+
+    </ol>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Port 1</strong>
+            </p>
+
+            <p>
+                SWITCH
+            </p>
+
+            <p>
+                <strong>Port 3</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                PC1
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="important-box">
+
+        <p>
+            When the destination is known, the switch can send the frame
+            toward the specific port associated with that MAC address.
+        </p>
+
+    </div>
+
+    <p>
+        This is one of the main reasons a switch is more efficient than a
+        traditional shared Ethernet hub.
+    </p>
+</section>
+
+
+<!-- UNKNOWN DESTINATION -->
+<section class="topic-section">
+    <h2>9. What If the Destination MAC Is Unknown?</h2>
+
+    <p>
+        Sometimes the switch receives a frame whose destination MAC address
+        is not currently in its MAC address table.
+    </p>
+
+    <p>
+        The switch still knows the destination MAC address from the frame.
+        What it does <strong>not</strong> know is which port leads to that
+        destination.
+    </p>
+
+    <p>
+        In this situation, the switch performs
+        <strong>unknown-unicast flooding</strong>.
+    </p>
+
+    <p>
+        It sends the frame out the relevant ports except the port on which
+        the frame arrived.
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Port 1
+            </p>
+
+            <p>
+                SWITCH
+            </p>
+
+            <p>
+                ↙ ↓ ↘
+            </p>
+
+            <p>
+                Port 2 | Port 3 | Port 4
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        The switch does not send the frame back out Port 1 because that is
+        the port from which the frame came.
+    </p>
+
+    <p>
+        Cisco's switching documentation describes this behavior: if a
+        destination MAC is not in the table, the switch forwards the
+        unknown unicast out the other relevant ports.
+    </p>
+</section>
+
+
+<!-- HOW DESTINATION GETS LEARNED -->
+<section class="topic-section">
+    <h2>10. How Does the Switch Eventually Learn That Destination?</h2>
+
+    <p>
+        This is where the earlier source-MAC learning concept becomes very
+        important.
+    </p>
+
+    <p>
+        Suppose PC0 sends a frame to PC1, but the switch does not yet know
+        which port contains PC1.
+    </p>
+
+    <p>
+        The switch floods the unknown unicast frame.
+    </p>
+
+    <p>
+        PC1 receives the frame.
+    </p>
+
+    <p>
+        When PC1 sends a response, that response contains
+        <strong>PC1's MAC address as its source MAC address</strong>.
+    </p>
+
+    <p>
+        The switch receives that response and can now learn:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC1 MAC → Port 3
+        </p>
+
+    </div>
+
+    <p>
+        Future frames destined for PC1 can then be forwarded directly to
+        Port 3, assuming the entry is still valid.
+    </p>
+
+    <p>
+        This source-learning and forwarding behavior is documented by
+        Cisco's switching material.
+    </p>
+</section>
+
+
+<!-- BROADCAST -->
+<section class="topic-section">
+    <h2>11. What About Broadcast Frames?</h2>
+
+    <p>
+        A broadcast frame is different from an unknown unicast frame.
+    </p>
+
+    <p>
+        An Ethernet broadcast uses:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            FF:FF:FF:FF:FF:FF
+        </p>
+
+    </div>
+
+    <p>
+        This destination means that the frame is intended for all devices
+        in the relevant Layer 2 broadcast domain.
+    </p>
+
+    <p>
+        A switch floods a broadcast frame out the other relevant ports
+        within that broadcast domain, except the port on which it was
+        received.
+    </p>
+
+    <p>
+        Cisco documentation describes broadcast and multicast frames as
+        being flooded to the other relevant ports.
+    </p>
+
+    <div class="important-box">
+
+        <p>
+            <strong>Unknown unicast:</strong>
+            The destination is a specific device, but the switch does not
+            currently know which port leads to it.
+        </p>
+
+        <p>
+            <strong>Broadcast:</strong>
+            The destination is intentionally all devices in the relevant
+            broadcast domain.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- FILTERING -->
+<section class="topic-section">
+    <h2>12. What Is Filtering?</h2>
+
+    <p>
+        A switch does not always have to forward a frame.
+    </p>
+
+    <p>
+        Imagine that a frame arrives on Port 1, and the switch's table says
+        that the destination MAC address is also reachable through Port 1.
+    </p>
+
+    <p>
+        In that situation, sending the frame back out the same port would
+        not make sense.
+    </p>
+
+    <p>
+        The switch can therefore <strong>filter</strong> the frame instead
+        of forwarding it out another port.
+    </p>
+
+    <div class="concept-box">
+
+        <p>
+            <strong>Forward:</strong>
+            Destination is known on another port.
+        </p>
+
+        <p>
+            <strong>Flood:</strong>
+            Destination is unknown or the frame is broadcast/multicast,
+            according to the relevant Layer 2 rules.
+        </p>
+
+        <p>
+            <strong>Filter:</strong>
+            The destination is associated with the incoming port, so the
+            frame does not need to be sent back out that same port.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- THREE DECISIONS -->
+<section class="topic-section">
+    <h2>13. The Three Important Switch Decisions</h2>
+
+    <div class="topic-grid">
+
+        <div class="topic-card">
+
+            <h3>1. Forward</h3>
+
+            <p>
+                The destination MAC is known and associated with another
+                port.
+            </p>
+
+        </div>
+
+        <div class="topic-card">
+
+            <h3>2. Flood</h3>
+
+            <p>
+                The destination is unknown, or the frame is a broadcast or
+                relevant multicast frame.
+            </p>
+
+        </div>
+
+        <div class="topic-card">
+
+            <h3>3. Filter</h3>
+
+            <p>
+                The destination is associated with the incoming port, so
+                forwarding it back through that same port is unnecessary.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SWITCH DOES NOT CHANGE FRAME -->
+<section class="topic-section">
+    <h2>14. Does the Switch Change the Ethernet Frame?</h2>
+
+    <p>
+        For normal Layer 2 switching, the switch forwards the Ethernet
+        frame without rewriting the source and destination MAC addresses.
+    </p>
+
+    <p>
+        It examines the frame to make its forwarding decision, but it does
+        not normally replace the original source MAC with the switch's own
+        MAC address.
+    </p>
+
+    <div class="important-box">
+
+        <p>
+            If PC0 sends a frame to PC1 through a Layer 2 switch, the frame
+            still carries PC0's source MAC and PC1's destination MAC as it
+            crosses the switch.
+        </p>
+
+    </div>
+
+    <p>
+        This becomes different when traffic crosses a Layer 3 boundary,
+        such as a router, because a router creates a new Layer 2 frame for
+        the next link.
+    </p>
+</section>
+
+
+<!-- SWITCH VS HUB -->
+<section class="topic-section">
+    <h2>15. Switch vs Hub</h2>
+
+    <p>
+        Before switches became the normal choice for Ethernet LANs,
+        <strong>hubs</strong> were commonly used.
+    </p>
+
+    <p>
+        A hub does not make the same intelligent MAC-address forwarding
+        decisions as a switch.
+    </p>
+
+    <p>
+        When a hub receives a signal on one port, it repeats that signal
+        out its other ports.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Hub</th>
+                    <th>Switch</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Repeats incoming signals</td>
+                    <td>Receives and forwards Ethernet frames</td>
+                </tr>
+
+                <tr>
+                    <td>Does not build a MAC address table</td>
+                    <td>Builds a MAC address table</td>
+                </tr>
+
+                <tr>
+                    <td>Does not make normal MAC-based forwarding decisions</td>
+                    <td>Uses destination MAC information for Layer 2 forwarding</td>
+                </tr>
+
+                <tr>
+                    <td>All connected devices share the same collision domain</td>
+                    <td>Each switch port forms a separate collision domain in normal switched Ethernet</td>
+                </tr>
+
+                <tr>
+                    <td>Generally associated with half-duplex Ethernet</td>
+                    <td>Modern switched Ethernet normally operates full-duplex</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="important-box">
+
+        <p>
+            This is why you should not think of a modern Ethernet switch as
+            simply a "better hub." A switch actively learns MAC-to-port
+            information and makes forwarding decisions.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- FULL EXAMPLE -->
+<section class="topic-section">
+    <h2>16. Complete Example: PC0 Sends to PC1</h2>
+
+    <p>
+        Let's put everything together.
+    </p>
+
+    <h3>Network</h3>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0 ───── Port 1
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWITCH
+            </p>
+
+            <p>
+                PC1 ───── Port 3
+            </p>
+
+        </div>
+
+    </div>
+
+    <h3>Step 1 — PC0 Creates Data</h3>
+
+    <p>
+        An application on PC0 creates data that needs to be transmitted.
+    </p>
+
+    <h3>Step 2 — Encapsulation</h3>
+
+    <p>
+        The data moves down the protocol stack.
+    </p>
+
+    <p>
+        Transport information is added, then IP information, and then
+        Ethernet information.
+    </p>
+
+    <h3>Step 3 — Ethernet Frame</h3>
+
+    <p>
+        PC0's NIC sends an Ethernet frame containing:
+    </p>
+
+    <ul>
+        <li>PC0's source MAC address</li>
+        <li>PC1's destination MAC address</li>
+        <li>The network-layer packet as the payload</li>
+        <li>Other Ethernet information</li>
+    </ul>
+
+    <h3>Step 4 — Frame Arrives at the Switch</h3>
+
+    <p>
+        The frame enters Port 1.
+    </p>
+
+    <h3>Step 5 — Switch Learns</h3>
+
+    <p>
+        The switch reads PC0's source MAC and learns:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC0 MAC → Port 1
+        </p>
+
+    </div>
+
+    <h3>Step 6 — Destination Lookup</h3>
+
+    <p>
+        The switch reads PC1's destination MAC.
+    </p>
+
+    <p>
+        It checks the MAC address table.
+    </p>
+
+    <h3>Step 7 — Forwarding</h3>
+
+    <p>
+        If the table contains:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC1 MAC → Port 3
+        </p>
+
+    </div>
+
+    <p>
+        the switch sends the frame out Port 3.
+    </p>
+
+    <h3>Step 8 — PC1 Receives the Frame</h3>
+
+    <p>
+        PC1 receives the frame and processes it through its protocol
+        stack.
+    </p>
+
+    <h3>Step 9 — Decapsulation</h3>
+
+    <p>
+        PC1 processes the Ethernet information, IP information, transport
+        information, and eventually delivers the original data to the
+        appropriate application.
+    </p>
+</section>
+
+
+<!-- MULTIPLE DEVICES -->
+<section class="topic-section">
+    <h2>17. Can Multiple MAC Addresses Be Associated With One Switch Port?</h2>
+
+    <p>
+        Yes.
+    </p>
+
+    <p>
+        A switch port does not necessarily represent only one MAC address.
+    </p>
+
+    <p>
+        For example, if Switch 1 connects to Switch 2, many devices may
+        exist behind the second switch.
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0 ──┐
+            </p>
+
+            <p>
+                PC1 ──┼── Switch 2
+            </p>
+
+            <p>
+                PC2 ──┘
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch 1
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        From Switch 1's perspective, the port connecting it to Switch 2
+        can lead to multiple MAC addresses.
+    </p>
+
+    <p>
+        As frames arrive from different devices through that link, Switch
+        1 can learn multiple MAC addresses associated with that same
+        outgoing port.
+    </p>
+
+    <div class="important-box">
+
+        <p>
+            A MAC address table is not simply:
+            <strong>one MAC = one switch port forever</strong>.
+        </p>
+
+        <p>
+            It represents where the switch currently knows that MAC
+            address can be reached.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- AGING -->
+<section class="topic-section">
+    <h2>18. What Happens to Old MAC Addresses?</h2>
+
+    <p>
+        MAC address-table entries are not necessarily kept forever.
+    </p>
+
+    <p>
+        Dynamically learned entries can <strong>age</strong>.
+    </p>
+
+    <p>
+        If the switch does not see relevant traffic from a learned MAC
+        address for the configured aging period, the dynamic entry can be
+        removed.
+    </p>
+
+    <p>
+        This allows the switch to adapt when devices move, disconnect, or
+        otherwise change their network location.
+    </p>
+
+    <div class="concept-box">
+
+        <h3>Why Is Aging Useful?</h3>
+
+        <p>
+            Imagine that a laptop was connected to Port 2 yesterday but is
+            now connected to Port 5.
+        </p>
+
+        <p>
+            The switch needs a way to eventually remove stale information
+            and learn the laptop's current location.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- BIG PICTURE -->
+<section class="topic-section">
+    <h2>19. The Big Picture</h2>
+
+    <p>
+        You can now connect several Module 7 concepts together.
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                <strong>PC0</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Creates data
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Encapsulation
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Ethernet Frame
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>SWITCH</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Learn Source MAC
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Look up Destination MAC
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Forward / Flood / Filter
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>PC1</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Decapsulation
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Original data reaches application
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- IMPORTANT TERMS -->
+<section class="topic-section">
+    <h2>20. Important Terms</h2>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Term</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Ethernet switch</td>
+                    <td>
+                        A LAN device that forwards Ethernet frames using
+                        Layer 2 information.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC address table</td>
+                    <td>
+                        A table containing learned MAC-address-to-port
+                        information.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC learning</td>
+                    <td>
+                        Learning a source MAC address and associating it
+                        with the incoming port.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Forwarding</td>
+                    <td>
+                        Sending a frame out the port associated with the
+                        destination MAC.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Flooding</td>
+                    <td>
+                        Sending a frame out multiple relevant ports,
+                        excluding the incoming port.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Filtering</td>
+                    <td>
+                        Not forwarding a frame when forwarding it back
+                        through the incoming port is unnecessary.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC aging</td>
+                    <td>
+                        Removal of stale dynamically learned MAC entries
+                        after the configured aging period.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</section>
+
+
+<!-- DO NOT CONFUSE -->
+<section class="topic-section">
+    <h2>21. Don't Confuse These</h2>
+
+    <div class="important-box">
+
+        <h3>Source MAC vs Destination MAC</h3>
+
+        <p>
+            The switch <strong>learns from the source MAC</strong>.
+        </p>
+
+        <p>
+            The switch <strong>looks up the destination MAC</strong> to
+            make a forwarding decision.
+        </p>
+
+        <hr>
+
+        <h3>Unknown Unicast vs Broadcast</h3>
+
+        <p>
+            <strong>Unknown unicast:</strong>
+            A specific destination exists, but the switch does not know
+            which port leads to it.
+        </p>
+
+        <p>
+            <strong>Broadcast:</strong>
+            The frame is intentionally addressed to all devices in the
+            relevant broadcast domain.
+        </p>
+
+        <hr>
+
+        <h3>Switch vs Router</h3>
+
+        <p>
+            A switch normally makes Layer 2 forwarding decisions using
+            MAC addresses.
+        </p>
+
+        <p>
+            A router makes Layer 3 forwarding decisions using IP
+            addressing and connects different IP networks.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- QUICK NOTES -->
+<section class="topic-section">
+    <h2>22. Quick Notes</h2>
+
+    <div class="code-box">
+
+        <p>
+            <strong>Ethernet switch:</strong>
+            Connects devices on a LAN and forwards Ethernet frames.
+        </p>
+
+        <p>
+            <strong>MAC address table:</strong>
+            Maps learned MAC addresses to switch ports (and, in actual
+            switches, relevant VLAN information).
+        </p>
+
+        <p>
+            <strong>MAC learning:</strong>
+            The switch learns the source MAC address from an incoming frame
+            and associates it with the incoming port.
+        </p>
+
+        <p>
+            <strong>Known unicast:</strong>
+            Destination MAC is in the table → forward toward the mapped
+            port.
+        </p>
+
+        <p>
+            <strong>Unknown unicast:</strong>
+            Destination MAC is not in the table → flood to relevant ports
+            except the incoming port.
+        </p>
+
+        <p>
+            <strong>Broadcast:</strong>
+            Destination MAC is FF:FF:FF:FF:FF:FF → flood within the
+            relevant broadcast domain.
+        </p>
+
+        <p>
+            <strong>Filtering:</strong>
+            If the destination is associated with the incoming port, the
+            switch does not need to send the frame back through that port.
+        </p>
+
+        <p>
+            <strong>Important rule:</strong>
+            Learn from source MAC; look up destination MAC.
+        </p>
+
+        <p>
+            <strong>MAC aging:</strong>
+            Dynamically learned entries can eventually be removed when
+            they become stale.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- SELF TEST -->
+<section class="topic-section">
+    <h2>23. Check Your Understanding</h2>
+
+    <div class="concept-box">
+
+        <h3>Question 1</h3>
+        <p>
+            What is the main purpose of an Ethernet switch?
+        </p>
+
+        <h3>Question 2</h3>
+        <p>
+            Which MAC address does a switch use for learning?
+        </p>
+
+        <h3>Question 3</h3>
+        <p>
+            Which MAC address does the switch use when looking for a
+            forwarding-table entry?
+        </p>
+
+        <h3>Question 4</h3>
+        <p>
+            What happens when the destination MAC is known?
+        </p>
+
+        <h3>Question 5</h3>
+        <p>
+            What happens when the destination MAC is unknown?
+        </p>
+
+        <h3>Question 6</h3>
+        <p>
+            What is the difference between an unknown unicast and a
+            broadcast?
+        </p>
+
+        <h3>Question 7</h3>
+        <p>
+            Why can a switch have several MAC addresses associated with
+            one port?
+        </p>
+
+        <h3>Question 8</h3>
+        <p>
+            Why do dynamic MAC table entries age?
+        </p>
+
+        <h3>Question 9</h3>
+        <p>
+            What are the three basic actions a switch may take with a
+            frame?
+        </p>
+
+    </div>
+</section>
+
+
+<!-- FOOTER NAVIGATION -->
+<div class="footer-navigation">
+
+    <a href="../module6/module6.html">
+        ← Module 6
+    </a>
+
+    <a href="module7.html">
+        Module 7 Home
+    </a>
+
+    <a href="mac-address-table.html">
+        Next: MAC Address Table →
+    </a>
+
+</div>
+```
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Protocol | Module 8</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <p class="module-number">MODULE 8</p>
+                <h1>Internet Protocol</h1>
+                <p class="module-intro">
+                    Understanding how IP provides logical addressing and helps
+                    data travel between networks.
+                </p>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Introduction -->
+        <section class="topic-section">
+            <h2>What Is Internet Protocol?</h2>
+
+            <p>
+                <strong>Internet Protocol (IP)</strong> is a network-layer
+                protocol used to provide logical addressing and help deliver
+                packets from a source to a destination.
+            </p>
+
+            <p>
+                In simple terms, IP helps the network answer an important
+                question:
+            </p>
+
+            <div class="important-box">
+                <p>
+                    <strong>
+                        "Where is the destination device, and where should
+                        this packet go?"
+                    </strong>
+                </p>
+            </div>
+
+            <p>
+                Every device that communicates using IP needs an IP address
+                associated with its network interface. The IP address provides
+                logical information that allows devices and routers to
+                identify the source and destination of IP packets.
+            </p>
+
+            <p>
+                IP operates at <strong>Layer 3 (the Network Layer)</strong>
+                of the OSI model.
+            </p>
+        </section>
+
+
+        <!-- Why IP Is Needed -->
+        <section class="topic-section">
+            <h2>Why Do We Need IP?</h2>
+
+            <p>
+                Remember that in Module 7 we learned about
+                <strong>MAC addresses</strong>.
+            </p>
+
+            <p>
+                A switch can use MAC addresses to deliver Ethernet frames
+                within a local network. However, when communication needs to
+                travel between different networks, we need logical addressing
+                and routing.
+            </p>
+
+            <p>
+                This is where IP becomes important.
+            </p>
+
+            <div class="diagram">
+
+                <div class="topic-grid">
+
+                    <div class="concept-box">
+                        <h3>MAC Address</h3>
+                        <p>
+                            Helps identify a network interface for
+                            communication on the local data-link network.
+                        </p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>IP Address</h3>
+                        <p>
+                            Provides logical addressing that allows packets
+                            to be delivered toward their destination network
+                            and host.
+                        </p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>Router</h3>
+                        <p>
+                            Uses destination IP information to make
+                            forwarding decisions between networks.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- IP Example -->
+        <section class="topic-section">
+            <h2>A Simple Example</h2>
+
+            <p>
+                Imagine that PC0 wants to communicate with PC1.
+            </p>
+
+            <div class="diagram">
+
+                <p><strong>Example Network</strong></p>
+
+                <pre>
+PC0                         PC1
+192.168.1.10                192.168.1.20
+   |                            |
+   |                            |
+   +--------- Network ---------+
+                </pre>
+
+            </div>
+
+            <p>
+                PC0 has the IP address:
+            </p>
+
+            <div class="code-box">
+                192.168.1.10
+            </div>
+
+            <p>
+                PC1 has the IP address:
+            </p>
+
+            <div class="code-box">
+                192.168.1.20
+            </div>
+
+            <p>
+                When PC0 creates an IP packet for PC1, the packet contains
+                information about the source and destination IP addresses.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Source IP</td>
+                        <td>192.168.1.10</td>
+                        <td>The device sending the packet</td>
+                    </tr>
+
+                    <tr>
+                        <td>Destination IP</td>
+                        <td>192.168.1.20</td>
+                        <td>The device the packet is intended for</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <!-- IP and Packets -->
+        <section class="topic-section">
+            <h2>IP Works With Packets</h2>
+
+            <p>
+                At the Network Layer, data is carried in an
+                <strong>IP packet</strong>.
+            </p>
+
+            <p>
+                When data moves down the networking protocol stack, the
+                Network Layer adds IP information to the data. This gives the
+                network information about where the packet came from and where
+                it needs to go.
+            </p>
+
+            <div class="diagram">
+
+                <p><strong>Simplified Encapsulation</strong></p>
+
+                <pre>
+Application Data
+       ↓
+Transport Segment
+       ↓
+IP Packet
+       ↓
+Ethernet Frame
+       ↓
+Bits / Signals
+                </pre>
+
+            </div>
+
+            <p>
+                We studied this process in more detail in Module 7 when we
+                learned about <strong>encapsulation</strong>.
+            </p>
+        </section>
+
+
+        <!-- Logical Addressing -->
+        <section class="topic-section">
+            <h2>IP Provides Logical Addressing</h2>
+
+            <p>
+                An IP address is called a <strong>logical address</strong>
+                because it is assigned according to the network structure
+                rather than simply identifying the physical network hardware.
+            </p>
+
+            <p>
+                This is different from a MAC address, which is used at the
+                Data Link Layer.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>MAC Address</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Layer</td>
+                        <td>Data Link Layer</td>
+                        <td>Network Layer</td>
+                    </tr>
+
+                    <tr>
+                        <td>Type</td>
+                        <td>Physical/data-link identifier</td>
+                        <td>Logical address</td>
+                    </tr>
+
+                    <tr>
+                        <td>Used by</td>
+                        <td>Switches</td>
+                        <td>Routers and hosts</td>
+                    </tr>
+
+                    <tr>
+                        <td>Example</td>
+                        <td>00:1A:2B:3C:4D:5E</td>
+                        <td>192.168.1.10</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                These addresses work together rather than replacing one
+                another. A packet may use an IP address for Layer 3
+                communication while the packet is carried inside an Ethernet
+                frame using MAC addresses at Layer 2.
+            </p>
+        </section>
+
+
+        <!-- IP Within Same Network -->
+        <section class="topic-section">
+            <h2>IP Communication Within a Network</h2>
+
+            <p>
+                When two devices are on the same IP network, they can
+                communicate directly at the IP level without needing a router
+                to move the packet between different networks.
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+        Same Network
+     192.168.1.0/24
+
+PC0                          PC1
+192.168.1.10                 192.168.1.20
+   |                             |
+   +----------- Switch ----------+
+                </pre>
+
+            </div>
+
+            <p>
+                The devices still use Ethernet frames and MAC addresses for
+                local delivery, while IP provides the logical source and
+                destination addresses.
+            </p>
+        </section>
+
+
+        <!-- IP Between Networks -->
+        <section class="topic-section">
+            <h2>IP Communication Between Networks</h2>
+
+            <p>
+                IP becomes especially important when the destination is on a
+                different network.
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+Network A                         Network B
+
+   PC0                              PC1
+192.168.1.10                    192.168.2.20
+     |                               |
+     |                               |
+   Switch                         Switch
+     |                               |
+     +------ Router -----------------+
+                </pre>
+
+            </div>
+
+            <p>
+                PC0 can determine that PC1 is not on the same local network.
+                The packet can therefore be sent toward a router, which
+                examines the destination IP address and determines where to
+                forward the packet next.
+            </p>
+
+            <p>
+                This is the basic idea behind <strong>routing</strong>:
+                moving IP packets from one network toward another network.
+            </p>
+
+            <div class="important-box">
+                <p>
+                    <strong>Remember:</strong>
+                    A switch primarily forwards Ethernet frames using
+                    Layer 2 information such as MAC addresses. A router
+                    makes Layer 3 forwarding decisions using IP information.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- IP Features -->
+        <section class="topic-section">
+            <h2>Important Characteristics of IP</h2>
+
+            <div class="topic-grid">
+
+                <div class="concept-box">
+                    <h3>Logical Addressing</h3>
+                    <p>
+                        IP provides logical addresses that identify network
+                        interfaces and help identify source and destination
+                        locations.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Routing</h3>
+                    <p>
+                        IP addressing allows routers to determine how packets
+                        should be forwarded toward destination networks.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Packet-Based Communication</h3>
+                    <p>
+                        Data is carried across networks in IP packets.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Network-to-Network Communication</h3>
+                    <p>
+                        IP allows communication to extend beyond a single
+                        local network.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Important Distinction -->
+        <section class="topic-section">
+            <h2>Do Not Confuse IP With the Internet</h2>
+
+            <p>
+                The word <strong>Internet</strong> and the abbreviation
+                <strong>IP</strong> are related, but they do not mean the
+                same thing.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Internet</th>
+                        <th>Internet Protocol (IP)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            A global system of interconnected networks.
+                        </td>
+
+                        <td>
+                            A protocol used for logical addressing and
+                            packet delivery across networks.
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <!-- Key Ideas -->
+        <section class="topic-section">
+            <h2>Key Ideas to Remember</h2>
+
+            <div class="important-box">
+
+                <ul>
+                    <li>
+                        IP operates at Layer 3, the Network Layer.
+                    </li>
+
+                    <li>
+                        IP provides logical addressing.
+                    </li>
+
+                    <li>
+                        IP packets contain source and destination IP
+                        information.
+                    </li>
+
+                    <li>
+                        IP allows communication within and between networks.
+                    </li>
+
+                    <li>
+                        Routers use destination IP information when making
+                        Layer 3 forwarding decisions.
+                    </li>
+
+                    <li>
+                        IP addresses and MAC addresses have different roles
+                        but work together during network communication.
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- Quick Self Test -->
+        <section class="topic-section">
+            <h2>Check Your Understanding</h2>
+
+            <div class="concept-box">
+
+                <p><strong>1. What is IP?</strong></p>
+                <p>
+                    Can you explain it without simply saying
+                    "Internet Protocol"?
+                </p>
+
+                <p><strong>2. Which OSI layer does IP operate at?</strong></p>
+
+                <p><strong>3. Why does a device need an IP address?</strong></p>
+
+                <p><strong>4. What is the difference between a MAC address and an IP address?</strong></p>
+
+                <p><strong>5. What does a router use an IP address for?</strong></p>
+
+            </div>
+        </section>
+
+
+        <!-- Next Topic -->
+        <section class="topic-section">
+            <h2>Next: IPv4 Address</h2>
+
+            <p>
+                Now that we understand what IP does, we can look specifically
+                at <strong>IPv4</strong>.
+            </p>
+
+            <p>
+                We will learn what an IPv4 address is, why it is needed, and
+                the important characteristics of IPv4 addressing.
+            </p>
+
+            <a href="ipv4-address.html" class="important-box">
+                Continue to IPv4 Address →
+            </a>
+        </section>
+
+    </main>
+
+
+    <!-- Footer Navigation -->
+    <footer class="footer-navigation">
+
+        <a href="../module7/module7.html">
+            ← Module 7
+        </a>
+
+        <a href="module8.html">
+            Module 8 Home
+        </a>
+
+        <a href="ipv4-address.html">
+            Next: IPv4 Address →
+        </a>
+
+    </footer>
+
+</body>
+</html>
+```

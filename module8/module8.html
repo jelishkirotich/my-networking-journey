@@ -1,0 +1,343 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8 | Internet Protocol and IPv4</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <p class="module-number">MODULE 8</p>
+                <h1>Internet Protocol and IPv4</h1>
+                <p class="module-intro">
+                    Understanding how IP addresses identify devices and allow
+                    communication across networks.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Welcome -->
+        <section class="topic-section">
+            <h2>Welcome to Module 8</h2>
+
+            <p>
+                In the previous modules, we learned how devices connect to a
+                network, how Ethernet communication works, and how switches use
+                MAC addresses to deliver frames.
+            </p>
+
+            <p>
+                Now we move to another important part of networking:
+                <strong>Internet Protocol (IP)</strong>.
+            </p>
+
+            <p>
+                IP allows devices to be identified logically and helps data
+                move between different networks. In this module, we will
+                concentrate mainly on <strong>IPv4</strong>, one of the most
+                widely taught versions of the Internet Protocol.
+            </p>
+        </section>
+
+
+        <!-- Big Picture -->
+        <section class="topic-section">
+            <h2>The Big Picture</h2>
+
+            <p>
+                Imagine that you want to send a package to someone in another
+                town. The delivery system needs an address so that it knows
+                where the package should go.
+            </p>
+
+            <p>
+                Networking works in a similar way. Devices use IP addresses
+                as logical addresses that help identify where data should be
+                delivered.
+            </p>
+
+            <div class="diagram">
+                <p><strong>Example</strong></p>
+
+                <div class="topic-grid">
+                    <div class="concept-box">
+                        <h3>Source</h3>
+                        <p>PC0</p>
+                        <p>192.168.1.10</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>Network</h3>
+                        <p>IP helps data move toward its destination.</p>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>Destination</h3>
+                        <p>PC1</p>
+                        <p>192.168.1.20</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- What We Will Learn -->
+        <section class="topic-section">
+            <h2>What We Will Learn</h2>
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+                    <h3>1. Internet Protocol</h3>
+
+                    <p>
+                        Learn what IP is, why networks need it, and its role
+                        in communication between devices.
+                    </p>
+
+                    <a href="internet-protocol.html">
+                        Learn About Internet Protocol →
+                    </a>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>2. IPv4 Address</h3>
+
+                    <p>
+                        Understand the purpose of an IPv4 address and the
+                        important features that make IPv4 useful for
+                        identifying devices.
+                    </p>
+
+                    <a href="ipv4-address.html">
+                        Learn About IPv4 →
+                    </a>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>3. IPv4 Address Structure</h3>
+
+                    <p>
+                        Learn how an IPv4 address is structured using
+                        32 bits divided into four octets.
+                    </p>
+
+                    <a href="ipv4-address-structure.html">
+                        Learn IPv4 Structure →
+                    </a>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>4. Network and Host Portions</h3>
+
+                    <p>
+                        Understand how an IPv4 address identifies both the
+                        network and a particular device within that network.
+                    </p>
+
+                    <a href="network-and-host-portions.html">
+                        Learn Network & Host Portions →
+                    </a>
+                </div>
+
+
+                <div class="topic-card">
+                    <h3>5. IP Connectivity</h3>
+
+                    <p>
+                        Learn how IP addressing allows devices to communicate
+                        within the same network and across different networks.
+                    </p>
+
+                    <a href="ip-connectivity.html">
+                        Learn About IP Connectivity →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Important Questions -->
+        <section class="topic-section">
+            <h2>Questions We Will Answer</h2>
+
+            <div class="important-box">
+
+                <p>
+                    By the end of this module, you should be able to explain:
+                </p>
+
+                <ul>
+                    <li>What is Internet Protocol?</li>
+                    <li>Why do devices need IP addresses?</li>
+                    <li>What is an IPv4 address?</li>
+                    <li>How is an IPv4 address structured?</li>
+                    <li>What are the network and host portions?</li>
+                    <li>How is an IP address associated with a NIC?</li>
+                    <li>How does IP help devices communicate?</li>
+                    <li>What happens when the destination is on another network?</li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- Important Distinction -->
+        <section class="topic-section">
+            <h2>One Important Distinction</h2>
+
+            <p>
+                Before we begin, remember that <strong>MAC addresses</strong>
+                and <strong>IP addresses</strong> are not the same thing.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>MAC Address</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            Used for communication at the Data Link Layer.
+                        </td>
+
+                        <td>
+                            Used for logical addressing at the Network Layer.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Example:
+                            <code>00:1A:2B:3C:4D:5E</code>
+                        </td>
+
+                        <td>
+                            Example:
+                            <code>192.168.1.10</code>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Switches use MAC addresses when forwarding
+                            Ethernet frames.
+                        </td>
+
+                        <td>
+                            Routers use IP addresses when making
+                            forwarding decisions between networks.
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p>
+                We will explore this difference in much more detail in the
+                topic pages.
+            </p>
+        </section>
+
+
+        <!-- How We Will Study -->
+        <section class="topic-section">
+            <h2>How We Will Study This Module</h2>
+
+            <p>
+                We will build the concepts step by step rather than trying
+                to memorize IP addresses immediately.
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="concept-box">
+                    <h3>First</h3>
+                    <p>
+                        Understand what IP does and why networks need
+                        logical addressing.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Then</h3>
+                    <p>
+                        Understand IPv4 and how an IPv4 address is written.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Next</h3>
+                    <p>
+                        Break the address into its network and host portions.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Finally</h3>
+                    <p>
+                        Put everything together and understand IP
+                        connectivity.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Start Module -->
+        <section class="topic-section">
+            <h2>Ready to Start?</h2>
+
+            <p>
+                We will begin with the foundation: <strong>Internet
+                Protocol</strong>.
+            </p>
+
+            <a href="internet-protocol.html" class="important-box">
+                Start Module 8: Internet Protocol →
+            </a>
+        </section>
+
+    </main>
+
+
+    <!-- Footer Navigation -->
+    <footer class="footer-navigation">
+
+        <a href="../module7/module7.html">
+            ← Module 7
+        </a>
+
+        <a href="module8.html">
+            Module 8 Home
+        </a>
+
+        <a href="../module9/module9.html">
+            Module 9 →
+        </a>
+
+    </footer>
+
+</body>
+</html>
+```

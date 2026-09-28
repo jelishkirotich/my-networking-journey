@@ -1,0 +1,867 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 | Ethernet Frame</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="module-number">MODULE 7</div>
+        <h1>Ethernet Frame</h1>
+        <p class="module-intro">
+            Learn what an Ethernet frame is, how it is structured,
+            what each field contains, and how the frame helps devices
+            communicate across a local network.
+        </p>
+    </div>
+</header>
+
+<main>
+
+    <!-- INTRODUCTION -->
+    <section class="topic-section">
+        <h2>1. What Is an Ethernet Frame?</h2>
+
+        <p>
+            An <strong>Ethernet frame</strong> is the Layer 2 unit of data
+            used to carry information across an Ethernet network.
+        </p>
+
+        <p>
+            When a device needs to send data through an Ethernet network,
+            the data is organized into a specific format. This format
+            allows network devices such as switches and destination NICs
+            to understand what the information is and where it should go.
+        </p>
+
+        <p>
+            Think of an Ethernet frame as a structured container for
+            information.
+        </p>
+
+        <div class="concept-box">
+            <h3>Simple analogy: Sending a letter</h3>
+
+            <p>
+                Imagine that you want to send a letter to someone.
+                You would not simply hand the receiver a random piece of
+                paper.
+            </p>
+
+            <p>
+                You would put the letter into an envelope and provide
+                information such as:
+            </p>
+
+            <ul>
+                <li>Who the letter is going to</li>
+                <li>Who sent it</li>
+                <li>The actual message</li>
+                <li>Information that helps the postal system handle it</li>
+            </ul>
+
+            <p>
+                Ethernet does something similar. It places data into a
+                structured frame containing information needed for
+                delivery and error detection.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- FRAME STRUCTURE -->
+    <section class="topic-section">
+        <h2>2. Ethernet Frame Structure</h2>
+
+        <p>
+            A traditional Ethernet transmission contains several important
+            parts. For this module, we will study them in the following
+            order:
+        </p>
+
+        <div class="diagram">
+            <p>
+                <strong>Preamble</strong>
+                →
+                <strong>Start Frame Delimiter</strong>
+                →
+                <strong>Destination MAC</strong>
+                →
+                <strong>Source MAC</strong>
+                →
+                <strong>Length/Type</strong>
+                →
+                <strong>Data</strong>
+                →
+                <strong>FCS</strong>
+            </p>
+        </div>
+
+        <p>
+            Each part has a different purpose.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Field</th>
+                <th>Main Purpose</th>
+            </tr>
+
+            <tr>
+                <td>Preamble</td>
+                <td>
+                    Helps the receiving interface synchronize with the
+                    incoming transmission.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Start Frame Delimiter (SFD)</td>
+                <td>
+                    Indicates that the actual Ethernet frame is about
+                    to begin.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Destination MAC</td>
+                <td>
+                    Identifies the network interface intended to receive
+                    the frame.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Source MAC</td>
+                <td>
+                    Identifies the network interface that sent the frame.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Length/Type</td>
+                <td>
+                    Indicates the payload length or identifies the
+                    upper-layer protocol, depending on the Ethernet
+                    framing convention.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Data</td>
+                <td>
+                    Carries the information being transported.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Frame Check Sequence (FCS)</td>
+                <td>
+                    Allows the receiver to detect errors in the frame.
+                </td>
+            </tr>
+
+        </table>
+    </section>
+
+
+    <!-- PREAMBLE -->
+    <section class="topic-section">
+        <h2>3. Preamble</h2>
+
+        <p>
+            The <strong>preamble</strong> appears at the beginning of an
+            Ethernet transmission.
+        </p>
+
+        <p>
+            Its main purpose is to help the receiving network interface
+            synchronize with the incoming signal.
+        </p>
+
+        <p>
+            In simple terms, it gives the receiving device a predictable
+            pattern before the actual frame information begins.
+        </p>
+
+        <div class="important-box">
+            <h3>Think of it like this</h3>
+
+            <p>
+                Imagine someone saying:
+                <strong>"Get ready... the message is about to start."</strong>
+            </p>
+
+            <p>
+                The preamble helps prepare the receiving interface to
+                recognize the incoming Ethernet transmission.
+            </p>
+        </div>
+
+        <p>
+            The traditional Ethernet preamble is
+            <strong>7 bytes</strong> long.
+        </p>
+    </section>
+
+
+    <!-- SFD -->
+    <section class="topic-section">
+        <h2>4. Start Frame Delimiter (SFD)</h2>
+
+        <p>
+            Immediately after the preamble comes the
+            <strong>Start Frame Delimiter (SFD)</strong>.
+        </p>
+
+        <p>
+            The SFD indicates that the actual Ethernet frame is about to
+            begin.
+        </p>
+
+        <div class="diagram">
+            <p>
+                Preamble
+                →
+                <strong>SFD</strong>
+                →
+                Destination MAC
+                →
+                Source MAC
+                →
+                ...
+            </p>
+        </div>
+
+        <p>
+            The traditional SFD is <strong>1 byte</strong>.
+        </p>
+
+        <div class="concept-box">
+            <h3>Easy way to remember</h3>
+
+            <p>
+                <strong>Preamble:</strong> Get synchronized and ready.
+            </p>
+
+            <p>
+                <strong>SFD:</strong> The frame starts here.
+            </p>
+        </div>
+
+        <p>
+            The preamble and SFD are often discussed together with
+            Ethernet transmission, although technically they are treated
+            somewhat differently from the MAC frame fields themselves.
+            For this module, we will include them because they are part of
+            the Ethernet transmission format you need to understand.
+        </p>
+    </section>
+
+
+    <!-- DESTINATION MAC -->
+    <section class="topic-section">
+        <h2>5. Destination MAC Address</h2>
+
+        <p>
+            The <strong>Destination MAC Address</strong> identifies the
+            network interface that the frame is intended for.
+        </p>
+
+        <p>
+            A MAC address is normally written using hexadecimal notation.
+            A traditional Ethernet MAC address is <strong>48 bits</strong>,
+            or <strong>6 bytes</strong>.
+        </p>
+
+        <div class="code-box">
+            <p>Example:</p>
+            <p>00:1A:2B:3C:4D:5E</p>
+        </div>
+
+        <p>
+            When a computer sends an Ethernet frame to another device on
+            the local network, the destination MAC address is placed into
+            the frame.
+        </p>
+
+        <div class="diagram">
+            <p>
+                PC0
+                →
+                Switch
+                →
+                PC1
+            </p>
+
+            <p>
+                Destination MAC =
+                <strong>PC1's MAC address</strong>
+            </p>
+        </div>
+
+        <p>
+            The switch reads this field when deciding what to do with
+            the frame.
+        </p>
+    </section>
+
+
+    <!-- SOURCE MAC -->
+    <section class="topic-section">
+        <h2>6. Source MAC Address</h2>
+
+        <p>
+            The <strong>Source MAC Address</strong> identifies the network
+            interface that sent the frame.
+        </p>
+
+        <p>
+            If PC0 sends a frame to PC1, the source MAC address in that
+            frame is PC0's MAC address.
+        </p>
+
+        <div class="diagram">
+            <p>
+                <strong>PC0</strong>
+                →
+                Switch
+                →
+                PC1
+            </p>
+
+            <p>
+                Source MAC =
+                <strong>PC0's MAC address</strong>
+            </p>
+        </div>
+
+        <p>
+            The source MAC address is especially important to Ethernet
+            switches because switches use it to learn where devices are
+            located.
+        </p>
+
+        <div class="important-box">
+            <h3>Remember the difference</h3>
+
+            <p>
+                <strong>Source MAC:</strong>
+                "I am the device that sent this frame."
+            </p>
+
+            <p>
+                <strong>Destination MAC:</strong>
+                "This frame is intended for this device."
+            </p>
+        </div>
+    </section>
+
+
+    <!-- LENGTH TYPE -->
+    <section class="topic-section">
+        <h2>7. Length/Type Field</h2>
+
+        <p>
+            The field following the source MAC address is commonly called
+            the <strong>Length/Type</strong> field.
+        </p>
+
+        <p>
+            Its meaning depends on the Ethernet framing convention being
+            used.
+        </p>
+
+        <h3>Ethernet II</h3>
+
+        <p>
+            In Ethernet II, this field identifies the upper-layer protocol
+            carried inside the frame. This identifier is called an
+            <strong>EtherType</strong>.
+        </p>
+
+        <p>
+            For example, an EtherType can indicate that the payload contains
+            an IPv4 packet or an IPv6 packet.
+        </p>
+
+        <h3>IEEE 802.3 Ethernet</h3>
+
+        <p>
+            In the IEEE 802.3 format, the field can indicate the
+            <strong>length of the payload</strong>.
+        </p>
+
+        <p>
+            Additional mechanisms such as LLC/SNAP can then be used to
+            identify the upper-layer protocol.
+        </p>
+
+        <div class="important-box">
+            <h3>For this module</h3>
+
+            <p>
+                You mainly need to remember that the Length/Type field
+                provides information about what is contained in the
+                frame's payload.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- DATA -->
+    <section class="topic-section">
+        <h2>8. Data / Payload</h2>
+
+        <p>
+            The <strong>Data</strong> field contains the information being
+            transported by the Ethernet frame.
+        </p>
+
+        <p>
+            This is the part that carries the upper-layer information.
+        </p>
+
+        <p>
+            For example, the payload may contain an IP packet.
+        </p>
+
+        <div class="diagram">
+            <p>
+                Ethernet Frame
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Destination MAC | Source MAC | Length/Type |
+                <strong>IP Packet</strong> | FCS
+            </p>
+        </div>
+
+        <p>
+            Notice that the Ethernet frame is carrying another protocol
+            data unit inside it.
+        </p>
+
+        <p>
+            This is one of the ideas behind
+            <strong>encapsulation</strong>.
+        </p>
+
+        <h3>What if the data is very small?</h3>
+
+        <p>
+            Classic Ethernet has a minimum payload size requirement.
+            If the upper-layer data is too small, padding may be added so
+            that the Ethernet frame meets the minimum required size.
+        </p>
+
+        <p>
+            The padding is not part of the original application data.
+            It is used to satisfy the Ethernet frame-size requirement.
+        </p>
+    </section>
+
+
+    <!-- FCS -->
+    <section class="topic-section">
+        <h2>9. Frame Check Sequence (FCS)</h2>
+
+        <p>
+            The <strong>Frame Check Sequence (FCS)</strong> is located at
+            the end of the Ethernet frame.
+        </p>
+
+        <p>
+            It is used for <strong>error detection</strong>.
+        </p>
+
+        <p>
+            During transmission, electrical interference, damaged cables,
+            or other problems can cause bits to change.
+        </p>
+
+        <p>
+            The FCS allows the receiving device to check whether the frame
+            appears to have been corrupted during transmission.
+        </p>
+
+        <div class="concept-box">
+            <h3>Simple example</h3>
+
+            <p>
+                Imagine that you send someone a document and include a
+                special value calculated from the contents of the document.
+            </p>
+
+            <p>
+                The receiver performs a similar calculation.
+            </p>
+
+            <p>
+                If the values do not match, the receiver can determine
+                that something went wrong with the data during transmission.
+            </p>
+        </div>
+
+        <p>
+            Ethernet uses a form of
+            <strong>Cyclic Redundancy Check (CRC)</strong> to generate
+            the FCS.
+        </p>
+
+        <div class="important-box">
+            <h3>Important</h3>
+
+            <p>
+                FCS is for detecting errors. It does not mean that Ethernet
+                itself guarantees successful end-to-end delivery or
+                automatically retransmits the corrupted frame.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- COMPLETE FRAME -->
+    <section class="topic-section">
+        <h2>10. Putting the Ethernet Frame Together</h2>
+
+        <p>
+            Now let's put all the fields together.
+        </p>
+
+        <div class="diagram">
+            <p>
+                <strong>
+                    PREAMBLE
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    START FRAME DELIMITER
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    DESTINATION MAC
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    SOURCE MAC
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    LENGTH / TYPE
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    DATA / PAYLOAD
+                </strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>
+                    FRAME CHECK SEQUENCE
+                </strong>
+            </p>
+        </div>
+
+        <p>
+            Each field contributes to the successful transmission and
+            processing of the Ethernet communication.
+        </p>
+    </section>
+
+
+    <!-- LETTER ANALOGY -->
+    <section class="topic-section">
+        <h2>11. Ethernet Frame as an Envelope</h2>
+
+        <p>
+            Let's return to our letter analogy because it makes the
+            structure easier to remember.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Sending a Letter</th>
+                <th>Ethernet</th>
+            </tr>
+
+            <tr>
+                <td>Who should receive it?</td>
+                <td>Destination MAC</td>
+            </tr>
+
+            <tr>
+                <td>Who sent it?</td>
+                <td>Source MAC</td>
+            </tr>
+
+            <tr>
+                <td>What is inside?</td>
+                <td>Data / Payload</td>
+            </tr>
+
+            <tr>
+                <td>Information about what is inside</td>
+                <td>Length/Type</td>
+            </tr>
+
+            <tr>
+                <td>Check that the message was not damaged</td>
+                <td>FCS</td>
+            </tr>
+
+            <tr>
+                <td>Prepare for the beginning of transmission</td>
+                <td>Preamble and SFD</td>
+            </tr>
+
+        </table>
+
+        <div class="important-box">
+            <h3>The main idea</h3>
+
+            <p>
+                Ethernet communication works because devices agree on a
+                common format for transmitting information.
+            </p>
+
+            <p>
+                If devices did not understand the expected frame format,
+                they would not know how to correctly interpret the
+                information they receive.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- FRAME AND SWITCH -->
+    <section class="topic-section">
+        <h2>12. What Does a Switch Actually Read?</h2>
+
+        <p>
+            A switch does not need to understand the entire contents of
+            the application data in order to perform normal Layer 2
+            forwarding.
+        </p>
+
+        <p>
+            It mainly needs the Ethernet information necessary to make its
+            forwarding decision.
+        </p>
+
+        <div class="diagram">
+            <p>
+                Ethernet Frame
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Destination MAC</strong>
+            </p>
+
+            <p>
+                +
+            </p>
+
+            <p>
+                <strong>Source MAC</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch makes a forwarding decision
+            </p>
+        </div>
+
+        <p>
+            The switch learns from the source MAC and uses the destination
+            MAC to determine where the frame should go.
+        </p>
+
+        <p>
+            This is why understanding the Ethernet frame is essential for
+            understanding Ethernet switches.
+        </p>
+    </section>
+
+
+    <!-- WRONG FORMAT -->
+    <section class="topic-section">
+        <h2>13. Why Frame Formatting Matters</h2>
+
+        <p>
+            Ethernet devices expect frames to follow the rules of the
+            Ethernet format being used.
+        </p>
+
+        <p>
+            If a transmission is malformed or does not satisfy the
+            required rules, the receiving equipment may be unable to
+            process it correctly.
+        </p>
+
+        <p>
+            For example, if the frame fails its error check, the receiver
+            can detect that the frame has been corrupted.
+        </p>
+
+        <div class="important-box">
+            <h3>Think about a language</h3>
+
+            <p>
+                Imagine receiving a message where the words, punctuation,
+                and structure were completely scrambled.
+            </p>
+
+            <p>
+                You might receive the information physically, but that
+                does not mean you can correctly understand or process it.
+            </p>
+
+            <p>
+                Network devices similarly rely on agreed communication
+                formats and rules.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- QUICK SUMMARY -->
+    <section class="topic-section">
+        <h2>14. Ethernet Frame: Quick Summary</h2>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Field</th>
+                <th>Remember This</th>
+            </tr>
+
+            <tr>
+                <td>Preamble</td>
+                <td>Helps synchronization before the frame.</td>
+            </tr>
+
+            <tr>
+                <td>SFD</td>
+                <td>Marks the beginning of the actual frame.</td>
+            </tr>
+
+            <tr>
+                <td>Destination MAC</td>
+                <td>Who should receive the frame.</td>
+            </tr>
+
+            <tr>
+                <td>Source MAC</td>
+                <td>Who sent the frame.</td>
+            </tr>
+
+            <tr>
+                <td>Length/Type</td>
+                <td>Payload length or protocol identification.</td>
+            </tr>
+
+            <tr>
+                <td>Data</td>
+                <td>The information being carried.</td>
+            </tr>
+
+            <tr>
+                <td>FCS</td>
+                <td>Used to detect transmission errors.</td>
+            </tr>
+
+        </table>
+    </section>
+
+
+    <!-- NEXT -->
+    <section class="topic-section">
+        <h2>15. What Comes Next?</h2>
+
+        <p>
+            We now understand the structure of an Ethernet frame.
+        </p>
+
+        <p>
+            But there is another important part of the process:
+            <strong>How does a computer actually create and send this
+            frame?</strong>
+        </p>
+
+        <p>
+            The answer involves the
+            <strong>Network Interface Card (NIC)</strong>.
+        </p>
+
+        <p>
+            In the next topic, we will look closely at the NIC, what it
+            does, how it connects a device to the network, and how it
+            participates in Ethernet communication.
+        </p>
+    </section>
+
+</main>
+
+
+<!-- FOOTER NAVIGATION -->
+<footer>
+    <div class="footer-navigation">
+
+        <a href="../module6/module6.html">
+            ← Module 6
+        </a>
+
+        <a href="module7.html">
+            Module 7 Home
+        </a>
+
+        <a href="nic.html">
+            Next: NIC →
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,839 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8 | IP Connectivity</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="module-number">MODULE 8</div>
+        <h1>IP Connectivity</h1>
+        <p class="module-intro">
+            Understanding how devices use IPv4 addresses, subnet information,
+            default gateways, and routers to communicate.
+        </p>
+    </div>
+</header>
+
+<main>
+
+    <section class="topic-section">
+        <h2>What Is IP Connectivity?</h2>
+
+        <p>
+            <strong>IP connectivity</strong> means the ability of devices to
+            communicate with each other using Internet Protocol (IP).
+        </p>
+
+        <p>
+            In the previous topics, we learned that every IPv4 address contains
+            information about a network and a host.
+        </p>
+
+        <p>
+            Now we are going to put those ideas together and answer an important
+            question:
+        </p>
+
+        <div class="important-box">
+            <h3>How does a computer know where to send an IP packet?</h3>
+            <p>
+                It uses the destination IP address, its own network information,
+                and routing information to decide where the packet should go.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>The Basic Communication Process</h2>
+
+        <p>
+            Imagine that PC0 wants to send data to PC1.
+        </p>
+
+        <div class="code-box">
+            <pre>PC0
+IP: 192.168.1.10/24
+
+        ↓
+
+PC1
+IP: 192.168.1.20/24</pre>
+        </div>
+
+        <p>
+            Before sending the packet, PC0 needs to determine whether PC1 is
+            on the same IP network.
+        </p>
+
+        <p>
+            PC0 compares the network information of its own address with the
+            network information of the destination.
+        </p>
+
+        <p>
+            Both addresses belong to:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.0/24</pre>
+        </div>
+
+        <p>
+            Therefore, PC0 knows that PC1 is on the same IP network.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Same-Network Communication</h2>
+
+        <p>
+            Let's look at the example more visually.
+        </p>
+
+        <div class="diagram">
+            <pre>
+        SAME IP NETWORK
+       192.168.1.0/24
+
+   PC0                         PC1
+192.168.1.10              192.168.1.20
+      |                         |
+      |                         |
+      +-------- Switch ---------+
+            </pre>
+        </div>
+
+        <p>
+            Both computers are members of the same IP network.
+        </p>
+
+        <p>
+            The switch provides the local Ethernet connection between the
+            devices.
+        </p>
+
+        <p>
+            Remember from Module 7 that Ethernet uses MAC addresses for
+            local frame delivery. IP operates at a higher layer and provides
+            logical addressing.
+        </p>
+
+        <div class="concept-box">
+            <h3>Think of the two addresses differently</h3>
+
+            <p>
+                <strong>IP address:</strong> Helps identify the source and
+                destination at the network layer.
+            </p>
+
+            <p>
+                <strong>MAC address:</strong> Used for local Ethernet frame
+                delivery.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Different-Network Communication</h2>
+
+        <p>
+            Now let's change the destination.
+        </p>
+
+        <div class="code-box">
+            <pre>PC0:
+192.168.1.10/24
+
+Destination:
+192.168.2.10/24</pre>
+        </div>
+
+        <p>
+            PC0 determines that the destination belongs to a different
+            network.
+        </p>
+
+        <p>
+            The two networks are:
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Device</th>
+                    <th>IP Address</th>
+                    <th>Network</th>
+                </tr>
+
+                <tr>
+                    <td>PC0</td>
+                    <td>192.168.1.10/24</td>
+                    <td>192.168.1.0/24</td>
+                </tr>
+
+                <tr>
+                    <td>PC1</td>
+                    <td>192.168.2.10/24</td>
+                    <td>192.168.2.0/24</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            Because the destination is on another network, PC0 needs to send
+            the packet toward a router.
+        </p>
+
+        <div class="diagram">
+            <pre>
+       Network 1                       Network 2
+
+   192.168.1.0/24                  192.168.2.0/24
+
+        PC0                              PC1
+  192.168.1.10                    192.168.2.10
+        |                                |
+        |                                |
+      Switch                          Switch
+        |                                |
+        +--------- Router ---------------+
+                    |
+             Connects networks
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What Is a Default Gateway?</h2>
+
+        <p>
+            A <strong>default gateway</strong> is the device that a host sends
+            traffic to when the destination is outside the host's local network.
+        </p>
+
+        <p>
+            In many networks, the default gateway is the IP address of a
+            router interface on the same local network as the host.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="code-box">
+            <pre>PC0 IP address:       192.168.1.10
+Subnet mask:          255.255.255.0
+Default gateway:      192.168.1.1</pre>
+        </div>
+
+        <p>
+            Here, the router's interface might have the address:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.1</pre>
+        </div>
+
+        <p>
+            This router interface is reachable from PC0's local network and
+            can provide a path toward other networks.
+        </p>
+
+        <div class="important-box">
+            <h3>Simple definition</h3>
+            <p>
+                The default gateway is the device a host uses to reach
+                destinations outside its own IP network.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Same Network or Different Network?</h2>
+
+        <p>
+            Let's make the decision process simple.
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Is the destination on the same IP network?
+                    </td>
+                    <td>
+                        Send the traffic through the local network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Is the destination on another IP network?
+                    </td>
+                    <td>
+                        Send the traffic toward the default gateway/router.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            The subnet mask or prefix length helps the host determine the
+            network boundary.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Complete Example</h2>
+
+        <p>
+            Let's follow a packet from PC0 to PC1.
+        </p>
+
+        <div class="code-box">
+            <pre>PC0
+IP address:     192.168.1.10
+Subnet mask:    255.255.255.0
+Default gateway:192.168.1.1
+
+Destination:
+192.168.2.10</pre>
+        </div>
+
+        <h3>Step 1: PC0 Creates the Packet</h3>
+
+        <p>
+            PC0 has data that needs to be sent to the destination.
+        </p>
+
+        <p>
+            The IP packet contains source and destination IP information.
+        </p>
+
+        <div class="code-box">
+            <pre>Source IP:       192.168.1.10
+Destination IP:  192.168.2.10</pre>
+        </div>
+
+        <h3>Step 2: PC0 Checks the Destination Network</h3>
+
+        <p>
+            PC0 uses its subnet information to determine whether
+            192.168.2.10 belongs to the same network.
+        </p>
+
+        <p>
+            PC0 belongs to:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.0/24</pre>
+        </div>
+
+        <p>
+            The destination belongs to:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.2.0/24</pre>
+        </div>
+
+        <p>
+            These are different networks.
+        </p>
+
+        <h3>Step 3: PC0 Uses the Default Gateway</h3>
+
+        <p>
+            PC0 sends the traffic toward its default gateway:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.1</pre>
+        </div>
+
+        <h3>Step 4: The Router Receives the Packet</h3>
+
+        <p>
+            The router examines the destination IP address and uses its
+            routing information to determine where the packet should go next.
+        </p>
+
+        <h3>Step 5: The Packet Is Forwarded</h3>
+
+        <p>
+            The router forwards the packet toward the network containing
+            192.168.2.10.
+        </p>
+
+        <h3>Step 6: The Destination Receives the Data</h3>
+
+        <p>
+            Eventually, the packet reaches the network containing PC1,
+            and the data can be delivered to the destination device.
+        </p>
+
+        <div class="diagram">
+            <pre>
+PC0
+192.168.1.10
+    |
+    |  Local network
+    |
+    v
+Default Gateway
+192.168.1.1
+    |
+    |  Router forwards packet
+    |
+    v
+192.168.2.0/24
+    |
+    v
+PC1
+192.168.2.10
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What Does the Router Look At?</h2>
+
+        <p>
+            A router needs to make forwarding decisions.
+        </p>
+
+        <p>
+            One important piece of information it examines is the
+            <strong>destination IP address</strong>.
+        </p>
+
+        <p>
+            The router then looks at its routing information to determine
+            where the packet should be forwarded.
+        </p>
+
+        <p>
+            Cisco documentation describes routers using routing tables and
+            route selection to determine the next hop for IPv4 traffic.
+            When multiple routes match, the longest matching prefix is
+            preferred.
+        </p>
+
+        <div class="important-box">
+            <h3>For now, remember</h3>
+            <p>
+                A router's job is to connect different networks and make
+                forwarding decisions about where packets should go.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>IP Address vs Default Gateway</h2>
+
+        <p>
+            These two values are related, but they are not the same thing.
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Value</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+
+                <tr>
+                    <td>IP address</td>
+                    <td>
+                        Identifies the host/interface on its IP network.
+                    </td>
+                    <td>192.168.1.10</td>
+                </tr>
+
+                <tr>
+                    <td>Subnet mask</td>
+                    <td>
+                        Defines the network and host portions.
+                    </td>
+                    <td>255.255.255.0</td>
+                </tr>
+
+                <tr>
+                    <td>Default gateway</td>
+                    <td>
+                        Provides the next step toward other networks.
+                    </td>
+                    <td>192.168.1.1</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What If There Is No Default Gateway?</h2>
+
+        <p>
+            A device can still communicate with devices on its local IP
+            network without needing to send that traffic through a default
+            gateway.
+        </p>
+
+        <p>
+            However, communication with destinations on other networks
+            normally requires a route toward those networks.
+        </p>
+
+        <div class="concept-box">
+            <p>
+                <strong>Local destination:</strong>
+                communication can remain on the local network.
+            </p>
+
+            <p>
+                <strong>Remote destination:</strong>
+                the device needs a path toward the other network.
+            </p>
+        </div>
+
+        <p>
+            This is why a correctly configured host commonly has an IP address,
+            subnet mask or prefix, and default gateway.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>IP Connectivity and MAC Addresses</h2>
+
+        <p>
+            It is important not to think of IP and MAC addresses as competing
+            systems.
+        </p>
+
+        <p>
+            They work together.
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Layer</th>
+                    <th>Address</th>
+                    <th>Main Role</th>
+                </tr>
+
+                <tr>
+                    <td>Network Layer</td>
+                    <td>IP address</td>
+                    <td>
+                        Logical addressing and communication between IP networks.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Data Link Layer</td>
+                    <td>MAC address</td>
+                    <td>
+                        Local delivery of Ethernet frames.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            This connects directly to Module 7.
+        </p>
+
+        <p>
+            IP helps determine the logical destination, while Ethernet and
+            MAC addressing are involved in delivering frames across the
+            local link.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Putting Module 8 Together</h2>
+
+        <p>
+            We can now connect everything we have learned in this module.
+        </p>
+
+        <div class="diagram">
+            <pre>
+                    IPv4 ADDRESS
+                         |
+                         v
+               192.168.1.10/24
+                         |
+                         v
+              +-------------------+
+              | Subnet information |
+              +-------------------+
+                         |
+              +----------+----------+
+              |                     |
+              v                     v
+       Network Portion         Host Portion
+        192.168.1              .10
+              |
+              v
+       Which network?
+        192.168.1.0/24
+              |
+              v
+      Is destination local?
+          /          \
+        YES           NO
+         |             |
+         v             v
+   Local network    Default Gateway
+                        |
+                        v
+                      Router
+                        |
+                        v
+                Destination Network
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Module 8 Summary</h2>
+
+        <p>
+            In this module, we started with the Internet Protocol and then
+            moved into IPv4 addressing and connectivity.
+        </p>
+
+        <div class="topic-grid">
+
+            <div class="topic-card">
+                <h3>Internet Protocol</h3>
+                <p>
+                    IP provides logical addressing and helps packets move
+                    between networks.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>IPv4</h3>
+                <p>
+                    IPv4 uses 32-bit logical addresses written as four
+                    decimal octets.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Network Portion</h3>
+                <p>
+                    Identifies the IP network to which an address belongs.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Host Portion</h3>
+                <p>
+                    Identifies a device or interface within the network.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Subnet Mask</h3>
+                <p>
+                    Separates the network portion from the host portion.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>IP Connectivity</h3>
+                <p>
+                    Devices use network information and routing to determine
+                    how packets should reach their destinations.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Quick Notes</h2>
+
+        <div class="concept-box">
+
+            <p>
+                <strong>IP:</strong>
+                Internet Protocol provides logical addressing and packet delivery
+                between networks.
+            </p>
+
+            <p>
+                <strong>IPv4:</strong>
+                Uses 32-bit addresses.
+            </p>
+
+            <p>
+                <strong>Network portion:</strong>
+                Identifies the network.
+            </p>
+
+            <p>
+                <strong>Host portion:</strong>
+                Identifies the device/interface within the network.
+            </p>
+
+            <p>
+                <strong>Subnet mask:</strong>
+                Determines the boundary between network and host portions.
+            </p>
+
+            <p>
+                <strong>/24:</strong>
+                24 network bits and 8 host bits.
+            </p>
+
+            <p>
+                <strong>Default gateway:</strong>
+                The device a host normally uses to reach destinations outside
+                its local network.
+            </p>
+
+            <p>
+                <strong>Router:</strong>
+                Connects IP networks and forwards packets toward destinations.
+            </p>
+
+            <p>
+                <strong>Same network:</strong>
+                Traffic can remain within the local network.
+            </p>
+
+            <p>
+                <strong>Different network:</strong>
+                Traffic needs a route toward the destination network.
+            </p>
+
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Self-Test</h2>
+
+        <ol>
+            <li>What is IP connectivity?</li>
+
+            <li>
+                What does a computer use to determine whether a destination
+                is on the same IP network?
+            </li>
+
+            <li>
+                What is a default gateway?
+            </li>
+
+            <li>
+                Why is a router needed when communicating with another IP network?
+            </li>
+
+            <li>
+                What is the difference between an IP address and a MAC address?
+            </li>
+
+            <li>
+                PC0 has 192.168.1.10/24 and PC1 has 192.168.1.20/24.
+                Are they on the same IP network?
+            </li>
+
+            <li>
+                PC0 has 192.168.1.10/24 and PC2 has 192.168.2.10/24.
+                Are they on the same IP network?
+            </li>
+
+            <li>
+                If PC0 needs to communicate with a device on another network,
+                what device does PC0 normally send the traffic toward?
+            </li>
+        </ol>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Module 8 Complete</h2>
+
+        <p>
+            You have now completed the main concepts of
+            <strong>Internet Protocol and IPv4</strong>.
+        </p>
+
+        <p>
+            You started with what IP is, learned how IPv4 addresses are
+            structured, learned how subnet masks divide addresses into
+            network and host portions, and finally learned how those ideas
+            help devices communicate across networks.
+        </p>
+
+        <div class="important-box">
+            <h3>The big picture</h3>
+
+            <p>
+                An IP address tells us about a device's logical location.
+                The subnet information tells us which network it belongs to.
+                The device uses this information to decide whether the
+                destination is local or remote. If the destination is remote,
+                traffic can be sent toward a router/default gateway.
+            </p>
+        </div>
+
+        <p>
+            The next module will build on these concepts.
+        </p>
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="footer-navigation">
+        <a href="network-and-host-portions.html">
+            ← Previous: Network and Host Portions
+        </a>
+
+        <a href="module8.html">
+            Module 8 Home
+        </a>
+
+        <a href="../module9/module9.html">
+            Next: Module 9 →
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>
+```

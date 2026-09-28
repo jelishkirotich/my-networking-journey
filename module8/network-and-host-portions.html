@@ -1,0 +1,775 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8 | Network and Host Portions</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="module-number">MODULE 8</div>
+        <h1>Network and Host Portions</h1>
+        <p class="module-intro">
+            Understanding how an IPv4 address identifies both a network and a device
+            within that network.
+        </p>
+    </div>
+</header>
+
+<main>
+
+    <section class="topic-section">
+        <h2>What Are Network and Host Portions?</h2>
+
+        <p>
+            An IPv4 address does more than simply give a device a number.
+            It contains information that helps identify:
+        </p>
+
+        <ul>
+            <li><strong>The network</strong> where the device is located.</li>
+            <li><strong>The host</strong> or interface within that network.</li>
+        </ul>
+
+        <p>
+            This is why an IPv4 address can be thought of as having two important
+            parts: a <strong>network portion</strong> and a <strong>host portion</strong>.
+        </p>
+
+        <div class="important-box">
+            <h3>Simple idea</h3>
+            <p>
+                The <strong>network portion</strong> tells us which network the device
+                belongs to, while the <strong>host portion</strong> helps identify the
+                particular device or interface within that network.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Why Do We Need These Two Portions?</h2>
+
+        <p>
+            Imagine a university with several departments.
+            Each department could have its own network.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <ul>
+            <li>Software Engineering network</li>
+            <li>Business network</li>
+            <li>Computer Science network</li>
+        </ul>
+
+        <p>
+            If a computer wants to communicate with another device, the network
+            needs to determine whether the destination is on the same network or
+            somewhere else.
+        </p>
+
+        <p>
+            The network portion helps answer:
+        </p>
+
+        <div class="concept-box">
+            <h3>Question</h3>
+            <p>
+                "Which network does this IP address belong to?"
+            </p>
+        </div>
+
+        <p>
+            The host portion helps answer:
+        </p>
+
+        <div class="concept-box">
+            <h3>Question</h3>
+            <p>
+                "Which particular device or interface is this?"
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>The Subnet Mask</h2>
+
+        <p>
+            Now we need a way to tell which part of an IPv4 address is the network
+            portion and which part is the host portion.
+        </p>
+
+        <p>
+            This is where the <strong>subnet mask</strong> comes in.
+        </p>
+
+        <p>
+            A subnet mask tells a device which bits of an IPv4 address represent
+            the network portion and which bits represent the host portion.
+        </p>
+
+        <p>
+            A subnet mask can be written in dotted-decimal form, such as:
+        </p>
+
+        <div class="code-box">
+            <pre>255.255.255.0</pre>
+        </div>
+
+        <p>
+            It can also be written using <strong>prefix notation</strong>:
+        </p>
+
+        <div class="code-box">
+            <pre>/24</pre>
+        </div>
+
+        <p>
+            These two notations represent the same mask:
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Notation</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td>Dotted-decimal</td>
+                    <td>255.255.255.0</td>
+                </tr>
+                <tr>
+                    <td>Prefix length</td>
+                    <td>/24</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What Does /24 Mean?</h2>
+
+        <p>
+            This is one of the most important things to understand.
+        </p>
+
+        <p>
+            An IPv4 address contains <strong>32 bits</strong>.
+        </p>
+
+        <p>
+            When we write <strong>/24</strong>, the number 24 tells us that the
+            first <strong>24 bits</strong> are the network portion.
+        </p>
+
+        <p>
+            That leaves:
+        </p>
+
+        <div class="concept-box">
+            <p><strong>32 total bits</strong></p>
+            <p>24 network bits</p>
+            <p>8 host bits</p>
+        </div>
+
+        <p>
+            Therefore:
+        </p>
+
+        <div class="code-box">
+            <pre>/24 = 24 network bits + 8 host bits</pre>
+        </div>
+
+        <p>
+            Cisco describes the prefix length as the number of high-order bits
+            that make up the network portion of the address.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Example: 192.168.1.10/24</h2>
+
+        <p>
+            Let's use a complete example:
+        </p>
+
+        <div class="code-box">
+            <pre>IP address: 192.168.1.10/24</pre>
+        </div>
+
+        <p>
+            The <strong>/24</strong> tells us that the first 24 bits belong to
+            the network portion.
+        </p>
+
+        <p>
+            The equivalent subnet mask is:
+        </p>
+
+        <div class="code-box">
+            <pre>255.255.255.0</pre>
+        </div>
+
+        <p>
+            We can visualize the address like this:
+        </p>
+
+        <div class="diagram">
+            <pre>
+192       .168       .1        .10
+|          |         |          |
+----------- NETWORK  -----------
+                              HOST
+            </pre>
+        </div>
+
+        <p>
+            With a /24 prefix, the first three octets represent the network
+            portion, while the final octet represents the host portion.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Looking at It in Binary</h2>
+
+        <p>
+            Remember from the previous topic that an IPv4 address contains
+            32 binary bits.
+        </p>
+
+        <p>
+            The address:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.10</pre>
+        </div>
+
+        <p>
+            can be written in binary as:
+        </p>
+
+        <div class="code-box">
+            <pre>11000000.10101000.00000001.00001010</pre>
+        </div>
+
+        <p>
+            The /24 subnet mask is:
+        </p>
+
+        <div class="code-box">
+            <pre>11111111.11111111.11111111.00000000</pre>
+        </div>
+
+        <p>
+            The first 24 bits are the network bits, while the final 8 bits are
+            the host bits.
+        </p>
+
+        <div class="diagram">
+            <pre>
+IP Address:
+11000000.10101000.00000001.00001010
+|-----------------------|--------|
+       NETWORK             HOST
+          24 bits           8 bits
+
+Subnet Mask:
+11111111.11111111.11111111.00000000
+|-----------------------|--------|
+       NETWORK             HOST
+          24 bits           8 bits
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Finding the Network Address</h2>
+
+        <p>
+            Once we know the network portion, we can determine the
+            <strong>network address</strong>.
+        </p>
+
+        <p>
+            Consider:
+        </p>
+
+        <div class="code-box">
+            <pre>IP address:    192.168.1.10
+Subnet mask:   255.255.255.0
+Prefix:        /24</pre>
+        </div>
+
+        <p>
+            The first 24 bits remain as they are.
+            The host bits are changed to zero to identify the network.
+        </p>
+
+        <div class="code-box">
+            <pre>Network address: 192.168.1.0</pre>
+        </div>
+
+        <p>
+            So:
+        </p>
+
+        <div class="concept-box">
+            <p><strong>192.168.1.10/24</strong></p>
+            <p>belongs to the network</p>
+            <p><strong>192.168.1.0/24</strong></p>
+        </div>
+
+        <p>
+            The network address identifies the network itself rather than a
+            normal host interface.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Several Devices on the Same Network</h2>
+
+        <p>
+            Suppose we have three computers:
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Device</th>
+                    <th>IPv4 Address</th>
+                    <th>Prefix</th>
+                    <th>Network</th>
+                    <th>Host Portion</th>
+                </tr>
+                <tr>
+                    <td>PC0</td>
+                    <td>192.168.1.10</td>
+                    <td>/24</td>
+                    <td>192.168.1.0</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>PC1</td>
+                    <td>192.168.1.20</td>
+                    <td>/24</td>
+                    <td>192.168.1.0</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>PC2</td>
+                    <td>192.168.1.30</td>
+                    <td>/24</td>
+                    <td>192.168.1.0</td>
+                    <td>30</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            All three devices have the same network portion:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1</pre>
+        </div>
+
+        <p>
+            But their host portions are different:
+        </p>
+
+        <div class="code-box">
+            <pre>PC0 → 10
+PC1 → 20
+PC2 → 30</pre>
+        </div>
+
+        <p>
+            Therefore, they belong to the same <strong>192.168.1.0/24</strong>
+            IP network but have different host addresses.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What If the Network Portion Is Different?</h2>
+
+        <p>
+            Now consider another computer:
+        </p>
+
+        <div class="code-box">
+            <pre>PC3: 192.168.2.10/24</pre>
+        </div>
+
+        <p>
+            Its network address is:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.2.0/24</pre>
+        </div>
+
+        <p>
+            Compare the two networks:
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Device</th>
+                    <th>IP Address</th>
+                    <th>Network</th>
+                </tr>
+                <tr>
+                    <td>PC0</td>
+                    <td>192.168.1.10/24</td>
+                    <td>192.168.1.0/24</td>
+                </tr>
+                <tr>
+                    <td>PC3</td>
+                    <td>192.168.2.10/24</td>
+                    <td>192.168.2.0/24</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            These are different IP networks because their network portions
+            are different.
+        </p>
+
+        <div class="important-box">
+            <h3>Important</h3>
+            <p>
+                Two devices can have valid IPv4 addresses but still belong to
+                different IP networks. The subnet mask or prefix length helps
+                determine the network boundary.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Network Address, Host Addresses and Broadcast Address</h2>
+
+        <p>
+            For a typical IPv4 /24 network, the addresses have different roles.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Address</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td>192.168.1.0</td>
+                    <td>Network address</td>
+                </tr>
+                <tr>
+                    <td>192.168.1.1 – 192.168.1.254</td>
+                    <td>Typical host address range</td>
+                </tr>
+                <tr>
+                    <td>192.168.1.255</td>
+                    <td>Broadcast address</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            The network address represents the network itself.
+            The addresses between the network and broadcast addresses are
+            normally available for host interfaces.
+        </p>
+
+        <p>
+            The broadcast address is used to represent all hosts on that
+            particular IPv4 subnet.
+        </p>
+
+        <p>
+            Cisco documentation describes the all-zero host portion as the
+            network address and the all-one host portion as the broadcast
+            address for a subnet.
+        </p>
+
+        <div class="important-box">
+            <h3>Do not memorize only the numbers</h3>
+            <p>
+                The important idea is that the subnet mask determines where
+                the network portion ends and the host portion begins.
+                Different prefix lengths create different network sizes.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>How Does a Device Know If Another Device Is Local?</h2>
+
+        <p>
+            Suppose PC0 wants to communicate with PC1.
+        </p>
+
+        <div class="code-box">
+            <pre>PC0: 192.168.1.10/24
+PC1: 192.168.1.20/24</pre>
+        </div>
+
+        <p>
+            PC0 compares the network portion of its own address with the
+            network portion of PC1's address.
+        </p>
+
+        <p>
+            Both belong to:
+        </p>
+
+        <div class="code-box">
+            <pre>192.168.1.0/24</pre>
+        </div>
+
+        <p>
+            Therefore, PC0 knows that PC1 is on the same IP network.
+        </p>
+
+        <p>
+            In a typical Ethernet LAN, the devices can then communicate
+            directly through the local network without sending the traffic
+            to a router for another IP network.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>What Happens When the Destination Is on Another Network?</h2>
+
+        <p>
+            Now imagine:
+        </p>
+
+        <div class="code-box">
+            <pre>PC0: 192.168.1.10/24
+
+Destination:
+192.168.2.10/24</pre>
+        </div>
+
+        <p>
+            PC0 determines that the destination belongs to a different
+            network.
+        </p>
+
+        <p>
+            The traffic therefore needs to be sent toward a
+            <strong>router</strong> so it can be forwarded toward the
+            destination network.
+        </p>
+
+        <div class="diagram">
+            <pre>
+192.168.1.0/24                         192.168.2.0/24
+
+    PC0 -------- Switch -------- Router -------- Switch -------- PC3
+192.168.1.10                  Default Gateway              192.168.2.10
+            </pre>
+        </div>
+
+        <p>
+            The router connects different IP networks and can forward packets
+            between them.
+        </p>
+
+        <p>
+            We will study this more carefully in the next topic:
+            <strong>IP Connectivity</strong>.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Subnet Mask and Prefix Length: Quick Reference</h2>
+
+        <div class="comparison-table">
+            <table>
+                <tr>
+                    <th>Prefix</th>
+                    <th>Subnet Mask</th>
+                    <th>Network Bits</th>
+                    <th>Host Bits</th>
+                </tr>
+                <tr>
+                    <td>/8</td>
+                    <td>255.0.0.0</td>
+                    <td>8</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>/16</td>
+                    <td>255.255.0.0</td>
+                    <td>16</td>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <td>/24</td>
+                    <td>255.255.255.0</td>
+                    <td>24</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>/25</td>
+                    <td>255.255.255.128</td>
+                    <td>25</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>/26</td>
+                    <td>255.255.255.192</td>
+                    <td>26</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </div>
+
+        <p>
+            Notice that when the prefix number becomes larger, more bits are
+            used for the network portion and fewer bits remain for hosts.
+        </p>
+
+        <p>
+            You do not need to memorize every mask yet. The important thing
+            at this stage is understanding what the prefix length represents.
+        </p>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Key Ideas to Remember</h2>
+
+        <div class="topic-grid">
+
+            <div class="topic-card">
+                <h3>Network Portion</h3>
+                <p>
+                    Identifies which IP network the address belongs to.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Host Portion</h3>
+                <p>
+                    Identifies a particular device or interface within the network.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Subnet Mask</h3>
+                <p>
+                    Defines which bits belong to the network portion and which
+                    belong to the host portion.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Prefix Length</h3>
+                <p>
+                    The number after the slash, such as /24, tells how many
+                    bits belong to the network portion.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Quick Notes</h2>
+
+        <div class="concept-box">
+            <p><strong>IPv4 address:</strong> 32 bits.</p>
+            <p><strong>Network portion:</strong> Identifies the network.</p>
+            <p><strong>Host portion:</strong> Identifies the device/interface within the network.</p>
+            <p><strong>Subnet mask:</strong> Shows where the network portion ends.</p>
+            <p><strong>/24:</strong> 24 network bits + 8 host bits.</p>
+            <p><strong>255.255.255.0:</strong> Same mask as /24.</p>
+            <p><strong>Network address:</strong> Host bits are all 0.</p>
+            <p><strong>Broadcast address:</strong> Host bits are all 1 in a typical IPv4 subnet.</p>
+            <p><strong>Different network portions:</strong> The devices belong to different IP networks.</p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Self-Test</h2>
+
+        <ol>
+            <li>What is the purpose of the network portion of an IPv4 address?</li>
+            <li>What is the purpose of the host portion?</li>
+            <li>What does /24 mean?</li>
+            <li>What subnet mask is equivalent to /24?</li>
+            <li>For 192.168.1.10/24, what is the network address?</li>
+            <li>Are 192.168.1.10/24 and 192.168.1.20/24 on the same network?</li>
+            <li>Are 192.168.1.10/24 and 192.168.2.10/24 on the same network?</li>
+            <li>What device is normally used to connect different IP networks?</li>
+        </ol>
+
+        <div class="important-box">
+            <h3>Think before checking the next page</h3>
+            <p>
+                If you understand that the subnet mask separates the network
+                portion from the host portion, you are ready to understand
+                how devices actually use IP addressing for connectivity.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="topic-section">
+        <h2>Next Topic</h2>
+
+        <p>
+            In the next topic, we will put everything together and study
+            <strong>IP Connectivity</strong>.
+        </p>
+
+        <p>
+            You will learn how a device decides whether a destination is on
+            the same network, when it needs a default gateway, and how a
+            router helps packets reach another network.
+        </p>
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="footer-navigation">
+        <a href="ipv4-address-structure.html">← Previous: IPv4 Address Structure</a>
+        <a href="module8.html">Module 8 Home</a>
+        <a href="ip-connectivity.html">Next: IP Connectivity →</a>
+    </div>
+</footer>
+
+</body>
+</html>
+```

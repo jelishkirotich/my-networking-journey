@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 | MAC Address Table</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <span class="module-number">MODULE 7</span>
+        <h1>MAC Address Table</h1>
+        <p class="module-intro">
+            Learn how a switch stores MAC-to-port information, how entries
+            are learned, how to read the MAC address table, and how to observe
+            it in Cisco Packet Tracer.
+        </p>
+    </div>
+</header>
+
+<main>
+
+```
+<!-- INTRODUCTION -->
+<section class="topic-section">
+    <h2>1. What Is a MAC Address Table?</h2>
+
+    <p>
+        A <strong>MAC address table</strong> is a table maintained by an
+        Ethernet switch that records information about MAC addresses the
+        switch has learned and where those devices can be reached.
+    </p>
+
+    <p>
+        In its simplest form, you can think of the table as:
+    </p>
+
+    <div class="code-box">
+        <p>
+            <strong>MAC Address → Switch Port</strong>
+        </p>
+    </div>
+
+    <p>
+        For example:
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>MAC Address</th>
+                    <th>Port</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>00:11:22:33:44:55</td>
+                    <td>Fa0/1</td>
+                </tr>
+
+                <tr>
+                    <td>AA:BB:CC:DD:EE:FF</td>
+                    <td>Fa0/2</td>
+                </tr>
+
+                <tr>
+                    <td>12:34:56:78:9A:BC</td>
+                    <td>Fa0/3</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="important-box">
+        <h3>Simple Definition</h3>
+
+        <p>
+            <strong>
+                A MAC address table tells a switch which port it currently
+                associates with a particular MAC address.
+            </strong>
+        </p>
+    </div>
+
+    <p>
+        In real switches, the table also includes information such as the
+        VLAN and the entry type. Cisco's documentation shows MAC tables
+        containing fields such as VLAN, MAC address, type, age, and port.
+       
+    </p>
+</section>
+
+
+<!-- WHY -->
+<section class="topic-section">
+    <h2>2. Why Does a Switch Need This Table?</h2>
+
+    <p>
+        Remember that a switch can have many ports.
+    </p>
+
+    <p>
+        Suppose a switch has 24 ports and computers are connected to
+        several of them.
+    </p>
+
+    <p>
+        When a frame arrives, the switch needs to answer:
+    </p>
+
+    <div class="concept-box">
+        <p>
+            <strong>
+                "Which port should I use to reach the destination MAC
+                address?"
+            </strong>
+        </p>
+    </div>
+
+    <p>
+        The MAC address table provides the information needed for that
+        Layer 2 forwarding decision.
+    </p>
+
+    <p>
+        For example:
+    </p>
+
+    <div class="code-box">
+        <p>
+            Destination MAC:
+            AA:BB:CC:DD:EE:FF
+        </p>
+
+        <p>
+            Table says:
+            AA:BB:CC:DD:EE:FF → Fa0/3
+        </p>
+
+        <p>
+            Therefore:
+            Forward the frame toward Fa0/3.
+        </p>
+    </div>
+</section>
+
+
+<!-- HOW LEARNED -->
+<section class="topic-section">
+    <h2>3. How Does a Switch Build the Table?</h2>
+
+    <p>
+        A switch does not normally require you to manually enter every
+        device's MAC address.
+    </p>
+
+    <p>
+        It can learn MAC addresses dynamically from frames it receives.
+    </p>
+
+    <p>
+        The key rule is:
+    </p>
+
+    <div class="important-box">
+        <h3>MAC Learning Rule</h3>
+
+        <p>
+            <strong>
+                The switch learns the source MAC address of an incoming
+                frame and associates it with the port where the frame
+                arrived.
+            </strong>
+        </p>
+    </div>
+
+    <p>
+        Cisco documentation describes MAC learning as associating learned
+        addresses with interfaces, and Cisco IOS provides commands for
+        viewing the resulting dynamic entries.
+    </p>
+</section>
+
+
+<!-- EXAMPLE -->
+<section class="topic-section">
+    <h2>4. Example: PC0 Sends Its First Frame</h2>
+
+    <p>
+        Imagine this simple network:
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0 ───── Fa0/1
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SWITCH
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                PC1 ───── Fa0/2
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        Suppose PC0 has this MAC address:
+    </p>
+
+    <div class="code-box">
+        <p>
+            00:11:22:33:44:55
+        </p>
+    </div>
+
+    <p>
+        PC0 sends an Ethernet frame into Fa0/1.
+    </p>
+
+    <p>
+        The switch sees:
+    </p>
+
+    <ul>
+        <li>The frame arrived through Fa0/1.</li>
+        <li>The source MAC is 00:11:22:33:44:55.</li>
+    </ul>
+
+    <p>
+        Therefore the switch can create an entry:
+    </p>
+
+    <div class="code-box">
+        <p>
+            00:11:22:33:44:55 → Fa0/1
+        </p>
+    </div>
+
+    <p>
+        The table now contains useful information about PC0.
+    </p>
+</section>
+
+
+<!-- TABLE BEFORE -->
+<section class="topic-section">
+    <h2>5. What Does the Table Look Like Before Any Traffic?</h2>
+
+    <p>
+        When you first create a simple Packet Tracer network, do not assume
+        that every connected PC will immediately appear in the switch's
+        MAC table.
+    </p>
+
+    <p>
+        The switch learns addresses from traffic it receives.
+    </p>
+
+    <p>
+        So a connected device may not have a learned dynamic entry yet if
+        it has not generated relevant traffic.
+    </p>
+
+    <div class="concept-box">
+        <h3>Important</h3>
+
+        <p>
+            <strong>
+                Physical connection does not automatically mean that the
+                switch has already learned the device's MAC address.
+            </strong>
+        </p>
+
+        <p>
+            The switch needs to receive a frame from the device so it can
+            learn the source MAC address.
+        </p>
+    </div>
+</section>
+
+
+<!-- AFTER TRAFFIC -->
+<section class="topic-section">
+    <h2>6. What Happens After Traffic Is Sent?</h2>
+
+    <p>
+        Suppose PC0 sends traffic.
+    </p>
+
+    <p>
+        The switch receives the frame and learns PC0's source MAC address.
+    </p>
+
+    <p>
+        If PC1 also sends traffic, the switch can learn PC1's source MAC
+        address too.
+    </p>
+
+    <p>
+        The table might then look like:
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>VLAN</th>
+                    <th>MAC Address</th>
+                    <th>Type</th>
+                    <th>Port</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>00:11:22:33:44:55</td>
+                    <td>Dynamic</td>
+                    <td>Fa0/1</td>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>AA:BB:CC:DD:EE:FF</td>
+                    <td>Dynamic</td>
+                    <td>Fa0/2</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <p>
+        Now the switch has information it can use for future forwarding
+        decisions.
+    </p>
+</section>
+
+
+<!-- DYNAMIC -->
+<section class="topic-section">
+    <h2>7. What Does "Dynamic" Mean?</h2>
+
+    <p>
+        When a MAC address is learned automatically from network traffic,
+        it is commonly described as a <strong>dynamic</strong> entry.
+    </p>
+
+    <p>
+        The switch learned the information rather than having the
+        administrator manually configure that particular entry.
+    </p>
+
+    <div class="important-box">
+
+        <p>
+            <strong>Dynamic = learned automatically.</strong>
+        </p>
+
+        <p>
+            The switch can update or eventually remove dynamic information
+            as network conditions change.
+        </p>
+
+    </div>
+
+    <p>
+        Cisco provides commands such as
+        <code>show mac address-table dynamic</code> to display dynamic
+        entries specifically.
+    </p>
+</section>
+
+
+<!-- STATIC -->
+<section class="topic-section">
+    <h2>8. What Is a Static MAC Entry?</h2>
+
+    <p>
+        A <strong>static</strong> MAC entry is configured rather than
+        learned dynamically in the normal way.
+    </p>
+
+    <p>
+        An administrator can configure a MAC address and associate it with
+        a particular VLAN and interface.
+    </p>
+
+    <p>
+        Cisco provides a
+        <code>mac-address-table static</code> configuration command for
+        static entries.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Dynamic</th>
+                    <th>Static</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Learned from received traffic</td>
+                    <td>Configured by an administrator</td>
+                </tr>
+
+                <tr>
+                    <td>Can age out</td>
+                    <td>Does not behave like a normal dynamically learned
+                        entry</td>
+                </tr>
+
+                <tr>
+                    <td>Useful for normal automatic learning</td>
+                    <td>Useful when a specific MAC-to-port association
+                        needs to be configured</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        For your beginner Packet Tracer work, the most important type to
+        understand first is the <strong>dynamic</strong> entry.
+    </p>
+</section>
+
+
+<!-- VLAN -->
+<section class="topic-section">
+    <h2>9. Why Is There a VLAN Column?</h2>
+
+    <p>
+        You may notice that a real Cisco MAC address table does not simply
+        show:
+    </p>
+
+    <div class="code-box">
+        <p>
+            MAC → Port
+        </p>
+    </div>
+
+    <p>
+        It commonly shows a <strong>VLAN</strong> as well.
+    </p>
+
+    <p>
+        A VLAN creates a separate Layer 2 logical network.
+    </p>
+
+    <p>
+        Therefore, the switch needs to know not only the MAC address and
+        port, but also the Layer 2 context in which that MAC address was
+        learned.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>VLAN</th>
+                    <th>MAC Address</th>
+                    <th>Port</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>10</td>
+                    <td>00:11:22:33:44:55</td>
+                    <td>Fa0/1</td>
+                </tr>
+
+                <tr>
+                    <td>20</td>
+                    <td>AA:BB:CC:DD:EE:FF</td>
+                    <td>Fa0/2</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        VLANs are beyond the main focus of this page, so for now,
+        concentrate on the basic relationship:
+    </p>
+
+    <div class="important-box">
+        <p>
+            <strong>
+                VLAN + MAC address + Port
+            </strong>
+        </p>
+    </div>
+</section>
+
+
+<!-- MAC TABLE COMMAND -->
+<section class="topic-section">
+    <h2>10. Viewing the MAC Address Table in Cisco IOS</h2>
+
+    <p>
+        On a Cisco switch, the main command used to display the MAC address
+        table is:
+    </p>
+
+    <div class="code-box">
+        <p>
+            <strong>show mac address-table</strong>
+        </p>
+    </div>
+
+    <p>
+        Cisco documents this command as the command used to display the
+        MAC address table.
+    </p>
+
+    <p>
+        You normally run this command from privileged EXEC mode, where the
+        prompt looks similar to:
+    </p>
+
+    <div class="code-box">
+        <p>
+            Switch#
+        </p>
+    </div>
+
+    <p>
+        So in Packet Tracer:
+    </p>
+
+    <ol>
+        <li>Click the switch.</li>
+        <li>Open the <strong>CLI</strong> tab.</li>
+        <li>Make sure you are at the <strong>Switch#</strong> prompt.</li>
+        <li>Type <code>show mac address-table</code>.</li>
+        <li>Press Enter.</li>
+    </ol>
+
+    <div class="important-box">
+        <h3>Do Not Confuse the Command</h3>
+
+        <p>
+            The command is:
+        </p>
+
+        <p>
+            <strong>show mac address-table</strong>
+        </p>
+
+        <p>
+            It is not:
+        </p>
+
+        <p>
+            <code>show ip address-table</code>
+        </p>
+    </div>
+</section>
+
+
+<!-- READING OUTPUT -->
+<section class="topic-section">
+    <h2>11. How to Read the Output</h2>
+
+    <p>
+        You may see output similar to:
+    </p>
+
+    <div class="code-box">
+```
+
+<pre>
+Vlan    Mac Address       Type       Ports
+----    -----------       --------   -----
+1       0011.2233.4455   DYNAMIC    Fa0/1
+1       aabb.ccdd.eeff   DYNAMIC    Fa0/2
+</pre>
+
+```
+    </div>
+
+    <p>
+        Let's understand each column.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Vlan</td>
+                    <td>
+                        The VLAN associated with the MAC entry.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Mac Address</td>
+                    <td>
+                        The learned or configured MAC address.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        Indicates the type of entry, such as dynamic or
+                        static.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ports</td>
+                    <td>
+                        The switch interface associated with the entry.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        Actual output can vary by Cisco platform and IOS version, so do not
+        worry if your Packet Tracer output is not visually identical to an
+        example from another switch model. Cisco's documentation shows
+        multiple forms of the command and output depending on platform.
+       
+    </p>
+</section>
+
+
+<!-- MAC FORMAT -->
+<section class="topic-section">
+    <h2>12. Why Does Cisco Show MAC Addresses Like 0011.2233.4455?</h2>
+
+    <p>
+        Earlier, you learned that Ethernet MAC addresses are commonly
+        written like:
+    </p>
+
+    <div class="code-box">
+        <p>
+            00:11:22:33:44:55
+        </p>
+    </div>
+
+    <p>
+        Cisco IOS often displays the same 48-bit MAC address in groups of
+        four hexadecimal characters:
+    </p>
+
+    <div class="code-box">
+        <p>
+            0011.2233.4455
+        </p>
+    </div>
+
+    <p>
+        These represent the same hexadecimal digits.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Format</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Colon notation</td>
+                    <td>00:11:22:33:44:55</td>
+                </tr>
+
+                <tr>
+                    <td>Cisco-style notation</td>
+                    <td>0011.2233.4455</td>
+                </tr>
+
+                <tr>
+                    <td>Hyphen notation</td>
+                    <td>00-11-22-33-44-55</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="important-box">
+        <p>
+            The notation changed, but the underlying MAC address did not.
+        </p>
+    </div>
+</section>
+
+
+<!-- DYNAMIC COMMAND -->
+<section class="topic-section">
+    <h2>13. Viewing Only Dynamic Entries</h2>
+
+    <p>
+        If the table contains many entries and you want to focus only on
+        dynamically learned MAC addresses, Cisco IOS supports:
+    </p>
+
+    <div class="code-box">
+        <p>
+            <strong>show mac address-table dynamic</strong>
+        </p>
+    </div>
+
+    <p>
+        Cisco documents this command specifically for displaying dynamic
+        MAC address-table entries.
+    </p>
+
+    <p>
+        This is particularly useful while learning because you can focus
+        on the addresses the switch learned automatically.
+    </p>
+</section>
+
+
+<!-- AGING -->
+<section class="topic-section">
+    <h2>14. MAC Address Aging</h2>
+
+    <p>
+        Dynamic MAC entries are not necessarily stored forever.
+    </p>
+
+    <p>
+        Switches use an <strong>aging timer</strong> for dynamically learned
+        MAC addresses.
+    </p>
+
+    <p>
+        The timer tracks how long it has been since the switch last saw
+        traffic associated with the learned address.
+    </p>
+
+    <p>
+        If the entry becomes stale and reaches the configured aging time,
+        it can be removed.
+    </p>
+
+    <p>
+        Cisco documentation lists 300 seconds as the default aging time
+        for the platforms documented in its command reference, although
+        actual defaults can vary by platform.
+    </p>
+
+    <div class="concept-box">
+
+        <h3>Why Is Aging Necessary?</h3>
+
+        <p>
+            Imagine:
+        </p>
+
+        <p>
+            Laptop → Port 2
+        </p>
+
+        <p>
+            Later, the laptop is moved to Port 5.
+        </p>
+
+        <p>
+            The switch needs to be able to update its information rather
+            than permanently believing that the laptop is still reachable
+            through Port 2.
+        </p>
+
+    </div>
+
+    <p>
+        When the laptop sends traffic from its new location, the switch
+        can learn its source MAC on the new port.
+    </p>
+</section>
+
+
+<!-- AGING COMMAND -->
+<section class="topic-section">
+    <h2>15. Checking the Aging Time</h2>
+
+    <p>
+        Cisco IOS provides:
+    </p>
+
+    <div class="code-box">
+        <p>
+            <strong>show mac address-table aging-time</strong>
+        </p>
+    </div>
+
+    <p>
+        This command displays the configured MAC address aging time.
+       
+    </p>
+
+    <p>
+        In a lab, this is useful because it lets you connect the theory of
+        aging to an actual switch configuration.
+    </p>
+</section>
+
+
+<!-- CLEARING -->
+<section class="topic-section">
+    <h2>16. Can the MAC Address Table Be Cleared?</h2>
+
+    <p>
+        Yes.
+    </p>
+
+    <p>
+        Cisco switches provide commands for clearing MAC address-table
+        entries. For example, Cisco documents:
+    </p>
+
+    <div class="code-box">
+        <p>
+            <strong>clear mac-address-table dynamic</strong>
+        </p>
+    </div>
+
+    <p>
+        This can remove dynamically learned entries so the switch can
+        learn them again from subsequent traffic.
+    </p>
+
+    <div class="important-box">
+        <p>
+            For your Packet Tracer learning exercise, clearing the dynamic
+            table can be useful because it allows you to observe the
+            learning process from the beginning again.
+        </p>
+    </div>
+</section>
+
+
+<!-- MAC TABLE AND SWITCHING -->
+<section class="topic-section">
+    <h2>17. Connecting the Table to Switching Decisions</h2>
+
+    <p>
+        Now connect everything from the previous page.
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Situation</th>
+                    <th>What the Switch Does</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        Destination MAC is known
+                    </td>
+
+                    <td>
+                        Forward the frame toward the associated port.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Destination MAC is unknown
+                    </td>
+
+                    <td>
+                        Flood the unknown unicast to relevant ports except
+                        the incoming port.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Destination is broadcast
+                    </td>
+
+                    <td>
+                        Flood within the relevant broadcast domain.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Destination is associated with incoming port
+                    </td>
+
+                    <td>
+                        Filter rather than send the frame back out the
+                        same port.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</section>
+
+
+<!-- MULTIPLE MACS -->
+<section class="topic-section">
+    <h2>18. One Port Can Have Multiple MAC Addresses</h2>
+
+    <p>
+        This is another important idea.
+    </p>
+
+    <p>
+        Do not assume:
+    </p>
+
+    <div class="code-box">
+        <p>
+            One Port = One MAC Address
+        </p>
+    </div>
+
+    <p>
+        That is not always true.
+    </p>
+
+    <p>
+        For example, suppose Switch 1 connects to another switch through
+        one port.
+    </p>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0 ──┐
+            </p>
+
+            <p>
+                PC1 ──┼── Switch 2
+            </p>
+
+            <p>
+                PC2 ──┘
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Port 5
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│
+            </p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Switch 1
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        From Switch 1's perspective, PC0, PC1, and PC2 can all be reachable
+        through Port 5.
+    </p>
+
+    <p>
+        Therefore, the table could contain:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC0 MAC → Port 5
+        </p>
+
+        <p>
+            PC1 MAC → Port 5
+        </p>
+
+        <p>
+            PC2 MAC → Port 5
+        </p>
+
+    </div>
+
+    <div class="important-box">
+        <p>
+            The table tells the switch where a MAC address is reachable,
+            not necessarily where the physical device is directly plugged
+            into that exact switch.
+        </p>
+    </div>
+</section>
+
+
+<!-- MOVE -->
+<section class="topic-section">
+    <h2>19. What If a Device Moves to Another Port?</h2>
+
+    <p>
+        Imagine that PC0 was originally connected through Fa0/1.
+    </p>
+
+    <p>
+        The switch learned:
+    </p>
+
+    <div class="code-box">
+        <p>
+            PC0 MAC → Fa0/1
+        </p>
+    </div>
+
+    <p>
+        Now suppose PC0 is physically moved and connected through Fa0/5.
+    </p>
+
+    <p>
+        When PC0 sends a new frame from Fa0/5, the switch sees its source
+        MAC arriving through Fa0/5.
+    </p>
+
+    <p>
+        The switch can update its MAC-table information to reflect the new
+        location.
+    </p>
+
+    <div class="code-box">
+        <p>
+            PC0 MAC → Fa0/5
+        </p>
+    </div>
+
+    <p>
+        This is another reason dynamic learning is useful.
+    </p>
+</section>
+
+
+<!-- PACKET TRACER LAB -->
+<section class="topic-section">
+    <h2>20. Packet Tracer Exercise — Watching the MAC Table Learn</h2>
+
+    <p>
+        This exercise is designed specifically for this module.
+    </p>
+
+    <p>
+        You have already done basic pinging and MAC-table observation in
+        Module 1, so this exercise focuses more specifically on
+        <strong>how the MAC table changes</strong>.
+    </p>
+
+    <div class="important-box">
+        <h3>Goal</h3>
+
+        <p>
+            Observe how a switch learns MAC addresses from the source
+            addresses of frames it receives.
+        </p>
+    </div>
+
+    <h3>Step 1 — Create the Topology</h3>
+
+    <p>
+        In Packet Tracer, create:
+    </p>
+
+    <ul>
+        <li>Two PCs</li>
+        <li>One 2960 switch</li>
+    </ul>
+
+    <p>
+        Connect:
+    </p>
+
+    <div class="code-box">
+
+        <p>
+            PC0 → Switch Fa0/1
+        </p>
+
+        <p>
+            PC1 → Switch Fa0/2
+        </p>
+
+    </div>
+
+    <h3>Step 2 — Check the MAC Table</h3>
+
+    <p>
+        Open the switch CLI.
+    </p>
+
+    <p>
+        Enter:
+    </p>
+
+    <div class="code-box">
+        <p>
+            Switch&gt; enable
+        </p>
+
+        <p>
+            Switch# show mac address-table
+        </p>
+    </div>
+
+    <p>
+        Observe what appears.
+    </p>
+
+    <h3>Step 3 — Generate Traffic</h3>
+
+    <p>
+        From PC0, send traffic to PC1.
+    </p>
+
+    <p>
+        For example:
+    </p>
+
+    <div class="code-box">
+        <p>
+            ping &lt;PC1-IP-address&gt;
+        </p>
+    </div>
+
+    <h3>Step 4 — Check the Table Again</h3>
+
+    <p>
+        Return to the switch CLI and run:
+    </p>
+
+    <div class="code-box">
+        <p>
+            show mac address-table
+        </p>
+    </div>
+
+    <p>
+        Look for the MAC addresses associated with the ports.
+    </p>
+
+    <h3>Step 5 — Interpret What Happened</h3>
+
+    <p>
+        Ask yourself:
+    </p>
+
+    <ol>
+        <li>
+            Which MAC address did the switch learn first?
+        </li>
+
+        <li>
+            Which port is associated with PC0?
+        </li>
+
+        <li>
+            Which port is associated with PC1?
+        </li>
+
+        <li>
+            Did the entries appear as dynamic?
+        </li>
+
+        <li>
+            What caused the switch to learn the addresses?
+        </li>
+    </ol>
+
+    <div class="important-box">
+
+        <p>
+            The important observation is not simply that the MAC addresses
+            appeared.
+        </p>
+
+        <p>
+            The important observation is:
+        </p>
+
+        <p>
+            <strong>
+                A frame arrived → the switch saw its source MAC → the
+                switch associated that MAC with the incoming port.
+            </strong>
+        </p>
+
+    </div>
+</section>
+
+
+<!-- OBSERVATION TABLE -->
+<section class="topic-section">
+    <h2>21. Record Your Packet Tracer Observation</h2>
+
+    <p>
+        You can use a table like this in your notes:
+    </p>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>What I Observed</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Before traffic</td>
+                    <td>
+                        Record what appeared in the MAC table.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>After PC0 sent traffic</td>
+                    <td>
+                        Record the MAC entries that appeared or changed.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>After PC1 sent traffic</td>
+                    <td>
+                        Record the new/updated entries.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC address</td>
+                    <td>
+                        Record the MAC address shown by Packet Tracer.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Port</td>
+                    <td>
+                        Record the switch port associated with it.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        Record whether the entry is dynamic or another
+                        type.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</section>
+
+
+<!-- COMMAND SUMMARY -->
+<section class="topic-section">
+    <h2>22. Useful Cisco Commands</h2>
+
+    <div class="comparison-table">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        <code>show mac address-table</code>
+                    </td>
+                    <td>
+                        Displays the MAC address table.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <code>show mac address-table dynamic</code>
+                    </td>
+                    <td>
+                        Displays dynamically learned entries.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <code>show mac address-table aging-time</code>
+                    </td>
+                    <td>
+                        Displays the MAC address aging time.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <code>show mac address-table vlan 1</code>
+                    </td>
+                    <td>
+                        Displays entries associated with a specified VLAN.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <code>show mac address-table interface fa0/1</code>
+                    </td>
+                    <td>
+                        Displays entries associated with a specified
+                        interface.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <p>
+        Cisco documents these command variations for examining MAC
+        address-table entries by type, VLAN, interface, address, and
+        aging information.
+    </p>
+</section>
+
+
+<!-- BIG PICTURE -->
+<section class="topic-section">
+    <h2>23. The Big Picture</h2>
+
+    <div class="diagram">
+
+        <div class="code-box">
+
+            <p>
+                PC0 sends an Ethernet frame
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Frame arrives at switch
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch reads source MAC
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Source MAC + incoming port
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                MAC Address Table
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch reads destination MAC
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Searches MAC table
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Forward / Flood / Filter
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- COMMON MISTAKES -->
+<section class="topic-section">
+    <h2>24. Common Mistakes to Avoid</h2>
+
+    <div class="important-box">
+
+        <h3>Mistake 1: "The switch learns the destination MAC."</h3>
+
+        <p>
+            Not exactly.
+        </p>
+
+        <p>
+            The switch learns from the <strong>source MAC</strong> of
+            incoming frames.
+        </p>
+
+        <hr>
+
+        <h3>Mistake 2: "Every port has only one MAC address."</h3>
+
+        <p>
+            Not necessarily. A port connecting to another switch can lead
+            to many MAC addresses.
+        </p>
+
+        <hr>
+
+        <h3>Mistake 3: "The table is permanent."</h3>
+
+        <p>
+            Dynamic entries can age out and be removed.
+        </p>
+
+        <hr>
+
+        <h3>Mistake 4: "A connected PC must already be in the table."</h3>
+
+        <p>
+            Not necessarily. The switch needs to receive a frame from the
+            device in order to learn its source MAC dynamically.
+        </p>
+
+        <hr>
+
+        <h3>Mistake 5: "MAC address and IP address are the same."</h3>
+
+        <p>
+            They are different types of addresses used at different layers.
+            MAC addresses are used for Ethernet Layer 2 communication,
+            while IP addresses are used for logical Layer 3 communication.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- QUICK NOTES -->
+<section class="topic-section">
+    <h2>25. Quick Notes</h2>
+
+    <div class="code-box">
+
+        <p>
+            <strong>MAC address table:</strong>
+            A switch table containing learned or configured MAC address
+            information and associated ports/VLANs.
+        </p>
+
+        <p>
+            <strong>MAC learning:</strong>
+            The switch learns the source MAC of an incoming frame and
+            associates it with the incoming port.
+        </p>
+
+        <p>
+            <strong>Dynamic entry:</strong>
+            A MAC-table entry learned automatically from traffic.
+        </p>
+
+        <p>
+            <strong>Static entry:</strong>
+            A MAC-table entry configured by an administrator.
+        </p>
+
+        <p>
+            <strong>Known destination:</strong>
+            The destination MAC has a table entry → forward toward the
+            associated port.
+        </p>
+
+        <p>
+            <strong>Unknown destination:</strong>
+            No matching MAC-table entry → flood the unknown unicast to
+            relevant ports except the incoming port.
+        </p>
+
+        <p>
+            <strong>MAC aging:</strong>
+            Dynamic entries can be removed after remaining unused for the
+            configured aging period.
+        </p>
+
+        <p>
+            <strong>Main command:</strong>
+            show mac address-table
+        </p>
+
+        <p>
+            <strong>Dynamic entries:</strong>
+            show mac address-table dynamic
+        </p>
+
+        <p>
+            <strong>Aging time:</strong>
+            show mac address-table aging-time
+        </p>
+
+        <p>
+            <strong>Most important rule:</strong>
+            Learn from the source MAC; look up the destination MAC.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- SELF TEST -->
+<section class="topic-section">
+    <h2>26. Check Your Understanding</h2>
+
+    <div class="concept-box">
+
+        <h3>Question 1</h3>
+        <p>
+            What is a MAC address table?
+        </p>
+
+        <h3>Question 2</h3>
+        <p>
+            Why does a switch need a MAC address table?
+        </p>
+
+        <h3>Question 3</h3>
+        <p>
+            Which MAC address does the switch learn from?
+        </p>
+
+        <h3>Question 4</h3>
+        <p>
+            What does a dynamic MAC entry mean?
+        </p>
+
+        <h3>Question 5</h3>
+        <p>
+            What happens if the destination MAC is not in the table?
+        </p>
+
+        <h3>Question 6</h3>
+        <p>
+            Why can several MAC addresses be associated with one switch
+            port?
+        </p>
+
+        <h3>Question 7</h3>
+        <p>
+            Why do dynamic MAC entries age?
+        </p>
+
+        <h3>Question 8</h3>
+        <p>
+            What command displays the MAC address table?
+        </p>
+
+        <h3>Question 9</h3>
+        <p>
+            What is the difference between a MAC address and an IP
+            address?
+        </p>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<div class="footer-navigation">
+
+    <a href="../module6/module6.html">
+        ← Module 6
+    </a>
+
+    <a href="module7.html">
+        Module 7 Home
+    </a>
+
+    <a href="packet-tracer.html">
+        Next: Packet Tracer Exercise →
+    </a>
+
+</div>
+```
+
+</main>
+
+</body>
+</html>

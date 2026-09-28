@@ -1,0 +1,691 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv4 Address | Module 8</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <p class="module-number">MODULE 8</p>
+                <h1>IPv4 Address</h1>
+                <p class="module-intro">
+                    Understanding the purpose, features, and role of IPv4
+                    addresses in network communication.
+                </p>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Introduction -->
+        <section class="topic-section">
+            <h2>What Is an IPv4 Address?</h2>
+
+            <p>
+                <strong>IPv4</strong> stands for
+                <strong>Internet Protocol version 4</strong>.
+            </p>
+
+            <p>
+                An IPv4 address is a logical address used to identify a
+                network interface in an IPv4 network. It provides information
+                that allows IP packets to be sent toward their destination.
+            </p>
+
+            <p>
+                An IPv4 address is made up of
+                <strong>32 binary bits</strong>. These 32 bits are divided
+                into four groups of 8 bits, called <strong>octets</strong>.
+                IPv4 addresses are normally written using
+                <strong>dotted-decimal notation</strong>.
+            </p>
+
+            <div class="diagram">
+
+                <p><strong>Example IPv4 Address</strong></p>
+
+                <div class="code-box">
+                    192.168.1.10
+                </div>
+
+                <p>
+                    This is a human-readable representation of a
+                    32-bit IPv4 address.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Why IPv4 Is Needed -->
+        <section class="topic-section">
+            <h2>Why Do We Need IPv4 Addresses?</h2>
+
+            <p>
+                Imagine a network with hundreds or thousands of devices.
+                If there were no logical addressing system, it would be
+                difficult to determine where a packet should be sent.
+            </p>
+
+            <p>
+                IPv4 provides logical addresses that allow devices and
+                networking equipment to identify source and destination
+                locations.
+            </p>
+
+            <div class="important-box">
+
+                <p>
+                    Think of an IPv4 address as a
+                    <strong>logical network address</strong>.
+                </p>
+
+                <p>
+                    It helps answer:
+                </p>
+
+                <p>
+                    <strong>
+                        "Which network is this device on, and which device
+                        on that network are we trying to reach?"
+                    </strong>
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Example -->
+        <section class="topic-section">
+            <h2>A Simple Example</h2>
+
+            <p>
+                Suppose we have three computers connected to the same
+                network:
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+                 Network
+                    |
+        +-----------+-----------+
+        |           |           |
+       PC0         PC1         PC2
+       |            |            |
+192.168.1.10  192.168.1.20  192.168.1.30
+                </pre>
+
+            </div>
+
+            <p>
+                Each device has its own IPv4 address.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Device</th>
+                        <th>IPv4 Address</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>PC0</td>
+                        <td>192.168.1.10</td>
+                    </tr>
+
+                    <tr>
+                        <td>PC1</td>
+                        <td>192.168.1.20</td>
+                    </tr>
+
+                    <tr>
+                        <td>PC2</td>
+                        <td>192.168.1.30</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p>
+                Notice that the addresses are different. This allows the
+                devices to be distinguished from one another within the
+                network.
+            </p>
+        </section>
+
+
+        <!-- IPv4 and NIC -->
+        <section class="topic-section">
+            <h2>IPv4 Addresses Are Assigned to Network Interfaces</h2>
+
+            <p>
+                An important point is that an IPv4 address is associated with
+                a <strong>network interface</strong>, rather than simply being
+                a permanent label attached to the entire physical device.
+            </p>
+
+            <p>
+                A computer may have more than one network interface. For
+                example, a laptop could have:
+            </p>
+
+            <ul>
+                <li>A wireless network interface</li>
+                <li>A wired Ethernet interface</li>
+            </ul>
+
+            <p>
+                Each interface can participate in networking and can have its
+                own IP configuration.
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+                Laptop
+                   |
+        +----------+----------+
+        |                     |
+   Wi-Fi NIC              Ethernet NIC
+        |                     |
+192.168.1.20           192.168.10.20
+                </pre>
+
+            </div>
+
+            <p>
+                This is why networking discussions often refer to an IP
+                address as an <strong>interface address</strong>.
+            </p>
+        </section>
+
+
+        <!-- Main Features -->
+        <section class="topic-section">
+            <h2>Main Features of IPv4 Addresses</h2>
+
+            <div class="topic-grid">
+
+                <div class="concept-box">
+                    <h3>32 Bits</h3>
+
+                    <p>
+                        An IPv4 address contains 32 binary bits.
+                    </p>
+                </div>
+
+
+                <div class="concept-box">
+                    <h3>Four Octets</h3>
+
+                    <p>
+                        The 32 bits are divided into four groups of
+                        8 bits each.
+                    </p>
+                </div>
+
+
+                <div class="concept-box">
+                    <h3>Dotted Decimal</h3>
+
+                    <p>
+                        IPv4 addresses are normally written as four decimal
+                        numbers separated by periods.
+                    </p>
+                </div>
+
+
+                <div class="concept-box">
+                    <h3>Logical Address</h3>
+
+                    <p>
+                        IPv4 provides logical addressing at the Network Layer.
+                    </p>
+                </div>
+
+
+                <div class="concept-box">
+                    <h3>Network Identification</h3>
+
+                    <p>
+                        Part of the address identifies the network associated
+                        with the interface.
+                    </p>
+                </div>
+
+
+                <div class="concept-box">
+                    <h3>Host Identification</h3>
+
+                    <p>
+                        Another portion identifies the particular interface
+                        within that network.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 32 Bits -->
+        <section class="topic-section">
+            <h2>IPv4 Has 32 Bits</h2>
+
+            <p>
+                Computers ultimately work with binary values, so an IPv4
+                address is represented internally using 32 bits.
+            </p>
+
+            <p>
+                For example, this IPv4 address:
+            </p>
+
+            <div class="code-box">
+                192.168.1.10
+            </div>
+
+            <p>
+                can be represented in binary as:
+            </p>
+
+            <div class="code-box">
+                11000000.10101000.00000001.00001010
+            </div>
+
+            <p>
+                There are four groups, and each group contains eight bits:
+            </p>
+
+            <div class="diagram">
+
+                <table class="comparison-table">
+
+                    <thead>
+                        <tr>
+                            <th>Octet 1</th>
+                            <th>Octet 2</th>
+                            <th>Octet 3</th>
+                            <th>Octet 4</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>11000000</td>
+                            <td>10101000</td>
+                            <td>00000001</td>
+                            <td>00001010</td>
+                        </tr>
+
+                        <tr>
+                            <td>192</td>
+                            <td>168</td>
+                            <td>1</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p>
+                We will study how this conversion works in much more detail
+                on the next page about IPv4 address structure.
+            </p>
+        </section>
+
+
+        <!-- Range -->
+        <section class="topic-section">
+            <h2>Why Does Each Octet Range From 0 to 255?</h2>
+
+            <p>
+                Each octet contains 8 bits.
+            </p>
+
+            <p>
+                With 8 binary bits, the smallest possible value is:
+            </p>
+
+            <div class="code-box">
+                00000000 = 0
+            </div>
+
+            <p>
+                The largest possible value is:
+            </p>
+
+            <div class="code-box">
+                11111111 = 255
+            </div>
+
+            <p>
+                Therefore, each IPv4 octet can contain a decimal value from
+                <strong>0 through 255</strong>.
+            </p>
+
+            <div class="important-box">
+
+                <p>
+                    <strong>Remember:</strong>
+                </p>
+
+                <p>
+                    An IPv4 address has four octets, and every octet must
+                    contain a value from 0 to 255.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- IPv4 Address Example -->
+        <section class="topic-section">
+            <h2>Breaking Down an Example</h2>
+
+            <p>
+                Consider:
+            </p>
+
+            <div class="code-box">
+                172.16.25.50
+            </div>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Octet</th>
+                        <th>Decimal Value</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1st</td>
+                        <td>172</td>
+                    </tr>
+
+                    <tr>
+                        <td>2nd</td>
+                        <td>16</td>
+                    </tr>
+
+                    <tr>
+                        <td>3rd</td>
+                        <td>25</td>
+                    </tr>
+
+                    <tr>
+                        <td>4th</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p>
+                These four values together represent one 32-bit IPv4 address.
+            </p>
+        </section>
+
+
+        <!-- IPv4 and IPv6 -->
+        <section class="topic-section">
+            <h2>IPv4 vs IPv6</h2>
+
+            <p>
+                IPv4 is not the only version of IP. There is also
+                <strong>IPv6 (Internet Protocol version 6)</strong>.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>IPv4</th>
+                        <th>IPv6</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Address size</td>
+                        <td>32 bits</td>
+                        <td>128 bits</td>
+                    </tr>
+
+                    <tr>
+                        <td>Example notation</td>
+                        <td>192.168.1.10</td>
+                        <td>2001:db8::1</td>
+                    </tr>
+
+                    <tr>
+                        <td>Number system</td>
+                        <td>Decimal</td>
+                        <td>Hexadecimal</td>
+                    </tr>
+
+                    <tr>
+                        <td>Separator</td>
+                        <td>Periods</td>
+                        <td>Colons</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                In this module, we are concentrating on IPv4 because it is
+                the addressing system we are learning in detail.
+            </p>
+        </section>
+
+
+        <!-- Important Reminder -->
+        <section class="topic-section">
+            <h2>Important: An IP Address Is Not the Same as a MAC Address</h2>
+
+            <p>
+                It is easy to confuse these two addresses because both are
+                used during network communication.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>IPv4 Address</th>
+                        <th>MAC Address</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            Logical Network Layer address
+                        </td>
+
+                        <td>
+                            Data Link Layer address
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Example:
+                            192.168.1.10
+                        </td>
+
+                        <td>
+                            Example:
+                            00:1A:2B:3C:4D:5E
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Used for IP communication and routing decisions
+                        </td>
+
+                        <td>
+                            Used for local Ethernet frame delivery
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                They work together. An IP packet can be carried inside an
+                Ethernet frame, meaning the communication can involve both
+                an IP address and a MAC address at different layers.
+            </p>
+        </section>
+
+
+        <!-- Quick Notes -->
+        <section class="topic-section">
+            <h2>Quick Notes</h2>
+
+            <div class="important-box">
+
+                <ul>
+                    <li>
+                        IPv4 means Internet Protocol version 4.
+                    </li>
+
+                    <li>
+                        An IPv4 address contains 32 bits.
+                    </li>
+
+                    <li>
+                        The 32 bits are divided into four 8-bit octets.
+                    </li>
+
+                    <li>
+                        IPv4 is normally written in dotted-decimal notation.
+                    </li>
+
+                    <li>
+                        Each octet has a value from 0 to 255.
+                    </li>
+
+                    <li>
+                        An IPv4 address is associated with a network interface.
+                    </li>
+
+                    <li>
+                        IPv4 provides logical addressing at the Network Layer.
+                    </li>
+
+                    <li>
+                        Part of an IPv4 address identifies the network and
+                        another part identifies the host/interface.
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- Self Test -->
+        <section class="topic-section">
+            <h2>Check Your Understanding</h2>
+
+            <div class="concept-box">
+
+                <p>
+                    <strong>1. What does IPv4 stand for?</strong>
+                </p>
+
+                <p>
+                    <strong>2. How many bits are in an IPv4 address?</strong>
+                </p>
+
+                <p>
+                    <strong>3. What is an octet?</strong>
+                </p>
+
+                <p>
+                    <strong>4. Why does an IPv4 octet have a maximum value of
+                    255?</strong>
+                </p>
+
+                <p>
+                    <strong>5. What is the difference between an IPv4 address
+                    and a MAC address?</strong>
+                </p>
+
+                <p>
+                    <strong>6. What is a network interface?</strong>
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Next Topic -->
+        <section class="topic-section">
+            <h2>Next: IPv4 Address Structure</h2>
+
+            <p>
+                We now know that an IPv4 address contains 32 bits divided
+                into four octets.
+            </p>
+
+            <p>
+                Next, we will look more closely at how those bits are
+                organized and how an IPv4 address is represented in both
+                binary and decimal.
+            </p>
+
+            <a href="ipv4-address-structure.html" class="important-box">
+                Continue to IPv4 Address Structure →
+            </a>
+        </section>
+
+    </main>
+
+
+    <!-- Footer Navigation -->
+    <footer class="footer-navigation">
+
+        <a href="internet-protocol.html">
+            ← Previous: Internet Protocol
+        </a>
+
+        <a href="module8.html">
+            Module 8 Home
+        </a>
+
+        <a href="ipv4-address-structure.html">
+            Next: IPv4 Address Structure →
+        </a>
+
+    </footer>
+
+</body>
+</html>
+```

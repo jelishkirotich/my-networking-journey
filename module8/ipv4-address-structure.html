@@ -1,0 +1,749 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv4 Address Structure | Module 8</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div>
+                <p class="module-number">MODULE 8</p>
+                <h1>IPv4 Address Structure</h1>
+                <p class="module-intro">
+                    Understanding the 32-bit structure of an IPv4 address,
+                    octets, binary values, and dotted-decimal notation.
+                </p>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Introduction -->
+        <section class="topic-section">
+            <h2>Understanding the Structure of an IPv4 Address</h2>
+
+            <p>
+                In the previous topic, we learned that an IPv4 address is
+                <strong>32 bits long</strong>.
+            </p>
+
+            <p>
+                Those 32 bits are divided into four groups of
+                <strong>8 bits</strong>. Each group is called an
+                <strong>octet</strong>.
+            </p>
+
+            <p>
+                IPv4 addresses are normally written in
+                <strong>dotted-decimal notation</strong>. This makes the
+                address much easier for humans to read than a long string of
+                binary numbers.
+            </p>
+
+            <div class="diagram">
+
+                <h3>Basic Structure</h3>
+
+                <pre>
+192 . 168 . 1 . 10
+ |     |    |    |
+Octet Octet Octet Octet
+  1     2    3    4
+                </pre>
+
+            </div>
+        </section>
+
+
+        <!-- 32 Bits -->
+        <section class="topic-section">
+            <h2>IPv4 Contains 32 Bits</h2>
+
+            <p>
+                A <strong>bit</strong> is a binary digit. It can have only
+                one of two values:
+            </p>
+
+            <div class="topic-grid">
+
+                <div class="concept-box">
+                    <h3>0</h3>
+                    <p>
+                        A binary position that is turned off.
+                    </p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>1</h3>
+                    <p>
+                        A binary position that is turned on.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                Since an IPv4 address contains 32 bits, its complete binary
+                representation contains 32 zeros and ones.
+            </p>
+
+            <div class="code-box">
+                11000000101010000000000100001010
+            </div>
+
+            <p>
+                Reading all 32 bits at once is difficult for humans, so IPv4
+                divides them into four groups of eight.
+            </p>
+
+            <div class="code-box">
+                11000000 . 10101000 . 00000001 . 00001010
+            </div>
+
+        </section>
+
+
+        <!-- Octets -->
+        <section class="topic-section">
+            <h2>What Is an Octet?</h2>
+
+            <p>
+                An <strong>octet</strong> is simply a group of
+                <strong>8 bits</strong>.
+            </p>
+
+            <p>
+                Since an IPv4 address contains 32 bits:
+            </p>
+
+            <div class="important-box">
+                <p>
+                    <strong>
+                        32 bits ÷ 8 bits = 4 octets
+                    </strong>
+                </p>
+            </div>
+
+            <p>
+                Therefore, every IPv4 address contains exactly four octets.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Octet</th>
+                        <th>Number of Bits</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Octet 1</td>
+                        <td>8 bits</td>
+                    </tr>
+
+                    <tr>
+                        <td>Octet 2</td>
+                        <td>8 bits</td>
+                    </tr>
+
+                    <tr>
+                        <td>Octet 3</td>
+                        <td>8 bits</td>
+                    </tr>
+
+                    <tr>
+                        <td>Octet 4</td>
+                        <td>8 bits</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>32 bits</strong></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <!-- Binary Positions -->
+        <section class="topic-section">
+            <h2>Understanding the 8 Binary Positions</h2>
+
+            <p>
+                Each octet contains eight positions. Each position represents
+                a power of 2.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>128</th>
+                        <th>64</th>
+                        <th>32</th>
+                        <th>16</th>
+                        <th>8</th>
+                        <th>4</th>
+                        <th>2</th>
+                        <th>1</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Bit</td>
+                        <td>2⁷</td>
+                        <td>2⁶</td>
+                        <td>2⁵</td>
+                        <td>2⁴</td>
+                        <td>2³</td>
+                        <td>2²</td>
+                        <td>2¹</td>
+                        <td>2⁰</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p>
+                The values are obtained from powers of two:
+            </p>
+
+            <div class="code-box">
+                128 + 64 + 32 + 16 + 8 + 4 + 2 + 1
+            </div>
+
+            <p>
+                When the bits are combined, the largest possible value of
+                one octet is:
+            </p>
+
+            <div class="code-box">
+                128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255
+            </div>
+
+            <p>
+                This is why each IPv4 octet can contain a decimal value from
+                <strong>0 to 255</strong>.
+            </p>
+        </section>
+
+
+        <!-- Binary to Decimal -->
+        <section class="topic-section">
+            <h2>Converting Binary to Decimal</h2>
+
+            <p>
+                Let's take one octet and convert it from binary to decimal.
+            </p>
+
+            <div class="code-box">
+                11000000
+            </div>
+
+            <p>
+                Place the binary value over the corresponding powers of two:
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Bit</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                        <th>0</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Value</td>
+                        <td>128</td>
+                        <td>64</td>
+                        <td>32</td>
+                        <td>16</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <p>
+                The two 1s mean that we use 128 and 64:
+            </p>
+
+            <div class="code-box">
+                128 + 64 = 192
+            </div>
+
+            <p>
+                Therefore:
+            </p>
+
+            <div class="important-box">
+                <p>
+                    <strong>
+                        11000000 = 192
+                    </strong>
+                </p>
+            </div>
+
+            <p>
+                We can use the same process for every octet.
+            </p>
+        </section>
+
+
+        <!-- Complete Example -->
+        <section class="topic-section">
+            <h2>Complete IPv4 Example</h2>
+
+            <p>
+                Let's convert:
+            </p>
+
+            <div class="code-box">
+                192.168.1.10
+            </div>
+
+            <p>
+                Its binary representation is:
+            </p>
+
+            <div class="code-box">
+                11000000.10101000.00000001.00001010
+            </div>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Octet</th>
+                        <th>Decimal</th>
+                        <th>Binary</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>192</td>
+                        <td>11000000</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>168</td>
+                        <td>10101000</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>00000001</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>10</td>
+                        <td>00001010</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                The four binary octets together contain exactly 32 bits.
+            </p>
+        </section>
+
+
+        <!-- Dotted Decimal -->
+        <section class="topic-section">
+            <h2>What Is Dotted-Decimal Notation?</h2>
+
+            <p>
+                The binary representation of an IPv4 address is useful for
+                computers, but it is not convenient for people to read.
+            </p>
+
+            <p>
+                Instead, each 8-bit octet is converted into a decimal number
+                and the four numbers are separated by dots.
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+Binary:
+
+11000000 . 10101000 . 00000001 . 00001010
+
+             ↓
+
+Decimal:
+
+   192    .    168    .     1     .    10
+                </pre>
+
+            </div>
+
+            <p>
+                Therefore:
+            </p>
+
+            <div class="important-box">
+                <p>
+                    <strong>
+                        11000000.10101000.00000001.00001010
+                    </strong>
+                </p>
+
+                <p>
+                    becomes
+                </p>
+
+                <p>
+                    <strong>
+                        192.168.1.10
+                    </strong>
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Valid and Invalid -->
+        <section class="topic-section">
+            <h2>Valid and Invalid IPv4 Addresses</h2>
+
+            <p>
+                Because each octet can only contain a value from 0 to 255,
+                we can use this rule to quickly identify some invalid IPv4
+                addresses.
+            </p>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Address</th>
+                        <th>Valid?</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>192.168.1.10</td>
+                        <td>Yes</td>
+                        <td>All octets are between 0 and 255.</td>
+                    </tr>
+
+                    <tr>
+                        <td>10.0.0.1</td>
+                        <td>Yes</td>
+                        <td>All octets are between 0 and 255.</td>
+                    </tr>
+
+                    <tr>
+                        <td>172.16.25.250</td>
+                        <td>Yes</td>
+                        <td>All octets are between 0 and 255.</td>
+                    </tr>
+
+                    <tr>
+                        <td>192.168.1.300</td>
+                        <td>No</td>
+                        <td>300 is greater than 255.</td>
+                    </tr>
+
+                    <tr>
+                        <td>10.500.1.2</td>
+                        <td>No</td>
+                        <td>500 is greater than 255.</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+                This only checks whether the notation is numerically valid.
+                It does not mean that every numerically valid address can be
+                assigned to a particular host. Special addresses and network
+                configuration rules also exist.
+            </p>
+        </section>
+
+
+        <!-- Network and Host Preview -->
+        <section class="topic-section">
+            <h2>A Preview: Network and Host Portions</h2>
+
+            <p>
+                An IPv4 address does more than identify a device. It also
+                contains information about the network to which the device
+                belongs.
+            </p>
+
+            <p>
+                An IPv4 address is divided into a
+                <strong>network portion</strong> and a
+                <strong>host portion</strong>. The subnet mask or prefix
+                determines where that boundary occurs.
+            </p>
+
+            <p>
+                For example, with:
+            </p>
+
+            <div class="code-box">
+                192.168.1.10/24
+            </div>
+
+            <p>
+                the <strong>/24</strong> indicates that the first 24 bits
+                belong to the network prefix, leaving 8 bits for the host
+                portion.
+            </p>
+
+            <div class="diagram">
+
+                <pre>
+192.168.1.10/24
+
+Network portion        Host portion
+--------------------   ------------
+192.168.1              10
+        </pre>
+
+            </div>
+
+            <p>
+                We will study this carefully in the next topic instead of
+                trying to understand the entire idea at once.
+            </p>
+        </section>
+
+
+        <!-- Important Distinction -->
+        <section class="topic-section">
+            <h2>Do Not Confuse These Terms</h2>
+
+            <table class="comparison-table">
+
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Bit</td>
+                        <td>
+                            A binary digit with a value of 0 or 1.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Octet</td>
+                        <td>
+                            A group of 8 bits.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>IPv4 Address</td>
+                        <td>
+                            A 32-bit logical address represented as four
+                            octets.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Dotted Decimal</td>
+                        <td>
+                            The human-readable way IPv4 addresses are normally
+                            written, such as 192.168.1.10.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Subnet Mask / Prefix</td>
+                        <td>
+                            Information that determines which bits belong to
+                            the network portion and which belong to the host
+                            portion.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </section>
+
+
+        <!-- Quick Notes -->
+        <section class="topic-section">
+            <h2>Quick Notes</h2>
+
+            <div class="important-box">
+
+                <ul>
+                    <li>
+                        IPv4 addresses contain 32 bits.
+                    </li>
+
+                    <li>
+                        32 bits are divided into four octets.
+                    </li>
+
+                    <li>
+                        Each octet contains 8 bits.
+                    </li>
+
+                    <li>
+                        Each octet can have a decimal value from 0 to 255.
+                    </li>
+
+                    <li>
+                        IPv4 is normally written in dotted-decimal notation.
+                    </li>
+
+                    <li>
+                        Example: 192.168.1.10
+                    </li>
+
+                    <li>
+                        Binary example:
+                        11000000.10101000.00000001.00001010
+                    </li>
+
+                    <li>
+                        A subnet mask or prefix determines the boundary
+                        between network and host portions.
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- Self Test -->
+        <section class="topic-section">
+            <h2>Check Your Understanding</h2>
+
+            <div class="concept-box">
+
+                <p>
+                    <strong>1. How many bits are in an IPv4 address?</strong>
+                </p>
+
+                <p>
+                    <strong>2. How many bits are in one octet?</strong>
+                </p>
+
+                <p>
+                    <strong>3. Why are there four octets in an IPv4 address?</strong>
+                </p>
+
+                <p>
+                    <strong>4. What is the decimal value of
+                    11000000?</strong>
+                </p>
+
+                <p>
+                    <strong>5. Why can't an IPv4 octet contain the value
+                    300?</strong>
+                </p>
+
+                <p>
+                    <strong>6. What is dotted-decimal notation?</strong>
+                </p>
+
+                <p>
+                    <strong>7. What determines the boundary between the
+                    network and host portions?</strong>
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- Next Topic -->
+        <section class="topic-section">
+            <h2>Next: Network and Host Portions</h2>
+
+            <p>
+                We now understand the physical structure of an IPv4 address:
+                32 bits divided into four octets.
+            </p>
+
+            <p>
+                The next step is understanding what those bits actually
+                <strong>represent</strong>.
+            </p>
+
+            <p>
+                We will learn how an IPv4 address identifies both a
+                <strong>network</strong> and a particular
+                <strong>host/interface</strong> on that network.
+            </p>
+
+            <a href="network-and-host-portions.html" class="important-box">
+                Continue to Network and Host Portions →
+            </a>
+        </section>
+
+    </main>
+
+
+    <!-- Footer Navigation -->
+    <footer class="footer-navigation">
+
+        <a href="ipv4-address.html">
+            ← Previous: IPv4 Address
+        </a>
+
+        <a href="module8.html">
+            Module 8 Home
+        </a>
+
+        <a href="network-and-host-portions.html">
+            Next: Network & Host Portions →
+        </a>
+
+    </footer>
+
+</body>
+</html>
+```

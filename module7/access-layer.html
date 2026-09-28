@@ -1,0 +1,861 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 7 | Access Layer</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-content">
+
+            <div>
+
+                <p class="module-number">MODULE 7</p>
+
+                <h1>Access Layer</h1>
+
+                <p class="module-intro">
+                    Understanding the role of the access layer and how it
+                    provides network connectivity for end devices.
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+
+        <!-- SECTION 1 -->
+        <section class="topic-section">
+
+            <h2>1. What Is the Access Layer?</h2>
+
+            <p>
+                The <strong>access layer</strong> is the part of a network
+                where end devices connect to the network. It is the point
+                where computers, printers, IP phones, access points, and other
+                devices gain access to network resources.
+            </p>
+
+            <p>
+                In a traditional hierarchical network design, the access layer
+                is the layer closest to the users and their devices.
+            </p>
+
+            <p>
+                Think about a school computer laboratory. The computers need
+                somewhere to connect their Ethernet cables. Those cables
+                usually connect to an Ethernet switch. The switch provides
+                the connection between the computers and the rest of the
+                network.
+            </p>
+
+
+            <div class="diagram">
+
+                <strong>Simple Access-Layer Example</strong>
+
+                <br><br>
+
+                PC
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Laptop
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Printer
+
+                <br><br>
+
+                ↓
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↓
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↓
+
+                <br><br>
+
+                <strong>Access Switch</strong>
+
+                <br><br>
+
+                ↓
+
+                <br><br>
+
+                Other Network Devices
+
+            </div>
+
+
+            <p>
+                The access switch is therefore an important part of the access
+                layer. It provides physical and logical connectivity between
+                the end devices and the rest of the network.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>Simple definition:</strong>
+
+                <p>
+                    The access layer is the part of the network that connects
+                    end devices to the network and provides access to network
+                    communication and resources.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 2 -->
+        <section class="topic-section">
+
+            <h2>2. Devices Connected at the Access Layer</h2>
+
+            <p>
+                Many different types of devices can connect to a network
+                through the access layer.
+            </p>
+
+            <h3>Common End Devices</h3>
+
+            <ul>
+
+                <li>Desktop computers</li>
+
+                <li>Laptops</li>
+
+                <li>Smartphones</li>
+
+                <li>Network printers</li>
+
+                <li>IP phones</li>
+
+                <li>Servers</li>
+
+                <li>Security cameras</li>
+
+                <li>IoT devices</li>
+
+            </ul>
+
+
+            <p>
+                These devices are called <strong>end devices</strong> because
+                they are usually the source or destination of network
+                communication.
+            </p>
+
+
+            <p>
+                For example, when you send a file from your laptop to a
+                network printer, your laptop is the source and the printer is
+                the destination.
+            </p>
+
+
+            <div class="concept-box">
+
+                <strong>Remember:</strong>
+
+                <p>
+                    End devices generate or receive network data. Network
+                    devices such as switches help that data reach its
+                    destination.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 3 -->
+        <section class="topic-section">
+
+            <h2>3. The Access Switch</h2>
+
+            <p>
+                An Ethernet switch is one of the most important devices found
+                at the access layer.
+            </p>
+
+            <p>
+                A switch connects multiple devices within a local network and
+                forwards Ethernet frames between them.
+            </p>
+
+            <p>
+                For example, imagine four computers connected to the same
+                switch:
+            </p>
+
+
+            <div class="diagram">
+
+                PC0
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                PC1
+                <br>
+
+                ↓
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↓
+
+                <br><br>
+
+                <strong>Ethernet Switch</strong>
+
+                <br><br>
+
+                ↑
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↑
+
+                <br>
+
+                PC2
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                PC3
+
+            </div>
+
+
+            <p>
+                The switch provides the local connection between these
+                devices.
+            </p>
+
+            <p>
+                When one computer sends an Ethernet frame, the switch examines
+                information in that frame and determines how it should be
+                handled.
+            </p>
+
+            <p>
+                Later in this module, we will examine exactly how the switch
+                makes these forwarding decisions using <strong>MAC
+                addresses</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 4 -->
+        <section class="topic-section">
+
+            <h2>4. What Happens at the Access Layer?</h2>
+
+            <p>
+                The access layer is responsible for more than simply providing
+                a place to plug in an Ethernet cable.
+            </p>
+
+            <p>
+                It is where devices gain access to the network and where
+                local network communication begins.
+            </p>
+
+            <p>
+                Consider a laptop connected to a switch.
+            </p>
+
+
+            <div class="diagram">
+
+                Laptop
+
+                <br>
+                ↓
+
+                <br>
+
+                Network Interface Card (NIC)
+
+                <br>
+                ↓
+
+                <br>
+
+                Ethernet Cable
+
+                <br>
+                ↓
+
+                <br>
+
+                Access Switch
+
+                <br>
+                ↓
+
+                <br>
+
+                Local Network
+
+            </div>
+
+
+            <p>
+                The laptop uses its network interface to transmit information.
+                The physical medium carries the electrical signals, and the
+                switch receives the Ethernet frame.
+            </p>
+
+            <p>
+                The switch then uses information from the frame to determine
+                what should happen next.
+            </p>
+
+            <p>
+                This is where several concepts we will study in this module
+                begin to connect:
+            </p>
+
+            <ul>
+
+                <li>NICs</li>
+
+                <li>Ethernet</li>
+
+                <li>MAC addresses</li>
+
+                <li>Ethernet frames</li>
+
+                <li>Switching</li>
+
+                <li>MAC address tables</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- SECTION 5 -->
+        <section class="topic-section">
+
+            <h2>5. Improving Communication at the Access Layer</h2>
+
+            <p>
+                A well-designed access layer should allow devices to
+                communicate efficiently and reliably.
+            </p>
+
+            <p>
+                Several technologies and design choices help achieve this.
+            </p>
+
+
+            <h3>Using Switches Instead of Hubs</h3>
+
+            <p>
+                Older Ethernet networks often used devices called
+                <strong>hubs</strong>. A hub does not make forwarding decisions
+                based on MAC addresses. Instead, it repeats incoming signals
+                to its other ports.
+            </p>
+
+            <p>
+                Modern Ethernet LANs use switches because switches can make
+                forwarding decisions and provide more efficient communication.
+            </p>
+
+
+            <h3>Full-Duplex Communication</h3>
+
+            <p>
+                Modern switched Ethernet commonly operates using
+                <strong>full-duplex</strong> communication.
+            </p>
+
+            <p>
+                Full-duplex means a device can transmit and receive
+                simultaneously.
+            </p>
+
+            <div class="comparison-table">
+
+                <table>
+
+                    <tr>
+                        <th>Half-Duplex</th>
+                        <th>Full-Duplex</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Communication can occur in both directions, but
+                            not simultaneously.
+                        </td>
+
+                        <td>
+                            Communication can occur in both directions
+                            simultaneously.
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Associated with shared-medium Ethernet and older
+                            technologies.
+                        </td>
+
+                        <td>
+                            Common with modern switched Ethernet.
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <h3>Appropriate Network Speeds</h3>
+
+            <p>
+                Network interfaces and switches should support speeds
+                appropriate for the requirements of the network.
+            </p>
+
+            <p>
+                Ethernet technologies have evolved from relatively slow
+                connections to modern networks capable of very high data
+                rates.
+            </p>
+
+            <p>
+                The actual speed available to a device depends on factors
+                such as the network interface, switch port, cabling, and
+                negotiated link speed.
+            </p>
+
+
+            <h3>Reducing Unnecessary Traffic</h3>
+
+            <p>
+                Network design can also reduce unnecessary traffic. For
+                example, segmentation techniques such as VLANs can separate
+                groups of devices into different logical broadcast domains.
+            </p>
+
+            <p>
+                VLANs are an important topic in switching, but we will only
+                introduce the concept here. We will study them more deeply
+                when we reach the appropriate networking topics.
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 6 -->
+        <section class="topic-section">
+
+            <h2>6. Collision Domains</h2>
+
+            <p>
+                To understand why switches improved Ethernet networks, we
+                need to understand the idea of a
+                <strong>collision domain</strong>.
+            </p>
+
+            <p>
+                A collision occurs when two devices attempt to transmit on a
+                shared communication medium at the same time.
+            </p>
+
+            <p>
+                Older shared Ethernet networks could experience collisions
+                because multiple devices were sharing the same communication
+                medium.
+            </p>
+
+
+            <h3>Hub-Based Network</h3>
+
+            <div class="diagram">
+
+                PC0
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PC1
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PC2
+
+                <br>
+
+                \
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                |
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                /
+
+                <br>
+
+                <strong>Hub</strong>
+
+                <br><br>
+
+                Shared communication medium
+
+            </div>
+
+
+            <p>
+                Because devices connected through a traditional hub share the
+                same collision domain, simultaneous transmissions could
+                interfere with one another.
+            </p>
+
+
+            <h3>Switched Network</h3>
+
+            <div class="diagram">
+
+                PC0
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PC1
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                PC2
+
+                <br>
+
+                ↓
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↓
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ↓
+
+                <br>
+
+                <strong>Switch</strong>
+
+            </div>
+
+
+            <p>
+                In a modern switched Ethernet network operating in full
+                duplex, each switch port provides a separate collision domain.
+                Because the devices can transmit and receive simultaneously,
+                traditional Ethernet collisions are not normally an issue on
+                those links.
+            </p>
+
+
+            <div class="important-box">
+
+                <strong>Important:</strong>
+
+                <p>
+                    Do not confuse a collision domain with a broadcast domain.
+                    They describe different concepts.
+                </p>
+
+                <p>
+                    A switch separates collision domains between its ports,
+                    while a normal Layer 2 switch does not automatically
+                    separate the entire network into different broadcast
+                    domains. VLANs are commonly used to create separate
+                    broadcast domains.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 7 -->
+        <section class="topic-section">
+
+            <h2>7. Broadcast Communication</h2>
+
+            <p>
+                Ethernet communication is not always one device sending data
+                to one specific device.
+            </p>
+
+            <p>
+                Sometimes a device needs to send information to all devices
+                within a particular local broadcast domain.
+            </p>
+
+            <p>
+                Ethernet uses the broadcast MAC address:
+            </p>
+
+            <div class="code-box">
+
+                FF:FF:FF:FF:FF:FF
+
+            </div>
+
+            <p>
+                A Layer 2 broadcast frame is normally flooded by a switch
+                within the relevant broadcast domain.
+            </p>
+
+            <p>
+                One example is <strong>ARP</strong>. When a device needs to
+                discover the MAC address associated with an IPv4 address on
+                its local network, it can send an ARP request as a broadcast.
+            </p>
+
+            <p>
+                We have already encountered ARP in earlier modules. Here,
+                we're connecting it to the access layer and Ethernet switching.
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 8 -->
+        <section class="topic-section">
+
+            <h2>8. Access Layer Communication Example</h2>
+
+            <p>
+                Let's put the ideas together using a simple example.
+            </p>
+
+            <p>
+                Suppose PC0 wants to communicate with PC1 on the same local
+                Ethernet network.
+            </p>
+
+
+            <div class="diagram">
+
+                <strong>Step 1</strong>
+                <br>
+                PC0 creates data
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 2</strong>
+                <br>
+                Data is processed through the networking layers
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 3</strong>
+                <br>
+                An Ethernet frame is created
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 4</strong>
+                <br>
+                PC0's NIC transmits the frame
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 5</strong>
+                <br>
+                The switch receives the frame
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 6</strong>
+                <br>
+                The switch examines MAC addresses
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 7</strong>
+                <br>
+                The switch forwards or floods the frame
+
+                <br><br>
+                ↓
+
+                <br><br>
+
+                <strong>Step 8</strong>
+                <br>
+                PC1 receives the frame
+
+            </div>
+
+
+            <p>
+                This simple sequence contains many of the concepts that make
+                up the rest of Module 7.
+            </p>
+
+            <p>
+                We will now examine each part in greater detail.
+            </p>
+
+        </section>
+
+
+        <!-- SECTION 9 -->
+        <section class="topic-section">
+
+            <h2>9. Access Layer: Key Ideas</h2>
+
+            <table class="comparison-table">
+
+                <tr>
+                    <th>Concept</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>Access Layer</td>
+                    <td>
+                        The part of the network where end devices connect to
+                        the network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Access Switch</td>
+                    <td>
+                        A switch that provides connectivity for end devices.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ethernet</td>
+                    <td>
+                        A family of technologies and standards used for
+                        wired local-area networking.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>NIC</td>
+                    <td>
+                        A network interface that allows a device to communicate
+                        over a network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC Address</td>
+                    <td>
+                        A Layer 2 address used by Ethernet for local delivery.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ethernet Frame</td>
+                    <td>
+                        The Layer 2 unit of data used for Ethernet communication.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Collision Domain</td>
+                    <td>
+                        A portion of a network where simultaneous transmissions
+                        could potentially collide in shared-medium Ethernet.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Broadcast Domain</td>
+                    <td>
+                        The group of devices that can receive a Layer 2
+                        broadcast within the same broadcast domain.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- NEXT -->
+        <section class="topic-section">
+
+            <h2>Next: Ethernet Communication</h2>
+
+            <p>
+                We now know what the access layer is and why switches are
+                important at this part of the network.
+            </p>
+
+            <p>
+                Next, we will follow an Ethernet communication from the
+                sending device to the receiving device and examine what
+                happens at each stage.
+            </p>
+
+            <p>
+                <a href="ethernet-communication.html">
+                    <strong>Continue to Ethernet Communication →</strong>
+                </a>
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-navigation">
+
+            <a href="../module6/module6.html">
+                ← Module 6
+            </a>
+
+            <a href="module7.html">
+                Module 7 Home
+            </a>
+
+            <a href="ethernet-communication.html">
+                Next Topic →
+            </a>
+
+        </div>
+
+        <p>
+            My Networking Journey | Module 7
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+```

@@ -1,0 +1,1050 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 | Network Interface Card (NIC)</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="module-number">MODULE 7</div>
+
+        <h1>Network Interface Card (NIC)</h1>
+
+        <p class="module-intro">
+            Learn what a Network Interface Card is, how it connects a
+            device to a network, how it sends and receives Ethernet frames,
+            and how it works together with MAC addresses and switches.
+        </p>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- INTRODUCTION -->
+    <section class="topic-section">
+
+        <h2>1. What Is a Network Interface Card?</h2>
+
+        <p>
+            A <strong>Network Interface Card (NIC)</strong> is the network
+            interface that allows a device to communicate over a network.
+        </p>
+
+        <p>
+            A computer needs some way to connect its operating system and
+            networking protocols to the actual network medium. The NIC
+            provides that connection.
+        </p>
+
+        <p>
+            For a wired Ethernet connection, the NIC provides the interface
+            through which Ethernet communication takes place over the
+            network cable.
+        </p>
+
+        <div class="concept-box">
+
+            <h3>Simple definition</h3>
+
+            <p>
+                A NIC is the interface that allows a device to
+                <strong>send and receive network data</strong>.
+            </p>
+
+        </div>
+
+        <p>
+            IEEE 802.3 defines Ethernet operation at the physical layer
+            and the Data Link Layer's MAC sublayer, including operation
+            over media such as twisted-pair copper and fiber.
+        </p>
+
+    </section>
+
+
+    <!-- WHY NIC IS NEEDED -->
+    <section class="topic-section">
+
+        <h2>2. Why Does a Computer Need a NIC?</h2>
+
+        <p>
+            A computer can perform calculations and run applications
+            without being connected to a network.
+        </p>
+
+        <p>
+            However, if the computer needs to communicate with another
+            device, it needs a network interface.
+        </p>
+
+        <p>
+            The NIC provides the connection between the computer's
+            networking system and the network.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Computer</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>NIC</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Ethernet Cable</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+        </div>
+
+        <p>
+            Without an appropriate network interface, the computer would
+            not have the physical and data-link connection needed to use
+            that Ethernet network.
+        </p>
+
+    </section>
+
+
+    <!-- NIC EXAMPLES -->
+    <section class="topic-section">
+
+        <h2>3. What Does a NIC Look Like?</h2>
+
+        <p>
+            A NIC does not always look like a separate expansion card.
+        </p>
+
+        <p>
+            On older desktop computers, a network interface could be
+            installed as a separate card inside the computer.
+        </p>
+
+        <p>
+            Modern computers commonly have networking interfaces built
+            directly into the motherboard or system.
+        </p>
+
+        <p>
+            A laptop may have:
+        </p>
+
+        <ul>
+            <li>A built-in wired Ethernet interface</li>
+            <li>A built-in Wi-Fi interface</li>
+            <li>Or both</li>
+        </ul>
+
+        <p>
+            External USB network adapters can also provide a network
+            interface.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Important idea</h3>
+
+            <p>
+                "NIC" refers to the network interface, not necessarily
+                a particular physical card that you can remove from
+                the computer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WIRED NIC -->
+    <section class="topic-section">
+
+        <h2>4. Wired Ethernet NIC</h2>
+
+        <p>
+            A wired Ethernet NIC provides a physical Ethernet interface
+            through which a device can connect to an Ethernet network.
+        </p>
+
+        <p>
+            On many computers, you can identify the Ethernet interface
+            by its network port.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                Computer
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Ethernet NIC / Network Interface</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>RJ-45 Ethernet Port</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Ethernet Cable</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+        </div>
+
+        <p>
+            The exact connector and physical signaling depend on the
+            Ethernet technology being used.
+        </p>
+
+        <p>
+            Ethernet has evolved to support many speeds and physical media,
+            including copper twisted pair and fiber optic connections.
+           
+        </p>
+
+    </section>
+
+
+    <!-- NIC FUNCTIONS -->
+    <section class="topic-section">
+
+        <h2>5. What Does a NIC Actually Do?</h2>
+
+        <p>
+            The NIC performs several important functions that allow a
+            device to participate in network communication.
+        </p>
+
+        <h3>Function 1: Provides Network Connectivity</h3>
+
+        <p>
+            The NIC provides the interface between the device and the
+            network.
+        </p>
+
+        <p>
+            For a wired Ethernet connection, this means providing the
+            connection to the Ethernet physical medium.
+        </p>
+
+
+        <h3>Function 2: Sends Network Data</h3>
+
+        <p>
+            When a computer needs to transmit information, the networking
+            system eventually provides information to the network interface
+            for transmission.
+        </p>
+
+        <p>
+            The NIC participates in preparing the Ethernet transmission
+            and sends the resulting signal through the physical interface.
+        </p>
+
+
+        <h3>Function 3: Receives Network Data</h3>
+
+        <p>
+            The NIC also works in the opposite direction.
+        </p>
+
+        <p>
+            It receives signals from the network, interprets them according
+            to the relevant physical and data-link mechanisms, and passes
+            received information to the computer's networking system.
+        </p>
+
+
+        <h3>Function 4: Works With MAC Addressing</h3>
+
+        <p>
+            An Ethernet interface has a MAC address used for Layer 2
+            communication.
+        </p>
+
+        <p>
+            Ethernet frames contain source and destination MAC addresses,
+            which are used by network interfaces and switches during local
+            network communication.
+        </p>
+
+    </section>
+
+
+    <!-- MAC ADDRESS -->
+    <section class="topic-section">
+
+        <h2>6. NIC and MAC Address</h2>
+
+        <p>
+            One of the most important things to understand is the
+            relationship between a NIC and a MAC address.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Network Interface</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Has a MAC address used for Layer 2 communication
+            </p>
+
+        </div>
+
+        <p>
+            A traditional Ethernet MAC address is <strong>48 bits</strong>
+            long and is normally written as six groups of hexadecimal
+            digits.
+        </p>
+
+        <div class="code-box">
+
+            <p>Example MAC address:</p>
+
+            <p>
+                <strong>00:1A:2B:3C:4D:5E</strong>
+            </p>
+
+        </div>
+
+        <p>
+            The MAC address is associated with the network interface rather
+            than simply with the entire computer.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Why does this matter?</h3>
+
+            <p>
+                A single computer can have multiple network interfaces.
+            </p>
+
+            <p>
+                For example, a laptop could have:
+            </p>
+
+            <ul>
+                <li>A wired Ethernet interface</li>
+                <li>A Wi-Fi interface</li>
+                <li>A virtual network interface</li>
+            </ul>
+
+            <p>
+                These interfaces can have different MAC addresses.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAC ADDRESS NOT ALWAYS PERMANENT -->
+    <section class="topic-section">
+
+        <h2>7. Is a MAC Address Permanently Burned Into the NIC?</h2>
+
+        <p>
+            You may sometimes hear that a MAC address is
+            "burned into" a NIC.
+        </p>
+
+        <p>
+            This is a useful beginner description of traditionally
+            manufacturer-assigned MAC addresses, but it is not the complete
+            modern picture.
+        </p>
+
+        <p>
+            A network interface can have a factory-assigned address, while
+            software or firmware can also use a locally administered
+            address in appropriate situations.
+        </p>
+
+        <p>
+            IEEE's address format includes a bit that distinguishes
+            universally administered addresses from locally administered
+            addresses.
+        </p>
+
+        <div class="important-box">
+
+            <h3>For your notes</h3>
+
+            <p>
+                A MAC address is a Layer 2 address associated with a network
+                interface. Do not think of it as an unchangeable serial
+                number permanently identifying the entire computer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SENDING FRAME -->
+    <section class="topic-section">
+
+        <h2>8. How the NIC Sends an Ethernet Frame</h2>
+
+        <p>
+            Now let's connect the NIC to the Ethernet frame we learned
+            about in the previous topic.
+        </p>
+
+        <p>
+            Suppose PC0 wants to send information to PC1.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Application Data</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Networking Protocols
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Ethernet Frame Created
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>NIC</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Ethernet Cable
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+        </div>
+
+        <p>
+            The NIC is therefore an important point between the device's
+            networking software and the physical network.
+        </p>
+
+    </section>
+
+
+    <!-- RECEIVING FRAME -->
+    <section class="topic-section">
+
+        <h2>9. How the NIC Receives an Ethernet Frame</h2>
+
+        <p>
+            Communication also works in the opposite direction.
+        </p>
+
+        <p>
+            When an Ethernet frame arrives at a computer's network
+            interface, the NIC processes the received Ethernet information.
+        </p>
+
+        <p>
+            One important part of this process involves checking the
+            destination address.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                Ethernet Cable
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>NIC</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Check / Process Ethernet Frame
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Networking Stack
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Application
+            </p>
+
+        </div>
+
+        <p>
+            If the frame is addressed to the interface, or is appropriate
+            group traffic such as broadcast traffic, it can be accepted
+            for further processing.
+        </p>
+
+    </section>
+
+
+    <!-- NIC + SWITCH -->
+    <section class="topic-section">
+
+        <h2>10. NIC and Switch: How They Work Together</h2>
+
+        <p>
+            A NIC and a switch perform different jobs.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Device</th>
+                <th>Main Job</th>
+            </tr>
+
+            <tr>
+                <td>NIC</td>
+                <td>
+                    Provides the network interface for an end device and
+                    participates in sending and receiving network traffic.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Switch</td>
+                <td>
+                    Connects multiple devices and forwards Ethernet frames
+                    based on Layer 2 addressing information.
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="diagram">
+
+            <p>
+                <strong>PC0 NIC</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Ethernet Cable
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Ethernet Cable
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>PC1 NIC</strong>
+            </p>
+
+        </div>
+
+        <p>
+            The NIC provides the connection for each computer, while the
+            switch decides how Ethernet frames should be forwarded between
+            connected interfaces.
+        </p>
+
+    </section>
+
+
+    <!-- NIC VS SWITCH -->
+    <section class="topic-section">
+
+        <h2>11. Do Not Confuse a NIC With a Switch</h2>
+
+        <p>
+            These two devices are both involved in Ethernet networking,
+            but they have very different roles.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>NIC</th>
+                <th>Switch</th>
+            </tr>
+
+            <tr>
+                <td>Usually belongs to an end device.</td>
+                <td>Connects multiple network devices.</td>
+            </tr>
+
+            <tr>
+                <td>Provides the device's network interface.</td>
+                <td>Forwards Ethernet frames between ports.</td>
+            </tr>
+
+            <tr>
+                <td>Has a MAC address for its interface.</td>
+                <td>Learns MAC addresses and associates them with ports.</td>
+            </tr>
+
+            <tr>
+                <td>Sends and receives network traffic.</td>
+                <td>Receives and forwards traffic.</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- NIC AND OSI -->
+    <section class="topic-section">
+
+        <h2>12. NIC and the OSI Model</h2>
+
+        <p>
+            The NIC participates in functions associated with both the
+            <strong>Physical Layer</strong> and the
+            <strong>Data Link Layer</strong>, depending on the specific
+            hardware and implementation.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Layer 7 — Application</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Layer 6 — Presentation
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Layer 5 — Session
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Layer 4 — Transport
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Layer 3 — Network
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>Layer 2 — Data Link</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>Layer 1 — Physical</strong>
+            </p>
+
+        </div>
+
+        <p>
+            Ethernet itself spans the physical layer and the Data Link
+            Layer's MAC functionality. IEEE 802.3 defines both aspects of
+            wired Ethernet operation.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Simple way to remember</h3>
+
+            <p>
+                <strong>Layer 1:</strong>
+                How the signals are physically transmitted.
+            </p>
+
+            <p>
+                <strong>Layer 2:</strong>
+                How Ethernet frames and MAC addressing are handled.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPEED -->
+    <section class="topic-section">
+
+        <h2>13. NIC Speed and Ethernet Standards</h2>
+
+        <p>
+            Ethernet interfaces can support different transmission speeds
+            depending on the technology and hardware.
+        </p>
+
+        <p>
+            Ethernet has developed from early lower-speed technologies to
+            modern high-speed Ethernet systems. IEEE 802.3 covers a broad
+            range of Ethernet speeds and physical implementations.
+        </p>
+
+        <p>
+            Examples you may encounter include:
+        </p>
+
+        <ul>
+            <li>10 Mbps Ethernet</li>
+            <li>100 Mbps Fast Ethernet</li>
+            <li>1 Gbps Gigabit Ethernet</li>
+            <li>10 Gbps Ethernet</li>
+            <li>Higher-speed Ethernet technologies</li>
+        </ul>
+
+        <p>
+            The actual speed used depends on the capabilities of the NIC,
+            switch port, cable or fiber, and the negotiated or configured
+            Ethernet technology.
+        </p>
+
+    </section>
+
+
+    <!-- FULL EXAMPLE -->
+    <section class="topic-section">
+
+        <h2>14. Complete Example: PC0 Communicating With PC1</h2>
+
+        <p>
+            Let's bring everything together.
+        </p>
+
+        <h3>Step 1: PC0 Creates Data</h3>
+
+        <p>
+            An application on PC0 creates information that needs to be
+            sent across the network.
+        </p>
+
+
+        <h3>Step 2: Networking Protocols Prepare the Data</h3>
+
+        <p>
+            The data moves through the networking stack and receives the
+            information required by the different protocols.
+        </p>
+
+
+        <h3>Step 3: Ethernet Creates a Frame</h3>
+
+        <p>
+            Ethernet prepares a frame containing information such as:
+        </p>
+
+        <ul>
+            <li>Destination MAC address</li>
+            <li>Source MAC address</li>
+            <li>Length/Type information</li>
+            <li>Payload</li>
+            <li>FCS</li>
+        </ul>
+
+
+        <h3>Step 4: PC0's NIC Transmits It</h3>
+
+        <p>
+            PC0's NIC sends the Ethernet transmission through the physical
+            network connection.
+        </p>
+
+
+        <h3>Step 5: The Switch Receives It</h3>
+
+        <p>
+            The switch receives the frame on one of its ports.
+        </p>
+
+
+        <h3>Step 6: The Switch Learns PC0's MAC</h3>
+
+        <p>
+            The switch examines the source MAC address and associates it
+            with the port where the frame arrived.
+        </p>
+
+
+        <h3>Step 7: The Switch Checks PC1's MAC</h3>
+
+        <p>
+            The switch examines the destination MAC address and checks
+            its MAC address table.
+        </p>
+
+
+        <h3>Step 8: The Switch Forwards the Frame</h3>
+
+        <p>
+            If the destination MAC is known, the switch forwards the frame
+            through the corresponding port.
+        </p>
+
+
+        <h3>Step 9: PC1's NIC Receives the Frame</h3>
+
+        <p>
+            PC1's NIC receives the Ethernet transmission and processes
+            the frame.
+        </p>
+
+
+        <h3>Step 10: PC1 Processes the Data</h3>
+
+        <p>
+            The information continues through PC1's networking stack until
+            it reaches the appropriate application.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Application</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Networking Stack
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Ethernet Frame
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>PC0 NIC</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Switch
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>PC1 NIC</strong>
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                Networking Stack
+            </p>
+
+            <p>↓</p>
+
+            <p>
+                <strong>Application</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- KEY IDEAS -->
+    <section class="topic-section">
+
+        <h2>15. NIC: Key Ideas to Remember</h2>
+
+        <div class="important-box">
+
+            <ul>
+
+                <li>
+                    A NIC provides a device with a network interface.
+                </li>
+
+                <li>
+                    A NIC can send and receive network traffic.
+                </li>
+
+                <li>
+                    Ethernet NICs participate in Ethernet communication.
+                </li>
+
+                <li>
+                    A network interface has a MAC address used for
+                    Layer 2 communication.
+                </li>
+
+                <li>
+                    A computer can have multiple network interfaces.
+                </li>
+
+                <li>
+                    The NIC and switch perform different jobs.
+                </li>
+
+                <li>
+                    Ethernet involves both physical transmission and
+                    Data Link Layer MAC functions.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEXT -->
+    <section class="topic-section">
+
+        <h2>16. What Comes Next?</h2>
+
+        <p>
+            We now know that a network interface participates in Ethernet
+            communication and has a MAC address.
+        </p>
+
+        <p>
+            But what exactly is a <strong>MAC address</strong>?
+        </p>
+
+        <p>
+            Why is it written using hexadecimal numbers?
+        </p>
+
+        <p>
+            What do the different parts of a MAC address mean?
+        </p>
+
+        <p>
+            What is the difference between a unicast, multicast, and
+            broadcast MAC address?
+        </p>
+
+        <p>
+            The next topic will focus entirely on
+            <strong>MAC addresses</strong>.
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER NAVIGATION -->
+<footer>
+
+    <div class="footer-navigation">
+
+        <a href="../module6/module6.html">
+            ← Module 6
+        </a>
+
+        <a href="module7.html">
+            Module 7 Home
+        </a>
+
+        <a href="mac-addresses.html">
+            Next: MAC Addresses →
+        </a>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,1754 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 7 | MAC Addresses</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="header-content">
+
+        <div class="module-number">
+            MODULE 7
+        </div>
+
+        <h1>MAC Addresses</h1>
+
+        <p class="module-intro">
+            Learn what MAC addresses are, how they are written, what
+            their different parts mean, the different types of MAC
+            addresses, and how Ethernet switches use them to forward
+            frames.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="topic-section">
+
+        <h2>1. What Is a MAC Address?</h2>
+
+        <p>
+            A <strong>MAC address</strong> is a Layer 2 address used by
+            Ethernet networks to identify a network interface.
+        </p>
+
+        <p>
+            MAC stands for
+            <strong>Media Access Control</strong>.
+        </p>
+
+        <p>
+            When a device communicates over an Ethernet network, Ethernet
+            frames contain a source MAC address and a destination MAC
+            address.
+        </p>
+
+        <div class="concept-box">
+
+            <h3>Simple definition</h3>
+
+            <p>
+                A MAC address is an address associated with a network
+                interface and used for communication at the Data Link
+                Layer.
+            </p>
+
+        </div>
+
+        <p>
+            MAC addresses are especially important to Ethernet switches
+            because switches use them to determine where Ethernet frames
+            should be forwarded.
+        </p>
+
+    </section>
+
+
+    <!-- WHY MAC -->
+
+    <section class="topic-section">
+
+        <h2>2. Why Do We Need MAC Addresses?</h2>
+
+        <p>
+            Imagine a classroom containing many students.
+        </p>
+
+        <p>
+            If a teacher wants to give a message to one particular
+            student, simply saying "someone in this classroom" would not
+            be enough.
+        </p>
+
+        <p>
+            The teacher needs some way to identify the intended student.
+        </p>
+
+        <p>
+            Similarly, a switch may have many devices connected to it.
+            It needs a way to identify the network interfaces associated
+            with those devices.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0
+                |
+            </p>
+
+            <p>
+                PC1
+                |
+                <strong>Switch</strong>
+                |
+                PC2
+            </p>
+
+            <p>
+                |
+                PC3
+            </p>
+
+        </div>
+
+        <p>
+            The switch can use MAC addresses to distinguish between the
+            different network interfaces.
+        </p>
+
+    </section>
+
+
+    <!-- 48 BIT -->
+
+    <section class="topic-section">
+
+        <h2>3. A Traditional Ethernet MAC Address Is 48 Bits</h2>
+
+        <p>
+            A traditional Ethernet MAC address is
+            <strong>48 bits</strong> long.
+        </p>
+
+        <p>
+            A bit can have one of two values:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                0 or 1
+            </p>
+
+        </div>
+
+        <p>
+            Therefore, a 48-bit MAC address contains 48 binary digits.
+        </p>
+
+        <p>
+            Writing all 48 bits every time would be inconvenient, so MAC
+            addresses are normally written using
+            <strong>hexadecimal</strong>.
+        </p>
+
+    </section>
+
+
+    <!-- HEXADECIMAL -->
+
+    <section class="topic-section">
+
+        <h2>4. Why Are MAC Addresses Written in Hexadecimal?</h2>
+
+        <p>
+            Hexadecimal, or <strong>hex</strong>, is a number system that
+            uses 16 symbols.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Decimal</th>
+                <th>Hexadecimal</th>
+            </tr>
+
+            <tr>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>4</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>6</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>7</td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>8</td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>9</td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>A</td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>B</td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td>C</td>
+            </tr>
+
+            <tr>
+                <td>13</td>
+                <td>D</td>
+            </tr>
+
+            <tr>
+                <td>14</td>
+                <td>E</td>
+            </tr>
+
+            <tr>
+                <td>15</td>
+                <td>F</td>
+            </tr>
+
+        </table>
+
+        <p>
+            One hexadecimal digit represents exactly
+            <strong>4 binary bits</strong>.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                1 hexadecimal digit = 4 bits
+            </p>
+
+            <p>
+                2 hexadecimal digits = 8 bits = 1 byte
+            </p>
+
+            <p>
+                12 hexadecimal digits = 48 bits = 6 bytes
+            </p>
+
+        </div>
+
+        <p>
+            That is why a 48-bit MAC address can conveniently be written
+            using 12 hexadecimal digits.
+        </p>
+
+    </section>
+
+
+    <!-- EXAMPLE -->
+
+    <section class="topic-section">
+
+        <h2>5. Example of a MAC Address</h2>
+
+        <p>
+            Consider this example:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                <strong>00:1A:2B:3C:4D:5E</strong>
+            </p>
+
+        </div>
+
+        <p>
+            There are six groups, each containing two hexadecimal digits.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                00 : 1A : 2B : 3C : 4D : 5E
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                6 groups × 2 hexadecimal digits
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                12 hexadecimal digits
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                48 bits
+            </p>
+
+        </div>
+
+        <p>
+            You may see MAC addresses written using different separators,
+            depending on the operating system or networking software.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                00:1A:2B:3C:4D:5E
+            </p>
+
+            <p>
+                00-1A-2B-3C-4D-5E
+            </p>
+
+            <p>
+                001A.2B3C.4D5E
+            </p>
+
+        </div>
+
+        <p>
+            These can represent the same 48-bit address, just displayed
+            using different formatting conventions.
+        </p>
+
+    </section>
+
+
+    <!-- PARTS -->
+
+    <section class="topic-section">
+
+        <h2>6. Parts of a Traditional MAC Address</h2>
+
+        <p>
+            You may hear that a MAC address is divided into two major
+            portions:
+        </p>
+
+        <ul>
+
+            <li>
+                A manufacturer-related portion
+            </li>
+
+            <li>
+                An interface-specific portion
+            </li>
+
+        </ul>
+
+        <p>
+            The first 24 bits are traditionally associated with an
+            organizational identifier called an
+            <strong>OUI (Organizationally Unique Identifier)</strong>.
+        </p>
+
+        <p>
+            The remaining 24 bits are used within the assigned address
+            block.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>48-bit MAC Address</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>First 24 bits</strong>
+                |
+                <strong>Last 24 bits</strong>
+            </p>
+
+            <p>
+                Organizational identifier
+                |
+                Interface/address portion
+            </p>
+
+        </div>
+
+        <div class="important-box">
+
+            <h3>Important modern clarification</h3>
+
+            <p>
+                Do not assume that every MAC address is simply a permanent
+                manufacturer serial number.
+            </p>
+
+            <p>
+                Ethernet supports different address types, including
+                locally administered addresses, and modern systems can
+                use addresses that are not simply the original
+                manufacturer-assigned value.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- UNICAST -->
+
+    <section class="topic-section">
+
+        <h2>7. Unicast MAC Address</h2>
+
+        <p>
+            A <strong>unicast</strong> transmission is intended for one
+            specific destination.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0 → Switch → PC1
+            </p>
+
+            <p>
+                Only PC1 is the intended destination.
+            </p>
+
+        </div>
+
+        <p>
+            The Ethernet frame contains PC1's MAC address as the
+            destination MAC address.
+        </p>
+
+        <p>
+            If the switch knows which port leads to PC1, it can forward
+            the frame specifically to that port.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Remember</h3>
+
+            <p>
+                <strong>Unicast = one intended destination.</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BROADCAST -->
+
+    <section class="topic-section">
+
+        <h2>8. Broadcast MAC Address</h2>
+
+        <p>
+            A <strong>broadcast</strong> transmission is intended for all
+            devices within the relevant Layer 2 broadcast domain.
+        </p>
+
+        <p>
+            The Ethernet broadcast MAC address is:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                <strong>FF:FF:FF:FF:FF:FF</strong>
+            </p>
+
+        </div>
+
+        <p>
+            This special destination address tells Ethernet devices that
+            the frame is broadcast traffic.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+            <p>
+                ↙ ↓ ↘
+            </p>
+
+            <p>
+                PC1 &nbsp;&nbsp; PC2 &nbsp;&nbsp; PC3
+            </p>
+
+        </div>
+
+        <p>
+            The switch floods a broadcast frame within the relevant
+            broadcast domain, except back out the port where it arrived.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Example: ARP</h3>
+
+            <p>
+                Address Resolution Protocol (ARP) requests commonly use
+                an Ethernet broadcast because the sender is trying to
+                discover which device owns a particular IPv4 address.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MULTICAST -->
+
+    <section class="topic-section">
+
+        <h2>9. Multicast MAC Address</h2>
+
+        <p>
+            A <strong>multicast</strong> transmission is intended for a
+            group of devices rather than exactly one device or every
+            device.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                Sender
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch
+            </p>
+
+            <p>
+                ↙ ↓ ↘
+            </p>
+
+            <p>
+                Device A &nbsp; Device B &nbsp; Device C
+            </p>
+
+            <p>
+                Members of the multicast group
+            </p>
+
+        </div>
+
+        <p>
+            Multicast is useful when one source needs to communicate with
+            multiple interested receivers.
+        </p>
+
+        <p>
+            Switches can use additional mechanisms, such as multicast
+            snooping, to handle multicast traffic more efficiently.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Remember</h3>
+
+            <p>
+                <strong>Unicast = one</strong>
+            </p>
+
+            <p>
+                <strong>Multicast = selected group</strong>
+            </p>
+
+            <p>
+                <strong>Broadcast = everyone in the broadcast domain</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARISON -->
+
+    <section class="topic-section">
+
+        <h2>10. Unicast vs Multicast vs Broadcast</h2>
+
+        <table class="comparison-table">
+
+            <tr>
+
+                <th>
+                    Type
+                </th>
+
+                <th>
+                    Intended Recipients
+                </th>
+
+                <th>
+                    Example
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Unicast
+                </td>
+
+                <td>
+                    One specific destination
+                </td>
+
+                <td>
+                    PC0 communicating with PC1
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Multicast
+                </td>
+
+                <td>
+                    A selected group
+                </td>
+
+                <td>
+                    Traffic intended for multicast group members
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Broadcast
+                </td>
+
+                <td>
+                    All devices in the broadcast domain
+                </td>
+
+                <td>
+                    ARP request
+                </td>
+
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- LOCAL ADMINISTERED -->
+
+    <section class="topic-section">
+
+        <h2>11. Universally vs Locally Administered MAC Addresses</h2>
+
+        <p>
+            MAC address terminology can become confusing here, so let's
+            keep it simple.
+        </p>
+
+        <p>
+            A MAC address can indicate whether it is
+            <strong>universally administered</strong> or
+            <strong>locally administered</strong>.
+        </p>
+
+        <p>
+            A universally administered address is assigned according to
+            the relevant organizational address-allocation system.
+        </p>
+
+        <p>
+            A locally administered address is intended to be administered
+            locally rather than treated as a globally assigned hardware
+            address.
+        </p>
+
+        <div class="important-box">
+
+            <h3>Why should you care?</h3>
+
+            <p>
+                This is one reason why saying
+                "every MAC address is permanently unique and cannot
+                change" is too simplistic.
+            </p>
+
+            <p>
+                The important beginner concept is that MAC addresses are
+                Layer 2 addresses associated with network interfaces and
+                used in Ethernet communication.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SWITCH LEARNING -->
+
+    <section class="topic-section">
+
+        <h2>12. How Does a Switch Use MAC Addresses?</h2>
+
+        <p>
+            This is one of the most important sections in this module.
+        </p>
+
+        <p>
+            An Ethernet switch maintains a
+            <strong>MAC address table</strong>.
+        </p>
+
+        <p>
+            The table associates learned MAC addresses with the switch
+            ports through which those addresses were observed.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+
+                <th>
+                    MAC Address
+                </th>
+
+                <th>
+                    Port
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    00:11:22:33:44:55
+                </td>
+
+                <td>
+                    Fa0/1
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    00:AA:BB:CC:DD:EE
+                </td>
+
+                <td>
+                    Fa0/2
+                </td>
+
+            </tr>
+
+        </table>
+
+        <p>
+            Cisco documentation describes MAC learning as a process where
+            the switch examines the <strong>source MAC</strong> of a
+            received frame and associates it with the incoming interface
+            and VLAN.
+        </p>
+
+    </section>
+
+
+    <!-- WHY SOURCE -->
+
+    <section class="topic-section">
+
+        <h2>13. Why Does the Switch Learn the Source MAC?</h2>
+
+        <p>
+            This question is extremely important.
+        </p>
+
+        <p>
+            Suppose PC0 sends a frame into the switch.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>PC0</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch Port Fa0/1
+            </p>
+
+        </div>
+
+        <p>
+            The switch sees:
+        </p>
+
+        <ul>
+
+            <li>
+                The frame came through <strong>Fa0/1</strong>.
+            </li>
+
+            <li>
+                The source MAC is <strong>PC0's MAC address</strong>.
+            </li>
+
+        </ul>
+
+        <p>
+            Therefore, the switch can safely conclude:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                PC0 MAC → Fa0/1
+            </p>
+
+        </div>
+
+        <p>
+            This is useful information because the switch now knows which
+            port can be used to reach PC0.
+        </p>
+
+    </section>
+
+
+    <!-- WHY NOT DESTINATION -->
+
+    <section class="topic-section">
+
+        <h2>14. Why Doesn't the Switch Learn the Destination MAC From the Frame?</h2>
+
+        <p>
+            The switch can absolutely
+            <strong>read the destination MAC address</strong>.
+        </p>
+
+        <p>
+            The issue is not that the destination MAC is invisible.
+        </p>
+
+        <p>
+            The issue is that the destination MAC does not tell the switch
+            which port that destination is connected to.
+        </p>
+
+        <div class="concept-box">
+
+            <h3>Think carefully about the information available</h3>
+
+            <p>
+                The switch receives a frame through a particular port.
+            </p>
+
+            <p>
+                Therefore:
+            </p>
+
+            <p>
+                <strong>
+                    Source MAC + Incoming Port
+                </strong>
+            </p>
+
+            <p>
+                gives the switch a direct observation it can learn from.
+            </p>
+
+            <p>
+                But:
+            </p>
+
+            <p>
+                <strong>
+                    Destination MAC
+                </strong>
+            </p>
+
+            <p>
+                only tells the switch who the frame is intended for.
+            </p>
+
+            <p>
+                It does not tell the switch which of its other ports leads
+                to that destination.
+            </p>
+
+        </div>
+
+        <p>
+            The switch therefore uses the destination MAC to
+            <strong>look up</strong> a port rather than learning the
+            destination-port relationship from that field.
+        </p>
+
+    </section>
+
+
+    <!-- EXAMPLE -->
+
+    <section class="topic-section">
+
+        <h2>15. Example: PC0 Sends to PC1</h2>
+
+        <p>
+            Imagine this network:
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0
+                →
+                <strong>Switch</strong>
+                →
+                PC1
+            </p>
+
+            <p>
+                PC0 = Fa0/1
+            </p>
+
+            <p>
+                PC1 = Fa0/2
+            </p>
+
+        </div>
+
+        <p>
+            PC0 sends a frame.
+        </p>
+
+        <p>
+            The frame contains:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                Source MAC = PC0
+            </p>
+
+            <p>
+                Destination MAC = PC1
+            </p>
+
+        </div>
+
+        <p>
+            The frame arrives through Fa0/1.
+        </p>
+
+        <p>
+            The switch learns:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                PC0 MAC → Fa0/1
+            </p>
+
+        </div>
+
+        <p>
+            Then the switch checks the destination MAC:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                PC1 MAC → ?
+            </p>
+
+        </div>
+
+        <p>
+            If the switch already knows:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                PC1 MAC → Fa0/2
+            </p>
+
+        </div>
+
+        <p>
+            it forwards the frame through Fa0/2.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Fa0/1
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>SWITCH</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Fa0/2
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                PC1
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- UNKNOWN DESTINATION -->
+
+    <section class="topic-section">
+
+        <h2>16. What If the Destination MAC Is Unknown?</h2>
+
+        <p>
+            Now imagine the switch receives a frame whose destination MAC
+            address is not currently in its MAC address table.
+        </p>
+
+        <p>
+            The switch knows:
+        </p>
+
+        <ul>
+
+            <li>
+                The source MAC address
+            </li>
+
+            <li>
+                The port where the frame arrived
+            </li>
+
+            <li>
+                The destination MAC address written in the frame
+            </li>
+
+        </ul>
+
+        <p>
+            But it does not know which port leads to the destination MAC.
+        </p>
+
+        <p>
+            In the case of an unknown unicast, the switch floods the frame
+            out the relevant ports in the same VLAN, except the port on
+            which the frame arrived.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                PC0
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                <strong>Switch</strong>
+            </p>
+
+            <p>
+                ↙ ↓ ↘
+            </p>
+
+            <p>
+                PC1 &nbsp;&nbsp; PC2 &nbsp;&nbsp; PC3
+            </p>
+
+        </div>
+
+        <p>
+            The destination device receives the frame and can respond.
+        </p>
+
+        <p>
+            When the response comes back, the switch sees that device's
+            MAC address as a <strong>source MAC</strong>.
+        </p>
+
+        <p>
+            The switch can then learn the destination device's MAC and
+            associate it with the port where the response arrived.
+        </p>
+
+        <p>
+            This is how the switch gradually builds its MAC address table.
+        </p>
+
+    </section>
+
+
+    <!-- TABLE BUILDING -->
+
+    <section class="topic-section">
+
+        <h2>17. How a Switch Builds Its MAC Address Table</h2>
+
+        <p>
+            MAC address learning happens dynamically as frames arrive.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                Frame arrives
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch examines source MAC
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Switch sees incoming port
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                MAC + Port relationship is learned
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Entry stored in MAC address table
+            </p>
+
+        </div>
+
+        <p>
+            Cisco documentation describes dynamic MAC entries as learned
+            from received traffic and notes that inactive entries can
+            eventually age out of the table.
+        </p>
+
+    </section>
+
+
+    <!-- AGING -->
+
+    <section class="topic-section">
+
+        <h2>18. What Is MAC Address Aging?</h2>
+
+        <p>
+            A switch should not keep an old MAC address-to-port relationship
+            forever.
+        </p>
+
+        <p>
+            Imagine that a laptop was connected to Port 3 yesterday but
+            today it has been moved to Port 7.
+        </p>
+
+        <p>
+            If the switch permanently kept:
+        </p>
+
+        <div class="code-box">
+
+            <p>
+                Laptop MAC → Port 3
+            </p>
+
+        </div>
+
+        <p>
+            it could make incorrect forwarding decisions.
+        </p>
+
+        <p>
+            Dynamic MAC table entries therefore have an aging mechanism.
+            If an address is not observed for the relevant period, the
+            entry can be removed and learned again when traffic appears.
+           
+        </p>
+
+    </section>
+
+
+    <!-- STATIC -->
+
+    <section class="topic-section">
+
+        <h2>19. Dynamic vs Static MAC Entries</h2>
+
+        <table class="comparison-table">
+
+            <tr>
+
+                <th>
+                    Dynamic
+                </th>
+
+                <th>
+                    Static
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Learned automatically from received frames.
+                </td>
+
+                <td>
+                    Configured manually or through a specific feature.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Can age out when no longer used.
+                </td>
+
+                <td>
+                    Does not behave like an ordinary dynamically learned
+                    entry.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Common for normal end-device learning.
+                </td>
+
+                <td>
+                    Used when an administrator wants a specific configured
+                    behavior.
+                </td>
+
+            </tr>
+
+        </table>
+
+        <p>
+            Cisco switch documentation distinguishes dynamic and static
+            MAC entries in the MAC address table.
+        </p>
+
+    </section>
+
+
+    <!-- MAC ADDRESS AND IP -->
+
+    <section class="topic-section">
+
+        <h2>20. MAC Address vs IP Address</h2>
+
+        <p>
+            This is one of the most important distinctions in networking.
+        </p>
+
+        <table class="comparison-table">
+
+            <tr>
+
+                <th>
+                    MAC Address
+                </th>
+
+                <th>
+                    IP Address
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Used primarily at Layer 2.
+                </td>
+
+                <td>
+                    Used at Layer 3.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Used for local frame delivery.
+                </td>
+
+                <td>
+                    Used for logical addressing and routing between
+                    networks.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Traditionally 48 bits for Ethernet.
+                </td>
+
+                <td>
+                    IPv4 is 32 bits; IPv6 is 128 bits.
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    Written in hexadecimal.
+                </td>
+
+                <td>
+                    IPv4 is commonly written in dotted decimal.
+                </td>
+
+            </tr>
+
+        </table>
+
+        <div class="important-box">
+
+            <h3>Do not mix them up</h3>
+
+            <p>
+                An IP address answers a different networking question from
+                a MAC address.
+            </p>
+
+            <p>
+                <strong>
+                    MAC address → Layer 2 local delivery
+                </strong>
+            </p>
+
+            <p>
+                <strong>
+                    IP address → Layer 3 logical addressing and routing
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PACKET VS FRAME -->
+
+    <section class="topic-section">
+
+        <h2>21. MAC Address and the Ethernet Frame</h2>
+
+        <p>
+            MAC addresses are not sent by themselves.
+        </p>
+
+        <p>
+            They are placed inside Ethernet frames.
+        </p>
+
+        <div class="diagram">
+
+            <p>
+                <strong>Ethernet Frame</strong>
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                Destination MAC
+            </p>
+
+            <p>
+                +
+            </p>
+
+            <p>
+                Source MAC
+            </p>
+
+            <p>
+                +
+            </p>
+
+            <p>
+                Length/Type
+            </p>
+
+            <p>
+                +
+            </p>
+
+            <p>
+                Data
+            </p>
+
+            <p>
+                +
+            </p>
+
+            <p>
+                FCS
+            </p>
+
+        </div>
+
+        <p>
+            This is why learning about MAC addresses and Ethernet frames
+            together is so important.
+        </p>
+
+    </section>
+
+
+    <!-- KEY QUESTIONS -->
+
+    <section class="topic-section">
+
+        <h2>22. Questions You Should Now Be Able to Answer</h2>
+
+        <div class="important-box">
+
+            <ul>
+
+                <li>
+                    What does MAC stand for?
+                </li>
+
+                <li>
+                    What layer uses MAC addresses?
+                </li>
+
+                <li>
+                    How many bits are in a traditional Ethernet MAC
+                    address?
+                </li>
+
+                <li>
+                    Why is hexadecimal used?
+                </li>
+
+                <li>
+                    What is a unicast MAC address?
+                </li>
+
+                <li>
+                    What is the Ethernet broadcast MAC address?
+                </li>
+
+                <li>
+                    What is multicast?
+                </li>
+
+                <li>
+                    Why does a switch learn from the source MAC?
+                </li>
+
+                <li>
+                    How does a switch use the destination MAC?
+                </li>
+
+                <li>
+                    What happens when the destination MAC is unknown?
+                </li>
+
+                <li>
+                    What is MAC address aging?
+                </li>
+
+                <li>
+                    What is the difference between a MAC address and an
+                    IP address?
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="topic-section">
+
+        <h2>23. MAC Addresses: Summary</h2>
+
+        <p>
+            A MAC address is a Layer 2 address associated with a network
+            interface.
+        </p>
+
+        <p>
+            Traditional Ethernet MAC addresses are 48 bits long and are
+            commonly written as hexadecimal values.
+        </p>
+
+        <p>
+            Ethernet uses MAC addresses in frames to identify the source
+            and destination of local network traffic.
+        </p>
+
+        <p>
+            Switches learn source MAC addresses by observing the frames
+            that arrive on their ports. They then use the learned
+            MAC-to-port mappings to make forwarding decisions.
+           
+        </p>
+
+        <div class="important-box">
+
+            <h3>The most important idea</h3>
+
+            <p>
+                <strong>
+                    Source MAC → used for learning.
+                </strong>
+            </p>
+
+            <p>
+                <strong>
+                    Destination MAC → used for forwarding lookup.
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEXT -->
+
+    <section class="topic-section">
+
+        <h2>24. What Comes Next?</h2>
+
+        <p>
+            We now know what a MAC address is and how it is used inside an
+            Ethernet frame.
+        </p>
+
+        <p>
+            But there is still an important question:
+        </p>
+
+        <div class="concept-box">
+
+            <h3>
+                How does all the information from different networking
+                layers get placed together?
+            </h3>
+
+            <p>
+                How does application data eventually become an Ethernet
+                frame?
+            </p>
+
+        </div>
+
+        <p>
+            The answer is
+            <strong>encapsulation</strong>.
+        </p>
+
+        <p>
+            In the next topic, we will follow data as it moves down the
+            networking stack and see how each layer adds its own
+            information.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-navigation">
+
+        <a href="../module6/module6.html">
+            ← Module 6
+        </a>
+
+        <a href="module7.html">
+            Module 7 Home
+        </a>
+
+        <a href="encapsulation.html">
+            Next: Encapsulation →
+        </a>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
+```

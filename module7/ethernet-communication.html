@@ -1,0 +1,638 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 | Ethernet Communication</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="module-number">MODULE 7</div>
+        <h1>Ethernet Communication</h1>
+        <p class="module-intro">
+            Learn how devices communicate across an Ethernet network,
+            how data is prepared for transmission, and how switches move
+            Ethernet frames between devices.
+        </p>
+    </div>
+</header>
+
+<main>
+
+    <!-- INTRODUCTION -->
+    <section class="topic-section">
+        <h2>1. What Is Ethernet Communication?</h2>
+
+        <p>
+            Ethernet communication is the process through which devices
+            exchange data over a wired Local Area Network (LAN) using
+            Ethernet technologies.
+        </p>
+
+        <p>
+            For example, imagine that <strong>PC0</strong> wants to send
+            information to <strong>PC1</strong>. The information does not
+            simply jump directly from one computer to another. Several
+            things happen before the data reaches PC1.
+        </p>
+
+        <div class="concept-box">
+            <h3>Simple idea</h3>
+            <p>
+                A device creates data → the data is prepared for network
+                transmission → an Ethernet frame is created → the frame
+                travels through the network → the switch examines it →
+                the frame is forwarded toward the destination.
+            </p>
+        </div>
+
+        <p>
+            This is where the concepts we have already studied begin to
+            connect: <strong>NICs, MAC addresses, Ethernet frames,
+            switches, and the Data Link Layer</strong>.
+        </p>
+    </section>
+
+
+    <!-- EXAMPLE -->
+    <section class="topic-section">
+        <h2>2. Example: PC0 Sending Data to PC1</h2>
+
+        <p>
+            Consider a simple Ethernet network containing two computers
+            connected to a switch.
+        </p>
+
+        <div class="diagram">
+            <p>
+                <strong>PC0</strong>
+                &nbsp; → &nbsp;
+                <strong>Switch</strong>
+                &nbsp; → &nbsp;
+                <strong>PC1</strong>
+            </p>
+        </div>
+
+        <p>
+            Suppose PC0 needs to send some information to PC1.
+            PC0 needs to know how to deliver the information across the
+            local network.
+        </p>
+
+        <p>
+            At Layer 2, Ethernet uses <strong>MAC addresses</strong> to
+            identify network interfaces on the local network.
+        </p>
+
+        <p>
+            Therefore, an Ethernet frame sent by PC0 will contain
+            information such as:
+        </p>
+
+        <ul>
+            <li>The MAC address of PC1 as the destination</li>
+            <li>The MAC address of PC0 as the source</li>
+            <li>The actual data being carried</li>
+            <li>Error-detection information</li>
+        </ul>
+    </section>
+
+
+    <!-- STEP BY STEP -->
+    <section class="topic-section">
+        <h2>3. How the Communication Happens</h2>
+
+        <p>
+            Let's break the process down into individual steps.
+        </p>
+
+        <h3>Step 1: The Application Creates Data</h3>
+
+        <p>
+            Communication normally begins with an application.
+        </p>
+
+        <p>
+            For example, you might:
+        </p>
+
+        <ul>
+            <li>Open a website</li>
+            <li>Send a message</li>
+            <li>Download a file</li>
+            <li>Send an email</li>
+            <li>Access a server</li>
+        </ul>
+
+        <p>
+            The application produces information that needs to be
+            transported across the network.
+        </p>
+
+        <p>
+            At this point, we are mainly talking about the
+            <strong>data itself</strong>. It is not yet an Ethernet frame.
+        </p>
+
+
+        <h3>Step 2: The Data Moves Through the Protocol Stack</h3>
+
+        <p>
+            Before the information is placed onto the physical network,
+            networking protocols prepare it for transmission.
+        </p>
+
+        <p>
+            Different layers add the information needed for their
+            particular responsibilities.
+        </p>
+
+        <div class="diagram">
+            <p><strong>Application Data</strong></p>
+            <p>↓</p>
+            <p><strong>Transport Information</strong></p>
+            <p>↓</p>
+            <p><strong>Network Layer Information</strong></p>
+            <p>↓</p>
+            <p><strong>Ethernet / Data Link Information</strong></p>
+            <p>↓</p>
+            <p><strong>Bits sent through the physical medium</strong></p>
+        </div>
+
+        <p>
+            This process is related to <strong>encapsulation</strong>,
+            which we will study in much more detail on the next pages.
+        </p>
+
+
+        <h3>Step 3: The NIC Prepares the Ethernet Transmission</h3>
+
+        <p>
+            The computer uses its <strong>Network Interface Card (NIC)</strong>
+            to communicate with the Ethernet network.
+        </p>
+
+        <p>
+            The NIC is the network interface that connects the computer
+            to the network medium.
+        </p>
+
+        <p>
+            The Ethernet information is organized into a frame that can
+            be transmitted over the network.
+        </p>
+
+
+        <h3>Step 4: The Ethernet Frame Is Sent</h3>
+
+        <p>
+            The NIC sends the Ethernet frame through the physical
+            connection.
+        </p>
+
+        <p>
+            In a wired Ethernet network, this may be through a copper
+            Ethernet cable or another supported Ethernet physical medium.
+        </p>
+
+        <p>
+            The frame reaches the switch through one of the switch's
+            ports.
+        </p>
+
+
+        <h3>Step 5: The Switch Examines the Frame</h3>
+
+        <p>
+            The switch receives the frame and examines important
+            information in the Ethernet header.
+        </p>
+
+        <p>
+            In particular, it looks at the:
+        </p>
+
+        <ul>
+            <li><strong>Source MAC address</strong></li>
+            <li><strong>Destination MAC address</strong></li>
+        </ul>
+
+        <p>
+            The switch uses these addresses to make a forwarding
+            decision.
+        </p>
+
+
+        <h3>Step 6: The Switch Learns the Source MAC Address</h3>
+
+        <p>
+            When the frame enters the switch, the switch can see which
+            port the frame came through.
+        </p>
+
+        <p>
+            For example:
+        </p>
+
+        <div class="diagram">
+            <p>
+                PC0
+                →
+                <strong>Switch Port 1</strong>
+            </p>
+        </div>
+
+        <p>
+            If the frame's source MAC address belongs to PC0, the switch
+            can record something like:
+        </p>
+
+        <div class="code-box">
+            <p>PC0 MAC Address → Port 1</p>
+        </div>
+
+        <p>
+            This information is stored in the switch's
+            <strong>MAC address table</strong>.
+        </p>
+
+        <div class="important-box">
+            <h3>Why does the switch learn the source MAC?</h3>
+
+            <p>
+                Because the switch knows two things at the same time:
+            </p>
+
+            <ol>
+                <li>The source MAC address of the frame</li>
+                <li>The port through which the frame arrived</li>
+            </ol>
+
+            <p>
+                Therefore, it can confidently associate that MAC address
+                with that particular port.
+            </p>
+        </div>
+
+
+        <h3>Step 7: The Switch Checks the Destination MAC</h3>
+
+        <p>
+            The switch then looks at the destination MAC address.
+        </p>
+
+        <p>
+            It checks its MAC address table to determine whether it already
+            knows which port leads to that destination.
+        </p>
+
+        <p>
+            There are several possibilities.
+        </p>
+
+
+        <h3>Case A: Destination MAC Is Known</h3>
+
+        <p>
+            Suppose the switch already has:
+        </p>
+
+        <div class="code-box">
+            <p>PC1 MAC Address → Port 3</p>
+        </div>
+
+        <p>
+            If the frame is addressed to PC1, the switch forwards the
+            frame only through Port 3.
+        </p>
+
+        <div class="diagram">
+            <p>
+                PC0 → Switch → <strong>Port 3 → PC1</strong>
+            </p>
+        </div>
+
+        <p>
+            The switch does not need to send the frame to every other
+            connected device.
+        </p>
+
+
+        <h3>Case B: Destination MAC Is Unknown</h3>
+
+        <p>
+            What if the switch receives a frame for a destination MAC
+            address that is not currently in its MAC address table?
+        </p>
+
+        <p>
+            The switch cannot determine the specific port where that
+            destination device is located.
+        </p>
+
+        <p>
+            For an <strong>unknown unicast</strong>, the switch floods
+            the frame out the relevant ports except the port on which
+            the frame arrived.
+        </p>
+
+        <div class="important-box">
+            <h3>Important clarification</h3>
+
+            <p>
+                The switch <strong>does know the destination MAC address
+                written inside the frame</strong>.
+            </p>
+
+            <p>
+                What it does not know is:
+                <strong>which switch port currently leads to that MAC
+                address</strong>.
+            </p>
+        </div>
+
+
+        <h3>Step 8: The Destination Receives the Frame</h3>
+
+        <p>
+            When the frame reaches the destination device, the NIC checks
+            the frame's destination MAC address.
+        </p>
+
+        <p>
+            If the destination MAC matches the device's interface, the
+            device accepts the frame for further processing.
+        </p>
+
+        <p>
+            The Ethernet information is then removed as the data moves
+            upward through the networking stack.
+        </p>
+    </section>
+
+
+    <!-- SOURCE VS DESTINATION -->
+    <section class="topic-section">
+        <h2>4. Source MAC vs Destination MAC</h2>
+
+        <p>
+            One of the most important ideas in Ethernet switching is
+            understanding the different jobs of the source and destination
+            MAC addresses.
+        </p>
+
+        <table class="comparison-table">
+            <tr>
+                <th>MAC Address</th>
+                <th>Meaning</th>
+                <th>How the Switch Uses It</th>
+            </tr>
+
+            <tr>
+                <td>Source MAC</td>
+                <td>The interface that sent the frame</td>
+                <td>
+                    Used to learn where that device can be reached
+                </td>
+            </tr>
+
+            <tr>
+                <td>Destination MAC</td>
+                <td>The interface the frame is intended for</td>
+                <td>
+                    Used to decide where to forward the frame
+                </td>
+            </tr>
+        </table>
+
+        <div class="important-box">
+            <h3>Easy way to remember</h3>
+
+            <p>
+                <strong>Source MAC = "Where did this frame come from?"</strong>
+            </p>
+
+            <p>
+                <strong>Destination MAC = "Where should this frame go?"</strong>
+            </p>
+        </div>
+    </section>
+
+
+    <!-- WHAT HAPPENS TO OTHER PORTS -->
+    <section class="topic-section">
+        <h2>5. What Happens to the Other Switch Ports?</h2>
+
+        <p>
+            This is an important question because a switch may have many
+            connected devices.
+        </p>
+
+        <p>
+            If the destination MAC address is already known, the switch
+            normally sends the frame only through the port associated with
+            that destination.
+        </p>
+
+        <div class="diagram">
+            <p>
+                PC0 → Switch → PC1
+            </p>
+
+            <p>
+                Other connected PCs do not receive that unicast frame.
+            </p>
+        </div>
+
+        <p>
+            This is one of the major reasons switches are much more
+            efficient than old Ethernet hubs.
+        </p>
+
+        <p>
+            However, there are situations where a switch sends traffic
+            through multiple ports.
+        </p>
+
+        <ul>
+            <li>Unknown unicast</li>
+            <li>Broadcast traffic</li>
+            <li>Certain multicast traffic, depending on configuration</li>
+        </ul>
+
+        <p>
+            We will examine these situations later in the module.
+        </p>
+    </section>
+
+
+    <!-- FULL COMMUNICATION -->
+    <section class="topic-section">
+        <h2>6. The Complete Ethernet Communication Process</h2>
+
+        <div class="diagram">
+            <p><strong>1. Application creates data</strong></p>
+            <p>↓</p>
+            <p><strong>2. Protocols prepare the data</strong></p>
+            <p>↓</p>
+            <p><strong>3. Ethernet information is added</strong></p>
+            <p>↓</p>
+            <p><strong>4. NIC sends the frame</strong></p>
+            <p>↓</p>
+            <p><strong>5. Switch receives the frame</strong></p>
+            <p>↓</p>
+            <p><strong>6. Switch learns the source MAC</strong></p>
+            <p>↓</p>
+            <p><strong>7. Switch checks the destination MAC</strong></p>
+            <p>↓</p>
+            <p><strong>8. Switch forwards or floods the frame</strong></p>
+            <p>↓</p>
+            <p><strong>9. Destination NIC receives the frame</strong></p>
+            <p>↓</p>
+            <p><strong>10. Data continues upward through the protocol stack</strong></p>
+        </div>
+    </section>
+
+
+    <!-- IMPORTANT TERMS -->
+    <section class="topic-section">
+        <h2>7. Important Terms to Understand</h2>
+
+        <table class="comparison-table">
+
+            <tr>
+                <th>Term</th>
+                <th>Meaning</th>
+            </tr>
+
+            <tr>
+                <td>Ethernet</td>
+                <td>
+                    A family of wired LAN technologies used to
+                    communicate over local networks.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Frame</td>
+                <td>
+                    The Layer 2 unit used to carry data across an
+                    Ethernet network.
+                </td>
+            </tr>
+
+            <tr>
+                <td>NIC</td>
+                <td>
+                    The network interface that allows a device to connect
+                    to a network.
+                </td>
+            </tr>
+
+            <tr>
+                <td>MAC Address</td>
+                <td>
+                    A Layer 2 address used to identify a network interface
+                    on a local Ethernet network.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Switch</td>
+                <td>
+                    A Layer 2 device that receives Ethernet frames and
+                    forwards them based on MAC addresses.
+                </td>
+            </tr>
+
+            <tr>
+                <td>MAC Address Table</td>
+                <td>
+                    A table maintained by a switch that associates learned
+                    MAC addresses with switch ports.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Encapsulation</td>
+                <td>
+                    The process of adding protocol information around
+                    data as it moves down the networking stack.
+                </td>
+            </tr>
+
+        </table>
+    </section>
+
+
+    <!-- CONNECTION TO NEXT TOPIC -->
+    <section class="topic-section">
+        <h2>8. Connecting This to the Next Topic</h2>
+
+        <p>
+            We now know the basic journey of information across an
+            Ethernet network.
+        </p>
+
+        <p>
+            But there is a question we have not explored deeply enough:
+        </p>
+
+        <div class="important-box">
+            <h3>What exactly does an Ethernet frame look like?</h3>
+
+            <p>
+                What information is placed inside it?
+            </p>
+
+            <p>
+                Why are the source and destination MAC addresses included?
+            </p>
+
+            <p>
+                What are the preamble, Start Frame Delimiter, Length/Type,
+                Data and Frame Check Sequence?
+            </p>
+        </div>
+
+        <p>
+            The next topic will break down the
+            <strong>Ethernet frame field by field</strong>.
+        </p>
+
+        <p>
+            Understanding the frame will make everything we have discussed
+            about Ethernet communication much easier to visualize.
+        </p>
+    </section>
+
+</main>
+
+
+<!-- FOOTER NAVIGATION -->
+<footer>
+    <div class="footer-navigation">
+
+        <a href="../module6/module6.html">
+            ← Module 6
+        </a>
+
+        <a href="module7.html">
+            Module 7 Home
+        </a>
+
+        <a href="ethernet-frame.html">
+            Next: Ethernet Frame →
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,565 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 7 | Access Layer and Ethernet</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-content">
+
+            <div>
+                <p class="module-number">MODULE 7</p>
+
+                <h1>Access Layer and Ethernet</h1>
+
+                <p class="module-intro">
+                    Understanding how devices communicate across Ethernet
+                    networks, how Ethernet frames are created and delivered,
+                    and how switches use MAC addresses to control communication
+                    within a local network.
+                </p>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- INTRODUCTION -->
+        <section class="topic-section">
+
+            <h2>Welcome to Module 7</h2>
+
+            <p>
+                In the previous modules, we introduced computer networks,
+                network devices, network connections, wireless communication,
+                and the physical media used to carry data.
+            </p>
+
+            <p>
+                In this module, we are going to move deeper into what happens
+                when devices communicate inside a local Ethernet network.
+                Instead of only looking at whether two devices can communicate,
+                we will examine <strong>how that communication actually takes
+                place.</strong>
+            </p>
+
+            <p>
+                We will focus particularly on the
+                <strong>access layer</strong>, Ethernet, the Data Link Layer,
+                network interface cards, MAC addresses, Ethernet frames,
+                encapsulation, and Ethernet switches.
+            </p>
+
+            <div class="important-box">
+
+                <strong>Why is this module important?</strong>
+
+                <p>
+                    A computer connected to a network does not simply send data
+                    directly to another computer. Before information can travel
+                    across an Ethernet network, it must be prepared, addressed,
+                    formatted, transmitted, received, and processed.
+                </p>
+
+                <p>
+                    Understanding these steps will make concepts such as MAC
+                    addresses, switching, ARP, packets, and frames much easier
+                    to understand.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT WE WILL LEARN -->
+        <section class="topic-section">
+
+            <h2>What We Will Learn</h2>
+
+            <p>
+                Module 7 is divided into several connected topics. We will
+                gradually move from the role of the access layer to the
+                detailed structure of an Ethernet frame and finally to how
+                switches use MAC addresses to forward frames.
+            </p>
+
+
+            <div class="topic-grid">
+
+                <div class="topic-card">
+
+                    <h3>1. Access Layer</h3>
+
+                    <p>
+                        Learn what the access layer is, what happens at this
+                        part of the network, and how it provides connectivity
+                        for end devices.
+                    </p>
+
+                    <a href="access-layer.html">
+                        Explore Access Layer →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>2. Ethernet Communication</h3>
+
+                    <p>
+                        Follow the journey of information as devices
+                        communicate across an Ethernet LAN.
+                    </p>
+
+                    <a href="ethernet-communication.html">
+                        Explore Ethernet Communication →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>3. Ethernet and Layer 2</h3>
+
+                    <p>
+                        Understand the relationship between Ethernet and the
+                        OSI model, especially the Data Link Layer.
+                    </p>
+
+                    <a href="ethernet-frame.html">
+                        Explore Ethernet Frames →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>4. Network Interface Cards</h3>
+
+                    <p>
+                        Learn what a NIC does and how it allows a device to
+                        send and receive network communication.
+                    </p>
+
+                    <a href="nic.html">
+                        Explore NICs →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>5. MAC Addresses</h3>
+
+                    <p>
+                        Learn about physical addressing, source and destination
+                        MAC addresses, and how Ethernet uses them.
+                    </p>
+
+                    <a href="mac-addresses.html">
+                        Explore MAC Addresses →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>6. Encapsulation</h3>
+
+                    <p>
+                        Follow how information is wrapped with additional
+                        networking information as it moves through the layers.
+                    </p>
+
+                    <a href="encapsulation.html">
+                        Explore Encapsulation →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>7. Ethernet Switches</h3>
+
+                    <p>
+                        Understand how switches receive, examine, and forward
+                        Ethernet frames.
+                    </p>
+
+                    <a href="ethernet-switches.html">
+                        Explore Ethernet Switches →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>8. MAC Address Tables</h3>
+
+                    <p>
+                        Learn how switches learn MAC addresses and use their
+                        MAC address tables to make forwarding decisions.
+                    </p>
+
+                    <a href="mac-address-table.html">
+                        Explore MAC Address Tables →
+                    </a>
+
+                </div>
+
+
+                <div class="topic-card">
+
+                    <h3>9. Packet Tracer Observation</h3>
+
+                    <p>
+                        Use Cisco Packet Tracer to observe Ethernet frames,
+                        MAC addresses, switching, and MAC address learning.
+                    </p>
+
+                    <a href="packet-tracer.html">
+                        Explore the Exercise →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BIG PICTURE -->
+        <section class="topic-section">
+
+            <h2>The Big Picture</h2>
+
+            <p>
+                One of the best ways to understand this module is to imagine
+                two computers communicating through an Ethernet switch.
+            </p>
+
+            <div class="diagram">
+
+                <strong>Example Ethernet Communication</strong>
+
+                <br><br>
+
+                PC0
+                <br>
+                ↓
+                <br>
+                Network Interface Card (NIC)
+                <br>
+                ↓
+                <br>
+                Ethernet Frame
+                <br>
+                ↓
+                <br>
+                Ethernet Switch
+                <br>
+                ↓
+                <br>
+                Ethernet Frame
+                <br>
+                ↓
+                <br>
+                Network Interface Card (NIC)
+                <br>
+                ↓
+                <br>
+                PC1
+
+            </div>
+
+            <p>
+                PC0 does not simply place an application message onto the
+                cable. The information is processed through the networking
+                layers and eventually placed inside an Ethernet frame.
+            </p>
+
+            <p>
+                The frame contains important information such as the
+                <strong>source MAC address</strong> and
+                <strong>destination MAC address</strong>.
+            </p>
+
+            <p>
+                When the switch receives the frame, it examines the Ethernet
+                information and uses its MAC address table to determine how
+                the frame should be handled.
+            </p>
+
+            <p>
+                The destination computer's network interface then receives the
+                frame and passes the appropriate information upward through
+                the networking layers for processing.
+            </p>
+
+        </section>
+
+
+        <!-- KEY QUESTION -->
+        <section class="topic-section">
+
+            <h2>The Questions We Will Answer</h2>
+
+            <p>
+                By the end of this module, you should be able to answer
+                questions such as:
+            </p>
+
+            <ul>
+
+                <li>
+                    What is the access layer?
+                </li>
+
+                <li>
+                    What happens when one computer sends data to another
+                    computer on an Ethernet LAN?
+                </li>
+
+                <li>
+                    What is Ethernet?
+                </li>
+
+                <li>
+                    What is a network interface card?
+                </li>
+
+                <li>
+                    What is a MAC address?
+                </li>
+
+                <li>
+                    Why does an Ethernet frame need source and destination
+                    MAC addresses?
+                </li>
+
+                <li>
+                    What is inside an Ethernet frame?
+                </li>
+
+                <li>
+                    What is encapsulation?
+                </li>
+
+                <li>
+                    How does a switch learn MAC addresses?
+                </li>
+
+                <li>
+                    Why does a switch learn the source MAC address rather than
+                    the destination MAC address from an incoming frame?
+                </li>
+
+                <li>
+                    What happens when the switch already knows the destination
+                    MAC address?
+                </li>
+
+                <li>
+                    What happens when the destination MAC address is unknown?
+                </li>
+
+                <li>
+                    How does a MAC address table help a switch communicate
+                    efficiently?
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- IMPORTANT DISTINCTIONS -->
+        <section class="topic-section">
+
+            <h2>Important Distinctions</h2>
+
+            <p>
+                As we move through this module, several networking terms may
+                sound similar. It is important not to treat them as the same
+                thing.
+            </p>
+
+            <table class="comparison-table">
+
+                <tr>
+                    <th>Concept</th>
+                    <th>What It Means</th>
+                </tr>
+
+                <tr>
+                    <td>IP Address</td>
+                    <td>
+                        A logical address used at the Network Layer for
+                        communication between networks.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MAC Address</td>
+                    <td>
+                        A Layer 2 address used for Ethernet communication on a
+                        local network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>NIC</td>
+                    <td>
+                        A network interface that allows a device to connect to
+                        and communicate over a network.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Packet</td>
+                    <td>
+                        A unit of data associated with the Network Layer.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Frame</td>
+                    <td>
+                        A Layer 2 unit of data used for local network delivery.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Switch</td>
+                    <td>
+                        A network device that forwards Ethernet frames using
+                        information such as MAC addresses.
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- MODULE APPROACH -->
+        <section class="topic-section">
+
+            <h2>How We Will Study This Module</h2>
+
+            <p>
+                This module is designed to move from the simple idea of
+                network communication into the details behind that
+                communication.
+            </p>
+
+            <p>
+                We will first understand the concepts theoretically. Then we
+                will connect them to what we can observe in Cisco Packet
+                Tracer.
+            </p>
+
+            <div class="concept-box">
+
+                <strong>Our approach:</strong>
+
+                <p>
+                    <strong>Understand → Follow the communication →
+                    Examine the frame → Understand MAC addresses →
+                    Understand switching → Observe it in Packet Tracer.</strong>
+                </p>
+
+            </div>
+
+            <p>
+                The goal is not simply to memorize the names of Ethernet frame
+                fields or the steps a switch follows. The goal is to understand
+                <strong>why each part exists and how the parts work together.</strong>
+            </p>
+
+        </section>
+
+
+        <!-- START -->
+        <section class="topic-section">
+
+            <h2>Start Module 7</h2>
+
+            <p>
+                We begin with the access layer and its role in connecting
+                devices to a local network.
+            </p>
+
+            <p>
+                From there, we will gradually move deeper into Ethernet
+                communication, frames, MAC addresses, encapsulation, and
+                switching.
+            </p>
+
+            <p>
+                When you are ready, start with the first topic:
+            </p>
+
+            <p>
+                <a href="access-layer.html">
+                    <strong>Start with Access Layer →</strong>
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-navigation">
+
+            <a href="../module6/module6.html">
+                ← Module 6
+            </a>
+
+            <a href="module7.html">
+                Module 7 Home
+            </a>
+
+            <a href="../module8/module8.html">
+                Module 8 →
+            </a>
+
+        </div>
+
+        <p>
+            My Networking Journey | Module 7
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+```
