@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 | Packet Tracer Lab</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">My Networking <span>Journey</span></a>
+  <nav><a href="../index.html">Home</a><a href="../index.html#modules">Modules</a><a class="active" href="index.html">Module 1</a></nav>
+</header>
+<nav class="subnav" aria-label="Module 1">
+  <a href="index.html">Overview</a><a href="index.html#topics">Topics</a><a class="active" href="lab.html">Lab</a><a href="glossary.html">Glossary</a>
+</nav>
+
+<section class="page-hero"><div class="inner">
+  <h1>Module 1 Lab: Packet Tracer</h1>
+  <p>Two exercises that turn the theory into something you can see: first basic communication, then what happens inside the local network.</p>
+</div></section>
+
+<main class="wrap">
+
+<section class="lab" id="exercise1">
+  <h2>Exercise 1: Basic communication</h2>
+  <p class="lead">Goal: connect two PCs through a switch and prove they can talk to each other using ping.</p>
+
+  <div class="step"><h3>Step 1: Build the topology</h3><p>PC0 and PC1 are each connected to one switch.</p>
+    <figure><img src="images/exercise1_topology.png" alt="Exercise 1 topology with PC0, PC1 and a switch"><figcaption>The Exercise 1 topology.</figcaption></figure></div>
+  <div class="step"><h3>Step 2: Give each PC an IP address</h3><p>Without an address a PC cannot take part in IPv4 communication. Both PCs must be on the same network.</p>
+    <figure><img src="images/exercise1_ip_configuration.png" alt="IP configuration window in Packet Tracer"><figcaption>IP configuration for the PCs.</figcaption></figure></div>
+  <div class="step"><h3>Step 3: Ping from PC0</h3><p>A reply from PC1 shows that the path works and that ICMP echo messages are getting through.</p>
+    <figure><img src="images/exercise1_pc0_ping.png" alt="Successful ping from PC0"><figcaption>PC0 pings PC1.</figcaption></figure></div>
+  <div class="step"><h3>Step 4: Ping from PC1</h3><p>Testing the other direction confirms the link works both ways.</p>
+    <figure><img src="images/exercise1_pc1_ping.png" alt="Successful ping from PC1"><figcaption>PC1 pings PC0.</figcaption></figure></div>
+
+  <div class="note"><b>What I learned:</b> two devices communicate when they have suitable addresses and a working connection between them. Ping uses ICMP to test that.</div>
+</section>
+
+<section class="lab" id="exercise2">
+  <h2>Exercise 2: MAC addresses and switching</h2>
+  <p class="lead">Goal: look inside the local Ethernet network and watch the switch learn MAC addresses.</p>
+
+  <div class="step"><h3>Step 1: Find the MAC address of PC0</h3>
+    <figure><img src="images/exercise2_pc0_mac_address.png" alt="PC0 MAC address"><figcaption>PC0 MAC address.</figcaption></figure></div>
+  <div class="step"><h3>Step 2: Find the MAC address of PC1</h3>
+    <figure><img src="images/exercise2_pc1_mac_address.png" alt="PC1 MAC address"><figcaption>PC1 MAC address.</figcaption></figure></div>
+  <div class="step"><h3>Step 3: Read the switch MAC table before any traffic</h3><p>The table should be empty because the switch has not seen any frames yet.</p>
+    <figure><img src="images/exercise2_mac_table_before_ping.png" alt="MAC address table before ping"><figcaption>MAC table before the ping.</figcaption></figure></div>
+  <div class="step"><h3>Step 4: Watch the frame arrive at the switch</h3><p>In Simulation Mode, open the packet at the switch and read the source and destination MAC addresses.</p>
+    <figure><img src="images/exercise2_packet_at_switch.png" alt="Frame at the switch in Simulation Mode"><figcaption>The frame at the switch.</figcaption></figure></div>
+  <div class="step"><h3>Step 5: The frame reaches PC1</h3>
+    <figure><img src="images/exercise2_packet_reaches_pc1.png" alt="Frame arriving at PC1"><figcaption>Delivery to PC1.</figcaption></figure></div>
+  <div class="step"><h3>Step 6: Read the MAC table after the ping</h3><p>The switch has now learned which port each MAC address sits behind.</p>
+    <figure><img src="images/exercise2_mac_table_after_ping.png" alt="MAC address table after ping"><figcaption>MAC table after the ping.</figcaption></figure></div>
+  <div class="step"><h3>Step 7: Confirm the simulation succeeded</h3>
+    <figure><img src="images/exercise2_simulation_success.png" alt="Successful simulation in Packet Tracer"><figcaption>Successful communication in Simulation Mode.</figcaption></figure></div>
+
+  <div class="note"><b>What I learned:</b> delivery needs more than an IP address. On a local network it also uses MAC addresses, ARP, Ethernet frames and the switch learning from the source address of every frame.</div>
+</section>
+
+<div class="pager"><a href="index.html">Module overview</a><a href="glossary.html">Glossary</a></div>
+</main>
+<footer>My Networking Journey 2026</footer>
+</body>
+</html>

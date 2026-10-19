@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 1 | Glossary</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../index.html">My Networking <span>Journey</span></a>
+  <nav><a href="../index.html">Home</a><a href="../index.html#modules">Modules</a><a class="active" href="index.html">Module 1</a></nav>
+</header>
+<nav class="subnav" aria-label="Module 1">
+  <a href="index.html">Overview</a><a href="index.html#topics">Topics</a><a href="lab.html">Lab</a><a class="active" href="glossary.html">Glossary</a>
+</nav>
+<section class="page-hero"><div class="inner"><h1>Module 1 Glossary</h1><p>Short definitions for the terms used in this module. Type to filter.</p></div></section>
+<main class="wrap">
+  <form class="search" style="margin:0 0 26px" onsubmit="return false"><input id="q" type="search" placeholder="Filter terms, for example MAC" aria-label="Filter glossary terms"><button type="button" onclick="document.getElementById('q').value='';f()">Clear</button></form>
+  <div class="terms" id="terms">
+    <div class="term" data-t="address resolution protocol (arp) protocol lets an ipv4 device find the mac address that belongs to an ip address on the local network."><dl><dt>Address Resolution Protocol (ARP)</dt><dd><small>Protocol</small><br>Lets an IPv4 device find the MAC address that belongs to an IP address on the local network.</dd></dl></div>
+    <div class="term" data-t="bandwidth performance the capacity of a connection, or the most data it can carry per second. measured in bits per second."><dl><dt>Bandwidth</dt><dd><small>Performance</small><br>The capacity of a connection, or the most data it can carry per second. Measured in bits per second.</dd></dl></div>
+    <div class="term" data-t="bit and byte units a bit is a 0 or a 1. a byte is 8 bits. mbps means megabits per second, mb/s means megabytes per second."><dl><dt>Bit and byte</dt><dd><small>Units</small><br>A bit is a 0 or a 1. A byte is 8 bits. Mbps means megabits per second, MB/s means megabytes per second.</dd></dl></div>
+    <div class="term" data-t="frame data the unit of data at the data link layer. an ethernet frame carries source and destination mac addresses."><dl><dt>Frame</dt><dd><small>Data</small><br>The unit of data at the data link layer. An Ethernet frame carries source and destination MAC addresses.</dd></dl></div>
+    <div class="term" data-t="full duplex transmission both devices send and receive at the same time. modern switched ethernet links work this way."><dl><dt>Full duplex</dt><dd><small>Transmission</small><br>Both devices send and receive at the same time. Modern switched Ethernet links work this way.</dd></dl></div>
+    <div class="term" data-t="half duplex transmission both devices can send, but only one at a time, like a walkie talkie."><dl><dt>Half duplex</dt><dd><small>Transmission</small><br>Both devices can send, but only one at a time, like a walkie talkie.</dd></dl></div>
+    <div class="term" data-t="icmp protocol internet control message protocol. carries control and error messages, and powers ping."><dl><dt>ICMP</dt><dd><small>Protocol</small><br>Internet Control Message Protocol. Carries control and error messages, and powers ping.</dd></dl></div>
+    <div class="term" data-t="ip address addressing a logical address given to a network interface so devices can find each other across networks."><dl><dt>IP address</dt><dd><small>Addressing</small><br>A logical address given to a network interface so devices can find each other across networks.</dd></dl></div>
+    <div class="term" data-t="lan network type local area network. connects devices in a home, office or building."><dl><dt>LAN</dt><dd><small>Network type</small><br>Local Area Network. Connects devices in a home, office or building.</dd></dl></div>
+    <div class="term" data-t="mac address addressing a 48 bit hardware address on a network interface, used for delivery inside a local network."><dl><dt>MAC address</dt><dd><small>Addressing</small><br>A 48 bit hardware address on a network interface, used for delivery inside a local network.</dd></dl></div>
+    <div class="term" data-t="mac address table switching the list a switch builds of mac addresses and the port each one was learned on."><dl><dt>MAC address table</dt><dd><small>Switching</small><br>The list a switch builds of MAC addresses and the port each one was learned on.</dd></dl></div>
+    <div class="term" data-t="man network type metropolitan area network. connects sites across a city."><dl><dt>MAN</dt><dd><small>Network type</small><br>Metropolitan Area Network. Connects sites across a city.</dd></dl></div>
+    <div class="term" data-t="packet data the unit of data at the network layer. an ipv4 packet carries source and destination ip addresses."><dl><dt>Packet</dt><dd><small>Data</small><br>The unit of data at the network layer. An IPv4 packet carries source and destination IP addresses.</dd></dl></div>
+    <div class="term" data-t="pan network type personal area network. a phone connected to earbuds or a watch is an example."><dl><dt>PAN</dt><dd><small>Network type</small><br>Personal Area Network. A phone connected to earbuds or a watch is an example.</dd></dl></div>
+    <div class="term" data-t="ping tool a command that sends an icmp echo request and waits for an echo reply to test reachability."><dl><dt>Ping</dt><dd><small>Tool</small><br>A command that sends an ICMP echo request and waits for an echo reply to test reachability.</dd></dl></div>
+    <div class="term" data-t="protocol concept a set of rules that devices follow to communicate."><dl><dt>Protocol</dt><dd><small>Concept</small><br>A set of rules that devices follow to communicate.</dd></dl></div>
+    <div class="term" data-t="router device connects different networks and forwards packets using ip addresses."><dl><dt>Router</dt><dd><small>Device</small><br>Connects different networks and forwards packets using IP addresses.</dd></dl></div>
+    <div class="term" data-t="serial transmission transmission bits are sent one after another over a single path."><dl><dt>Serial transmission</dt><dd><small>Transmission</small><br>Bits are sent one after another over a single path.</dd></dl></div>
+    <div class="term" data-t="switch device connects devices inside a local network and forwards frames using mac addresses."><dl><dt>Switch</dt><dd><small>Device</small><br>Connects devices inside a local network and forwards frames using MAC addresses.</dd></dl></div>
+    <div class="term" data-t="throughput performance the data rate actually achieved. it is usually lower than bandwidth."><dl><dt>Throughput</dt><dd><small>Performance</small><br>The data rate actually achieved. It is usually lower than bandwidth.</dd></dl></div>
+    <div class="term" data-t="vpn network type virtual private network. a protected logical connection across another network such as the internet."><dl><dt>VPN</dt><dd><small>Network type</small><br>Virtual Private Network. A protected logical connection across another network such as the Internet.</dd></dl></div>
+    <div class="term" data-t="wan network type wide area network. connects networks across regions, countries or continents."><dl><dt>WAN</dt><dd><small>Network type</small><br>Wide Area Network. Connects networks across regions, countries or continents.</dd></dl></div>
+  </div>
+  <p class="empty" id="empty">No term matches. Check the spelling or try a shorter word.</p>
+  <div class="pager"><a href="lab.html">Lab</a><a href="index.html">Module overview</a></div>
+</main>
+<footer>My Networking Journey 2026</footer>
+<script>
+function f(){const q=document.getElementById("q").value.trim().toLowerCase();let n=0;
+document.querySelectorAll(".term").forEach(t=>{const h=!q||t.dataset.t.includes(q);t.style.display=h?"":"none";if(h)n++});
+document.getElementById("empty").style.display=n?"none":"block"}
+document.getElementById("q").addEventListener("input",f);
+</script>
+</body>
+</html>

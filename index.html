@@ -1,171 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Networking Journey</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Networking Journey</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+<header class="topbar">
+  <a class="brand" href="index.html">My Networking <span>Journey</span></a>
+  <nav><a class="active" href="index.html">Home</a><a href="#modules">Modules</a><a href="module1/index.html">Module 1</a></nav>
+</header>
 
-    <header>
+<section class="hero">
+  <h1>Every networking note I have written, in one place</h1>
+  <p>Twelve modules from my Cisco networking course, rewritten in my own words with the Packet Tracer labs I completed.</p>
+  <div class="path" aria-hidden="true">
+    <span class="node">PC</span><span class="node">Switch</span><span class="node">Router</span><span class="node">Server</span>
+    <span class="packet"></span>
+  </div>
+  <form class="search" id="searchForm" role="search">
+    <input id="q" type="search" placeholder="Search modules, for example bandwidth or ARP" aria-label="Search modules">
+    <button type="submit">Search</button>
+  </form>
+</section>
 
-        <h1>My Networking Journey</h1>
+<main class="wrap" id="modules">
+  <h2>Modules</h2>
+  <p class="lead">Open a module for its topics, lab and glossary. Modules marked In progress are being rewritten.</p>
+  <div class="stats">
+    <div class="stat"><b id="total">12</b><span>modules in the course</span></div>
+    <div class="stat"><b id="done">1</b><span>modules ready to read</span></div>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty">No module matches that search. Try a shorter word such as ping, switch or LAN.</p>
+</main>
 
-        <p>
-            Learning Networking, One Step at a Time
-        </p>
+<footer>My Networking Journey 2026</footer>
 
-    </header>
+<script>
+const modules = [
+  {n:1, title:"Communication and Networking Fundamentals", desc:"How devices communicate, network types, data transmission, bandwidth and throughput.", keys:"communication network types lan wan data transmission bandwidth throughput ping arp mac address switch packet tracer", live:true},
+  {n:2, title:"Network Infrastructure and Connectivity", desc:"Clients, servers, network components and device connections.", keys:"clients servers components connections internet connectivity"}
+];
+for (let i = 3; i <= 12; i++) modules.push({n:i, title:"Module " + i, desc:"Notes are being rewritten.", keys:""});
 
+const grid = document.getElementById("grid");
+modules.forEach(m => {
+  const a = document.createElement("a");
+  a.className = "card" + (m.live ? "" : " soon");
+  a.href = m.live ? "module" + m.n + "/index.html" : "#modules";
+  a.dataset.text = (m.title + " " + m.desc + " " + m.keys + " module " + m.n).toLowerCase();
+  a.innerHTML = '<span class="n">Module ' + m.n + '</span><h3>' + m.title + '</h3><p>' + m.desc +
+    '</p><span class="tag">' + (m.live ? "Ready to read" : "In progress") + '</span>';
+  grid.appendChild(a);
+});
 
-    <nav>
+const done = modules.filter(m => m.live).length;
+document.getElementById("done").textContent = done;
+document.getElementById("fill").style.width = (done / modules.length * 100) + "%";
 
-        <a href="index.html">Home</a>
-
-        <a href="#my-journey">My Journey</a>
-
-        <a href="#networking-essentials">
-            Networking Essentials
-        </a>
-
-    </nav>
-
-
-    <main>
-
-        <section id="my-journey">
-
-            <h2>My Journey</h2>
-
-            <p>
-                This is my journey of learning computer networking
-                from the basics and building my understanding step
-                by step.
-            </p>
-
-            <p>
-                Before starting this journey, I knew very little
-                about networking and how computers and other devices
-                communicate with each other.
-            </p>
-
-            <p>
-                My curiosity about networking grew during my
-                attachment, where I encountered people who were
-                working with networking technologies and had a
-                deeper understanding of things I did not yet know.
-            </p>
-
-            <p>
-                I often heard conversations about IP addresses,
-                network configurations, Wi-Fi, and Packet Tracer
-                simulations. I wanted to understand what they were
-                talking about instead of feeling left out.
-            </p>
-
-            <p>
-                So I decided to start learning networking from the
-                basics and gradually build my knowledge through
-                both theory and practical work.
-            </p>
-
-        </section>
-
-
-        <section id="networking-essentials">
-
-            <h2>Networking Essentials</h2>
-
-            <p>
-                This section documents my journey through the
-                Networking Essentials course, from the fundamentals
-                of communication to building and understanding
-                networks.
-            </p>
-
-
-            <div class="module-card">
-
-                <h3>Module 1</h3>
-
-                <h4>Communication in the Real World</h4>
-
-                <p>
-                    In this module, I explore the fundamentals of
-                    communication in the real world and how devices
-                    communicate across networks.
-                </p>
-
-                <p>
-                    I will also learn about different types of
-                    networks, data transmission, bandwidth,
-                    throughput, and other fundamental networking
-                    concepts.
-                </p>
-
-                <a href="module1/index.html">
-                    Explore Module 1 →
-                </a>
-
-            </div>
-
-
-            <div class="module-card">
-
-                <h3>Module 2</h3>
-
-                <h4>Network Infrastructure and Connectivity</h4>
-
-                <p>
-                    In this module, I look at what actually makes up
-                    a network. This includes the devices on it, the
-                    cables and media connecting them, and how those
-                    connections are physically made.
-                </p>
-
-                <p>
-                    I will also learn about the client server model,
-                    how a network reaches the internet through an
-                    ISP, and how all of these pieces fit together in
-                    a working network.
-                </p>
-
-                <a href="module2/module2.html">
-                    Explore Module 2 →
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <section>
-
-            <h2>More Modules</h2>
-
-            <p>
-                More modules will be added as I continue my
-                networking journey.
-            </p>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-
-        <p>
-            My Networking Journey © 2026
-        </p>
-
-    </footer>
-
+function filter() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  let shown = 0;
+  grid.querySelectorAll(".card").forEach(c => {
+    const hit = !q || c.dataset.text.includes(q);
+    c.style.display = hit ? "" : "none";
+    if (hit) shown++;
+  });
+  document.getElementById("empty").style.display = shown ? "none" : "block";
+}
+document.getElementById("q").addEventListener("input", filter);
+document.getElementById("searchForm").addEventListener("submit", e => {
+  e.preventDefault(); filter();
+  document.getElementById("modules").scrollIntoView();
+});
+</script>
 </body>
-
 </html>
